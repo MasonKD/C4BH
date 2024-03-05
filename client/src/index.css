@@ -11,3 +11,40 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Additional CSS */
+.main-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #ccc;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Aligns items horizontally in the middle */
+  justify-content: center; /* Aligns items vertically */
+  height: 100%; /* Take the full height of the parent container */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.query-button {
+  margin: 10px;
+  padding: 10px 15px;
+  width: 200px; /* You can set a specific width for your buttons */
+}
