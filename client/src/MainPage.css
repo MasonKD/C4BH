@@ -4,9 +4,21 @@
     align-items: center;
     justify-content: flex-start;
     height: 100vh;
-    border: .25in solid blue; /* Add a 1-inch blue border */
-    box-sizing: border-box; /* Include the border in the element's total width and height */
+    border: .25in solid blue; 
+    box-sizing: border-box; 
   }
+  .logo img {
+    max-height: 100px; 
+    width: auto; 
+  }
+
+  .user-participant {
+    font-size: 1.2em; 
+    font-weight: bold; 
+    
+  }
+  
+  
   
   
   .header {
@@ -29,33 +41,33 @@
     padding: 20px;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center items horizontally */
+    align-items: center; 
     width: 100%;
     box-sizing: border-box;
   }
   
   
   .query-button {
-    margin: 10px 0; /* Maintain vertical margin, remove horizontal margin */
+    margin: 10px 0; 
     padding: 10px 15px;
-    background: #bfc3c9; /* Glossy grey background */
+    background: #bfc3c9; 
     border: none;
-    border-radius: 5px; /* Optional: adds rounded corners to the buttons */
-    color: blue; /* White text color for better contrast */
-    width: 100%; /* Make buttons stretch to the full width of their container */
-    max-width: 400px; /* Set a max-width to control the button width on larger screens */
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2), /* Simulate a glossy effect */
-                inset 0 1px 0 rgba(255, 255, 255, 0.5), /* Light source from the top */
-                inset 0 -1px 0 rgba(0, 0, 0, 0.2); /* Shadow from the bottom */
-    transition: background 0.3s ease; /* Smooth transition for hover effect */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Slight shadow behind the text */
+    border-radius: 5px; 
+    color: blue; 
+    width: 100%; 
+    max-width: 500px; 
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2), 
+                inset 0 1px 0 rgba(255, 255, 255, 0.5), 
+                inset 0 -1px 0 rgba(0, 0, 0, 0.2); 
+    transition: background 0.3s ease; 
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); 
   }
   
   .query-button:hover {
-    background: #a9afb7; /* Slightly darker shade of grey for hover effect */
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2), /* Maintain shadow effect on hover */
-                inset 0 1px 0 rgba(255, 255, 255, 0.6), /* Increase glossiness on top */
-                inset 0 -1px 0 rgba(0, 0, 0, 0.3); /* Increase shadow effect on bottom */
+    background: #a9afb7; 
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2), 
+                inset 0 1px 0 rgba(255, 255, 255, 0.6), 
+                inset 0 -1px 0 rgba(0, 0, 0, 0.3);
   }
   
   

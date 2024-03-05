@@ -1,7 +1,12 @@
 import React from 'react';
-import './MainPage.css'; // Importing CSS for MainPage
+import './MainPage.css'; 
+import logoImage from './images/C4BHLogo.png';
 
-const Logo = () => <div className="logo">Connecting for Better Health</div>;
+const Logo = () => (
+    <div className="logo">
+      <img src={logoImage} alt="Connecting for Better Health" />
+    </div>
+  );
 
 const MainPage = () => {
   return (
