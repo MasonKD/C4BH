@@ -9,6 +9,22 @@ const Logo = () => (
 );
 
 const LandingPage = () => {
+  // Handler for the Sign In button click
+  const handleSignIn = () => {
+    const clientId = '6ajbqdj9bvutetf9vrremr1clc';
+    const redirectUri = encodeURIComponent('http://localhost:3000/callback');
+    const signInUri = `https://sandbox-login.auth.us-east-2.amazoncognito.com/login?client_id=${clientId}&response_type=code&scope=email+openid+phone&redirect_uri=${redirectUri}`;
+    window.location.assign(signInUri);
+  };
+
+  // Handler for the Sign Up button click, identical setup as sign in but could lead to a different path if needed
+  const handleSignUp = () => {
+    const clientId = '6ajbqdj9bvutetf9vrremr1clc';
+    const redirectUri = encodeURIComponent('http://localhost:3000/callback');
+    const signUpUri = `https://sandbox-login.auth.us-east-2.amazoncognito.com/signup?client_id=${clientId}&response_type=code&scope=email+openid+phone&redirect_uri=${redirectUri}`;
+    window.location.assign(signUpUri);
+  };
+
   return (
     <div className="main-container">
       <header className="header">
@@ -16,12 +32,14 @@ const LandingPage = () => {
       </header>
       <div className="welcome-container">
         <h1 className="welcome-message">Welcome to the DxF Sandbox</h1>
-        <button className="landing-button">Sign In</button>
-        <button className="landing-button">Sign Up</button>
+        <button onClick={handleSignIn} className="landing-button">Sign In</button>
+        <button onClick={handleSignUp} className="landing-button">Sign Up</button>
       </div>
     </div>
   );
 };
 
 export default LandingPage;
+
+
 
