@@ -17,6 +17,11 @@ const MainPage = () => {
     navigate('/'); // Redirects to the landing page
   };
 
+  // Handler for the Query Master Patient Index button
+  const handleQueryMPI = () => {
+    window.location.href = "http://logica-client.azurewebsites.net/"; // Redirects to the MPI site
+  };
+
   return (
     <div className="main-container">
       <header className="header">
@@ -27,8 +32,8 @@ const MainPage = () => {
         </div>
       </header>
       <div className="button-container">
-        <button className="query-button">Query Master Patient Index</button>
-        <button className="query-button">Query Participant Directory</button>
+        <button className="query-button" onClick={handleQueryMPI}>Query Master Patient Index</button>
+        {/* Removed Query Participant Directory button */}
         <button className="query-button">Query CDR</button>
         <button className="query-button">Query Rules</button>
       </div>
@@ -37,4 +42,5 @@ const MainPage = () => {
 };
 
 export default MainPage;
+
 
