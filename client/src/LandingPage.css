@@ -1,58 +1,102 @@
-/* Add to or update your existing LandingPage.css with these styles */
+/* Base styles for body */
 html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-  }
-  
-  /* Set up the main container */
-  .main-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh; /* Use min-height instead of height to ensure it at least covers the viewport */
-    border: .25in solid blue;
-    box-sizing: border-box; /* Ensures the border is included in the width and height calculations */
-  }
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+
+/* Main container with flexbox centering */
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+/* Blue border turned into a top bar */
+.top-bar {
+  width: 100%;
+  height: 12px; /* height of the blue bar */
+  background-color: #da545f; /* blue color to match the button */
+  position: absolute;
+  top: 0;
+}
+
+/* Logo styles */
+.logo img {
+  max-height: 100px;
+  width: auto;
+  margin-bottom: 1rem; /* Adjusted margin */
+}
+
+/* Container for welcome message and buttons */
 .welcome-container {
-    text-align: center; /* Center the text and buttons */
-    margin-top: 50px; /* Spacing from the header or logo */
-  }
-  
-  .welcome-message {
-    font-weight: bold;
-    font-size: 2em; /* Adjust size as necessary */
-    color: black;
-    margin-bottom: 20px; /* Spacing between text and buttons */
-  }
-  
+  text-align: center;
+  max-width: 600px;
+  background: #ffffff;
+  padding: 3rem; /* Increased padding */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  margin-top: 2rem; /* Adding margin to top to lower the card from the top bar */
+}
+
+/* Welcome message styling */
+.welcome-message {
+  font-weight: 300;
+  font-size: 2.5rem; /* Increased size for better impact */
+  color: #333;
+  margin-bottom: 2rem; /* Increased bottom margin */
+}
+
+/* Button styling */
+.landing-button {
+  margin: 0.5rem;
+  padding: 1rem 2rem;
+  background: #0b5fb8;
+  border: none;
+  border-radius: 30px; /* More rounded */
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Hover and active states for buttons */
+.landing-button:hover,
+.landing-button:focus {
+  background: #14539c; /* slightly lighter blue for hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* pronounced shadow on hover */
+}
+
+.landing-button:active {
+  background: #003d82; /* even darker blue for active */
+}
+
+/* Ensure buttons are not full width on larger screens and adjust the overall alignment */
+@media (min-width: 768px) {
   .landing-button {
-    margin: 10px; /* Spacing between buttons */
-    padding: 10px 15px;
-    background: #bfc3c9; /* Glossy grey background from MainPage.css */
-    border: none;
-    border-radius: 5px;
-    color: blue;
-    font-weight: bold; /* If you want the text on the buttons to be bold */
-    width: 100%;
-    max-width: 500px; /* Same as the buttons from MainPage.css */
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2),
-                inset 0 1px 0 rgba(255, 255, 255, 0.5),
-                inset 0 -1px 0 rgba(0, 0, 0, 0.2);
-    transition: background 0.3s ease;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+    width: initial;
+    max-width: 250px; /* slightly wider button */
   }
-  
-  .landing-button:hover {
-    background: #a9afb7;
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2),
-                inset 0 1px 0 rgba(255, 255, 255, 0.6),
-                inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+
+  .main-container {
+    justify-content: flex-start; /* Aligns content to the top on larger screens */
   }
+
+  .top-bar {
+    height: 20px; /* larger top bar on wider screens */
+  }
+
+  .welcome-container {
+    margin-top: 5rem; /* More space on larger screens */
+  }
+}
+
+
   
   
   

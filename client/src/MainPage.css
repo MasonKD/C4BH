@@ -1,74 +1,98 @@
+/* MainPage.css */
 .main-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    height: 100vh;
-    border: .25in solid blue; 
-    box-sizing: border-box; 
-  }
-  .logo img {
-    max-height: 100px; 
-    width: auto; 
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Center the content vertically */
+  min-height: 100vh; /* Ensure it takes at least the full height of the viewport */
+  padding: 2rem; /* Consistent padding with the landing page */
+  border: 0.25in solid #0056b3; /* Adjust the blue to match the button color */
+  box-sizing: border-box;
+}
 
-  .user-participant {
-    font-size: 1.2em; 
-    font-weight: bold; 
-    
-  }
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+
+.header > div {
+  display: flex;
+  align-items: center;
+}
+
+.signout-button {
+  padding: 10px 15px;
+  background: #bfc3c9; /* Same background as query buttons */
+  border: none;
+  border-radius: 5px; /* Same border radius as query buttons */
+  color: blue; /* Same text color as query buttons */
+  font-weight: bold; /* Same font weight as query buttons */
+  cursor: pointer; /* Same cursor as query buttons */
+  margin-left: 10px; /* Add some space from the user participant text */
+}
+
+.signout-button:hover {
+  background: #a9afb7; /* Same hover effect as query buttons */
+}
+
+.logo img {
+  max-height: 150px; /* Increase size to match the landing page */
+  margin-bottom: 2rem; /* Add space below the logo */
+}
+
+.user-participant {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #333; /* Use a darker text for better readability */
+  margin-right: 20px; /* Add some margin to the right if needed */
+}
+
+.button-container {
+  padding: 20px;
+  display: flex;
+  flex-direction: row; /* Align buttons horizontally */
+  flex-wrap: wrap; /* Allow buttons to wrap to next line on smaller screens */
+  justify-content: center; /* Center buttons horizontally */
+  align-items: center; /* Center buttons vertically */
+  gap: 10px; /* Add gap between buttons */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.query-button {
+  flex: 1; /* Make buttons take equal space */
+  min-width: 150px; /* Minimum width for smaller screens */
+  padding: 10px 15px;
+  background: #bfc3c9;
+  border: none;
+  border-radius: 5px;
+  color: blue;
+  text-align: center; /* Center text inside buttons */
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2),
+              inset 0 1px 0 rgba(255, 255, 255, 0.5),
+              inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease;
+  cursor: pointer;
   
-  
-  
-  
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 20px;
-    box-sizing: border-box;
-    border-bottom: 1px solid #ccc;
-  }
-  
-  .logo {
-    font-weight: bold;
-    font-size: 24px;
-  }
-  
-  
-  .button-container {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-    width: 100%;
-    box-sizing: border-box;
-  }
-  
-  
+}
+
+.query-button:hover {
+  background: #a9afb7; /* Darker shade for hover effect */
+  transform: translateY(-2px); /* Lift button on hover for interaction feedback */
+}
+
+@media (min-width: 768px) {
   .query-button {
-    margin: 10px 0; 
-    padding: 10px 15px;
-    background: #bfc3c9; 
-    border: none;
-    border-radius: 5px; 
-    color: blue; 
-    width: 100%; 
-    max-width: 500px; 
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2), 
-                inset 0 1px 0 rgba(255, 255, 255, 0.5), 
-                inset 0 -1px 0 rgba(0, 0, 0, 0.2); 
-    transition: background 0.3s ease; 
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); 
+      width: none;
+      max-width: 200px; /* Consistent with landing page button max width */
   }
-  
-  .query-button:hover {
-    background: #a9afb7; 
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2), 
-                inset 0 1px 0 rgba(255, 255, 255, 0.6), 
-                inset 0 -1px 0 rgba(0, 0, 0, 0.3);
-  }
+}
+
   
   
   
