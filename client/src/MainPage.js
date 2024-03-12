@@ -32,10 +32,13 @@ const MainPage = () => {
         </div>
       </header>
       <div className="button-container">
-        <button className="query-button" onClick={handleQueryMPI}>Query Master Patient Index</button>
+        <button className="query-button" onClick={handleQueryMPI}>Clinical Data Repo</button>
         {/* Removed Query Participant Directory button */}
-        <button className="query-button">Query CDR</button>
-        <button className="query-button">Query Rules</button>
+        <button className="query-button">Use Case</button>
+        <button className="query-button">Mirth Log</button>
+        <button className="query-button">Rules Engine</button>
+        <button className="query-button">Network</button>
+        <button className="query-button">FTP Log</button>
       </div>
     </div>
   );
