@@ -1,62 +1,94 @@
-/* MainPage.css */
+
 .main-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; /* Center the content vertically */
-    min-height: 100vh; /* Ensure it takes at least the full height of the viewport */
-    padding: 2rem; /* Consistent padding with the landing page */
-    border: 0.25in solid #1D4A7A; /* Adjust the blue to match the button color */
-    box-sizing: border-box;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center items horizontally */
+  justify-content: flex-start; /* Align items to the top */
+  min-height: 100vh;
+  padding: 2rem;
+  border: 0.25in solid #1D4A7A;
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.header {
+  width: 100%; /* Take full width of the container */
+  max-width: calc(100% - 4rem); /* Subtract padding from the width */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem; /* Apply horizontal padding */
+  box-sizing: border-box;
+}
+
+.mirth-image {
+  max-width: calc(100% - 4rem); /* Adjust image max-width to account for padding */
+  height: 650px;
+  display: block;
+  margin: 1rem auto; /* Center image horizontally with margin */
+}
+
+/* Add additional styles to make the table fit within the main container */
+.table-container {
+  width: 100%;
+  max-width: calc(100% - 4rem); /* Adjust max-width to account for padding */
+  overflow-x: auto; /* Make table scrollable on x-axis */
+}
+
+/* Style adjustments for smaller screens */
+@media (max-width: 768px) {
   .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: 150px;;
-    padding: 20px;
-    box-sizing: border-box;
-    flex-wrap: wrap;
+      flex-direction: column;
+      align-items: center; /* Align header items on smaller screens */
   }
-  
-  
-  .header > div {
-    display: flex;
-    align-items: center;
-  }
-  
-  .signout-button {
-    margin: 0.5rem;
-    padding: 1rem 2rem;
-    background: #1D4A7A;
-    border: none;
-    border-radius: 30px; /* More rounded */
-    color: white;
-    font-weight: bold;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  
-  .signout-button:hover {
-    background: #a9afb7; /* Same hover effect as query buttons */
-  }
-  
-  .logo img {
-    max-height: 75px; /* Increase size to match the landing page */
-    margin-bottom: 2rem; /* Add space below the logo */
-  }
-  
   .user-participant {
-    font-size: 1.2em;
-    font-weight: bold;
-    color: #333; /* Use a darker text for better readability */
-    margin-right: 20px; /* Add some margin to the right if needed */
+      order: 2; /* Reorder elements: logo -> user info -> sign out */
+      margin-top: 1rem;
+      margin-right: 0; /* Center on small screens */
   }
-  
-  
+  .signout-button {
+      order: 3;
+      margin-top: 1rem;
+  }
+  .logo {
+      order: 1;
+  }
+}
+
+/* Additional styles for table layout if needed */
+.table-container {
+  width: 100%;
+  overflow-x: auto; /* Horizontal scroll for tables */
+}
+
+.logo img {
+  max-height: 75px;
+  margin-bottom: 1rem;
+}
+
+.user-participant {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #333;
+  margin-right: 20px;
+}
+
+.signout-button {
+  margin: 0.5rem;
+  padding: 1rem 2rem;
+  background: #1D4A7A;
+  border: none;
+  border-radius: 30px;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.signout-button:hover {
+  background: #a9afb7;
+}
+
   
   
   
