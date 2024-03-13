@@ -22,6 +22,11 @@ const MainPage = () => {
     window.location.href = "http://logica-client.azurewebsites.net/"; // Redirects to the MPI site
   };
 
+  // Handler for the Query Master Patient Index button
+  const HandleMirthQuery = () => {
+    navigate ('/Mirth'); 
+  };
+
   return (
     <div className="main-container">
       <header className="header">
@@ -33,9 +38,8 @@ const MainPage = () => {
       </header>
       <div className="button-container">
         <button className="query-button" onClick={handleQueryMPI}>Clinical Data Repo</button>
-        {/* Removed Query Participant Directory button */}
         <button className="query-button">Use Case</button>
-        <button className="query-button">Mirth Log</button>
+        <button className="query-button"onClick={HandleMirthQuery}>Mirth Log</button>
         <button className="query-button">Rules Engine</button>
         <button className="query-button">Network</button>
         <button className="query-button">FTP Log</button>
