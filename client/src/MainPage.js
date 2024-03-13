@@ -37,12 +37,12 @@ const MainPage = () => {
         </div>
       </header>
       <div className="button-container">
-        <button className="query-button" onClick={handleQueryMPI}>Clinical Data Repo</button>
         <button className="query-button">Use Case</button>
         <button className="query-button"onClick={HandleMirthQuery}>Mirth Log</button>
         <button className="query-button">Rules Engine</button>
         <button className="query-button">Network</button>
         <button className="query-button">FTP Log</button>
+        <button className="query-button" onClick={handleQueryMPI}>Clinical Data Repo</button>
       </div>
     </div>
   );

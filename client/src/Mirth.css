@@ -6,7 +6,7 @@
     justify-content: center; /* Center the content vertically */
     min-height: 100vh; /* Ensure it takes at least the full height of the viewport */
     padding: 2rem; /* Consistent padding with the landing page */
-    border: 0.25in solid #0056b3; /* Adjust the blue to match the button color */
+    border: 0.25in solid #1D4A7A; /* Adjust the blue to match the button color */
     box-sizing: border-box;
   }
   
@@ -15,8 +15,10 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    height: 150px;;
     padding: 20px;
     box-sizing: border-box;
+    flex-wrap: wrap;
   }
   
   
@@ -26,14 +28,16 @@
   }
   
   .signout-button {
-    padding: 10px 15px;
-    background: #bfc3c9; /* Same background as query buttons */
+    margin: 0.5rem;
+    padding: 1rem 2rem;
+    background: #1D4A7A;
     border: none;
-    border-radius: 5px; /* Same border radius as query buttons */
-    color: blue; /* Same text color as query buttons */
-    font-weight: bold; /* Same font weight as query buttons */
-    cursor: pointer; /* Same cursor as query buttons */
-    margin-left: 10px; /* Add some space from the user participant text */
+    border-radius: 30px; /* More rounded */
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
   }
   
   .signout-button:hover {

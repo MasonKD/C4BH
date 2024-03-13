@@ -15,8 +15,10 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  height: 200px;
   padding: 20px;
   box-sizing: border-box;
+  flex-wrap: wrap ;
 }
 
 
@@ -26,24 +28,35 @@
 }
 
 .signout-button {
-  padding: 10px 15px;
-  background: #bfc3c9; /* Same background as query buttons */
+  margin: 0.5rem;
+  padding: 1rem 2rem;
+  background: #1D4A7A;
   border: none;
-  border-radius: 5px; /* Same border radius as query buttons */
-  color: blue; /* Same text color as query buttons */
-  font-weight: bold; /* Same font weight as query buttons */
-  cursor: pointer; /* Same cursor as query buttons */
-  margin-left: 10px; /* Add some space from the user participant text */
+  border-radius: 30px; /* More rounded */
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .signout-button:hover {
-  background: #a9afb7; /* Same hover effect as query buttons */
+  background: #1D4A7A; /* Same hover effect as query buttons */
+}
+
+.logo {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
 }
 
 .logo img {
   max-height: 75px; /* Increase size to match the landing page */
   margin-bottom: 2rem; /* Add space below the logo */
 }
+
+
 
 .user-participant {
   font-size: 1.2em;
@@ -71,7 +84,7 @@
   background: #bfc3c9;
   border: none;
   border-radius: 5px;
-  color: blue;
+  color: #1D4A7A;
   text-align: center; /* Center text inside buttons */
   font-size: 2em; /* Adjust font size if needed */
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2),
