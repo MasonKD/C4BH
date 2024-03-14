@@ -17,34 +17,34 @@ const Mirth = () => {
   useEffect(() => {
     const apiEndpoint = 'https://18.205.165.171:8443/api/channels/4cc843b2-84e0-4ee0-805a-65052a37d0d/messages';
     const queryParams = '?status=RECEIVED&limit=20';
+    
+    // Update this part with your username and password for Mirth Connect
+    const username = 'admin';
+    const password = 'C4BH126!';
+    const encodedCredentials = btoa(`${username}:${password}`);
+
     const headers = {
       'Accept': 'application/json',
-      'X-Requested-With': 'OpenAPI',
-      // Uncomment and replace with your actual token if needed:
-      // 'Authorization': `Bearer ${your_access_token}`,
+      'Authorization': `Basic ${encodedCredentials}`,
     };
-
-    console.log('Making API Call with headers:', headers); // Debugging line to check headers
 
     fetch(apiEndpoint + queryParams, {
       method: 'GET',
       headers: headers,
     })
     .then(response => {
-      console.log('API Response:', response); // Debugging line to check response
       if (!response.ok) {
         throw new Error(`HTTP status ${response.status}`);
       }
       return response.json();
     })
     .then(data => {
-      console.log('Data fetched:', data); // Debugging line to check data structure
       setLogs(data.messages);
     })
     .catch(error => {
       console.error('Error fetching data:', error);
     });
-  }, []); // Empty dependency array means this effect will only run once on mount
+  }, [navigate]); // Added navigate to the dependency array if its state changes and the effect needs to rerun
 
   const handleSignOut = () => {
     navigate('/'); // Redirects to the landing page
