@@ -27,6 +27,11 @@ const MainPage = () => {
     navigate ('/Mirth'); 
   };
 
+  // Handler for the Query Master Patient Index button
+  const HandleNetworkQuery = () => {
+    navigate ('/Networking'); 
+  };
+
   return (
     <div className="main-container">
       <header className="header">
@@ -40,7 +45,7 @@ const MainPage = () => {
         <button className="query-button">Use Case</button>
         <button className="query-button"onClick={HandleMirthQuery}>Mirth Log</button>
         <button className="query-button">Rules Engine</button>
-        <button className="query-button">Network</button>
+        <button className="query-button" onClick={HandleNetworkQuery}>Network</button>
         <button className="query-button">FTP Log</button>
         <button className="query-button" onClick={handleQueryMPI}>Clinical Data Repo</button>
       </div>
