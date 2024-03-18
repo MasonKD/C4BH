@@ -31,7 +31,7 @@ const LandingPage = () => {
         <Logo />
       </header>
       <div className="welcome-container">
-        <h1 className="welcome-message">Welcome to the DxF Sandbox</h1>
+        <h1 className="welcome-message">Welcomee to the DxF Sandbox</h1>
         <button onClick={handleSignIn} className="landing-button">Sign In</button>
         <button onClick={handleSignUp} className="landing-button">Sign Up</button>
       </div>
