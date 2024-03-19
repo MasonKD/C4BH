@@ -1,14 +1,23 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Networking.css';
 import logoImage from './images/C4BHLogo.png';
+import leafPin from 'leaflet/dist/images/marker-icon.png';
 import data from './data.json'; // make sure the path to your JSON file is correct
+//import * as d3 from 'd3';
+import L from "leaflet";
+import { Icon } from 'leaflet'
+import 'leaflet/dist/leaflet.css';
+import { MapContainer, TileLayer, Map, Marker, Popup, SVGOverlay} from 'react-leaflet'
+import cities from './cities.json';
 
 const Logo = () => (
   <div className="logo">
     <img src={logoImage} alt="Connecting for Better Health" />
   </div>
 );
+
+
 
 const Networking = () => {
     const navigate = useNavigate();
@@ -42,8 +51,21 @@ const Networking = () => {
           <td>{item.GeoPoint}</td>
         </tr>
       ));
-      
        };
+
+const position = [41.076602, 30.052495]
+const bounds = [
+  [41.076602, 30.052495],
+  [41.076602, 28.052495],
+]
+
+
+const myIcon = new Icon({
+  iconUrl: leafPin,
+  iconSize: [20,32]
+ })
+
+
 
   return (
     <div className="main-container">
@@ -54,7 +76,9 @@ const Networking = () => {
           <button className="signout-button" onClick={handleSignOut}>
             Sign Out
           </button>
+         
         </div>
+        
       </header>
       
       {/* Dropdown to select the city 
@@ -82,6 +106,23 @@ const Networking = () => {
           {renderTableRows()}
         </tbody>
       </table>*/}
+
+
+
+  <MapContainer  center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
+    <TileLayer
+      attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+    />
+    <Marker position={position} icon={myIcon}>
+
+    </Marker>
+
+
+
+  </MapContainer>
+
+
     </div>
   );
 };

@@ -32,6 +32,11 @@
     max-width: calc(100% - 4rem); /* Adjust max-width to account for padding */
     overflow-x: auto; /* Make table scrollable on x-axis */
   }
+
+  .leaflet-container {
+    width: 500px;
+    height: 500px;
+  }
   
   /* Style adjustments for smaller screens */
   @media (max-width: 768px) {
