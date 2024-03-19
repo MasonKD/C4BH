@@ -18,7 +18,7 @@ const Mirth = () => {
     const apiEndpoint = 'https://18.205.165.171:8443/api/channels/4cc843b2-84e0-4ee0-805a-65052a37d0d/messages';
     const queryParams = '?status=RECEIVED&limit=20';
     
-    // Update this part with your username and password for Mirth Connect
+    //username and password for Mirth Connect
     const username = 'admin';
     const password = 'C4BH126!';
     const encodedCredentials = btoa(`${username}:${password}`);

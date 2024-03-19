@@ -3,8 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './Networking.css';
 import logoImage from './images/C4BHLogo.png';
 import leafPin from 'leaflet/dist/images/marker-icon.png';
-import data from './data.json'; // make sure the path to your JSON file is correct
-//import * as d3 from 'd3';
+import data from './data.json'; 
 import L from "leaflet";
 import { Icon } from 'leaflet'
 import 'leaflet/dist/leaflet.css';
@@ -52,17 +51,34 @@ const Networking = () => {
       ));
        };
 
-const position = [41.076602, 30.052495]
-const bounds = [
-  [41.076602, 30.052495],
-  [41.076602, 28.052495],
-]
-
-
-const myIcon = new Icon({
-  iconUrl: leafPin,
-  iconSize: [20,32]
- })
+       const renderMarkers = () => {
+        return data.map((item, index) => {
+          if (item.GeoPoint) {
+            const parts = item.GeoPoint.split(', ');
+            console.log(parts); // Add this to log the parts for debugging
+            if (parts.length === 2) {
+              const latitude = parseFloat(parts[0]);
+              const longitude = parseFloat(parts[1]);
+              if (!isNaN(latitude) && !isNaN(longitude)) {
+                return (
+                  <Marker
+                    key={index}
+                    position={[latitude, longitude]}
+                    icon={L.icon({
+                      iconUrl: leafPin,
+                      iconSize: [25, 41],
+                      iconAnchor: [12, 41],
+                      popupAnchor: [1, -34],
+                      shadowSize: [41, 41]
+                    })}
+                  />
+                );
+              }
+            }
+          }
+          return null; // Return null for invalid or missing GeoPoints
+        }).filter(marker => marker !== null); // Filter out null values to avoid errors
+      };
 
 
 
@@ -105,21 +121,16 @@ const myIcon = new Icon({
           {renderTableRows()}
         </tbody>
       </table>*/}
+    <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
+          <TileLayer
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+          {renderMarkers()} {/* Here you call the function to render markers */}
+        </MapContainer>
 
 
-
-  <MapContainer  center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
-    <TileLayer
-      attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-    />
-    <Marker position={position} icon={myIcon}>
-
-    </Marker>
-
-
-
-  </MapContainer>
+  
 
 
     </div>
