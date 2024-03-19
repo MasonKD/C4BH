@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
+import { useUser } from './Usercontext';
 import './MainPage.css';
 import logoImage from './images/C4BHLogo.png';
 
@@ -11,6 +12,7 @@ const Logo = () => (
 
 const MainPage = () => {
   const navigate = useNavigate(); // Initialize navigate function
+  const { user } = useUser();
 
   // Handler for the Sign Out button
   const handleSignOut = () => {
@@ -37,8 +39,8 @@ const MainPage = () => {
       <header className="header">
         <Logo />
         <div>
-          <div className="user-participant">User Participant: Provider A</div>
-          <button className="signout-button" onClick={handleSignOut}>Sign Out</button> {/* Sign Out Button */}
+          <div className="user-participant">{user && <span>Welcome, {user.username}</span>}</div>
+          <button className="signout-button" onClick={handleSignOut}>Sign Out</button> 
         </div>
       </header>
       <div className="button-container">

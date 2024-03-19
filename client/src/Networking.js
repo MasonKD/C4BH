@@ -43,7 +43,7 @@ const Networking = () => {
         </tr>
       ));
       
-  };
+       };
 
   return (
     <div className="main-container">
@@ -57,14 +57,14 @@ const Networking = () => {
         </div>
       </header>
       
-      {/* Dropdown to select the city */}
+      {/* Dropdown to select the city 
       <select onChange={handleCityChange} value={selectedCity}>
         {cities.map((city, index) => (
           <option key={index} value={city}>{city}</option>
         ))}
-      </select>
+      </select>*/}
       
-      {/* Render a table with the data */}
+      {/* Render a table with the data 
       <table>
         <thead>
           <tr>
@@ -81,7 +81,7 @@ const Networking = () => {
         <tbody>
           {renderTableRows()}
         </tbody>
-      </table>
+      </table>*/}
     </div>
   );
 };
