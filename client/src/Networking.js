@@ -9,7 +9,6 @@ import L from "leaflet";
 import { Icon } from 'leaflet'
 import 'leaflet/dist/leaflet.css';
 import { MapContainer, TileLayer, Map, Marker, Popup, SVGOverlay} from 'react-leaflet'
-import cities from './cities.json';
 
 const Logo = () => (
   <div className="logo">
