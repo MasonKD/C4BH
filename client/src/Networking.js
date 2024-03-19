@@ -121,7 +121,7 @@ const Networking = () => {
           {renderTableRows()}
         </tbody>
       </table>*/}
-    <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
+    <MapContainer center={[39.572289, -98.036979]} zoom={4} scrollWheelZoom={false}>
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
