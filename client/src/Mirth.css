@@ -6,7 +6,8 @@
   justify-content: flex-start; /* Align items to the top */
   min-height: 100vh;
   padding: 2rem;
-  border: 0.25in solid #1D4A7A;
+  border: 0px;
+  border-top: 18px solid #1D4A7A;
   box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
 
