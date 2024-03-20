@@ -4,6 +4,7 @@ import './Mirth.css';
 import logoImage from './images/C4BHLogo.png';
 import mirthImage from './images/Mirth.png';
 
+
 const Logo = () => (
   <div className="logo">
     <img src={logoImage} alt="Connecting for Better Health" />
@@ -15,22 +16,24 @@ const Mirth = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const apiEndpoint = 'https://18.205.165.171:8443/api/channels/4cc843b2-84e0-4ee0-805a-65052a37d0d/messages';
+    // Replace with the actual URL of your Mirth Connect instance and the correct channel ID
+    const apiEndpoint = 'https://sbx.connectingforbetterhealth.com:8443/api/channels/4770b74-869b-4607-8877-00f2589e294f/messages';
     const queryParams = '?status=RECEIVED&limit=20';
     
-    //username and password for Mirth Connect
+    // Directly use the admin username and password (this is insecure)
     const username = 'admin';
     const password = 'C4BH126!';
     const encodedCredentials = btoa(`${username}:${password}`);
-
+  
     const headers = {
       'Accept': 'application/json',
       'Authorization': `Basic ${encodedCredentials}`,
     };
-
+  
     fetch(apiEndpoint + queryParams, {
       method: 'GET',
       headers: headers,
+      mode: 'cors' // This may not be necessary if your Mirth Connect instance is not set up to allow CORS
     })
     .then(response => {
       if (!response.ok) {
