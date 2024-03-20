@@ -5,9 +5,8 @@ import logoImage from './images/C4BHLogo.png';
 import leafPin from 'leaflet/dist/images/marker-icon.png';
 import data from './data.json'; 
 import L from "leaflet";
-import { Icon } from 'leaflet'
 import 'leaflet/dist/leaflet.css';
-import { MapContainer, TileLayer, Map, Marker, Popup, SVGOverlay} from 'react-leaflet'
+import { MapContainer, TileLayer, Marker, Popup} from 'react-leaflet'
 
 const Logo = () => (
   <div className="logo">
@@ -71,7 +70,15 @@ const Networking = () => {
                       popupAnchor: [1, -34],
                       shadowSize: [41, 41]
                     })}
-                  />
+                  >
+                      <Popup>
+                        Name: {item.Primary_Organization}<br />
+                        Type: {item.Type}<br />
+                        Query: {item.Request_for_Information}<br />
+                        Referral: {item.Information_Delivery}<br />
+                        ADT: {item.Requests_for_Notification_of_ADT_Events}<br />
+                      </Popup>
+                    </Marker>
                 );
               }
             }
