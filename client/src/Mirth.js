@@ -16,11 +16,11 @@ const Mirth = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Replace with the actual URL of your Mirth Connect instance and the correct channel ID
-    const apiEndpoint = 'https://sbx.connectingforbetterhealth.com:8443/api/channels/4770b74-869b-4607-8877-00f2589e294f/messages';
+    
+    const apiEndpoint = 'https://52.7.12.154:8443/api/channels/477b07b4-869b-4607-8a77-00fa589ea94f/messages';
     const queryParams = '?status=RECEIVED&limit=20';
     
-    // Directly use the admin username and password (this is insecure)
+    
     const username = 'admin';
     const password = 'C4BH126!';
     const encodedCredentials = btoa(`${username}:${password}`);
@@ -28,12 +28,13 @@ const Mirth = () => {
     const headers = {
       'Accept': 'application/json',
       'Authorization': `Basic ${encodedCredentials}`,
+      'X-Requested-With': 'OpenAPI'
     };
   
     fetch(apiEndpoint + queryParams, {
       method: 'GET',
       headers: headers,
-      mode: 'cors' // This may not be necessary if your Mirth Connect instance is not set up to allow CORS
+      mode: 'cors' 
     })
     .then(response => {
       if (!response.ok) {
