@@ -2,6 +2,9 @@ import React, { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Networking.css';
 import logoImage from './images/C4BHLogo.png';
+import interImage from './images/network_inter.png';
+import DSAImage from './images/network_DSA.png';
+import SankeyChart from './SankeyChart';
 import leafPin from 'leaflet/dist/images/marker-icon.png';
 import data from './data.json';
 import L from 'leaflet';
@@ -51,6 +54,12 @@ const Networking = () => {
       if (!participants.some(participant => participant.Participant_Name === item.Participant_Name)) {
         participants.push({
           Participant_Name: item.Participant_Name,
+          Type: item.Type !== 'NULL' ? item.Type : "",
+          ID: item.Participant_ID !== 'NULL' ? item.Participant_ID : "",
+          Request_for_Information: item.Request_for_Information !== 'NULL' ? item.Request_for_Information : "",
+          Information_Delivery: item.Information_Delivery !== 'NULL' ? item.Information_Delivery : "",
+          Requests_for_Notification_of_ADT_Events: item.Requests_for_Notification_of_ADT_Events !== 'NULL' ? item.Requests_for_Notification_of_ADT_Events : "",
+          City: item.City !== 'NULL' ? item.City : ""
           Type: item.Type !== 'NULL' ? item.Type : "",
           ID: item.Participant_ID !== 'NULL' ? item.Participant_ID : "",
           Request_for_Information: item.Request_for_Information !== 'NULL' ? item.Request_for_Information : "",

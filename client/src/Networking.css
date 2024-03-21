@@ -134,28 +134,105 @@ textarea:not([rows]) {
     z-index: 1000; /* Same or higher z-index as .city-selector to ensure dropdown is on top */
   }
 
+
+
+
   .main-container {
     display: flex;
   }
 
-  .contents {
+
+
+
+
+
+
+.main {
+  display:flex;
+  flex-direction: column;
+}
+
+  .section {
+    margin: 40px 0 0 0;
+    width: 90vw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 100vh;
+  }
+  .container {
+    width: 49%;
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
   }
+
+  #one-one {
+    width: 33%;
+  }
+
+  #one-two {
+    width: 65%;
+  }
+
+  #one {
+    width: 100%;
+  }
+
+
+  .shared-title-container {
+    margin: 24px 0 12px 0;
+  }
+
+
+  .flex-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100%;
+  }
+
+
+  #test {
+    height: 48%;
+    width: 95%;
+  }
+
+  #test img {
+    width: 350px;
+    margin: 0 0 24px 0;
+    border: solid 2px #333;
+
+  }
+
+  .city-selector {
+    margin: 12px 0;
+  }
+
+  Select {
+    margin: 12px 0;
+  }
+
+
+  #hide-me {
+    display: none;
+  }
+
 
   .contents div {
     margin-top: 20px ;
   }
 
   .leaflet-container {
-    width: 800px;
+    width: 100%;
     height: 500px;
   }
   .chart-holder {
-    width: 800px;
-    height: 500px;
+    width: 900px;
   }
+
+
+
+
 
 
   
