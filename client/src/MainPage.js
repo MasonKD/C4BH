@@ -39,7 +39,7 @@ const MainPage = () => {
       <header className="header">
         <Logo />
         <div>
-          <div className="user-participant">{user && <span>Welcome, {user.username}</span>}</div>
+          <div className="user-participant">Welcome, User</div>
           <button className="signout-button" onClick={handleSignOut}>Sign Out</button> 
         </div>
       </header>

@@ -20,6 +20,7 @@ const Networking = () => {
   const handleSignOut = () => navigate('/');
 
   const [selectedCities, setSelectedCities] = useState([]);
+  const [selectedTypes, setSelectedTypes] = useState([]);
 
   const cityOptions = useMemo(() => {
     const uniqueCities = [...new Set(data.map(item => item.City))];
@@ -28,8 +29,20 @@ const Networking = () => {
       .sort((a, b) => a.label.localeCompare(b.label));
   }, []);
 
+  const typeOptions = useMemo(() => {
+    const uniqueTypes = [...new Set(data.map(item => item.Type))];
+    return uniqueTypes
+      .map(type => ({ value: type, label: type }))
+      .sort((a, b) => a.label.localeCompare(b.label));
+  }, []);
+
+
   const handleCityChange = selectedOptions => {
     setSelectedCities(selectedOptions || []);
+  };
+
+  const handleTypeChange = selectedOptions => {
+    setSelectedTypes(selectedOptions || []);
   };
 
   const uniqueParticipants = useMemo(() => {
@@ -38,12 +51,12 @@ const Networking = () => {
       if (!participants.some(participant => participant.Participant_Name === item.Participant_Name)) {
         participants.push({
           Participant_Name: item.Participant_Name,
-          Type: item.Type !== 'NULL' ? item.Type : '',
-          ID: item.Participant_ID !== 'NULL' ? item.Participant_ID : '',
-          Request_for_Information: item.Request_for_Information !== 'NULL' ? item.Request_for_Information : '',
-          Information_Delivery: item.Information_Delivery !== 'NULL' ? item.Information_Delivery : '',
-          Requests_for_Notification_of_ADT_Events: item.Requests_for_Notification_of_ADT_Events !== 'NULL' ? item.Requests_for_Notification_of_ADT_Events : '',
-          City: item.City !== 'NULL' ? item.City : ''
+          Type: item.Type !== 'NULL' ? item.Type : "",
+          ID: item.Participant_ID !== 'NULL' ? item.Participant_ID : "",
+          Request_for_Information: item.Request_for_Information !== 'NULL' ? item.Request_for_Information : "",
+          Information_Delivery: item.Information_Delivery !== 'NULL' ? item.Information_Delivery : "",
+          Requests_for_Notification_of_ADT_Events: item.Requests_for_Notification_of_ADT_Events !== 'NULL' ? item.Requests_for_Notification_of_ADT_Events : "",
+          City: item.City !== 'NULL' ? item.City : ""
         });
       }
     });
@@ -52,7 +65,10 @@ const Networking = () => {
 
   const renderMarkers = () => {
     return data
-      .filter(item => selectedCities.length === 0 || selectedCities.some(city => city.value === item.City))
+      .filter(item => 
+        (selectedCities.length === 0 || selectedCities.some(city => city.value === item.City)) &&
+        (selectedTypes.length === 0 || selectedTypes.some(type => type.value === item.Type))
+      )
       .map((item, index) => {
         const parts = item.GeoPoint.split(', ');
         if (parts.length === 2) {
@@ -113,6 +129,14 @@ const Networking = () => {
             onChange={handleCityChange}
             value={selectedCities}
           />
+          <Select
+            isMulti
+            options={typeOptions}
+            className="type-select"
+            placeholder="Select Types"
+            onChange={handleTypeChange}
+            value={selectedTypes}
+            />
         </div>
         <MapContainer center={[39.572289, -98.036979]} zoom={4} scrollWheelZoom={false} className="leaflet-container">
           <TileLayer

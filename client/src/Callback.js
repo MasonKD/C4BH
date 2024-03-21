@@ -1,27 +1,40 @@
 // Callback.js
 import React, { useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { UserContext } from './Usercontext'; // import UserContext
+import { UserContext } from './Usercontext'; // Ensure correct path
 
 const Callback = () => {
   const navigate = useNavigate();
-  const { login } = useContext(UserContext); // use login function from context
+  const { login } = useContext(UserContext); // Use login function from context
 
   useEffect(() => {
-    // Parse the callback URL to get the code
     const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get('code');
-    
+    console.log('Authorization code:', code); // Debug: Log authorization code
+
     if (code) {
-      // Exchange the code for tokens here with your backend
-
-      // Assume you have a function to get the username from the token response
-      const username = 'fetchedUsername'; // Replace with actual username obtained through the token exchange process
-
-      // Set user context with the obtained username
-      login(username);
-
-      navigate('/mainpage');
+      // Replace this URL with your backend endpoint
+      fetch('https://cognito-idp.us-east-2.amazonaws.com/us-east-2_8sbfATJlO/.well-known/jwks.json', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ code }),
+      })
+      .then(response => {
+        console.log('Response:', response); // Debug: Log the response
+        return response.json();
+      })
+      .then(data => {
+        console.log('Data:', data); // Debug: Log the data
+        const username = data.username; 
+        login(username); // Update user context with the obtained username
+        navigate('/mainpage'); // Navigate to the main page
+      })
+      .catch(error => {
+        console.error('Error fetching:', error);
+        // Handle the error appropriately
+      });
     }
   }, [navigate, login]);
 
@@ -30,3 +43,9 @@ const Callback = () => {
 
 export default Callback;
 
+
+
+
+
+
+//https://cognito-idp.us-east-2.amazonaws.com/us-east-2_8sbfATJlO/.well-known/jwks.json
