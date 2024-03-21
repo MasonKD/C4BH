@@ -99,6 +99,25 @@ textarea:not([rows]) {
     max-width: calc(100% - 4rem); /* Adjust max-width to account for padding */
     overflow-x: auto; /* Make table scrollable on x-axis */
   }
+
+  table{
+    height: 4in;
+  }
+
+  th, td {
+    padding: 8px; /* Padding inside table cells */
+    border: 1px solid #ddd; /* Light border for cells */
+    text-align: left; /* Aligns text to the left */
+  }
+  
+  th {
+    background-color: #f2f2f2; /* Light grey background for table headers */
+    font-weight: bold; /* Makes header text bold */
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f9f9f9; /* Zebra striping for rows */
+  }
   .main-container {
     display: flex;
   }
