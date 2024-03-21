@@ -59,7 +59,7 @@ const Mirth = () => {
       <header className="header">
         <Logo />
         <div className="user-participant">
-          User Participant: Provider A
+          User: C4BH Admin
           <button className="signout-button" onClick={handleSignOut}>
             Sign Out
           </button>
