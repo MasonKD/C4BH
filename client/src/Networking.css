@@ -118,6 +118,22 @@ textarea:not([rows]) {
   tr:nth-child(even) {
     background-color: #f9f9f9; /* Zebra striping for rows */
   }
+
+  .city-selector {
+    z-index: 1000; /* Higher z-index to ensure it's on top of other elements */
+    position: relative; /* Position relative to allow z-index to work */
+  }
+  
+  /* Adjust the z-index of the Leaflet map container to ensure it's lower than the city selector */
+  .leaflet-container {
+    z-index: 1; /* Ensure this is lower than the z-index of .city-selector */
+  }
+  
+  /* React-select specific z-index override for dropdown */
+  .city-select__menu {
+    z-index: 1000; /* Same or higher z-index as .city-selector to ensure dropdown is on top */
+  }
+
   .main-container {
     display: flex;
   }

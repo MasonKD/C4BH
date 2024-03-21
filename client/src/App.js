@@ -12,6 +12,7 @@ import Networking from './Networking';
 
 function App() {
   return (
+    
     <UserProvider>
       <Router>
         <Routes>
