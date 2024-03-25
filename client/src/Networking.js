@@ -6,7 +6,7 @@ import interImage from './images/network_inter.png';
 import DSAImage from './images/network_DSA.png';
 import SankeyChart from './SankeyChart';
 import leafPin from 'leaflet/dist/images/marker-icon.png';
-import data from './data.json';
+import Dxfdata from './Merged_DSA_SignatoryList_with_Lat_Long_Corrected.json';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
@@ -24,22 +24,32 @@ const Networking = () => {
 
   const [selectedCities, setSelectedCities] = useState([]);
   const [selectedTypes, setSelectedTypes] = useState([]);
+  const [selectedSubTypes, setSelectedSubTypes] = useState([]);
+
+  
 
 
   const cityOptions = useMemo(() => {
-    const uniqueCities = [...new Set(data.map(item => item.City))];
+    const uniqueCities = [...new Set(Dxfdata.map(item => item.City))];
     return uniqueCities
       .map(city => ({ value: city, label: city }))
       .sort((a, b) => a.label.localeCompare(b.label));
   }, []);
 
   const typeOptions = useMemo(() => {
-    const uniqueTypes = [...new Set(data.map(item => item.Type))];
+    const uniqueTypes = [...new Set(Dxfdata.map(item => item.Type))];
     return uniqueTypes
       .map(type => ({ value: type, label: type }))
       .sort((a, b) => a.label.localeCompare(b.label));
   }, []);
 
+  const subTypeOptions = useMemo(() => {
+    const uniqueSubTypes = [...new Set(Dxfdata.map(item => item.Sub_Type))];
+    return uniqueSubTypes
+      .map(subType => ({ value: subType, label: subType }))
+      .sort((a, b) => a.label.localeCompare(b.label));
+  }, []);
+  
 
 
   const handleCityChange = selectedOptions => {
@@ -50,13 +60,17 @@ const Networking = () => {
     setSelectedTypes(selectedOptions || []);
   };
 
+  const handleSubTypeChange = selectedOptions => {
+    setSelectedSubTypes(selectedOptions || []);
+  };
+  
 
   const uniqueParticipants = useMemo(() => {
     let participants = [];
-    data.forEach(item => {
+    Dxfdata.forEach(item => {
       if (!participants.some(participant => participant.Participant_Name === item.Participant_Name)) {
         participants.push({
-          Participant_Name: item.Participant_Name,
+          Participant_Name: item.Participant_Name_PrimaryOrganization,
           Type: item.Type !== 'NULL' ? item.Type : "",
           ID: item.Participant_ID !== 'NULL' ? item.Participant_ID : "",
           Request_for_Information: item.Request_for_Information !== 'NULL' ? item.Request_for_Information : "",
@@ -67,14 +81,15 @@ const Networking = () => {
       }
     });
     return participants;
-  }, [data]);
+  }, [Dxfdata]);
 
   const renderMarkers = () => {
-    return data
-    .filter(item => 
-      (selectedCities.length === 0 || selectedCities.some(city => city.value === item.City)) &&
-      (selectedTypes.length === 0 || selectedTypes.some(type => type.value === item.Type))
-    )
+    return Dxfdata
+      .filter(item => 
+        (selectedCities.length === 0 || selectedCities.some(city => city.value === item.City)) &&
+        (selectedTypes.length === 0 || selectedTypes.some(type => type.value === item.Type)) &&
+        (selectedSubTypes.length === 0 || selectedSubTypes.some(subType => subType.value === item.Sub_Type))
+      )
       .map((item, index) => {
         const parts = item.GeoPoint.split(', ');
         if (parts.length === 2) {
@@ -96,6 +111,7 @@ const Networking = () => {
                 <Popup>
                   Name: {item.Participant_Name}<br />
                   Type: {item.Type}<br />
+                  Sub-Type: {item.Sub_Type}<br />
                   ID: {item.Participant_ID}<br />
                   Request for Information: {item.Request_for_Information}<br />
                   Information Delivery: {item.Information_Delivery}<br />
@@ -110,6 +126,7 @@ const Networking = () => {
       })
       .filter(marker => marker !== null);
   };
+  
 
   return (
     <div className="main-container">
@@ -162,6 +179,14 @@ const Networking = () => {
                   onChange={handleTypeChange}
                   value={selectedTypes}
                />
+               <Select
+                  isMulti
+                  options={subTypeOptions}
+                  className="sub-type-select"
+                  placeholder="Select Sub-Types"
+                  onChange={handleSubTypeChange}
+                  value={selectedSubTypes}
+                />
               </div>
               <MapContainer center={[37.505915, -120.505943]} zoom={6} scrollWheelZoom={false} className="leaflet-container">
                 <TileLayer
