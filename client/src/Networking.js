@@ -21,7 +21,7 @@ const Logo = () => (
 const Networking = () => {
   const navigate = useNavigate();
   const handleSignOut = () => navigate('/');
-
+  
   const [selectedCities, setSelectedCities] = useState([]);
   const [selectedTypes, setSelectedTypes] = useState([]);
   const [selectedSubTypes, setSelectedSubTypes] = useState([]);
@@ -49,6 +49,58 @@ const Networking = () => {
       .map(subType => ({ value: subType, label: subType }))
       .sort((a, b) => a.label.localeCompare(b.label));
   }, []);
+
+  const totalSum = useMemo(() => {
+    return Dxfdata.reduce((acc, item) => acc + 1, 0);
+  }, [Dxfdata]);
+
+
+
+  const adtCount = useMemo(() => {
+    return Dxfdata.filter(item => item.Requests_for_Notifications_of_ADT_Events !== "NONE SELECTED").length;
+  }, [Dxfdata]);
+
+  const queryCount = useMemo(() => {
+    return Dxfdata.filter(item => item.Request_for_Information !== "NONE SELECTED").length;
+  }, [Dxfdata]);
+
+  const referralCount = useMemo(() => {
+    return Dxfdata.filter(item => item.Information_Delivery !== "NONE SELECTED").length;
+  }, [Dxfdata]);
+
+  const adtEventsCount = useMemo(() => {
+    const counts = Dxfdata.reduce((acc, item) => {
+      const eventName = item.Requests_for_Notifications_of_ADT_Events;
+      if (eventName !== "NONE SELECTED") {
+        acc[eventName] = acc[eventName] ? acc[eventName] + 1 : 1;
+      }
+      return acc;
+    }, {});
+    return Object.entries(counts).sort((a, b) => b[1] - a[1]); // Sort by count, descending
+  }, [Dxfdata]);
+
+  const queryEventsCount = useMemo(() => {
+    const counts = Dxfdata.reduce((acc, item) => {
+      const eventName = item.Request_for_Information;
+      if (eventName !== "NONE SELECTED") {
+        acc[eventName] = acc[eventName] ? acc[eventName] + 1 : 1;
+      }
+      return acc;
+    }, {});
+    return Object.entries(counts).sort((a, b) => b[1] - a[1]); // Sort by count, descending
+  }, [Dxfdata]);
+  
+  const referralEventsCount = useMemo(() => {
+    const counts = Dxfdata.reduce((acc, item) => {
+      const eventName = item.Information_Delivery;
+      if (eventName !== "NONE SELECTED") {
+        acc[eventName] = acc[eventName] ? acc[eventName] + 1 : 1;
+      }
+      return acc;
+    }, {});
+    return Object.entries(counts).sort((a, b) => b[1] - a[1]); // Sort by count, descending
+  }, [Dxfdata]);
+    
   
 
 
@@ -75,11 +127,7 @@ const Networking = () => {
     }, {});
   }, [Dxfdata]);
 
-  const [expandedType, setExpandedType] = useState(null);
-
-  const toggleExpandType = (type) => {
-    setExpandedType(expandedType === type ? null : type);
-  };
+  
   
 
   const uniqueParticipants = useMemo(() => {
@@ -162,24 +210,67 @@ const Networking = () => {
             <div className="shared-title-container">
               <h2 className="shared-title">Participants</h2>
               <div className="type-table">
-                {Object.entries(dataByType).map(([type, organizations]) => (
-                  <div key={type}>
-                    <div className="type-row" onClick={() => toggleExpandType(type)}>
-                      {expandedType === type ? '- ' : '+ '}
-                      {type} ({organizations.length})
+                    <div className="type-row">
+                    DSA Signatories ({totalSum})
                     </div>
-                    {expandedType === type && (
-                      <div className="organization-list">
-                        {organizations.sort().map((name) => (
-                          <div key={name} className="organization-row">
-                            {name}
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
+                    {Object.entries(dataByType).map(([type, organizations]) => (
+                    <div key={type} className="type-row">
+                    {type} ({organizations.length})
+                    </div>
+                    ))}
+                </div>
+
+
+      <div className="intermediaries-chart">
+        <h2>Intermediaries Chart</h2>
+        <div className="chart-columns">
+          <div className="chart-column">
+            <h3>ADT</h3>
+            <p>{adtCount}</p>
+          </div>
+          {/* Placeholder for the second column */}
+          <div className="chart-column">
+          <h3>Query</h3>
+            <p>{queryCount}</p>
+          </div>
+          {/* Placeholder for the third column */}
+          <div className="chart-column">
+          <h3>Referral</h3>
+            <p>{referralCount}</p>
+          </div>
+
+          <div className="chart-column">
+            <h3>QHIOs</h3>
+            <ul>
+            {adtEventsCount.map(([eventName, count], index) => (
+              <li key={index}>{eventName}: {count}</li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="chart-column">
+            <h3>Query</h3>
+            <ul>
+            {queryEventsCount.map(([eventName, count], index) => (
+              <li key={index}>{eventName}: {count}</li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="chart-column">
+            <h3>Referral</h3>
+            <ul>
+            {referralEventsCount.map(([eventName, count], index) => (
+              <li key={index}>{eventName}: {count}</li>
+            ))}
+          </ul>
+        </div>
+
+
+        </div>
+      </div>
+
+
             </div>
             <div className='flex-col'>
             <div id='test'>
@@ -236,7 +327,7 @@ const Networking = () => {
 
         </div>
 
-        <div className='section'>
+        {/*<div className='section'>
           <div className='container' id='one'>
           <div className="shared-title-container">
               <h2 className="shared-title">Network View</h2>
@@ -246,6 +337,7 @@ const Networking = () => {
           </div>
         </div>
         </div>
+            */}
 
         <div className='section' id='hide-me'>
 
@@ -281,10 +373,12 @@ const Networking = () => {
           </table>
           </div>
         </div>
-        <iframe src="
-https://sbdp8fgnodhswm4.us.qlikcloud.com/single/?appid=2ca11e14-dfcd-4038-b38b-e71947ac3755&sheet=hPzsuY&theme=horizon&opt=ctxmenu,currsel"
-></iframe>
-
+        {/*<iframe
+            src="https://sbdp8fgnodhswm4.us.qlikcloud.com/single/?appid=2ca11e14-dfcd-4038-b38b-e71947ac3755&sheet=hPzsuY&theme=horizon&opt=ctxmenu,currsel"
+            title="Sankey Chart"
+            style={{ border: 'none', width: '100%', height: '100%' }}
+        >
+              </iframe>*/}
 
       </main>
 
