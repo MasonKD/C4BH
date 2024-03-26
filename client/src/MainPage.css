@@ -1,16 +1,7 @@
 /* MainPage.css */
 
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: 200px;
-  padding: 20px;
-  box-sizing: border-box;
-  flex-wrap: wrap ;
-}
+
 
 
 .header > div {
@@ -18,22 +9,7 @@
   align-items: center;
 }
 
-.signout-button {
-  margin: 0.5rem;
-  padding: 1rem 2rem;
-  background: #1D4A7A;
-  border: none;
-  border-radius: 30px; /* More rounded */
-  color: white;
-  font-weight: bold;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
 
-.signout-button:hover {
-  background: #1D4A7A; /* Same hover effect as query buttons */
-}
 
 .logo {
 display: flex;
@@ -42,10 +18,6 @@ justify-content: center;
 align-items: center;
 }
 
-.logo img {
-  max-height: 75px; /* Increase size to match the landing page */
-  margin-bottom: 2rem; /* Add space below the logo */
-}
 
 
 
@@ -61,11 +33,13 @@ align-items: center;
   display: flex;
   flex-direction: row; /* Align buttons horizontally */
   flex-wrap: wrap; /* Allow buttons to wrap to next line on smaller screens */
-  justify-content: center; /* Center buttons horizontally */
-  align-items: center; /* Center buttons vertically */
+  justify-content: flex-start; /* Center buttons horizontally */
+  align-items: flex-start; /* Center buttons vertically */
+  align-content: flex-start;
   gap: 10px; /* Add gap between buttons */
   width: 100%;
   box-sizing: border-box;
+  height: calc(100vh - 120px);
 }
 
 .query-button {

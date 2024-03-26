@@ -1,11 +1,4 @@
-/* Base styles for body */
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  font-family: 'Helvetica Neue', Arial, sans-serif;
-  background-color: #f4f4f4;
-}
+
 
 /* Main container with flexbox centering */
 .main-container {
@@ -25,12 +18,22 @@ html, body {
   top: 0;
 }
 
-/* Logo styles */
-.logo img {
-  max-height: 100px;
-  width: auto;
-  margin-bottom: 1rem; /* Adjusted margin */
+
+.landing-container {
+  padding: 20px;
+  display: flex;
+  flex-direction: row; /* Align buttons horizontally */
+  flex-wrap: wrap; /* Allow buttons to wrap to next line on smaller screens */
+  justify-content: center; /* Center buttons horizontally */
+  align-items: center; /* Center buttons vertically */
+  align-content: flex-start;
+  gap: 10px; /* Add gap between buttons */
+  width: 100%;
+  box-sizing: border-box;
+  height: calc(100vh - 120px);
 }
+
+
 
 /* Container for welcome message and buttons */
 .welcome-container {
@@ -40,7 +43,7 @@ html, body {
   padding: 3rem; /* Increased padding */
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  margin-top: 2rem; /* Adding margin to top to lower the card from the top bar */
+
 }
 
 /* Welcome message styling */
@@ -51,16 +54,33 @@ html, body {
   margin-bottom: 2rem; /* Increased bottom margin */
 }
 
-/* Button styling */
-.landing-button {
-  margin: 0.5rem;
-  padding: 1rem 2rem;
+
+
+
+.signout-button {
+  margin: 0 0 0 20px;
+  padding: .6rem 1.4rem;
   background: #1D4A7A;
   border: none;
   border-radius: 30px; /* More rounded */
   color: white;
   font-weight: bold;
   font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+
+/* Button styling */
+.landing-button {
+  margin: 0 0 0 20px;
+  padding: 1rem 2rem;
+  background: #1D4A7A;
+  border: none;
+  border-radius: 30px; /* More rounded */
+  color: white;
+  font-weight: bold;
+  font-size: 1.2rem;
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -91,9 +111,6 @@ html, body {
     height: 20px; /* larger top bar on wider screens */
   }
 
-  .welcome-container {
-    margin-top: 5rem; /* More space on larger screens */
-  }
 }
 
 

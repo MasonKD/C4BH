@@ -139,7 +139,7 @@ const Networking = () => {
           </button>
         </div>
       </header>
-      <div className='main'>
+      <main>
         <div className='section'>
           <div className='container' id='one-one'>
             <div className="shared-title-container">
@@ -245,9 +245,12 @@ const Networking = () => {
           </table>
           </div>
         </div>
+        <iframe src="
+https://sbdp8fgnodhswm4.us.qlikcloud.com/single/?appid=2ca11e14-dfcd-4038-b38b-e71947ac3755&sheet=hPzsuY&theme=horizon&opt=ctxmenu,currsel"
+></iframe>
 
 
-      </div>
+      </main>
 
     </div>
   );

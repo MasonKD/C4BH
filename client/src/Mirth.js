@@ -55,9 +55,9 @@ const Mirth = () => {
   };
 
   return (
-    <div className="main-container">
+    <div className='main-container'>
       <header className="header">
-        <Logo />
+        <Logo /> 
         <div className="user-participant">
           User: C4BH Admin
           <button className="signout-button" onClick={handleSignOut}>
@@ -65,13 +65,16 @@ const Mirth = () => {
           </button>
         </div>
       </header>
-      <h1>Mirth Connect Logs</h1>
-      <img src={mirthImage} alt="Mirth" className="mirth-image" />
-      <ul>
-        {logs.map(log => (
-          <li key={log.id}>Message ID: {log.id}, Content: {log.content}</li>
-        ))}
-      </ul>
+      <main>
+        <h1>Mirth Connect Logs</h1>
+        <img src={mirthImage} alt="Mirth" className="mirth-image" />
+        <ul>
+          {logs.map(log => (
+            <li key={log.id}>Message ID: {log.id}, Content: {log.content}</li>
+          ))}
+        </ul>
+      </main>
+
     </div>
   );
 };

@@ -43,6 +43,7 @@ const MainPage = () => {
           <button className="signout-button" onClick={handleSignOut}>Sign Out</button> 
         </div>
       </header>
+      <main>
       <div className="button-container">
         <button className="query-button">Use Case</button>
         <button className="query-button"onClick={HandleMirthQuery}>Mirth Log</button>
@@ -51,6 +52,7 @@ const MainPage = () => {
         <button className="query-button">FTP Log</button>
         <button className="query-button" onClick={handleQueryMPI}>Clinical Data Repo</button>
       </div>
+      </main>
     </div>
   );
 };

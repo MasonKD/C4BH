@@ -1,3 +1,97 @@
+   
+   /* Box sizing rules */
+   *,
+   *::before,
+   *::after {
+     box-sizing: border-box;
+   }
+   
+   /* Prevent font size inflation */
+   html {
+     -moz-text-size-adjust: none;
+     -webkit-text-size-adjust: none;
+     text-size-adjust: none;
+   }
+   
+   /* Remove default margin in favour of better control in authored CSS */
+   body, h1, h2, h3, h4, p,
+   figure, blockquote, dl, dd {
+     margin-block-end: 0;
+   }
+   
+   /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+   ul[role='list'],
+   ol[role='list'] {
+     list-style: none;
+   }
+   
+   /* Set core body defaults */
+   body {
+     min-height: 100vh;
+     line-height: 1.5;
+   }
+   
+   /* Set shorter line heights on headings and interactive elements */
+   h1, h2, h3, h4,
+   button, input, label {
+     line-height: 1.1;
+   }
+   
+   /* Balance text wrapping on headings */
+   h1, h2,
+   h3, h4 {
+     text-wrap: balance;
+   }
+   
+   /* A elements that don't have a class get default styles */
+   a:not([class]) {
+     text-decoration-skip-ink: auto;
+     color: currentColor;
+   }
+   
+   /* Make images easier to work with */
+   img,
+   picture {
+     max-width: 100%;
+     display: block;
+   }
+   
+   /* Inherit fonts for inputs and buttons */
+   input, button,
+   textarea, select {
+     font: inherit;
+   }
+   
+   /* Make sure textareas without a rows attribute are not tiny */
+   textarea:not([rows]) {
+     min-height: 10em;
+   }
+   
+   /* Anything that has been anchored to should have extra scroll margin */
+   :target {
+     scroll-margin-block: 5ex;
+   }
+   
+   /* End normalize */
+
+
+
+
+
+
+
+
+
+
+
+
+
+   html, body {
+    margin: 0;
+    padding: 0;
+  }
+
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,6 +99,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #f7f7fa;
 }
 
 code {
@@ -16,21 +111,63 @@ code {
 .main-container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  align-items: center; /* Center items horizontally */
+  justify-content: flex-start; /* Align items to the top */
+  min-height: 100vh;
+  padding: 0;
+
+}
+
+main {
+  width: 100vw;
+  max-width: 1400px;
+  margin: 0;
+  padding: 0 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .header {
+  width: 100%;
+  height: 112px;
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
+  margin: 0 auto;
+  padding: 0 25px;
   align-items: center;
-  padding: 20px;
-  box-sizing: border-box;
-  border-bottom: 1px solid #ccc;
+  background-color: #fff;
+  z-index: 100;
+  top: 0px;
+  border-top: #1D4A7A solid 6px;
+  border-bottom: #d4d4d4 solid 1px;
 }
 
-.logo {
+
+
+.signout-button {
+  margin: 0 0 0 20px;
+  padding: .6rem 1.4rem;
+  background: #1D4A7A;
+  border: none;
+  border-radius: 30px; /* More rounded */
+  color: white;
   font-weight: bold;
-  font-size: 24px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.signout-button:hover {
+  background: #14539c; /* slightly lighter blue for hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* pronounced shadow on hover */
+}
+
+
+.logo img {
+  max-height: 70px;
 }
 
 .button-container {
