@@ -63,6 +63,23 @@ const Networking = () => {
   const handleSubTypeChange = selectedOptions => {
     setSelectedSubTypes(selectedOptions || []);
   };
+
+  const dataByType = useMemo(() => {
+    return Dxfdata.reduce((acc, item) => {
+      if (acc[item.Type]) {
+        acc[item.Type].push(item.Participant_Name_PrimaryOrganization);
+      } else {
+        acc[item.Type] = [item.Participant_Name_PrimaryOrganization];
+      }
+      return acc;
+    }, {});
+  }, [Dxfdata]);
+
+  const [expandedType, setExpandedType] = useState(null);
+
+  const toggleExpandType = (type) => {
+    setExpandedType(expandedType === type ? null : type);
+  };
   
 
   const uniqueParticipants = useMemo(() => {
@@ -143,7 +160,26 @@ const Networking = () => {
         <div className='section'>
           <div className='container' id='one-one'>
             <div className="shared-title-container">
-                <h2 className="shared-title">Participants</h2>
+              <h2 className="shared-title">Participants</h2>
+              <div className="type-table">
+                {Object.entries(dataByType).map(([type, organizations]) => (
+                  <div key={type}>
+                    <div className="type-row" onClick={() => toggleExpandType(type)}>
+                      {expandedType === type ? '- ' : '+ '}
+                      {type} ({organizations.length})
+                    </div>
+                    {expandedType === type && (
+                      <div className="organization-list">
+                        {organizations.sort().map((name) => (
+                          <div key={name} className="organization-row">
+                            {name}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
             </div>
             <div className='flex-col'>
             <div id='test'>
