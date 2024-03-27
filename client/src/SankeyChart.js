@@ -13,6 +13,7 @@ const SankeyChart = () => {
     const width = 500;
     const height = 500;
     const ENABLE_LINKS_GRADIENTS = true;
+    
 
     const svg = d3.select(svgRef.current)
       .attr('viewBox', [-40, 0, width + 80, height]);
@@ -65,26 +66,26 @@ const SankeyChart = () => {
       .data(links)
       .join('g');
 
-    // if (ENABLE_LINKS_GRADIENTS) {
-    //   const gradient = link.append('linearGradient')
-    //     .attr('id', d => (d.uid = uid('link')).id)
-    //     .attr('gradientUnits', 'userSpaceOnUse')
-    //     .attr('x1', d => d.source.x1)
-    //     .attr('x2', d => d.target.x0);
+    if (ENABLE_LINKS_GRADIENTS) {
+      const gradient = link.append('linearGradient')
+      .attr('id', 'link-gradient')
+        .attr('gradientUnits', 'userSpaceOnUse')
+        .attr('x1', d => d.source.x1)
+        .attr('x2', d => d.target.x0);
 
-    //   gradient.append('stop')
-    //     .attr('offset', '0%')
-    //     .attr('stop-color', d => d.source.color);
+      gradient.append('stop')
+        .attr('offset', '0%')
+        .attr('stop-color', d => d.source.color);
 
-    //   gradient.append('stop')
-    //     .attr('offset', '100%')
-    //     .attr('stop-color', d => d.target.color);
-    // }
+      gradient.append('stop')
+        .attr('offset', '100%')
+        .attr('stop-color', d => d.target.color);
+    }
 
     link.append('path')
       .attr('d', sankeyLinkHorizontal())
-      //.attr('stroke', d => (!ENABLE_LINKS_GRADIENTS ? '#f00' : d.uid))
-      .attr('stroke', '#a7a6a6')
+      .attr('stroke', d => (!ENABLE_LINKS_GRADIENTS ? '#f00' : 'url(#link-gradient)'))
+      //.attr('stroke', '#a7a6a6')
       .attr('stroke-width', d => Math.max(1, d.width));
 
     link.append('title')

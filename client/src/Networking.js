@@ -2,8 +2,6 @@ import React, { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Networking.css';
 import logoImage from './images/C4BHLogo.png';
-import interImage from './images/network_inter.png';
-import DSAImage from './images/network_DSA.png';
 import SankeyChart from './SankeyChart';
 import leafPin from 'leaflet/dist/images/marker-icon.png';
 import Dxfdata from './Merged_DSA_SignatoryList_with_Lat_Long_Corrected.json';
@@ -60,6 +58,8 @@ const Networking = () => {
     return Dxfdata.filter(item => item.Requests_for_Notifications_of_ADT_Events !== "NONE SELECTED").length;
   }, [Dxfdata]);
 
+
+
   const queryCount = useMemo(() => {
     return Dxfdata.filter(item => item.Request_for_Information !== "NONE SELECTED").length;
   }, [Dxfdata]);
@@ -78,6 +78,8 @@ const Networking = () => {
     }, {});
     return Object.entries(counts).sort((a, b) => b[1] - a[1]); // Sort by count, descending
   }, [Dxfdata]);
+
+  console.log(adtEventsCount);
 
   const queryEventsCount = useMemo(() => {
     const counts = Dxfdata.reduce((acc, item) => {
@@ -102,6 +104,58 @@ const Networking = () => {
   }, [Dxfdata]);
     
   
+
+  const combinedEventCounts = useMemo(() => {
+    const initialCounts = adtEventsCount.reduce((acc, [eventName, count]) => {
+      acc[eventName] = { qhio: count, query: 0, referral: 0 };
+      return acc;
+    }, {});
+  
+    queryEventsCount.forEach(([eventName, count]) => {
+      if (initialCounts[eventName]) {
+        initialCounts[eventName].query = count;
+      } else {
+        initialCounts[eventName] = { qhio: 0, query: count, referral: 0 };
+      }
+    });
+  
+    referralEventsCount.forEach(([eventName, count]) => {
+      if (initialCounts[eventName]) {
+        initialCounts[eventName].referral = count;
+      } else {
+        initialCounts[eventName] = { qhio: 0, query: 0, referral: count };
+      }
+    });
+  
+    // Sort by QHIO count, descending
+    return Object.entries(initialCounts).sort((a, b) => b[1].qhio - a[1].qhio);
+  }, [adtEventsCount, queryEventsCount, referralEventsCount]);
+
+  console.log(combinedEventCounts);
+
+
+
+  const EventList = ({ events }) => (
+                <table>
+                  <tbody>
+                  <th>Intermediary</th>
+                  <th>ADT</th>
+                  <th>Query</th>
+                  <th>Referral</th>
+                  {events.map(([eventName, counts], index) => (
+                    <tr key={index}>                                       
+                      <td >{eventName}</td>
+                      <td >{counts.qhio}</td>
+                      <td >{counts.query}</td>
+                      <td >{counts.referral}</td>
+                    </tr>
+                    ))}
+                  </tbody>
+                </table>
+  );
+
+
+
 
 
   const handleCityChange = selectedOptions => {
@@ -205,47 +259,72 @@ const Networking = () => {
         </div>
       </header>
       <main>
+
+        {/* --------------------------------------------------------------------Participant Tables */}
         <div className='section'>
+          <div>
+            <h2 className="shared-title">Participants</h2>
+
+          </div>
+
           <div className='container' id='one-one'>
-            <div className="shared-title-container">
-              <h2 className="shared-title">Participants</h2>
-              <div className="type-table">
-                    <div className="type-row">
-                    DSA Signatories ({totalSum})
-                    </div>
-                    {Object.entries(dataByType).map(([type, organizations]) => (
-                    <div key={type} className="type-row">
-                    {type} ({organizations.length})
-                    </div>
-                    ))}
+            <div className="table-holder">
+              
+            <div className="table-title">
+                    DSA Signatories: {totalSum}
+            </div>
+                    <table>
+                      <tbody>
+                      <th>Type</th>
+                      <th>Count</th>
+
+                      {Object.entries(dataByType).map(([type, organizations], index) => (
+                      <tr key={index}>
+                        <td >{type}</td>
+                        <td >{organizations.length}</td>
+                      </tr>
+                      ))}
+                      </tbody>
+                    </table>
+
+                </div>
+
+                
+                <div className='table-holder'>
+                  <div className="table-title">
+                      Connections
+                  </div>
+                  <EventList events={combinedEventCounts} />
                 </div>
 
 
-      <div className="intermediaries-chart">
-        <h2>Intermediaries Chart</h2>
-        <div className="chart-columns">
+
+        {/* <div className="chart-columns">
           <div className="chart-column">
             <h3>ADT</h3>
             <p>{adtCount}</p>
           </div>
-          {/* Placeholder for the second column */}
+          
           <div className="chart-column">
           <h3>Query</h3>
             <p>{queryCount}</p>
           </div>
-          {/* Placeholder for the third column */}
+          
           <div className="chart-column">
           <h3>Referral</h3>
             <p>{referralCount}</p>
           </div>
+          </div>
 
-          <div className="chart-column">
-            <h3>QHIOs</h3>
-            <ul>
-            {adtEventsCount.map(([eventName, count], index) => (
-              <li key={index}>{eventName}: {count}</li>
-            ))}
-          </ul>
+          <div className="chart-columns">
+            <div className="chart-column">
+              <h3>ADT</h3>
+              <ul>
+              {adtEventsCount.map(([eventName, count], index) => (
+                <li key={index}>{eventName}: {count}</li>
+              ))}
+            </ul>
+          </div>
         </div>
 
         <div className="chart-column">
@@ -264,31 +343,32 @@ const Networking = () => {
               <li key={index}>{eventName}: {count}</li>
             ))}
           </ul>
-        </div>
+        </div> */}
 
 
         </div>
-      </div>
-
-
-            </div>
-            <div className='flex-col'>
-            <div id='test'>
-                  <img src={DSAImage} alt="Table of Sandbox Intermediaries" />
-              </div>
-              <div id='test'>
-                  <img src={interImage} alt="Table of Sandbox Intermediaries" />
-              </div>
-
-            </div>
-
-              
           </div>
-          <div className='container' id='one-two'>
-            <div className="shared-title-container">
+
+
+
+
+
+
+  {/* --------------------------------------------------------------------Geographic View */}
+        
+        <div className='section'>
+        <div className="shared-title-container">
               <h2 className="shared-title">Geographic View</h2>
             </div>
-            <div className="content-container">
+            <div className='container' id='one-two'>
+
+            <MapContainer center={[37.505915, -120.505943]} zoom={6} scrollWheelZoom={false} className="leaflet-container">
+                <TileLayer
+                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                />
+                {renderMarkers()}
+              </MapContainer>
               <div className="city-selector">
                 <Select
                   isMulti
@@ -315,19 +395,15 @@ const Networking = () => {
                   value={selectedSubTypes}
                 />
               </div>
-              <MapContainer center={[37.505915, -120.505943]} zoom={6} scrollWheelZoom={false} className="leaflet-container">
-                <TileLayer
-                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                />
-                {renderMarkers()}
-              </MapContainer>
+
             </div>
-          </div>
+          
 
         </div>
 
-        {/*<div className='section'>
+
+  {/* --------------------------------------------------------------------Sankey  */}
+        <div className='section'>
           <div className='container' id='one'>
           <div className="shared-title-container">
               <h2 className="shared-title">Network View</h2>
@@ -337,8 +413,8 @@ const Networking = () => {
           </div>
         </div>
         </div>
-            */}
-
+            
+  {/* --------------------------------------------------------------------Hidden Table */}
         <div className='section' id='hide-me'>
 
           <div className="shared-title-container">
@@ -373,12 +449,8 @@ const Networking = () => {
           </table>
           </div>
         </div>
-        {/*<iframe
-            src="https://sbdp8fgnodhswm4.us.qlikcloud.com/single/?appid=2ca11e14-dfcd-4038-b38b-e71947ac3755&sheet=hPzsuY&theme=horizon&opt=ctxmenu,currsel"
-            title="Sankey Chart"
-            style={{ border: 'none', width: '100%', height: '100%' }}
-        >
-              </iframe>*/}
+
+
 
       </main>
 

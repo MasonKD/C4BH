@@ -86,11 +86,10 @@
 
 
 
-   html, body {
-    margin: 0;
-    padding: 0;
-  }
-
+html, body {
+  margin: 0;
+  padding: 0;
+}
 
 body {
   margin: 0;
@@ -100,6 +99,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #f7f7fa;
+}
+
+h2 {
+  font-size: 3rem;
+  font-weight: 200;
+  margin: 0 0 10px 0;
 }
 
 code {

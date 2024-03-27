@@ -63,7 +63,7 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    height: 100vh;
+    height: 600px;
   }
   .container {
     width: 49%;
@@ -72,11 +72,19 @@
   }
 
   #one-one {
-    width: 33%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    flex-wrap: wrap;
   }
 
   #one-two {
-    width: 65%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
   }
 
   #one {
@@ -110,10 +118,10 @@
   }
 
   .city-selector {
-    margin: 12px 0;
+    width: 320px;
   }
 
-  Select {
+  .city-select, .type-select, .sub-type-select {
     margin: 12px 0;
   }
 
@@ -128,12 +136,53 @@
   }
 
   .leaflet-container {
-    width: 100%;
+    width: 900px;
     height: 500px;
   }
   .chart-holder {
     width: 900px;
   }
+
+
+
+
+
+  .table-holder {
+    margin: 0 32px 0 0;
+  }
+
+  .table-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+  }
+
+  table {
+    border-collapse: collapse;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+}
+
+ th{
+  background-color: #426a99;
+  font-size: 1.1em;
+  color: #ffffff;
+  text-align: left;
+}
+
+tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+tr:hover {background-color: #c3d5e9;}
+
+
+
+tbody tr:last-of-type {
+  border-bottom: 2px solid #426a99;
+}
+
 
 
 
