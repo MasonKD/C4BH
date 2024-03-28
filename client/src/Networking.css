@@ -82,7 +82,7 @@
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: left;
+    justify-content: space-between;
     flex-wrap: wrap;
   }
 
@@ -156,9 +156,7 @@
   }
 
 
-.table-holder {
-  margin: 0 100px 0 0;
-}
+
 
 
 
@@ -173,13 +171,13 @@
     border-collapse: collapse;
     font-size: 0.9em;
     font-family: sans-serif;
-    min-width: 400px;
+    min-width: 345px;
 }
 
 
  th{
   background-color: #426a99;
-  font-size: 1.1em;
+  font-size: .9em;
   color: #ffffff;
   text-align: left;
 }
@@ -198,7 +196,7 @@ tbody tr:last-of-type {
 
 #table-signatories td {
   height: 10px;
-  min-width: 100px;
+  min-width: 80px;
   padding: 12px 8px;
 }
 
