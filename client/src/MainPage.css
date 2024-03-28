@@ -32,7 +32,7 @@ align-items: center;
   padding: 20px;
   display: flex;
   flex-direction: row; /* Align buttons horizontally */
-  flex-wrap: wrap; /* Allow buttons to wrap to next line on smaller screens */
+  flex-wrap: nowrap; /* Allow buttons to wrap to next line on smaller screens */
   justify-content: flex-start; /* Center buttons horizontally */
   align-items: flex-start; /* Center buttons vertically */
   align-content: flex-start;
