@@ -4,9 +4,12 @@
   "private": true,
   "dependencies": {
     "@aws-amplify/auth": "^6.0.19",
+    "@observablehq/runtime": "^5.9.8",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "6978708c94a4f1d2": "https://api.observablehq.com/d/6978708c94a4f1d2@707.tgz?v=3",
+    "9ede8184aac4a7c4": "https://api.observablehq.com/d/9ede8184aac4a7c4@691.tgz?v=3",
     "aws-amplify": "^6.0.19",
     "d3": "^7.9.0",
     "d3-sankey": "^0.12.3",

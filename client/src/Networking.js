@@ -2,7 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Networking.css';
 import logoImage from './images/C4BHLogo.png';
-import SankeyChart from './SankeyChart';
+import Notebook from './SankeyChart';
 import leafPin from 'leaflet/dist/images/marker-icon.png';
 import Dxfdata from './Merged_DSA_SignatoryList_with_Lat_Long_Corrected.json';
 import L from 'leaflet';
@@ -136,7 +136,7 @@ const Networking = () => {
 
 
   const EventList = ({ events }) => (
-                <table>
+                <table id="table-connections">
                   <tbody>
                   <th>Intermediary</th>
                   <th>ADT</th>
@@ -261,7 +261,7 @@ const Networking = () => {
       <main>
 
         {/* --------------------------------------------------------------------Participant Tables */}
-        <div className='section'>
+        <div className='section' id="section-participants">
           <div>
             <h2 className="shared-title">Participants</h2>
 
@@ -273,7 +273,7 @@ const Networking = () => {
             <div className="table-title">
                     DSA Signatories: {totalSum}
             </div>
-                    <table>
+                    <table id="table-signatories">
                       <tbody>
                       <th>Type</th>
                       <th>Count</th>
@@ -298,55 +298,7 @@ const Networking = () => {
                 </div>
 
 
-
-        {/* <div className="chart-columns">
-          <div className="chart-column">
-            <h3>ADT</h3>
-            <p>{adtCount}</p>
-          </div>
-          
-          <div className="chart-column">
-          <h3>Query</h3>
-            <p>{queryCount}</p>
-          </div>
-          
-          <div className="chart-column">
-          <h3>Referral</h3>
-            <p>{referralCount}</p>
-          </div>
-          </div>
-
-          <div className="chart-columns">
-            <div className="chart-column">
-              <h3>ADT</h3>
-              <ul>
-              {adtEventsCount.map(([eventName, count], index) => (
-                <li key={index}>{eventName}: {count}</li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
-        <div className="chart-column">
-            <h3>Query</h3>
-            <ul>
-            {queryEventsCount.map(([eventName, count], index) => (
-              <li key={index}>{eventName}: {count}</li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="chart-column">
-            <h3>Referral</h3>
-            <ul>
-            {referralEventsCount.map(([eventName, count], index) => (
-              <li key={index}>{eventName}: {count}</li>
-            ))}
-          </ul>
-        </div> */}
-
-
-        </div>
+              </div>
           </div>
 
 
@@ -356,7 +308,7 @@ const Networking = () => {
 
   {/* --------------------------------------------------------------------Geographic View */}
         
-        <div className='section'>
+        <div className='section' id="section-geo">
         <div className="shared-title-container">
               <h2 className="shared-title">Geographic View</h2>
             </div>
@@ -370,6 +322,11 @@ const Networking = () => {
                 {renderMarkers()}
               </MapContainer>
               <div className="city-selector">
+                <div className="table-title">
+                      Filters
+                </div>
+                <div className="selector-wrapper">
+                  <div>Cities</div>
                 <Select
                   isMulti
                   options={cityOptions}
@@ -378,15 +335,21 @@ const Networking = () => {
                   onChange={handleCityChange}
                   value={selectedCities}
                 />
+                </div>
+                <div className="selector-wrapper">
+                <div>Types</div>
+                  <Select
+                    isMulti
+                    options={typeOptions}
+                    className="type-select"
+                    placeholder="Select Types"
+                    onChange={handleTypeChange}
+                    value={selectedTypes}
+                />
+                </div>
+                <div className="selector-wrapper">
+                <div>Sub-Types</div>
                 <Select
-                  isMulti
-                  options={typeOptions}
-                  className="type-select"
-                  placeholder="Select Types"
-                  onChange={handleTypeChange}
-                  value={selectedTypes}
-               />
-               <Select
                   isMulti
                   options={subTypeOptions}
                   className="sub-type-select"
@@ -394,6 +357,8 @@ const Networking = () => {
                   onChange={handleSubTypeChange}
                   value={selectedSubTypes}
                 />
+                </div>
+
               </div>
 
             </div>
@@ -403,13 +368,13 @@ const Networking = () => {
 
 
   {/* --------------------------------------------------------------------Sankey  */}
-        <div className='section'>
+        <div className='section' id="section-sankey">
           <div className='container' id='one'>
           <div className="shared-title-container">
               <h2 className="shared-title">Network View</h2>
             </div>
-            <div className="content-container">
-              <SankeyChart />
+            <div className="sankey-container">
+            <Notebook />
           </div>
         </div>
         </div>
