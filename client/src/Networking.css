@@ -82,7 +82,7 @@
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: left;
     flex-wrap: wrap;
   }
 
@@ -156,7 +156,9 @@
   }
 
 
-
+.table-holder {
+  margin: 0 100px 0 0;
+}
 
 
 
@@ -173,6 +175,7 @@
     font-family: sans-serif;
     min-width: 400px;
 }
+
 
  th{
   background-color: #426a99;
