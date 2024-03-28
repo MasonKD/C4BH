@@ -139,9 +139,9 @@ const Networking = () => {
                 <table id="table-connections">
                   <tbody>
                   <th>Intermediary</th>
-                  <th>ADT</th>
-                  <th>Query</th>
-                  <th>Referral</th>
+                  <th>Req. for Notifications</th>
+                  <th>Req. for Information</th>
+                  <th>Information Delivery</th>
                   {events.map(([eventName, counts], index) => (
                     <tr key={index}>                                       
                       <td >{eventName}</td>
