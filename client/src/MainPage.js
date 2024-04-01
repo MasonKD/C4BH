@@ -46,15 +46,15 @@ const MainPage = () => {
       <main>
       <div className="button-container">
         <div className='button-col'>
-          <button className="query-button">Use Cases</button>
+          <button className="query-button" id="disabled"><div>Use Cases</div> <span>(Coming Soon)</span></button>
         </div>
         <div className='button-col'>
-          <button className="query-button">FTP Log</button>
+          <button className="query-button" id="disabled"> <div>FTP Log</div> <span>(Coming Soon)</span></button>
           <button className="query-button"onClick={HandleMirthQuery}>Mirth Log</button>
           <button className="query-button" onClick={handleQueryMPI}>Clinical Data Repo</button>
         </div>
         <div className='button-col'>
-        <button className="query-button">Rules Engine</button>
+        <button className="query-button" id="disabled"> <div>Rules Engine</div> <span>(Coming Soon)</span></button>
         </div>
         <div className='button-col'>
         <button className="query-button" onClick={HandleNetworkQuery}>Network</button>
