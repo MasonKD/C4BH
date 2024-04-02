@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './LandingPage.css'; 
 import logoImage from './images/C4BHLogo.png';
 
@@ -10,6 +11,7 @@ const Logo = () => (
 
 const LandingPage = () => {
   // Handler for the Sign In button click https://sbx.connectingforbetterhealth.com/callback
+  const navigate = useNavigate();
   const handleSignIn = () => {
     const clientId = '6ajbqdj9bvutetf9vrremr1clc';
     const redirectUri = encodeURIComponent('https://sbx.connectingforbetterhealth.com/callback');
@@ -18,11 +20,10 @@ const LandingPage = () => {
   };
 
   // Handler for the Sign Up button click, identical setup as sign in but could lead to a different path if needed
-  const handleSignUp = () => {
-    const clientId = '6ajbqdj9bvutetf9vrremr1clc';
-    const redirectUri = encodeURIComponent('https://sbx.connectingforbetterhealth.com/callback');
-    const signUpUri = `https://sandbox-login.auth.us-east-2.amazoncognito.com/signup?client_id=${clientId}&response_type=code&scope=email+openid+phone&redirect_uri=${redirectUri}`;
-    window.location.assign(signUpUri);
+ const handleSignUp = () => {
+  
+
+  navigate('/DxfRegistration');
   };
 
   return (

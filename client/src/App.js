@@ -7,6 +7,7 @@ import MainPage from './MainPage';
 import Callback from './Callback';
 import Mirth from './Mirth'; 
 import Networking from './Networking';
+import DxfRegistration from './DxfRegistration';
 
  
 
@@ -21,6 +22,7 @@ function App() {
           <Route path="/callback" element={<Callback />} /> 
           <Route path="/mirth" element={<Mirth />} />
           <Route path="/Networking" element={<Networking />} />
+          <Route path="/DxfRegistration" element={<DxfRegistration />} />
         </Routes>
       </Router>
     </UserProvider>

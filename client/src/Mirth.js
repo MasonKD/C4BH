@@ -66,6 +66,7 @@ const Mirth = () => {
         </div>
       </header>
       <main>
+      
         <h1>Mirth Connect Logs</h1>
         <img src={mirthImage} alt="Mirth" className="mirth-image" />
         <ul>
@@ -73,6 +74,7 @@ const Mirth = () => {
             <li key={log.id}>Message ID: {log.id}, Content: {log.content}</li>
           ))}
         </ul>
+        
       </main>
 
     </div>
