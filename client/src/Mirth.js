@@ -4,7 +4,6 @@ import './Mirth.css';
 import logoImage from './images/C4BHLogo.png';
 import mirthImage from './images/Mirth.png';
 
-
 const Logo = () => (
   <div className="logo">
     <img src={logoImage} alt="Connecting for Better Health" />
@@ -16,48 +15,46 @@ const Mirth = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    
-    const apiEndpoint = 'https://52.7.12.154:8443/api/channels/477b07b4-869b-4607-8a77-00fa589ea94f/messages';
-    const queryParams = '?status=RECEIVED&limit=20';
-    
-    
-    const username = 'admin';
-    const password = 'C4BH126!';
+    const apiEndpoint = 'https://52.7.12.154:8443/api/channels/f6d4fc04-babd-41b4-a087-9bfce4affce9/messages';
+    const queryParams = '?status=TRANSFORMED&limit=20';
+    const username = 'admin'; // Should be stored in environment variables
+    const password = 'C4BH126!'; // Should be stored in environment variables
     const encodedCredentials = btoa(`${username}:${password}`);
-  
-    const headers = {
-      'Accept': 'application/json',
-      'Authorization': `Basic ${encodedCredentials}`,
-      'X-Requested-With': 'OpenAPI'
-    };
-  
-    fetch(apiEndpoint + queryParams, {
+    
+    fetch(`${apiEndpoint}${queryParams}`, {
       method: 'GET',
-      headers: headers,
-      mode: 'cors' 
+      headers: {
+        'Accept': 'application/xml', // Set the header to accept XML
+        'Authorization': `Basic ${encodedCredentials}`,
+        
+      },
+      mode: 'cors' // This should be configured on your Mirth Connect server
     })
     .then(response => {
       if (!response.ok) {
         throw new Error(`HTTP status ${response.status}`);
       }
-      return response.json();
+      return response.text(); // Assuming the response is XML and not JSON
     })
-    .then(data => {
-      setLogs(data.messages);
+    .then(responseText => {
+      // Parse the XML responseText to extract the data you need
+      // Here you'll need to implement XML parsing
+      console.log(responseText);
     })
     .catch(error => {
       console.error('Error fetching data:', error);
     });
-  }, [navigate]); // Added navigate to the dependency array if its state changes and the effect needs to rerun
+  }, [navigate]);
+  
 
   const handleSignOut = () => {
-    navigate('/'); // Redirects to the landing page
+    navigate('/');
   };
 
   return (
     <div className='main-container'>
       <header className="header">
-        <Logo /> 
+        <Logo />
         <div className="user-participant">
           User: C4BH Admin
           <button className="signout-button" onClick={handleSignOut}>
@@ -66,7 +63,6 @@ const Mirth = () => {
         </div>
       </header>
       <main>
-      
         <h1>Mirth Connect Logs</h1>
         <img src={mirthImage} alt="Mirth" className="mirth-image" />
         <ul>
@@ -74,12 +70,12 @@ const Mirth = () => {
             <li key={log.id}>Message ID: {log.id}, Content: {log.content}</li>
           ))}
         </ul>
-        
       </main>
-
     </div>
   );
 };
 
 export default Mirth;
+
+
 

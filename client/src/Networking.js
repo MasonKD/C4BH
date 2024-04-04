@@ -42,11 +42,21 @@ const Networking = () => {
   }, []);
 
   const subTypeOptions = useMemo(() => {
-    const uniqueSubTypes = [...new Set(Dxfdata.map(item => item.Sub_Type))];
-    return uniqueSubTypes
-      .map(subType => ({ value: subType, label: subType }))
+    let options;
+    // Since `selectedTypes` is an array, check if it has any selected values
+    if (selectedTypes.length > 0) {
+      const selectedTypeValues = selectedTypes.map(t => t.value); // Get the values of the selected types
+      const relevantSubtypes = Dxfdata
+        .filter(data => selectedTypeValues.includes(data.Type)) // Filter data for selected types
+        .map(data => data.Sub_Type);
+      options = [...new Set(relevantSubtypes)]; // Get unique subtypes from the filtered data
+    } else {
+      options = [...new Set(Dxfdata.map(data => data.Sub_Type))]; // All subtypes if no type is selected
+    }
+    return options.map(subType => ({ value: subType, label: subType }))
       .sort((a, b) => a.label.localeCompare(b.label));
-  }, []);
+  }, [Dxfdata, selectedTypes]);
+  
 
   const totalSum = useMemo(() => {
     return Dxfdata.reduce((acc, item) => acc + 1, 0);
@@ -163,8 +173,10 @@ const Networking = () => {
   };
 
   const handleTypeChange = selectedOptions => {
-    setSelectedTypes(selectedOptions || []);
+    setSelectedTypes(selectedOptions || []); // Ensure selectedTypes is always an array
   };
+  
+  
 
   const handleSubTypeChange = selectedOptions => {
     setSelectedSubTypes(selectedOptions || []);
@@ -203,8 +215,13 @@ const Networking = () => {
   }, [Dxfdata]);
 
   const renderMarkers = () => {
+    // Ensure Dxfdata is not null or undefined
+    if (!Dxfdata) {
+      return null;
+    }
+  
     return Dxfdata
-      .filter(item => 
+      .filter(item =>
         (selectedCities.length === 0 || selectedCities.some(city => city.value === item.City)) &&
         (selectedTypes.length === 0 || selectedTypes.some(type => type.value === item.Type)) &&
         (selectedSubTypes.length === 0 || selectedSubTypes.some(subType => subType.value === item.Sub_Type))
@@ -243,8 +260,9 @@ const Networking = () => {
         }
         return null;
       })
-      .filter(marker => marker !== null);
+      .filter(marker => marker !== null); // Ensures that only valid markers are rendered
   };
+  
   
 
   return (
