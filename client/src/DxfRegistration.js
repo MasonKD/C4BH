@@ -25,8 +25,10 @@ const DxfRegistration = () => {
         <Logo />
       </header>
       <main>
+        <div className='reg-modal-container'>
         <div className='Reg-landing-container'>
             <div className="Reg-welcome-container">
+              <div className='reg-header'>Please Complete the Following Form:</div>
                 <div className ="iframe-container">
         
                     <iframe
@@ -38,6 +40,8 @@ const DxfRegistration = () => {
             <button onClick={handleSignUp} className="landing-button">Continue to sign up</button>
             </div>
         </div>
+        </div>
+
 
       </main>
     </div>

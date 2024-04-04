@@ -1,13 +1,5 @@
-
-
 /* Main container with flexbox centering */
-.main-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-}
+
 
 /* Blue border turned into a top bar */
 .top-bar {
@@ -37,7 +29,7 @@
   padding: 20px;
   display: flex;
   flex-direction: column; /* Stack children vertically */
-  justify-content: center; /* Center children vertically */
+  justify-content: start; /* Center children vertically */
   align-items: center; /* Center children horizontally */
   gap: 10px; /* Add gap between children */
   width: 700px; /* Full width of the parent element */
@@ -47,6 +39,19 @@
   margin: auto; /* Center the container */
 }
 
+
+.reg-modal-container {
+  height: 120vh;
+}
+
+.iframe-container {
+  margin: 0 0 24px 0;
+}
+
+.reg-header {
+  font-size: 24px;
+  margin: 0 0 30px 0;
+}
 
 
 /* Container for welcome message and buttons */
