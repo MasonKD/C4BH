@@ -34,6 +34,10 @@ const MainPage = () => {
     navigate ('/Networking'); 
   };
 
+  const HandleUseCaseQuery = () => {
+    window.location.href = "https://drive.google.com/drive/folders/1Um1DTMRnOn5cxoW-9J-_pc2yzriAq2j5?usp=drive_link";
+    };
+
   return (
     <div className="main-container">
       <header className="header">
@@ -46,7 +50,7 @@ const MainPage = () => {
       <main>
       <div className="button-container">
         <div className='button-col'>
-          <button className="query-button" id="disabled"><div>Use Cases</div> <span>(Coming Soon)</span></button>
+          <button className="query-button" onClick={HandleUseCaseQuery}>Use Cases</button>
         </div>
         <div className='button-col'>
           <button className="query-button" id="disabled"> <div>FTP Log</div> <span>(Coming Soon)</span></button>

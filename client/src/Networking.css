@@ -67,7 +67,7 @@
   }
 
   #section-sankey {
-    height: 100vh;
+    height: 112vh;
   }
 
 
@@ -136,9 +136,21 @@
     margin: 0 0 24px 0;
   }
 
+  #network-quicksight {
+    flex-direction: column;
+  }
+
+ iframe {
+    width: 100%;
+    height: 800px;
+  }
 
   #hide-me {
     display: none;
+  }
+
+  #dashboard {
+    width: 300px;
   }
 
 
