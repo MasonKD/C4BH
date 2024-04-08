@@ -59,8 +59,8 @@ const Networking = () => {
     const options = {
       url: dashboardUrl,
       container: dashboardRef.current,
-      height: "500px",
-      width: "600px",
+      height: "1000px",
+      width: "1500px",
     };
 
     const newEmbeddedDashboard = await embeddingContext.embedDashboard(options);
@@ -453,7 +453,7 @@ const Networking = () => {
   {/* --------------------------------------------------------------------quicksite */}
 
   <select id='dashboard' value={dashboardId} onChange={changeDashboard}>
-          <option value="YOUR_DASHBOARD1_ID">YOUR_DASHBOARD1_NAME</option>
+          <option value="YOUR_DASHBOARD1_ID">DxF Participant Map</option>
         </select>
         <div ref={dashboardRef} />
             
