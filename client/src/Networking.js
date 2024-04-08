@@ -1,5 +1,6 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { createEmbeddingContext } from 'amazon-quicksight-embedding-sdk';
 import './Networking.css';
 import logoImage from './images/C4BHLogo.png';
 import Notebook from './SankeyChart';
@@ -23,6 +24,59 @@ const Networking = () => {
   const [selectedCities, setSelectedCities] = useState([]);
   const [selectedTypes, setSelectedTypes] = useState([]);
   const [selectedSubTypes, setSelectedSubTypes] = useState([]);
+  const dashboardRef = useRef([]);
+  const [dashboardId, setDashboardId] = useState('3fe09f48-299a-4830-b204-d0635f55bef3');
+  const [embeddedDashboard, setEmbeddedDashboard] = useState(null);
+  const [dashboardUrl, setDashboardUrl] = useState(null);
+  const [embeddingContext, setEmbeddingContext] = useState(null);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      fetch("https://h5j9ahkltl.execute-api.us-east-1.amazonaws.com/embed/QuickSiteEmbedResource"
+      ).then((response) => response.json()
+      ).then((response) => {
+        setDashboardUrl(response.EmbedUrl)
+      })
+    }, 10);
+    return () => clearTimeout(timeout);
+  }, []);
+
+  const createContext = async () => {
+    const context = await createEmbeddingContext();
+    setEmbeddingContext(context);
+  }
+
+  useEffect(() => {
+    if (dashboardUrl) { createContext() }
+  }, [dashboardUrl])
+
+  useEffect(() => {
+    if (embeddingContext) { embed(); }
+  }, [embeddingContext])
+
+  const embed = async () => {
+
+    const options = {
+      url: dashboardUrl,
+      container: dashboardRef.current,
+      height: "500px",
+      width: "600px",
+    };
+
+    const newEmbeddedDashboard = await embeddingContext.embedDashboard(options);
+    setEmbeddedDashboard(newEmbeddedDashboard);
+  };
+
+  useEffect(() => {
+    if (embeddedDashboard) {
+      embeddedDashboard.navigateToDashboard(dashboardId, {})
+    }
+  }, [dashboardId])
+
+  const changeDashboard = async (e) => {
+    const dashboardId = e.target.value
+    setDashboardId(dashboardId)
+  }
 
   
 
@@ -396,6 +450,12 @@ const Networking = () => {
           </div>
         </div>
         </div>
+  {/* --------------------------------------------------------------------quicksite */}
+
+  <select id='dashboard' value={dashboardId} onChange={changeDashboard}>
+          <option value="YOUR_DASHBOARD1_ID">YOUR_DASHBOARD1_NAME</option>
+        </select>
+        <div ref={dashboardRef} />
             
   {/* --------------------------------------------------------------------Hidden Table */}
         <div className='section' id='hide-me'>
