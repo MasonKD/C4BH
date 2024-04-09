@@ -13,8 +13,9 @@
     font-size: 1rem;
     cursor: pointer;
     transition: all 0.3s ease;
+    margin-top: 20px;
   }
 
   #useCase-section {
-    height: 90vh;
+    height: 800px;
   }
