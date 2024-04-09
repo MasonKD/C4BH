@@ -452,8 +452,10 @@ const Networking = () => {
         </div>
   {/* --------------------------------------------------------------------quicksite */}
 
-
-    
+  
+    <div className="shared-title-container">
+              <h2 className="shared-title">QuickSite Network View</h2>
+    </div>
     <select  id='dashboard' value={dashboardId} onChange={changeDashboard}>
           <option value="YOUR_DASHBOARD1_ID">DxF Participant Map</option>
       </select>
@@ -461,6 +463,7 @@ const Networking = () => {
 
         <div ref={dashboardRef} />
       </div>
+    
 
             
   {/* --------------------------------------------------------------------Hidden Table */}

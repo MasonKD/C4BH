@@ -8,6 +8,7 @@ import Callback from './Callback';
 import Mirth from './Mirth'; 
 import Networking from './Networking';
 import DxfRegistration from './DxfRegistration';
+import UseCase from './useCase';
 
  
 
@@ -23,6 +24,7 @@ function App() {
           <Route path="/mirth" element={<Mirth />} />
           <Route path="/Networking" element={<Networking />} />
           <Route path="/DxfRegistration" element={<DxfRegistration />} />
+          <Route path="/UseCase" element={<UseCase />} />
         </Routes>
       </Router>
     </UserProvider>

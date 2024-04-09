@@ -16,9 +16,9 @@ const Mirth = () => {
 
   useEffect(() => {
     const apiEndpoint = 'https://52.7.12.154:8443/api/channels/f6d4fc04-babd-41b4-a087-9bfce4affce9/messages';
-    const queryParams = '?status=TRANSFORMED&limit=20';
-    const username = 'admin'; // Should be stored in environment variables
-    const password = 'C4BH126!'; // Should be stored in environment variables
+    const queryParams = '/1';
+    const username = 'admin'; 
+    const password = 'C4BH126!'; 
     const encodedCredentials = btoa(`${username}:${password}`);
     
     fetch(`${apiEndpoint}${queryParams}`, {
@@ -28,7 +28,7 @@ const Mirth = () => {
         'Authorization': `Basic ${encodedCredentials}`,
         
       },
-      mode: 'cors' // This should be configured on your Mirth Connect server
+      mode: 'cors' 
     })
     .then(response => {
       if (!response.ok) {
@@ -36,10 +36,18 @@ const Mirth = () => {
       }
       return response.text(); // Assuming the response is XML and not JSON
     })
-    .then(responseText => {
-      // Parse the XML responseText to extract the data you need
-      // Here you'll need to implement XML parsing
-      console.log(responseText);
+    .then(str => {
+      const parser = new DOMParser();
+      const xmlDoc = parser.parseFromString(str, "text/xml");
+  
+      // Extract data from the XML
+      const messageId = xmlDoc.getElementsByTagName("messageId")[0].childNodes[0].nodeValue;
+      const content = xmlDoc.getElementsByTagName("content")[0].childNodes[0].nodeValue;
+  
+      // Assuming you want to display these
+      const logEntry = { id: messageId, content: content };
+      
+      setLogs([logEntry]); // Update the state
     })
     .catch(error => {
       console.error('Error fetching data:', error);

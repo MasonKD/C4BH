@@ -35,7 +35,7 @@ const MainPage = () => {
   };
 
   const HandleUseCaseQuery = () => {
-    window.location.href = "https://drive.google.com/drive/folders/1Um1DTMRnOn5cxoW-9J-_pc2yzriAq2j5?usp=drive_link";
+    navigate('/useCase');
     };
 
   return (
@@ -61,7 +61,7 @@ const MainPage = () => {
         <button className="query-button" id="disabled"> <div>Rules Engine</div> <span>(Coming Soon)</span></button>
         </div>
         <div className='button-col'>
-        <button className="query-button" onClick={HandleNetworkQuery}>Network</button>
+        <button className="query-button" onClick={HandleNetworkQuery}>Visualizations</button>
         </div>
         
 
