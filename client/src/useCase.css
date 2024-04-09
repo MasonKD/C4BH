@@ -1,0 +1,20 @@
+.img-holder {
+    margin: 20px 0 0 0;
+}
+
+.reg-button {
+    margin: 0 0 0 20px;
+    padding: .6rem 1.4rem;
+    background: #1D4A7A;
+    border: none;
+    border-radius: 30px; /* More rounded */
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  #useCase-section {
+    height: 90vh;
+  }
