@@ -328,6 +328,7 @@ const Networking = () => {
           <button className="signout-button" onClick={handleSignOut}>
             Sign Out
           </button>
+          <button className="back-button" onClick={() => navigate(-1)}>Back</button>
         </div>
       </header>
       <main>
