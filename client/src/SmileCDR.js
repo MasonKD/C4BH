@@ -11,7 +11,7 @@ const Logo = () => (
   </div>
 );
 
-const useCase = () => {
+const SmileCDR = () => {
   
   const navigate = useNavigate();
 
@@ -43,4 +43,4 @@ const useCase = () => {
   );
 };
 
-export default useCase;
+export default SmileCDR;
