@@ -59,6 +59,7 @@ const Mirth = () => {
     rows,
     prepareRow,
   } = tableInstance;
+  
 
   useEffect(() => {
     const apiEndpoint = 'https://sbx.connectingforbetterhealth.com/api/mirth-logs';

@@ -9,6 +9,7 @@ import Mirth from './Mirth';
 import Networking from './Networking';
 import DxfRegistration from './DxfRegistration';
 import UseCase from './useCase';
+import SmileCDR from './SmileCDR';
 
  
 
@@ -25,6 +26,7 @@ function App() {
           <Route path="/Networking" element={<Networking />} />
           <Route path="/DxfRegistration" element={<DxfRegistration />} />
           <Route path="/UseCase" element={<UseCase />} />
+          <Route path="/SmileCDR" element={<SmileCDR />} />
         </Routes>
       </Router>
     </UserProvider>

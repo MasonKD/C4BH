@@ -38,6 +38,10 @@ const MainPage = () => {
     navigate('/useCase');
     };
 
+  const HandleSmileCDRQuery = () => {
+    navigate('/SmileCDR');
+    };
+
   return (
     <div className="main-container">
       <header className="header">
@@ -55,7 +59,7 @@ const MainPage = () => {
         <div className='button-col'>
           <button className="query-button" id="disabled"> <div>FTP Log</div> <span>(Coming Soon)</span></button>
           <button className="query-button"onClick={HandleMirthQuery}>Mirth Log</button>
-          <button className="query-button" onClick={handleQueryMPI}>Clinical Data Repo</button>
+          <button className="query-button" onClick={HandleSmileCDRQuery}>Clinical Data Repo</button>
         </div>
         <div className='button-col'>
         <button className="query-button" id="disabled"> <div>Rules Engine</div> <span>(Coming Soon)</span></button>
