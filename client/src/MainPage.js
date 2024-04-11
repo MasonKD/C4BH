@@ -20,11 +20,6 @@ const MainPage = () => {
   };
 
   // Handler for the Query Master Patient Index button
-  const handleQueryMPI = () => {
-    window.location.href = "http://logica-client.azurewebsites.net/"; // Redirects to the MPI site
-  };
-
-  // Handler for the Query Master Patient Index button
   const HandleMirthQuery = () => {
     navigate ('/Mirth'); 
   };
