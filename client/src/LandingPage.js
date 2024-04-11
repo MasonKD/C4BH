@@ -14,7 +14,7 @@ const LandingPage = () => {
   const navigate = useNavigate();
   const handleSignIn = () => {
     const clientId = '6ajbqdj9bvutetf9vrremr1clc';
-    const redirectUri = encodeURIComponent('http://localhost:3000/callback');
+    const redirectUri = encodeURIComponent('https://sbx.connectingforbetterhealth.com/callback');
     const signInUri = `https://sandbox-login.auth.us-east-2.amazoncognito.com/login?client_id=${clientId}&response_type=code&scope=email+openid+phone&redirect_uri=${redirectUri}`;
     window.location.assign(signInUri);
   };
