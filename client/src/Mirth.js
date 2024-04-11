@@ -61,52 +61,42 @@ const Mirth = () => {
   } = tableInstance;
 
   useEffect(() => {
-    const apiEndpoint = 'https://52.7.12.154:8443/api/channels/f6d4fc04-babd-41b4-a087-9bfce4affce9/messages';
-    const queryParams = '/1';
-    const username = 'admin'; 
-    const password = 'C4BH126!'; 
-    const encodedCredentials = btoa(`${username}:${password}`);
-    
-    fetch(`${apiEndpoint}${queryParams}`, {
-      method: 'GET',
-      headers: {
-        'Accept': 'application/xml', // Set the header to accept XML
-        'Authorization': `Basic ${encodedCredentials}`,
+    const apiEndpoint = 'https://sbx.connectingforbetterhealth.com/api/mirth-logs';
+  
+    fetch(apiEndpoint)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP status ${response.status}`);
+        }
+        return response.json(); // parse the JSON response first
+      })
+      .then(data => {
+        const innerData = JSON.parse(data.data); // parse the escaped JSON string
+        const messages = innerData.message.connectorMessages.entry.map(entry => {
+          const connectorMessage = entry.connectorMessage;
+          if (connectorMessage && connectorMessage.raw) {
+            const { messageId, status, receivedDate, raw } = connectorMessage;
+            const receivedDateString = receivedDate && new Date(receivedDate.time).toUTCString();
+            const logEntry = {
+              id: messageId,
+              content: raw.content, 
+              status: status,
+              receivedDate: receivedDateString,
+              type: 'ADT-A01' 
+            };
+            return logEntry;
+          } else {
+            // Handle the case where the expected structure is not found
+            console.error('Unexpected data structure:', entry);
+            return null;
+          }
+        }).filter(Boolean); // This will remove any null entries from the resulting array
         
-      },
-      mode: 'cors' 
-    })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(`HTTP status ${response.status}`);
-      }
-      return response.text(); // Assuming the response is XML and not JSON
-    })
-    .then(str => {
-      const parser = new DOMParser();
-      const xmlDoc = parser.parseFromString(str, "text/xml");
-  
-      // Extract data from the XML
-      const messageId = xmlDoc.getElementsByTagName("messageId")[0].childNodes[0].nodeValue;
-      const content = xmlDoc.getElementsByTagName("content")[0].childNodes[0].nodeValue;
-      const status = xmlDoc.getElementsByTagName("status")[0].childNodes[0].nodeValue;
-      const receivedTimeElement = xmlDoc.getElementsByTagName("receivedDate")[0].getElementsByTagName("time")[0];
-      const receivedDate = receivedTimeElement ? new Date(parseInt(receivedTimeElement.textContent)).toUTCString() : null;
-      
-
-      
-      
-      
-  
-      
-      const logEntry = { id: messageId, content: content, status: status, receivedDate: receivedDate, type: 'ADT-A01' };
-      
-      setLogs([logEntry]);
-      //setLogs(prevLogs => [...prevLogs, logEntry]); // Update the state
-    })
-    .catch(error => {
-      console.error('Error fetching data:', error);
-    });
+        setLogs(messages); // Set the logs state with the new data
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
   }, [navigate]);
   
 
