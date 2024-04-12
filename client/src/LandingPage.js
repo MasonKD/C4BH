@@ -10,7 +10,7 @@ const Logo = () => (
 );
 
 const LandingPage = () => {
-  // Handler for the Sign In button click https://sbx.connectingforbetterhealth.com/callback
+  // Handler for the Sign In button click https://sbx.connectingforbetterhealth.com/callback, local = http://localhost:3000/callback
   const navigate = useNavigate();
   const handleSignIn = () => {
     const clientId = '6ajbqdj9bvutetf9vrremr1clc';

@@ -46,43 +46,46 @@ const SmileCDR = () => {
       Header: 'Practitioner',
       accessor: 'practitioner',
     },
-    // Add other columns as needed
+    
   ], []);
 
+  //http://127.0.0.1:3001/smile-query
+  //https://sbx.connectingforbetterhealth.com/api/smile-query
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
+      setError('');
+  
       try {
         const response = await fetch('https://sbx.connectingforbetterhealth.com/api/smile-query');
         if (!response.ok) {
           throw new Error(`HTTP status ${response.status}`);
         }
         const json = await response.json();
-        // Assuming the response.data is the JSON string
         const parsedData = JSON.parse(json.data);
   
-        // Locate Estella's data
-        const estella = parsedData.entry.find(entry =>
-          entry.resource.name.some(nameRecord => 
-            nameRecord.given.includes('ESTELLA') && nameRecord.family === 'RUIZ'
-          )
-        );
-  
-        if (estella) {
-          // Extract the data you want to show in the table
-          const formattedData = {
-            id: estella.resource.id,
-            address: `${estella.resource.address[0].line[0]}, ${estella.resource.address[0].city}, ${estella.resource.address[0].state}, ${estella.resource.address[0].postalCode}, ${estella.resource.address[0].country}`,
-            phone: estella.resource.telecom.find(t => t.system === 'phone')?.value || estella.resource.telecom.find(t => t.system === 'other')?.value || 'N/A',
-            name: `${estella.resource.name.find(n => n.use === 'official')?.family || ''}, ${estella.resource.name.find(n => n.use === 'official')?.given.join(' ') || ''}`,
-            gender: estella.resource.gender,
-            birthDate: estella.resource.birthDate,
-            practitioner: estella.resource.contained?.map(pract => pract.name[0].given.join(' ') + ' ' + pract.name[0].family).join('; ') || 'N/A',
+        const formattedData = parsedData.entry.map(entry => {
+          const patientData = {
+            id: entry.resource.id,
+            address: entry.resource.address && entry.resource.address.length > 0
+              ? `${entry.resource.address[0].line}, ${entry.resource.address[0].city}, ${entry.resource.address[0].state}, ${entry.resource.address[0].postalCode}`
+              : 'No address provided',
+            phone: entry.resource.telecom && entry.resource.telecom.find(t => t.system === 'phone' || t.system === 'other')
+              ? entry.resource.telecom.find(t => t.system === 'phone' || t.system === 'other').value
+              : 'No phone provided',
+            name: entry.resource.name && entry.resource.name.length > 0
+              ? `${entry.resource.name[0].family}, ${entry.resource.name[0].given.join(' ')}`
+              : 'No name provided',
+            gender: entry.resource.gender || 'No gender provided',
+            birthDate: entry.resource.birthDate || 'No birthdate provided',
+            practitioner: entry.resource.contained && entry.resource.contained.length > 0
+              ? entry.resource.contained.map(pract => `${pract.name[0].family}, ${pract.name[0].given.join(' ')}`).join('; ')
+              : 'No practitioner listed',
           };
-          setData([formattedData]);
-        } else {
-          setError('No patient named Estella found');
-        }
+          return patientData;
+        });
+  
+        setData(formattedData);
       } catch (error) {
         console.error('Failed to fetch data:', error);
         setError(error.message);
@@ -93,9 +96,9 @@ const SmileCDR = () => {
   
     fetchData();
   }, []);
-
+  
   const tableInstance = useTable({ columns, data });
-
+  
   const {
     getTableProps,
     getTableBodyProps,

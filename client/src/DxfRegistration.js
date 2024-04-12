@@ -12,6 +12,7 @@ const DxfRegistration = () => {
  
 
   // Handler for the Sign Up button click, identical setup as sign in but could lead to a different path if needed
+  // Handler for the Sign In button click https://sbx.connectingforbetterhealth.com/callback, local = http://localhost:3000/callback
   const handleSignUp = () => {
     const clientId = '6ajbqdj9bvutetf9vrremr1clc';
     const redirectUri = encodeURIComponent('https://sbx.connectingforbetterhealth.com/callback');
