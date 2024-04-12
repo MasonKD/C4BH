@@ -7,7 +7,7 @@ import getMirthLogs from './api-Mirth.js';
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-
+//dev is "http://localhost:3000", Prod is "https://sbx.connectingforbetterhealth.com" for origin
 app.use(cors({
     origin: 'https://sbx.connectingforbetterhealth.com'
   }));

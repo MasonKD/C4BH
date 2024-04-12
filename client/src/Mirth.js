@@ -45,7 +45,7 @@ const Mirth = () => {
     []
   );
 
-  // Use logs as memoized data for your table
+  // Use logs as memoized data for the table
   const data = React.useMemo(() => logs, [logs]);
 
   // Initialize table instance with the useTable hook
