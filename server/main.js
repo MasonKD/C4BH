@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3001;
 
 
 app.use(cors({
-    origin: 'localhost'
+    origin: 'https://sbx.connectingforbetterhealth.com'
   }));
 
 app.get('/mirth-logs', getMirthLogs);

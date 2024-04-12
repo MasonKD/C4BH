@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import {useTable} from 'react-table';
 import './Mirth.css';
 import logoImage from './images/C4BHLogo.png';
-import mirthImage from './images/Mirth.png';
+
 
 const Logo = () => (
   <div className="logo">
@@ -120,7 +120,7 @@ const Mirth = () => {
       </header>
       <main>
         <h1>Mirth Connect Logs</h1>
-        <img src={mirthImage} alt="Mirth" className="mirth-image" />
+        
         {/* Render the table with react-table */}
         <table {...getTableProps()}>
           <thead>
