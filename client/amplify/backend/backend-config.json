@@ -23,102 +23,36 @@
     }
   },
   "auth": {
-    "c4bhform": {
+    "C4BHForm": {
       "customAuth": false,
       "dependsOn": [],
+      "frontendAuthConfig": {
+        "mfaConfiguration": "OPTIONAL",
+        "mfaTypes": [
+          "TOTP"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyCharacters": [
+            "REQUIRES_LOWERCASE",
+            "REQUIRES_NUMBERS",
+            "REQUIRES_SYMBOLS",
+            "REQUIRES_UPPERCASE"
+          ],
+          "passwordPolicyMinLength": 8
+        },
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "socialProviders": [],
+        "usernameAttributes": [
+          "EMAIL"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
       "providerPlugin": "awscloudformation",
-      "service": "Cognito",
-      "serviceType": "imported"
-    }
-  },
-  "parameters": {
-    "AMPLIFY_auth_c4bhform_allowUnauthenticatedIdentities": {
-      "usedBy": [
-        {
-          "category": "auth",
-          "resourceName": "c4bhform"
-        }
-      ]
-    },
-    "AMPLIFY_auth_c4bhform_authRoleArn": {
-      "usedBy": [
-        {
-          "category": "auth",
-          "resourceName": "c4bhform"
-        }
-      ]
-    },
-    "AMPLIFY_auth_c4bhform_authRoleName": {
-      "usedBy": [
-        {
-          "category": "auth",
-          "resourceName": "c4bhform"
-        }
-      ]
-    },
-    "AMPLIFY_auth_c4bhform_identityPoolId": {
-      "usedBy": [
-        {
-          "category": "auth",
-          "resourceName": "c4bhform"
-        }
-      ]
-    },
-    "AMPLIFY_auth_c4bhform_identityPoolName": {
-      "usedBy": [
-        {
-          "category": "auth",
-          "resourceName": "c4bhform"
-        }
-      ]
-    },
-    "AMPLIFY_auth_c4bhform_nativeClientId": {
-      "usedBy": [
-        {
-          "category": "auth",
-          "resourceName": "c4bhform"
-        }
-      ]
-    },
-    "AMPLIFY_auth_c4bhform_unauthRoleArn": {
-      "usedBy": [
-        {
-          "category": "auth",
-          "resourceName": "c4bhform"
-        }
-      ]
-    },
-    "AMPLIFY_auth_c4bhform_unauthRoleName": {
-      "usedBy": [
-        {
-          "category": "auth",
-          "resourceName": "c4bhform"
-        }
-      ]
-    },
-    "AMPLIFY_auth_c4bhform_userPoolId": {
-      "usedBy": [
-        {
-          "category": "auth",
-          "resourceName": "c4bhform"
-        }
-      ]
-    },
-    "AMPLIFY_auth_c4bhform_userPoolName": {
-      "usedBy": [
-        {
-          "category": "auth",
-          "resourceName": "c4bhform"
-        }
-      ]
-    },
-    "AMPLIFY_auth_c4bhform_webClientId": {
-      "usedBy": [
-        {
-          "category": "auth",
-          "resourceName": "c4bhform"
-        }
-      ]
+      "service": "Cognito"
     }
   }
 }

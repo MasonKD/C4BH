@@ -13,19 +13,8 @@
     },
     "categories": {
       "auth": {
-        "c4bhform": {
-          "allowUnauthenticatedIdentities": false,
-          "authRoleArn": "arn:aws:iam::581686522969:role/amplify-newamplifydevenv-dev-151139-authRole",
-          "authRoleName": "amplify-newamplifydevenv-dev-151139-authRole",
-          "identityPoolId": "us-east-1:0ec3030f-9472-40db-856e-49b161e5bb7b",
-          "identityPoolName": "newamplifydevenv8de61f2b_identitypool_8de61f2b__dev",
-          "nativeClientId": "5f576n6vdudvsfap83dfkrrsnl",
-          "unauthRoleArn": "arn:aws:iam::581686522969:role/amplify-newamplifydevenv-dev-151139-unauthRole",
-          "unauthRoleName": "amplify-newamplifydevenv-dev-151139-unauthRole",
-          "userPoolId": "us-east-1_LWWSa3pBb",
-          "userPoolName": "newamplifydevenv8de61f2b_userpool_8de61f2b-dev",
-          "webClientId": "5f576n6vdudvsfap83dfkrrsnl"
-        }
+        "c4bhform4316baa2": {},
+        "C4BHForm": {}
       }
     }
   }
