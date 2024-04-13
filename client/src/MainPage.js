@@ -21,12 +21,12 @@ const MainPage = () => {
 
   // Handler for the Query Master Patient Index button
   const HandleMirthQuery = () => {
-    navigate ('/Mirth'); 
+    navigate ('/Mirth');
   };
 
   // Handler for the Query Master Patient Index button
   const HandleNetworkQuery = () => {
-    navigate ('/Networking'); 
+    navigate ('/Networking');
   };
 
   const HandleUseCaseQuery = () => {
@@ -43,7 +43,7 @@ const MainPage = () => {
         <Logo />
         <div>
           <div className="user-participant">Welcome, C4BH Admin</div>
-          <button className="signout-button" onClick={handleSignOut}>Sign Out</button> 
+          <button className="signout-button" onClick={handleSignOut}>Sign Out</button>
         </div>
       </header>
       <main>
@@ -62,7 +62,7 @@ const MainPage = () => {
         <div className='button-col'>
         <button className="query-button" onClick={HandleNetworkQuery}>Visualizations</button>
         </div>
-        
+
 
 
       </div>

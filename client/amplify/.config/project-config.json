@@ -8,8 +8,8 @@
   "javascript": {
     "framework": "react",
     "config": {
-      "SourceDir": "/Users/jackbellinger/code/C4BH/server",
-      "DistributionDir": "/Users/jackbellinger/code/C4BH/server/build",
+      "SourceDir": "src",
+      "DistributionDir": "build",
       "BuildCommand": "npm run-script build",
       "StartCommand": "npm run-script start"
     }

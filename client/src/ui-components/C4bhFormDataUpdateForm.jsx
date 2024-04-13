@@ -13,9 +13,11 @@ import {
   SwitchField,
   TextField,
 } from "@aws-amplify/ui-react";
-import { C4bhFormData } from "../models";
 import { fetchByPath, getOverrideProps, validateField } from "./utils";
-import { DataStore } from "aws-amplify/datastore";
+import { generateClient } from "aws-amplify/api";
+import { getC4bhFormData } from "../graphql/queries.ts";
+import { updateC4bhFormData } from "../graphql/mutations.ts";
+const client = generateClient();
 export default function C4bhFormDataUpdateForm(props) {
   const {
     id: idProp,
@@ -251,7 +253,12 @@ export default function C4bhFormDataUpdateForm(props) {
   React.useEffect(() => {
     const queryData = async () => {
       const record = idProp
-        ? await DataStore.query(C4bhFormData, idProp)
+        ? (
+            await client.graphql({
+              query: getC4bhFormData.replaceAll("__typename", ""),
+              variables: { id: idProp },
+            })
+          )?.data?.getC4bhFormData
         : c4bhFormDataModelProp;
       setC4bhFormDataRecord(record);
     };
@@ -330,48 +337,48 @@ export default function C4bhFormDataUpdateForm(props) {
         event.preventDefault();
         let modelFields = {
           Participant,
-          ParticipantID,
-          EhrIntersystems,
-          EhrSmile,
-          EhrSalesforce,
-          EhrOther,
-          SendOutboundDirect,
-          SendOutboundSFTP,
-          SendOutboundMLLP,
-          SendOutboundHTTPS,
-          SendOutboundFHIR,
-          SendOutboundNone,
-          SendInformationDirect,
-          SendInformationSFTP,
-          SendInformationMLLP,
-          SendInformationHTTPS,
-          SendInformationFHIR,
-          SendInformationIHE,
-          SendInformationNone,
-          SendRequestDirect,
-          SendRequestSFTP,
-          SendRequestFHIR,
-          SendRequestIHE,
-          SendRequestNone,
-          ReceiveInboundDirect,
-          ReceiveInboundSFTP,
-          ReceiveInboundMLLP,
-          ReceiveInboundHTTPS,
-          ReceiveInboundFHIR,
-          ReceiveInboundNone,
-          ReceiveInformationDirect,
-          ReceiveInformationSFTP,
-          ReceiveInformationMLLP,
-          ReceiveInformationHTTPS,
-          ReceiveInformationFHIR,
-          ReceiveInformationIHE,
-          ReceiveInformationNone,
-          ReceiveRequestDirect,
-          ReceiveRequestSFTP,
-          ReceiveRequestFHIR,
-          ReceiveRequestIHE,
-          ReceiveRequestNone,
-          HIPPA,
+          ParticipantID: ParticipantID ?? null,
+          EhrIntersystems: EhrIntersystems ?? null,
+          EhrSmile: EhrSmile ?? null,
+          EhrSalesforce: EhrSalesforce ?? null,
+          EhrOther: EhrOther ?? null,
+          SendOutboundDirect: SendOutboundDirect ?? null,
+          SendOutboundSFTP: SendOutboundSFTP ?? null,
+          SendOutboundMLLP: SendOutboundMLLP ?? null,
+          SendOutboundHTTPS: SendOutboundHTTPS ?? null,
+          SendOutboundFHIR: SendOutboundFHIR ?? null,
+          SendOutboundNone: SendOutboundNone ?? null,
+          SendInformationDirect: SendInformationDirect ?? null,
+          SendInformationSFTP: SendInformationSFTP ?? null,
+          SendInformationMLLP: SendInformationMLLP ?? null,
+          SendInformationHTTPS: SendInformationHTTPS ?? null,
+          SendInformationFHIR: SendInformationFHIR ?? null,
+          SendInformationIHE: SendInformationIHE ?? null,
+          SendInformationNone: SendInformationNone ?? null,
+          SendRequestDirect: SendRequestDirect ?? null,
+          SendRequestSFTP: SendRequestSFTP ?? null,
+          SendRequestFHIR: SendRequestFHIR ?? null,
+          SendRequestIHE: SendRequestIHE ?? null,
+          SendRequestNone: SendRequestNone ?? null,
+          ReceiveInboundDirect: ReceiveInboundDirect ?? null,
+          ReceiveInboundSFTP: ReceiveInboundSFTP ?? null,
+          ReceiveInboundMLLP: ReceiveInboundMLLP ?? null,
+          ReceiveInboundHTTPS: ReceiveInboundHTTPS ?? null,
+          ReceiveInboundFHIR: ReceiveInboundFHIR ?? null,
+          ReceiveInboundNone: ReceiveInboundNone ?? null,
+          ReceiveInformationDirect: ReceiveInformationDirect ?? null,
+          ReceiveInformationSFTP: ReceiveInformationSFTP ?? null,
+          ReceiveInformationMLLP: ReceiveInformationMLLP ?? null,
+          ReceiveInformationHTTPS: ReceiveInformationHTTPS ?? null,
+          ReceiveInformationFHIR: ReceiveInformationFHIR ?? null,
+          ReceiveInformationIHE: ReceiveInformationIHE ?? null,
+          ReceiveInformationNone: ReceiveInformationNone ?? null,
+          ReceiveRequestDirect: ReceiveRequestDirect ?? null,
+          ReceiveRequestSFTP: ReceiveRequestSFTP ?? null,
+          ReceiveRequestFHIR: ReceiveRequestFHIR ?? null,
+          ReceiveRequestIHE: ReceiveRequestIHE ?? null,
+          ReceiveRequestNone: ReceiveRequestNone ?? null,
+          HIPPA: HIPPA ?? null,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -401,17 +408,22 @@ export default function C4bhFormDataUpdateForm(props) {
               modelFields[key] = null;
             }
           });
-          await DataStore.save(
-            C4bhFormData.copyOf(c4bhFormDataRecord, (updated) => {
-              Object.assign(updated, modelFields);
-            })
-          );
+          await client.graphql({
+            query: updateC4bhFormData.replaceAll("__typename", ""),
+            variables: {
+              input: {
+                id: c4bhFormDataRecord.id,
+                ...modelFields,
+              },
+            },
+          });
           if (onSuccess) {
             onSuccess(modelFields);
           }
         } catch (err) {
           if (onError) {
-            onError(modelFields, err.message);
+            const messages = err.errors.map((e) => e.message).join("\n");
+            onError(modelFields, messages);
           }
         }
       }}

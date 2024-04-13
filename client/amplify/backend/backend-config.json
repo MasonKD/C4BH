@@ -1,0 +1,124 @@
+{
+  "api": {
+    "C4BHForm": {
+      "dependsOn": [],
+      "output": {
+        "authConfig": {
+          "additionalAuthenticationProviders": [
+            {
+              "authenticationType": "AWS_IAM"
+            }
+          ],
+          "defaultAuthentication": {
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 30,
+              "description": "api key description"
+            },
+            "authenticationType": "API_KEY"
+          }
+        }
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "AppSync"
+    }
+  },
+  "auth": {
+    "c4bhform": {
+      "customAuth": false,
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito",
+      "serviceType": "imported"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_auth_c4bhform_allowUnauthenticatedIdentities": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "c4bhform"
+        }
+      ]
+    },
+    "AMPLIFY_auth_c4bhform_authRoleArn": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "c4bhform"
+        }
+      ]
+    },
+    "AMPLIFY_auth_c4bhform_authRoleName": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "c4bhform"
+        }
+      ]
+    },
+    "AMPLIFY_auth_c4bhform_identityPoolId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "c4bhform"
+        }
+      ]
+    },
+    "AMPLIFY_auth_c4bhform_identityPoolName": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "c4bhform"
+        }
+      ]
+    },
+    "AMPLIFY_auth_c4bhform_nativeClientId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "c4bhform"
+        }
+      ]
+    },
+    "AMPLIFY_auth_c4bhform_unauthRoleArn": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "c4bhform"
+        }
+      ]
+    },
+    "AMPLIFY_auth_c4bhform_unauthRoleName": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "c4bhform"
+        }
+      ]
+    },
+    "AMPLIFY_auth_c4bhform_userPoolId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "c4bhform"
+        }
+      ]
+    },
+    "AMPLIFY_auth_c4bhform_userPoolName": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "c4bhform"
+        }
+      ]
+    },
+    "AMPLIFY_auth_c4bhform_webClientId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "c4bhform"
+        }
+      ]
+    }
+  }
+}

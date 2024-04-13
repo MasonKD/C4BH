@@ -18,9 +18,10 @@ import {
   Text,
   TextField,
 } from "@aws-amplify/ui-react";
-import { C4bhFormData } from "../models";
 import { fetchByPath, getOverrideProps, validateField } from "./utils";
-import { DataStore } from "aws-amplify/datastore";
+import { generateClient } from "aws-amplify/api";
+import { createC4bhFormData } from "../graphql/mutations.ts";
+const client = generateClient();
 export default function C4bhFormDataCreateForm(props) {
   const {
     clearOnSuccess = true,
@@ -389,7 +390,14 @@ export default function C4bhFormDataCreateForm(props) {
               modelFields[key] = null;
             }
           });
-          await DataStore.save(new C4bhFormData(modelFields));
+          await client.graphql({
+            query: createC4bhFormData.replaceAll("__typename", ""),
+            variables: {
+              input: {
+                ...modelFields,
+              },
+            },
+          });
           if (onSuccess) {
             onSuccess(modelFields);
           }
@@ -398,7 +406,8 @@ export default function C4bhFormDataCreateForm(props) {
           }
         } catch (err) {
           if (onError) {
-            onError(modelFields, err.message);
+            const messages = err.errors.map((e) => e.message).join("\n");
+            onError(modelFields, messages);
           }
         }
       }}
