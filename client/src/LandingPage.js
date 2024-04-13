@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import './LandingPage.css'; 
+import './LandingPage.css';
 import logoImage from './images/C4BHLogo.png';
 
 const Logo = () => (
@@ -21,16 +21,13 @@ const LandingPage = () => {
 
   // Handler for the Sign Up button click, identical setup as sign in but could lead to a different path if needed
  const handleSignUp = () => {
-  
+
 
   navigate('/DxfRegistration');
   };
 
   return (
     <div className="main-container">
-      <header className="header">
-        <Logo />
-      </header>
       <main>
         <div className='landing-container'>
           <div className="welcome-container">

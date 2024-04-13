@@ -1,8 +1,6 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { createEmbeddingContext } from 'amazon-quicksight-embedding-sdk';
 import './Networking.css';
-import logoImage from './images/C4BHLogo.png';
 import Notebook from './SankeyChart';
 import leafPin from 'leaflet/dist/images/marker-icon.png';
 import Dxfdata from './Merged_DSA_SignatoryList_with_Lat_Long_Corrected.json';
@@ -11,16 +9,9 @@ import 'leaflet/dist/leaflet.css';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import Select from 'react-select';
 
-const Logo = () => (
-  <div className="logo">
-    <img src={logoImage} alt="Connecting for Better Health" />
-  </div>
-);
 
 const Networking = () => {
-  const navigate = useNavigate();
-  const handleSignOut = () => navigate('/');
-  
+
   const [selectedCities, setSelectedCities] = useState([]);
   const [selectedTypes, setSelectedTypes] = useState([]);
   const [selectedSubTypes, setSelectedSubTypes] = useState([]);
@@ -78,7 +69,7 @@ const Networking = () => {
     setDashboardId(dashboardId)
   }
 
-  
+
 
 
   const cityOptions = useMemo(() => {
@@ -110,7 +101,7 @@ const Networking = () => {
     return options.map(subType => ({ value: subType, label: subType }))
       .sort((a, b) => a.label.localeCompare(b.label));
   }, [Dxfdata, selectedTypes]);
-  
+
 
   const totalSum = useMemo(() => {
     return Dxfdata.reduce((acc, item) => acc + 1, 0);
@@ -155,7 +146,7 @@ const Networking = () => {
     }, {});
     return Object.entries(counts).sort((a, b) => b[1] - a[1]); // Sort by count, descending
   }, [Dxfdata]);
-  
+
   const referralEventsCount = useMemo(() => {
     const counts = Dxfdata.reduce((acc, item) => {
       const eventName = item.Information_Delivery;
@@ -166,15 +157,15 @@ const Networking = () => {
     }, {});
     return Object.entries(counts).sort((a, b) => b[1] - a[1]); // Sort by count, descending
   }, [Dxfdata]);
-    
-  
+
+
 
   const combinedEventCounts = useMemo(() => {
     const initialCounts = adtEventsCount.reduce((acc, [eventName, count]) => {
       acc[eventName] = { qhio: count, query: 0, referral: 0 };
       return acc;
     }, {});
-  
+
     queryEventsCount.forEach(([eventName, count]) => {
       if (initialCounts[eventName]) {
         initialCounts[eventName].query = count;
@@ -182,7 +173,7 @@ const Networking = () => {
         initialCounts[eventName] = { qhio: 0, query: count, referral: 0 };
       }
     });
-  
+
     referralEventsCount.forEach(([eventName, count]) => {
       if (initialCounts[eventName]) {
         initialCounts[eventName].referral = count;
@@ -190,7 +181,7 @@ const Networking = () => {
         initialCounts[eventName] = { qhio: 0, query: 0, referral: count };
       }
     });
-  
+
     // Sort by QHIO count, descending
     return Object.entries(initialCounts).sort((a, b) => b[1].qhio - a[1].qhio);
   }, [adtEventsCount, queryEventsCount, referralEventsCount]);
@@ -207,7 +198,7 @@ const Networking = () => {
                   <th>Req. for Information</th>
                   <th>Information Delivery</th>
                   {events.map(([eventName, counts], index) => (
-                    <tr key={index}>                                       
+                    <tr key={index}>
                       <td >{eventName}</td>
                       <td >{counts.qhio}</td>
                       <td >{counts.query}</td>
@@ -229,8 +220,8 @@ const Networking = () => {
   const handleTypeChange = selectedOptions => {
     setSelectedTypes(selectedOptions || []); // Ensure selectedTypes is always an array
   };
-  
-  
+
+
 
   const handleSubTypeChange = selectedOptions => {
     setSelectedSubTypes(selectedOptions || []);
@@ -247,8 +238,8 @@ const Networking = () => {
     }, {});
   }, [Dxfdata]);
 
-  
-  
+
+
 
   const uniqueParticipants = useMemo(() => {
     let participants = [];
@@ -273,7 +264,7 @@ const Networking = () => {
     if (!Dxfdata) {
       return null;
     }
-  
+
     return Dxfdata
       .filter(item =>
         (selectedCities.length === 0 || selectedCities.some(city => city.value === item.City)) &&
@@ -316,21 +307,11 @@ const Networking = () => {
       })
       .filter(marker => marker !== null); // Ensures that only valid markers are rendered
   };
-  
-  
+
+
 
   return (
     <div className="main-container">
-      <header className="header">
-        <Logo />
-        <div className="user-participant">
-          User: C4BH Admin
-          <button className="signout-button" onClick={handleSignOut}>
-            Sign Out
-          </button>
-          <button className="back-button" onClick={() => navigate(-1)}>Back</button>
-        </div>
-      </header>
       <main>
 
         {/* --------------------------------------------------------------------Participant Tables */}
@@ -342,7 +323,7 @@ const Networking = () => {
 
           <div className='container' id='one-one'>
             <div className="table-holder">
-              
+
             <div className="table-title">
                     DSA Signatories: {totalSum}
             </div>
@@ -362,7 +343,7 @@ const Networking = () => {
 
                 </div>
 
-                
+
                 <div className='table-holder'>
                   <div className="table-title">
                       Connections
@@ -380,7 +361,7 @@ const Networking = () => {
 
 
   {/* --------------------------------------------------------------------Geographic View */}
-        
+
         <div className='section' id="section-geo">
         <div className="shared-title-container">
               <h2 className="shared-title">Geographic View</h2>
@@ -435,7 +416,7 @@ const Networking = () => {
               </div>
 
             </div>
-          
+
 
         </div>
 
@@ -454,7 +435,7 @@ const Networking = () => {
         </div>
   {/* --------------------------------------------------------------------quicksite */}
 
-  
+
 
       <div className='section' id='network-quicksight'>
       <div className="shared-title-container">
@@ -470,9 +451,9 @@ const Networking = () => {
 
 
       </div>
-    
 
-            
+
+
   {/* --------------------------------------------------------------------Hidden Table */}
         <div className='section' id='hide-me'>
 

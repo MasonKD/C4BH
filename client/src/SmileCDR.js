@@ -1,18 +1,9 @@
-import React, { useEffect, useState, useMemo, useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState, useMemo } from 'react';
 import { useTable } from 'react-table';
 import './useCase.css';
-import logoImage from './images/C4BHLogo.png';
-
-const Logo = () => (
-  <div className="logo">
-    <img src={logoImage} alt="Connecting for Better Health" />
-  </div>
-);
 
 const SmileCDR = () => {
-  
-  const navigate = useNavigate();
+
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -46,7 +37,7 @@ const SmileCDR = () => {
       Header: 'Practitioner',
       accessor: 'practitioner',
     },
-    
+
   ], []);
 
   //http://127.0.0.1:3001/smile-query
@@ -55,7 +46,7 @@ const SmileCDR = () => {
     const fetchData = async () => {
       setLoading(true);
       setError('');
-  
+
       try {
         const response = await fetch('https://sbx.connectingforbetterhealth.com/api/smile-query');
         if (!response.ok) {
@@ -63,7 +54,7 @@ const SmileCDR = () => {
         }
         const json = await response.json();
         const parsedData = JSON.parse(json.data);
-  
+
         const formattedData = parsedData.entry.map(entry => {
           const patientData = {
             id: entry.resource.id,
@@ -84,7 +75,7 @@ const SmileCDR = () => {
           };
           return patientData;
         });
-  
+
         setData(formattedData);
       } catch (error) {
         console.error('Failed to fetch data:', error);
@@ -93,12 +84,12 @@ const SmileCDR = () => {
         setLoading(false);
       }
     };
-  
+
     fetchData();
   }, []);
-  
+
   const tableInstance = useTable({ columns, data });
-  
+
   const {
     getTableProps,
     getTableBodyProps,
@@ -106,24 +97,9 @@ const SmileCDR = () => {
     rows,
     prepareRow,
   } = tableInstance;
-  
-
-  const handleSignOut = () => {
-    navigate('/');
-  };
 
   return (
     <div className='main-container'>
-      <header className="header">
-        <Logo />
-        <div className="user-participant">
-          User: C4BH Admin
-          <button className="signout-button" onClick={handleSignOut}>
-            Sign Out
-          </button>
-          <button className="back-button" onClick={() => navigate(-1)}>Back</button>
-        </div>
-      </header>
       <main>
         {loading ? (
           <p>Loading...</p>
@@ -160,7 +136,7 @@ const SmileCDR = () => {
       </main>
     </div>
   );
-  
+
 };
 
 
