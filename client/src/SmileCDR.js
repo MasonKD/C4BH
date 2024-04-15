@@ -33,10 +33,10 @@ const SmileCDR = () => {
       Header: 'Phone Number',
       accessor: 'phone',
     },
-    {
-      Header: 'PCP',
-      accessor: 'pcp',
-    },
+    //{
+      //Header: 'PCP',
+      //accessor: 'pcp',
+    //},
     {
       Header: 'Practitioner',
       accessor: 'practitioner',
@@ -76,7 +76,7 @@ const SmileCDR = () => {
             practitioner: entry.resource.contained && entry.resource.contained.length > 0
               ? entry.resource.contained.map(pract => `${pract.name[0].family}, ${pract.name[0].given.join(' ')}`).join('; ')
               : 'No practitioner listed',
-            pcp: 'No data at this time'
+            
           };
           return patientData;
         });
