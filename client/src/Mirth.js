@@ -16,22 +16,26 @@ const Mirth = () => {
         accessor: 'id',
       },
       {
-        Header: 'Content',
-        accessor: 'content',
-        
-      },
-      {
-        Header: 'Status',
-        accessor: 'status',
-      },
-      {
         Header: 'Received Date',
         accessor: 'receivedDate',
       },
       {
         Header: 'Type',
         accessor: 'type',
+      },
+      {
+        Header: 'Name',
+        accessor: 'name',
+      },
+      {
+        Header: 'Status',
+        accessor: 'status',
       }
+      //{
+        //Header: 'Content',
+        //accessor: 'content',
+        
+      //}
     ],
     []
   );
@@ -62,6 +66,7 @@ const Mirth = () => {
               status: status,
               receivedDate: receivedDateString,
               type: 'ADT-A01',
+              name: 'Estella'
             };
             return logEntry;
           } else {

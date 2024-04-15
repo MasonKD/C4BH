@@ -14,6 +14,18 @@ const SmileCDR = () => {
       accessor: 'id',
     },
     {
+      Header: 'Name',
+      accessor: 'name',
+    },
+    {
+      Header: 'Birth Date',
+      accessor: 'birthDate',
+    },
+    {
+      Header: 'Gender',
+      accessor: 'gender',
+    },
+    {
       Header: 'Address',
       accessor: 'address',
     },
@@ -22,16 +34,8 @@ const SmileCDR = () => {
       accessor: 'phone',
     },
     {
-      Header: 'Name',
-      accessor: 'name',
-    },
-    {
-      Header: 'Gender',
-      accessor: 'gender',
-    },
-    {
-      Header: 'Birth Date',
-      accessor: 'birthDate',
+      Header: 'PCP',
+      accessor: 'pcp',
     },
     {
       Header: 'Practitioner',
@@ -72,6 +76,7 @@ const SmileCDR = () => {
             practitioner: entry.resource.contained && entry.resource.contained.length > 0
               ? entry.resource.contained.map(pract => `${pract.name[0].family}, ${pract.name[0].given.join(' ')}`).join('; ')
               : 'No practitioner listed',
+            pcp: 'No data at this time'
           };
           return patientData;
         });
