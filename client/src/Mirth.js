@@ -1,16 +1,15 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import {useTable} from 'react-table';
+import { useTable } from 'react-table';
 import './Mirth.css';
+
 
 const Mirth = () => {
   const [logs, setLogs] = useState([]);
+  const [visibleRow, setVisibleRow] = useState(null); 
   const navigate = useNavigate();
 
-
-
-
-  const columns = React.useMemo(
+  const columns = useMemo(
     () => [
       {
         Header: 'Message ID',
@@ -19,6 +18,7 @@ const Mirth = () => {
       {
         Header: 'Content',
         accessor: 'content',
+        
       },
       {
         Header: 'Status',
@@ -27,44 +27,30 @@ const Mirth = () => {
       {
         Header: 'Received Date',
         accessor: 'receivedDate',
-
       },
       {
         Header: 'Type',
-        accessor: 'type'
+        accessor: 'type',
       }
     ],
     []
   );
 
-  // Use logs as memoized data for the table
-  const data = React.useMemo(() => logs, [logs]);
-
-  // Initialize table instance with the useTable hook
+  const data = useMemo(() => logs, [logs]);
   const tableInstance = useTable({ columns, data });
-
-  // Destructure the necessary properties and methods from tableInstance
-  const {
-    getTableProps,
-    getTableBodyProps,
-    headerGroups,
-    rows,
-    prepareRow,
-  } = tableInstance;
-
-
+  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = tableInstance;
+//dev URL: http://127.0.0.1:3001/mirth-logs, prod: https://sbx.connectingforbetterhealth.com/api/mirth-logs
   useEffect(() => {
     const apiEndpoint = 'https://sbx.connectingforbetterhealth.com/api/mirth-logs';
-
     fetch(apiEndpoint)
       .then(response => {
         if (!response.ok) {
           throw new Error(`HTTP status ${response.status}`);
         }
-        return response.json(); // parse the JSON response first
+        return response.json();
       })
       .then(data => {
-        const innerData = JSON.parse(data.data); // parse the escaped JSON string
+        const innerData = JSON.parse(data.data);
         const messages = innerData.message.connectorMessages.entry.map(entry => {
           const connectorMessage = entry.connectorMessage;
           if (connectorMessage && connectorMessage.raw) {
@@ -75,34 +61,30 @@ const Mirth = () => {
               content: raw.content,
               status: status,
               receivedDate: receivedDateString,
-              type: 'ADT-A01'
+              type: 'ADT-A01',
             };
             return logEntry;
           } else {
-            // Handle the case where the expected structure is not found
             console.error('Unexpected data structure:', entry);
             return null;
           }
-        }).filter(Boolean); // This will remove any null entries from the resulting array
-
-        setLogs(messages); // Set the logs state with the new data
+        }).filter(Boolean);
+        setLogs(messages);
       })
       .catch(error => {
         console.error('Error fetching data:', error);
       });
   }, [navigate]);
 
-
-  const handleSignOut = () => {
-    navigate('/');
+  const toggleRowVisibility = (rowIndex) => {
+    setVisibleRow(visibleRow === rowIndex ? null : rowIndex);
   };
+
 
   return (
     <div className='main-container'>
       <main>
         <h1>Mirth Connect Logs</h1>
-
-        {/* Render the table with react-table */}
         <table {...getTableProps()}>
           <thead>
             {headerGroups.map(headerGroup => (
@@ -114,14 +96,23 @@ const Mirth = () => {
             ))}
           </thead>
           <tbody {...getTableBodyProps()}>
-            {rows.map((row) => {
+            {rows.map((row, index) => {
               prepareRow(row);
               return (
-                <tr {...row.getRowProps()}>
-                  {row.cells.map(cell => {
-                    return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>;
-                  })}
-                </tr>
+                <React.Fragment key={index}>
+                  <tr {...row.getRowProps()} onClick={() => toggleRowVisibility(index)}>
+                    {row.cells.map(cell => {
+                      return <td {...cell.getCellProps()}>{cell.column.id === 'content' ? 'Click to view' : cell.render('Cell')}</td>;
+                    })}
+                  </tr>
+                  {visibleRow === index && (
+                    <tr>
+                      <td colSpan={row.cells.length}>
+                        {row.original.content}
+                      </td>
+                    </tr>
+                  )}
+                </React.Fragment>
               );
             })}
           </tbody>
@@ -132,6 +123,7 @@ const Mirth = () => {
 };
 
 export default Mirth;
+
 
 
 
