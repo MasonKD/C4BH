@@ -30,7 +30,7 @@ return (
 	<Logo />
 	<div>
 	<div className="user-participant">Welcome, {User?.signInDetails.loginId.split("@")[0]}</div>
-	<button onClick={() => {navigate("/DxfRegistration")}}>Register DxF Participant</button>
+	<button className="signout-button" onClick={() => {navigate("/DxfRegistration")}}>Register DxF Participant</button>
 	<button className="signout-button" onClick={Signout}>Sign Out</button>
 	</div>
 	</header>
