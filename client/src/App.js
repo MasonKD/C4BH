@@ -20,7 +20,7 @@ Amplify.configure(config);
 export function App({ signOut, user } ) {
 
   // history.pushState({ name: "Home" }, "pushState home", "index.html");
-  console.log(user)
+  // console.log(user)
   return (
     <>
       <Router>

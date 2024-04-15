@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
 
 const DxfRegistration = () => {
 	const navigate = useNavigate(); // Initialize navigate function
+
   return (
 	<div className="main-container">
 		<main>
