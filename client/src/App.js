@@ -1,14 +1,14 @@
 // App.js
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-import AppHeader from './AppHeader'
-import MainPage from './MainPage';
-import Callback from './Callback';
-import Mirth from './Mirth';
-import Networking from './Networking';
-import DxfRegistration from './DxfRegAmplify';
-import UseCase from './useCase';
-import SmileCDR from './SmileCDR';
+import AppHeader from './components/AppHeader'
+import MainPage from './pages/MainPage';
+import Callback from './data/Callback';
+import Mirth from './pages/Mirth';
+import Networking from './pages/Networking';
+import DxfRegistration from './pages/DxfRegAmplify';
+import UseCase from './pages/useCase';
+import SmileCDR from './pages/SmileCDR';
 import { Amplify } from 'aws-amplify';
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
@@ -20,7 +20,7 @@ Amplify.configure(config);
 export function App({ signOut, user } ) {
 
   // history.pushState({ name: "Home" }, "pushState home", "index.html");
-  // console.log(user)
+  console.log(user)
   return (
     <>
       <Router>

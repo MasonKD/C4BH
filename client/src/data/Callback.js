@@ -27,7 +27,7 @@ const Callback = () => {
       })
       .then(data => {
         console.log('Data:', data); // Debug: Log the data
-        const username = data.username; 
+        const username = data.username;
         login(username); // Update user context with the obtained username
         navigate('/mainpage'); // Navigate to the main page
       })

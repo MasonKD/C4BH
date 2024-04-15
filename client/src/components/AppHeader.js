@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import logoImage from './images/C4BHLogo.png';
+import logoImage from '../images/C4BHLogo.png';
 import { Hub } from 'aws-amplify/utils';
 
 const Logo = () => {

@@ -1,9 +1,9 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { createEmbeddingContext } from 'amazon-quicksight-embedding-sdk';
 import './Networking.css';
-import Notebook from './SankeyChart';
+import Notebook from '../components/SankeyChart';
 import leafPin from 'leaflet/dist/images/marker-icon.png';
-import Dxfdata from './Merged_DSA_SignatoryList_with_Lat_Long_Corrected.json';
+import Dxfdata from '../data/Merged_DSA_SignatoryList_with_Lat_Long_Corrected.json';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
