@@ -1,18 +1,10 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
-import { useUser } from './Usercontext';
 import './MainPage.css';
-import logoImage from './images/C4BHLogo.png';
 
-const Logo = () => (
-  <div className="logo">
-    <img src={logoImage} alt="Connecting for Better Health" />
-  </div>
-);
 
 const MainPage = () => {
   const navigate = useNavigate(); // Initialize navigate function
-  const { user } = useUser();
 
   // Handler for the Sign Out button
   const handleSignOut = () => {
@@ -21,12 +13,12 @@ const MainPage = () => {
 
   // Handler for the Query Master Patient Index button
   const HandleMirthQuery = () => {
-    navigate ('/Mirth'); 
+    navigate ('/Mirth');
   };
 
   // Handler for the Query Master Patient Index button
   const HandleNetworkQuery = () => {
-    navigate ('/Networking'); 
+    navigate ('/Networking');
   };
 
   const HandleUseCaseQuery = () => {
@@ -39,13 +31,6 @@ const MainPage = () => {
 
   return (
     <div className="main-container">
-      <header className="header">
-        <Logo />
-        <div>
-          <div className="user-participant">Welcome, C4BH Admin</div>
-          <button className="signout-button" onClick={handleSignOut}>Sign Out</button> 
-        </div>
-      </header>
       <main>
       <div className="button-container">
         <div className='button-col'>
@@ -62,7 +47,7 @@ const MainPage = () => {
         <div className='button-col'>
         <button className="query-button" onClick={HandleNetworkQuery}>Visualizations</button>
         </div>
-        
+
 
 
       </div>
