@@ -4,7 +4,7 @@ import https from 'https';
 
 const getMirthLogs = async (req, res) => {
 
-  const apiEndpoint = 'https://52.7.12.154:8443/api/channels/f6d4fc04-babd-41b4-a087-9bfce4affce9/messages/1';
+  const apiEndpoint = 'https://52.7.12.154:8443/api/channels/f6d4fc04-babd-41b4-a087-9bfce4affce9/messages?status=TRANSFORMED&includeContent=true&limit=20';
   const username = 'admin';
   const password = 'C4BH126!';
   const encodedCredentials = btoa(`${username}:${password}`);
