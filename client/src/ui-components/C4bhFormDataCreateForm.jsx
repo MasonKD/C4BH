@@ -248,7 +248,7 @@ export default function C4bhFormDataCreateForm(props) {
     setErrors({});
   };
   const validations = {
-    Participant: [{ type: "Required" }],
+    Participant: [],
     ParticipantID: [],
     EhrIntersystems: [],
     EhrSmile: [],
@@ -290,7 +290,7 @@ export default function C4bhFormDataCreateForm(props) {
     ReceiveRequestFHIR: [],
     ReceiveRequestIHE: [],
     ReceiveRequestNone: [],
-    HIPPA: [],
+    HIPPA: [{ type: "Required" }],
   };
   const runValidationTasks = async (
     fieldName,
@@ -420,11 +420,11 @@ export default function C4bhFormDataCreateForm(props) {
         {...getOverrideProps(overrides, "SectionalElement0")}
       ></Heading>
       <RadioGroupField
-        label="1. Are you an existing DxF Participant?"
+        label="1. Have you signed the DxF Data Sharing Agreement (DSA)?"
         name="Participant"
         isReadOnly={false}
-        descriptiveText=" If not registered, please initiate at: Home Data Exchange Framework Signing Portal (https://signdxf.powerappsportals.com/)."
-        isRequired={true}
+        descriptiveText="If not registered, please initiate at: Home Data Exchange Framework Signing Portal (https://signdxf.powerappsportals.com/)."
+        isRequired={false}
         onChange={(e) => {
           let value = e.target.value === "true";
           if (onChange) {
@@ -3437,10 +3437,11 @@ export default function C4bhFormDataCreateForm(props) {
         {...getOverrideProps(overrides, "SectionalElement19")}
       ></Heading>
       <RadioGroupField
-        label="Are you a HIPPA covered entity?"
+        label="10. Are you a HIPPA covered entity?"
         name="HIPPA"
         isReadOnly={false}
-        isRequired={false}
+        descriptiveText="10. Are you a HIPPA covered entity?"
+        isRequired={true}
         onChange={(e) => {
           let value = e.target.value === "true";
           if (onChange) {

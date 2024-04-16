@@ -1,5 +1,5 @@
 // import amplifyconfig from './amplifyconfiguration.json';
-import {C4bhFormDataCreateForm} from './ui-components'
+import {C4bhFormDataCreateForm} from '../ui-components'
 import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
 
 const DxfRegistration = () => {
@@ -25,7 +25,7 @@ const DxfRegistration = () => {
 				}}
 				onSuccess={() => {
 					console.log("success")
-					navigate('/'); // Redirects to the landing page
+					navigate('/mainpage'); // Redirects to the landing page
 				}}
 			/>
 		</main>

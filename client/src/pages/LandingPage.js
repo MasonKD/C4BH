@@ -3,6 +3,16 @@ import { useNavigate } from 'react-router-dom';
 import './LandingPage.css';
 import logoImage from './images/C4BHLogo.png';
 
+import { signIn } from 'aws-amplify/auth';
+
+async function signIn({ username, password }) {
+  try {
+    const { isSignedIn, nextStep } = await signIn({ username, password });
+  } catch (error) {
+    console.log('error signing in', error);
+  }
+}
+
 const Logo = () => (
   <div className="logo">
     <img src={logoImage} alt="Connecting for Better Health" />

@@ -1,6 +1,6 @@
 import React from 'react';
 import './useCase.css';
-import useCaseImg1 from './images/use_case1.png';
+import useCaseImg1 from '../images/use_case1.png';
 
 const useCase = () => {
 
