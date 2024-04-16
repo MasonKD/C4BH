@@ -10,48 +10,32 @@ import DxfRegistration from './pages/DxfRegAmplify';
 import UseCase from './pages/useCase';
 import SmileCDR from './pages/SmileCDR';
 import { Amplify } from 'aws-amplify';
-import { withAuthenticator } from '@aws-amplify/ui-react';
+
+import { formFields, components } from './components/Auth';
+import { Authenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 
 
 import config from './amplifyconfiguration.json';
 Amplify.configure(config);
 
-export function App({ signOut, user } ) {
-
-  // history.pushState({ name: "Home" }, "pushState home", "index.html");
-  console.log(user)
+export default function App({ signOut, user } ) {
   return (
-    <>
-      <Router>
-          <AppHeader Signout={signOut} User={user} />
-        <Routes>
-          <Route path="/" element={<MainPage />} />
-          <Route path="/callback" element={<Callback />} />
-          <Route path="/mirth" element={<Mirth />} />
-          <Route path="/Networking" element={<Networking />} />
-          <Route path="/DxfRegistration" element={<DxfRegistration />} />
-          <Route path="/UseCase" element={<UseCase />} />
-          <Route path="/SmileCDR" element={<SmileCDR />} />
-        </Routes>
-      </Router>
-    </>
+    <Router>
+      <Authenticator formFields={formFields} components={components}><>
+        <AppHeader Signout={signOut} User={user} /><Routes>
+            <Route path="/" element={<MainPage />} />
+            <Route path="/callback" element={<Callback />} />
+            <Route path="/mirth" element={<Mirth />} />
+            <Route path="/Networking" element={<Networking />} />
+            <Route path="/DxfRegistration" element={<DxfRegistration />} />
+            <Route path="/UseCase" element={<UseCase />} />
+            <Route path="/SmileCDR" element={<SmileCDR />} />
+          </Routes></>
+      </Authenticator>
+    </Router>
   );
 }
-
-
-
-// function App() {
-//   return (
-
-//     <UserProvider>
-
-//     </UserProvider>
-//   );
-// }
-
-export default withAuthenticator(App);
-
 
 
 

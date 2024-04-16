@@ -248,7 +248,7 @@ export default function C4bhFormDataCreateForm(props) {
     setErrors({});
   };
   const validations = {
-    Participant: [{ type: "Required" }],
+    Participant: [],
     ParticipantID: [],
     EhrIntersystems: [],
     EhrSmile: [],
@@ -423,8 +423,8 @@ export default function C4bhFormDataCreateForm(props) {
         label="1. Have you signed the DxF Data Sharing Agreement (DSA)?"
         name="Participant"
         isReadOnly={false}
-        descriptiveText=" If your organization is not registered, please visit the Home Data Exchange Framework Signing Portal https://signdxf.powerappsportals.com/"
-        isRequired={true}
+        descriptiveText="If not registered, please initiate at: Home Data Exchange Framework Signing Portal (https://signdxf.powerappsportals.com/)."
+        isRequired={false}
         onChange={(e) => {
           let value = e.target.value === "true";
           if (onChange) {
