@@ -1,0 +1,10 @@
+MSH|^~\&|ADT_EVENT|100|||20240124111509|UCDKSCHROYER56|ADT^A01|86860|P|2.4|||AL|NE
+EVN|A01|20240124111509||ADT_EVENT|UCDKSCHROYER56^UCDSCHROYER^KATHLEEN^EDRN-TRIAGE^^^^^UCDSA^^^^^HOSP|20240124111500
+PID|1||1234567^^^http://acme.org/mrns^MR||Contrary^Mary^J^^^^D~Contrary^Mary^J^^^^L||19680419|F||White|12 Some Street^^SACRAMENTO^CA^95817^US^^^034|034|(916)555-1234^7^7^^1^916^5551234~(916)555-4321^1^1^^1^916^5554321~^NET^Internet^maryc@yahoo.com||S|MET|MET|||||||||No
+LAN|1|SP|Patient
+ROL|1|UP|General|09941^Doe^John^^^^^^^^^^PROV|20210101||||GENERAL||500 UNIVERSITY AVE^SUITE 220^SACRAMENTO^CA^95825|(916)286-8700^^8^^^916^2868700~(916)565-1149^^4^^^916^5651149
+PV1|1|EMERGENCY|EDPAV^ED ROOM C2^3179^100001^R|X||||||ERD|||||||||9999999999^^^http://acme.org/visitNumbers^VN|P||||||||||||||||||||||||20240124111500||||||950000027572
+PV2||Emergency|^Unspecified Fall|||||20240220112000||||Hospital Encounter||||||||||N||||||||||N||||||Car
+DG1|1||W19^*Unspecified Fall^I10|||^W
+IN1|1|1650055^BLUE CROSS EPO ON/EX COVERED CA^http://acme.org/insurancePlanIds|165^^^http://acme.org/insurerIds|BLUE CROSS EPO ON/EX COVERED CA|PO BOX 60007^^LOS ANGELES^CA^90060-6007^USA^W|||||||||||Contrary^Mary^J
+IN2||000-00-0001|||Payer Plan||||||||||||||||||||||||||||||||||||||||||||||||||||||||BCP123456789||(916)222-1234^^^^^916^2221234|||||||Little Free Library
