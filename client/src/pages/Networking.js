@@ -314,6 +314,19 @@ const Networking = () => {
     <div className="main-container">
       <main>
 
+
+        {/* --------------------------------------------------------------------quicksite */}
+
+
+
+        <div className='section' id='network-quicksight'>
+            <div className="shared-title-container">
+              <h2 className="shared-title">DxF Visualizations</h2>
+            </div>
+          <div className='container' id="quicksight-holder" ref={dashboardRef} />
+
+        </div>
+
         {/* --------------------------------------------------------------------Participant Tables */}
         <div className='section' id="section-participants">
           <div>
@@ -433,24 +446,6 @@ const Networking = () => {
           </div>
         </div>
         </div>
-  {/* --------------------------------------------------------------------quicksite */}
-
-
-
-      <div className='section' id='network-quicksight'>
-      <div className="shared-title-container">
-              <h2 className="shared-title">QuickSite Network View</h2>
-    </div>
-    <div className='container'>
-    <select  id='dashboard' value={dashboardId} onChange={changeDashboard}>
-          <option value="YOUR_DASHBOARD1_ID">DxF Participant Map</option>
-      </select>
-    </div>
-
-        <div className='container' id="quicksight-holder" ref={dashboardRef} />
-
-
-      </div>
 
 
 

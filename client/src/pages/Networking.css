@@ -58,7 +58,7 @@
 
 
   .section {
-    margin: 40px 0 120px 0;
+    margin: 40px 0 2.5in 0;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -213,6 +213,10 @@ tbody tr:last-of-type {
   height: 10px;
   min-width: 100px;
   padding: 4px 8px;
+}
+
+.section-participants{
+  margin-top: 5in;
 }
 
 
