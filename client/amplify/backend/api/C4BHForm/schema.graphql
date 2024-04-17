@@ -1,6 +1,6 @@
 type C4bhFormData @model @auth(rules: [{allow: public}]) {
   id: ID!
-  Participant: Boolean!
+  user: String
   ParticipantID: String
   EhrIntersystems: Boolean
   EhrSmile: Boolean
@@ -43,4 +43,5 @@ type C4bhFormData @model @auth(rules: [{allow: public}]) {
   ReceiveRequestIHE: Boolean
   ReceiveRequestNone: Boolean
   HIPPA: Boolean
-} 
+}
+ 

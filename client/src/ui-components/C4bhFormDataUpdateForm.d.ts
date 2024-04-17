@@ -6,7 +6,6 @@
 
 import * as React from "react";
 import { GridProps, SwitchFieldProps, TextFieldProps } from "@aws-amplify/ui-react";
-import { C4bhFormData } from "../API.ts";
 export declare type EscapeHatchProps = {
     [elementHierarchy: string]: Record<string, unknown>;
 } | null;
@@ -23,7 +22,7 @@ export declare type ValidationResponse = {
 };
 export declare type ValidationFunction<T> = (value: T, validationResponse: ValidationResponse) => ValidationResponse | Promise<ValidationResponse>;
 export declare type C4bhFormDataUpdateFormInputValues = {
-    Participant?: boolean;
+    user?: string;
     ParticipantID?: string;
     EhrIntersystems?: boolean;
     EhrSmile?: boolean;
@@ -68,7 +67,7 @@ export declare type C4bhFormDataUpdateFormInputValues = {
     HIPPA?: boolean;
 };
 export declare type C4bhFormDataUpdateFormValidationValues = {
-    Participant?: ValidationFunction<boolean>;
+    user?: ValidationFunction<string>;
     ParticipantID?: ValidationFunction<string>;
     EhrIntersystems?: ValidationFunction<boolean>;
     EhrSmile?: ValidationFunction<boolean>;
@@ -115,7 +114,7 @@ export declare type C4bhFormDataUpdateFormValidationValues = {
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type C4bhFormDataUpdateFormOverridesProps = {
     C4bhFormDataUpdateFormGrid?: PrimitiveOverrideProps<GridProps>;
-    Participant?: PrimitiveOverrideProps<SwitchFieldProps>;
+    user?: PrimitiveOverrideProps<TextFieldProps>;
     ParticipantID?: PrimitiveOverrideProps<TextFieldProps>;
     EhrIntersystems?: PrimitiveOverrideProps<SwitchFieldProps>;
     EhrSmile?: PrimitiveOverrideProps<SwitchFieldProps>;
@@ -163,7 +162,7 @@ export declare type C4bhFormDataUpdateFormProps = React.PropsWithChildren<{
     overrides?: C4bhFormDataUpdateFormOverridesProps | undefined | null;
 } & {
     id?: string;
-    c4bhFormData?: C4bhFormData;
+    c4bhFormData?: any;
     onSubmit?: (fields: C4bhFormDataUpdateFormInputValues) => C4bhFormDataUpdateFormInputValues;
     onSuccess?: (fields: C4bhFormDataUpdateFormInputValues) => void;
     onError?: (fields: C4bhFormDataUpdateFormInputValues, errorMessage: string) => void;

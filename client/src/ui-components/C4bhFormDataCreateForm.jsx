@@ -21,7 +21,7 @@ import {
 } from "@aws-amplify/ui-react";
 import { fetchByPath, getOverrideProps, validateField } from "./utils";
 import { generateClient } from "aws-amplify/api";
-import { createC4bhFormData } from "../graphql/mutations.ts";
+import { createC4bhFormData } from "../graphql/mutations";
 const client = generateClient();
 export default function C4bhFormDataCreateForm(props) {
   const {
@@ -419,7 +419,7 @@ export default function C4bhFormDataCreateForm(props) {
         {...getOverrideProps(overrides, "SectionalElement5")}
       ></Divider>
       <Autocomplete
-        label="DxF Participant ID"
+        label="1. DxF Participant ID"
         descriptiveText='If you do not know your ID, refer to this file: https://tinyurl.com/3a46az9a (ID in column C). If the file doesn&apos;t open, use link below, open the "DSA Portal and Participant Directory" bar, and click DSA signatory list: www.cdii.ca.gov/committees-and-advisory-groups/data-exchange-framework/'
         isRequired={true}
         isReadOnly={false}
@@ -15671,7 +15671,7 @@ export default function C4bhFormDataCreateForm(props) {
         {...getOverrideProps(overrides, "SectionalElement4")}
       ></Divider>
       <Text
-        children="3. What EHR(s) & integration platform(s) do you interface with?"
+        children="2. What EHR(s) & integration platform(s) do you interface with?"
         {...getOverrideProps(overrides, "SectionalElement3")}
       ></Text>
       <Grid
@@ -15951,7 +15951,7 @@ export default function C4bhFormDataCreateForm(props) {
         {...getOverrideProps(overrides, "SectionalElement7")}
       ></Heading>
       <Text
-        children="4. OUTBOUND NOTIFICATIONS- Are you able to send data electronically out? If yes, please specify which content over which transports (check all that apply)."
+        children="3. OUTBOUND NOTIFICATIONS- Are you able to send data electronically out? If yes, please specify which content over which transports (check all that apply)."
         {...getOverrideProps(overrides, "SectionalElement8")}
       ></Text>
       <Grid
@@ -16374,7 +16374,7 @@ export default function C4bhFormDataCreateForm(props) {
         {...getOverrideProps(overrides, "SectionalElement9")}
       ></Divider>
       <Text
-        children="5. INFORMATION DELIVERY- Are you able to send data electronically out? If yes, please specify which content over which transports (check all that apply)."
+        children="4. INFORMATION DELIVERY- Are you able to send data electronically out? If yes, please specify which content over which transports (check all that apply)."
         {...getOverrideProps(overrides, "SectionalElement10")}
       ></Text>
       <Grid
@@ -16865,7 +16865,7 @@ export default function C4bhFormDataCreateForm(props) {
         {...getOverrideProps(overrides, "SectionalElement11")}
       ></Divider>
       <Text
-        children="6. REQUEST FOR INFORMATION- Are you able to send data electronically out? If yes, please specify which content over which transports (check all that apply)."
+        children="5. REQUEST FOR INFORMATION- Are you able to send data electronically out? If yes, please specify which content over which transports (check all that apply)."
         {...getOverrideProps(overrides, "SectionalElement12")}
       ></Text>
       <Grid
@@ -17213,7 +17213,7 @@ export default function C4bhFormDataCreateForm(props) {
         {...getOverrideProps(overrides, "SectionalElement13")}
       ></Heading>
       <Text
-        children="7. INBOUND NOTIFICATIONS- Are you able to receive data electronically? If yes, please specify which content over which transports (check all that apply)."
+        children="6. INBOUND NOTIFICATIONS- Are you able to receive data electronically? If yes, please specify which content over which transports (check all that apply)."
         {...getOverrideProps(overrides, "SectionalElement14")}
       ></Text>
       <Grid
@@ -17636,7 +17636,7 @@ export default function C4bhFormDataCreateForm(props) {
         {...getOverrideProps(overrides, "SectionalElement15")}
       ></Divider>
       <Text
-        children="8. INFORMATION DELIVERY- Are you able to receive data electronically? If yes, please specify which content over which transports (check all that apply)."
+        children="7. INFORMATION DELIVERY- Are you able to receive data electronically? If yes, please specify which content over which transports (check all that apply)."
         {...getOverrideProps(overrides, "SectionalElement16")}
       ></Text>
       <Grid
@@ -18133,7 +18133,7 @@ export default function C4bhFormDataCreateForm(props) {
         {...getOverrideProps(overrides, "SectionalElement18")}
       ></Divider>
       <Text
-        children="9. REQUEST FOR INFORMATION- Are you able to receive data electronically? If yes, please specify which content over which transports (check all that apply)."
+        children="8. REQUEST FOR INFORMATION- Are you able to receive data electronically? If yes, please specify which content over which transports (check all that apply)."
         {...getOverrideProps(overrides, "SectionalElement17")}
       ></Text>
       <Grid
@@ -18489,7 +18489,7 @@ export default function C4bhFormDataCreateForm(props) {
         {...getOverrideProps(overrides, "SectionalElement19")}
       ></Heading>
       <Text
-        children="10. Are you a HIPAA covered entity?"
+        children="9. Are you a HIPAA covered entity?"
         {...getOverrideProps(overrides, "SectionalElement6")}
       ></Text>
       <RadioGroupField

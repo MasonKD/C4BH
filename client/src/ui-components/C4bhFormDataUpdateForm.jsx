@@ -15,8 +15,8 @@ import {
 } from "@aws-amplify/ui-react";
 import { fetchByPath, getOverrideProps, validateField } from "./utils";
 import { generateClient } from "aws-amplify/api";
-import { getC4bhFormData } from "../graphql/queries.ts";
-import { updateC4bhFormData } from "../graphql/mutations.ts";
+import { getC4bhFormData } from "../graphql/queries";
+import { updateC4bhFormData } from "../graphql/mutations";
 const client = generateClient();
 export default function C4bhFormDataUpdateForm(props) {
   const {
@@ -31,7 +31,7 @@ export default function C4bhFormDataUpdateForm(props) {
     ...rest
   } = props;
   const initialValues = {
-    Participant: false,
+    user: "",
     ParticipantID: "",
     EhrIntersystems: false,
     EhrSmile: false,
@@ -75,9 +75,7 @@ export default function C4bhFormDataUpdateForm(props) {
     ReceiveRequestNone: false,
     HIPPA: false,
   };
-  const [Participant, setParticipant] = React.useState(
-    initialValues.Participant
-  );
+  const [user, setUser] = React.useState(initialValues.user);
   const [ParticipantID, setParticipantID] = React.useState(
     initialValues.ParticipantID
   );
@@ -202,7 +200,7 @@ export default function C4bhFormDataUpdateForm(props) {
     const cleanValues = c4bhFormDataRecord
       ? { ...initialValues, ...c4bhFormDataRecord }
       : initialValues;
-    setParticipant(cleanValues.Participant);
+    setUser(cleanValues.user);
     setParticipantID(cleanValues.ParticipantID);
     setEhrIntersystems(cleanValues.EhrIntersystems);
     setEhrSmile(cleanValues.EhrSmile);
@@ -266,7 +264,7 @@ export default function C4bhFormDataUpdateForm(props) {
   }, [idProp, c4bhFormDataModelProp]);
   React.useEffect(resetStateValues, [c4bhFormDataRecord]);
   const validations = {
-    Participant: [{ type: "Required" }],
+    user: [],
     ParticipantID: [],
     EhrIntersystems: [],
     EhrSmile: [],
@@ -336,7 +334,7 @@ export default function C4bhFormDataUpdateForm(props) {
       onSubmit={async (event) => {
         event.preventDefault();
         let modelFields = {
-          Participant,
+          user: user ?? null,
           ParticipantID: ParticipantID ?? null,
           EhrIntersystems: EhrIntersystems ?? null,
           EhrSmile: EhrSmile ?? null,
@@ -430,16 +428,16 @@ export default function C4bhFormDataUpdateForm(props) {
       {...getOverrideProps(overrides, "C4bhFormDataUpdateForm")}
       {...rest}
     >
-      <SwitchField
-        label="Participant"
-        defaultChecked={false}
-        isDisabled={false}
-        isChecked={Participant}
+      <TextField
+        label="User"
+        isRequired={false}
+        isReadOnly={false}
+        value={user}
         onChange={(e) => {
-          let value = e.target.checked;
+          let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              Participant: value,
+              user: value,
               ParticipantID,
               EhrIntersystems,
               EhrSmile,
@@ -484,18 +482,18 @@ export default function C4bhFormDataUpdateForm(props) {
               HIPPA,
             };
             const result = onChange(modelFields);
-            value = result?.Participant ?? value;
+            value = result?.user ?? value;
           }
-          if (errors.Participant?.hasError) {
-            runValidationTasks("Participant", value);
+          if (errors.user?.hasError) {
+            runValidationTasks("user", value);
           }
-          setParticipant(value);
+          setUser(value);
         }}
-        onBlur={() => runValidationTasks("Participant", Participant)}
-        errorMessage={errors.Participant?.errorMessage}
-        hasError={errors.Participant?.hasError}
-        {...getOverrideProps(overrides, "Participant")}
-      ></SwitchField>
+        onBlur={() => runValidationTasks("user", user)}
+        errorMessage={errors.user?.errorMessage}
+        hasError={errors.user?.hasError}
+        {...getOverrideProps(overrides, "user")}
+      ></TextField>
       <TextField
         label="Participant id"
         isRequired={false}
@@ -505,7 +503,7 @@ export default function C4bhFormDataUpdateForm(props) {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              Participant,
+              user,
               ParticipantID: value,
               EhrIntersystems,
               EhrSmile,
@@ -571,7 +569,7 @@ export default function C4bhFormDataUpdateForm(props) {
           let value = e.target.checked;
           if (onChange) {
             const modelFields = {
-              Participant,
+              user,
               ParticipantID,
               EhrIntersystems: value,
               EhrSmile,
@@ -637,7 +635,7 @@ export default function C4bhFormDataUpdateForm(props) {
           let value = e.target.checked;
           if (onChange) {
             const modelFields = {
-              Participant,
+              user,
               ParticipantID,
               EhrIntersystems,
               EhrSmile: value,
@@ -703,7 +701,7 @@ export default function C4bhFormDataUpdateForm(props) {
           let value = e.target.checked;
           if (onChange) {
             const modelFields = {
-              Participant,
+              user,
               ParticipantID,
               EhrIntersystems,
               EhrSmile,
@@ -769,7 +767,7 @@ export default function C4bhFormDataUpdateForm(props) {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              Participant,
+              user,
               ParticipantID,
               EhrIntersystems,
               EhrSmile,
@@ -835,7 +833,7 @@ export default function C4bhFormDataUpdateForm(props) {
           let value = e.target.checked;
           if (onChange) {
             const modelFields = {
-              Participant,
+              user,
               ParticipantID,
               EhrIntersystems,
               EhrSmile,
@@ -903,7 +901,7 @@ export default function C4bhFormDataUpdateForm(props) {
           let value = e.target.checked;
           if (onChange) {
             const modelFields = {
-              Participant,
+              user,
               ParticipantID,
               EhrIntersystems,
               EhrSmile,
@@ -969,7 +967,7 @@ export default function C4bhFormDataUpdateForm(props) {
           let value = e.target.checked;
           if (onChange) {
             const modelFields = {
-              Participant,
+              user,
               ParticipantID,
               EhrIntersystems,
               EhrSmile,
@@ -1035,7 +1033,7 @@ export default function C4bhFormDataUpdateForm(props) {
           let value = e.target.checked;
           if (onChange) {
             const modelFields = {
-              Participant,
+              user,
               ParticipantID,
               EhrIntersystems,
               EhrSmile,
@@ -1103,7 +1101,7 @@ export default function C4bhFormDataUpdateForm(props) {
           let value = e.target.checked;
           if (onChange) {
             const modelFields = {
-              Participant,
+              user,
               ParticipantID,
               EhrIntersystems,
               EhrSmile,
@@ -1169,7 +1167,7 @@ export default function C4bhFormDataUpdateForm(props) {
           let value = e.target.checked;
           if (onChange) {
             const modelFields = {
-              Participant,
+              user,
               ParticipantID,
               EhrIntersystems,
               EhrSmile,
@@ -1235,7 +1233,7 @@ export default function C4bhFormDataUpdateForm(props) {
           let value = e.target.checked;
           if (onChange) {
             const modelFields = {
-              Participant,
+              user,
               ParticipantID,
               EhrIntersystems,
               EhrSmile,
@@ -1303,7 +1301,7 @@ export default function C4bhFormDataUpdateForm(props) {
           let value = e.target.checked;
           if (onChange) {
             const modelFields = {
-              Participant,
+              user,
               ParticipantID,
               EhrIntersystems,
               EhrSmile,
@@ -1371,7 +1369,7 @@ export default function C4bhFormDataUpdateForm(props) {
           let value = e.target.checked;
           if (onChange) {
             const modelFields = {
-              Participant,
+              user,
               ParticipantID,
               EhrIntersystems,
               EhrSmile,
@@ -1439,7 +1437,7 @@ export default function C4bhFormDataUpdateForm(props) {
           let value = e.target.checked;
           if (onChange) {
             const modelFields = {
-              Participant,
+              user,
               ParticipantID,
               EhrIntersystems,
               EhrSmile,
@@ -1507,7 +1505,7 @@ export default function C4bhFormDataUpdateForm(props) {
           let value = e.target.checked;
           if (onChange) {
             const modelFields = {
-              Participant,
+              user,
               ParticipantID,
               EhrIntersystems,
               EhrSmile,
@@ -1575,7 +1573,7 @@ export default function C4bhFormDataUpdateForm(props) {
           let value = e.target.checked;
           if (onChange) {
             const modelFields = {
-              Participant,
+              user,
               ParticipantID,
               EhrIntersystems,
               EhrSmile,
@@ -1643,7 +1641,7 @@ export default function C4bhFormDataUpdateForm(props) {
           let value = e.target.checked;
           if (onChange) {
             const modelFields = {
-              Participant,
+              user,
               ParticipantID,
               EhrIntersystems,
               EhrSmile,
@@ -1711,7 +1709,7 @@ export default function C4bhFormDataUpdateForm(props) {
           let value = e.target.checked;
           if (onChange) {
             const modelFields = {
-              Participant,
+              user,
               ParticipantID,
               EhrIntersystems,
               EhrSmile,
@@ -1779,7 +1777,7 @@ export default function C4bhFormDataUpdateForm(props) {
           let value = e.target.checked;
           if (onChange) {
             const modelFields = {
-              Participant,
+              user,
               ParticipantID,
               EhrIntersystems,
               EhrSmile,
@@ -1845,7 +1843,7 @@ export default function C4bhFormDataUpdateForm(props) {
           let value = e.target.checked;
           if (onChange) {
             const modelFields = {
-              Participant,
+              user,
               ParticipantID,
               EhrIntersystems,
               EhrSmile,
@@ -1911,7 +1909,7 @@ export default function C4bhFormDataUpdateForm(props) {
           let value = e.target.checked;
           if (onChange) {
             const modelFields = {
-              Participant,
+              user,
               ParticipantID,
               EhrIntersystems,
               EhrSmile,
@@ -1977,7 +1975,7 @@ export default function C4bhFormDataUpdateForm(props) {
           let value = e.target.checked;
           if (onChange) {
             const modelFields = {
-              Participant,
+              user,
               ParticipantID,
               EhrIntersystems,
               EhrSmile,
@@ -2043,7 +2041,7 @@ export default function C4bhFormDataUpdateForm(props) {
           let value = e.target.checked;
           if (onChange) {
             const modelFields = {
-              Participant,
+              user,
               ParticipantID,
               EhrIntersystems,
               EhrSmile,
@@ -2111,7 +2109,7 @@ export default function C4bhFormDataUpdateForm(props) {
           let value = e.target.checked;
           if (onChange) {
             const modelFields = {
-              Participant,
+              user,
               ParticipantID,
               EhrIntersystems,
               EhrSmile,
@@ -2179,7 +2177,7 @@ export default function C4bhFormDataUpdateForm(props) {
           let value = e.target.checked;
           if (onChange) {
             const modelFields = {
-              Participant,
+              user,
               ParticipantID,
               EhrIntersystems,
               EhrSmile,
@@ -2247,7 +2245,7 @@ export default function C4bhFormDataUpdateForm(props) {
           let value = e.target.checked;
           if (onChange) {
             const modelFields = {
-              Participant,
+              user,
               ParticipantID,
               EhrIntersystems,
               EhrSmile,
@@ -2315,7 +2313,7 @@ export default function C4bhFormDataUpdateForm(props) {
           let value = e.target.checked;
           if (onChange) {
             const modelFields = {
-              Participant,
+              user,
               ParticipantID,
               EhrIntersystems,
               EhrSmile,
@@ -2383,7 +2381,7 @@ export default function C4bhFormDataUpdateForm(props) {
           let value = e.target.checked;
           if (onChange) {
             const modelFields = {
-              Participant,
+              user,
               ParticipantID,
               EhrIntersystems,
               EhrSmile,
@@ -2451,7 +2449,7 @@ export default function C4bhFormDataUpdateForm(props) {
           let value = e.target.checked;
           if (onChange) {
             const modelFields = {
-              Participant,
+              user,
               ParticipantID,
               EhrIntersystems,
               EhrSmile,
@@ -2522,7 +2520,7 @@ export default function C4bhFormDataUpdateForm(props) {
           let value = e.target.checked;
           if (onChange) {
             const modelFields = {
-              Participant,
+              user,
               ParticipantID,
               EhrIntersystems,
               EhrSmile,
@@ -2590,7 +2588,7 @@ export default function C4bhFormDataUpdateForm(props) {
           let value = e.target.checked;
           if (onChange) {
             const modelFields = {
-              Participant,
+              user,
               ParticipantID,
               EhrIntersystems,
               EhrSmile,
@@ -2658,7 +2656,7 @@ export default function C4bhFormDataUpdateForm(props) {
           let value = e.target.checked;
           if (onChange) {
             const modelFields = {
-              Participant,
+              user,
               ParticipantID,
               EhrIntersystems,
               EhrSmile,
@@ -2726,7 +2724,7 @@ export default function C4bhFormDataUpdateForm(props) {
           let value = e.target.checked;
           if (onChange) {
             const modelFields = {
-              Participant,
+              user,
               ParticipantID,
               EhrIntersystems,
               EhrSmile,
@@ -2794,7 +2792,7 @@ export default function C4bhFormDataUpdateForm(props) {
           let value = e.target.checked;
           if (onChange) {
             const modelFields = {
-              Participant,
+              user,
               ParticipantID,
               EhrIntersystems,
               EhrSmile,
@@ -2862,7 +2860,7 @@ export default function C4bhFormDataUpdateForm(props) {
           let value = e.target.checked;
           if (onChange) {
             const modelFields = {
-              Participant,
+              user,
               ParticipantID,
               EhrIntersystems,
               EhrSmile,
@@ -2930,7 +2928,7 @@ export default function C4bhFormDataUpdateForm(props) {
           let value = e.target.checked;
           if (onChange) {
             const modelFields = {
-              Participant,
+              user,
               ParticipantID,
               EhrIntersystems,
               EhrSmile,
@@ -2998,7 +2996,7 @@ export default function C4bhFormDataUpdateForm(props) {
           let value = e.target.checked;
           if (onChange) {
             const modelFields = {
-              Participant,
+              user,
               ParticipantID,
               EhrIntersystems,
               EhrSmile,
@@ -3066,7 +3064,7 @@ export default function C4bhFormDataUpdateForm(props) {
           let value = e.target.checked;
           if (onChange) {
             const modelFields = {
-              Participant,
+              user,
               ParticipantID,
               EhrIntersystems,
               EhrSmile,
@@ -3134,7 +3132,7 @@ export default function C4bhFormDataUpdateForm(props) {
           let value = e.target.checked;
           if (onChange) {
             const modelFields = {
-              Participant,
+              user,
               ParticipantID,
               EhrIntersystems,
               EhrSmile,
@@ -3202,7 +3200,7 @@ export default function C4bhFormDataUpdateForm(props) {
           let value = e.target.checked;
           if (onChange) {
             const modelFields = {
-              Participant,
+              user,
               ParticipantID,
               EhrIntersystems,
               EhrSmile,
@@ -3270,7 +3268,7 @@ export default function C4bhFormDataUpdateForm(props) {
           let value = e.target.checked;
           if (onChange) {
             const modelFields = {
-              Participant,
+              user,
               ParticipantID,
               EhrIntersystems,
               EhrSmile,
