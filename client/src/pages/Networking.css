@@ -51,14 +51,31 @@
     z-index: 1000; /* Same or higher z-index as .city-selector to ensure dropdown is on top */
   }
 
-
-
+  .hide-toggle-button {
+    margin: 0 0 0 20px;
+    padding: .6rem 1.4rem;
+    background: #1D4A7A;
+    border: none;
+    border-radius: 30px; /* More rounded */
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+    
+  }
+  
+  .hide-toggle-button:hover {
+    background: #14539c; /* slightly lighter blue for hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* pronounced shadow on hover */
+  }
 
 
 
 
   .section {
-    margin: 40px 0 2.5in 0;
+    margin: 40px 0 3in 0;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;

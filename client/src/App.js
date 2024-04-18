@@ -9,6 +9,7 @@ import Networking from './pages/Networking';
 import DxfRegistration from './pages/DxfRegAmplify';
 import UseCase from './pages/useCase';
 import SmileCDR from './pages/SmileCDR';
+import Background from './pages/Background';
 import { Amplify } from 'aws-amplify';
 
 import { formFields, components } from './components/Auth';
@@ -31,6 +32,7 @@ export default function App({ signOut, user } ) {
             <Route path="/DxfRegistration" element={<DxfRegistration />} />
             <Route path="/UseCase" element={<UseCase />} />
             <Route path="/SmileCDR" element={<SmileCDR />} />
+            <Route path="/Background" element={<Background />} />
           </Routes></>
       </Authenticator>
     </Router>

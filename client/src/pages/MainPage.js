@@ -29,10 +29,17 @@ const MainPage = () => {
     navigate('/SmileCDR');
     };
 
+    const HandleBackgroundQuery = () => {
+      navigate('/Background');
+      };
+
   return (
     <div className="main-container">
       <main>
       <div className="button-container">
+        <div className='button-col'>
+          <button className="query-button" onClick={HandleBackgroundQuery}>Background</button>
+        </div>
         <div className='button-col'>
           <button className="query-button" onClick={HandleUseCaseQuery}>Use Cases</button>
         </div>
