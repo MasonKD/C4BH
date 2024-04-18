@@ -2,7 +2,22 @@
     margin: 20px 0 0 0;
     max-width: 1110px;
 }
+.img-holder2 {
+  margin: 20px 0 0 0;
+  max-width: 1110px;
+  margin-top: 2in;
+}
 
+.img-holder3 {
+  margin: 20px 0 0 0;
+  max-width: 1110px;
+  margin-top: 1in;
+}
+
+.reg-btn-holder{
+  max-height: 24px;
+margin: 300px 0 0 0;
+}
 .reg-button {
     margin: 0 0 0 20px;
     padding: .6rem 1.4rem;

@@ -112,7 +112,7 @@ const SmileCDR = () => {
           <p>{error}</p>
         ) : (
           <div>
-            <h1>Smile CDR Data</h1>
+            <h1>Clinical Data Repository (Smile)</h1>
             <table {...getTableProps()} className="table">
               <thead>
                 {headerGroups.map((headerGroup) => (

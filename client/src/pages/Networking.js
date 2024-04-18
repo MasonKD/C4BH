@@ -10,6 +10,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import Select from 'react-select';
 
 
+
 const Networking = () => {
 
   const [selectedCities, setSelectedCities] = useState([]);
@@ -20,6 +21,11 @@ const Networking = () => {
   const [embeddedDashboard, setEmbeddedDashboard] = useState(null);
   const [dashboardUrl, setDashboardUrl] = useState(null);
   const [embeddingContext, setEmbeddingContext] = useState(null);
+  const [showOnlyQuicksite, setShowOnlyQuicksite] = useState(false);
+
+  const toggleVisibility = () => {
+    setShowOnlyQuicksite(!showOnlyQuicksite);
+  };
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -316,20 +322,24 @@ const Networking = () => {
 
 
         {/* --------------------------------------------------------------------quicksite */}
-
+        <button onClick={toggleVisibility} className="hide-toggle-button">
+          {showOnlyQuicksite ? 'Show All Visualizations' : 'Show Only Quicksite'}
+        </button>
 
 
         <div className='section' id='network-quicksight'>
             <div className="shared-title-container">
-              <h2 className="shared-title">DxF Visualizations</h2>
+              <h2 className="shared-title">DxF Sandbox: Visualizations</h2>
             </div>
           <div className='container' id="quicksight-holder" ref={dashboardRef} />
 
-        </div>
+          </div>
 
         {/* --------------------------------------------------------------------Participant Tables */}
-        <div className='section' id="section-participants">
-          <div>
+        {!showOnlyQuicksite && (
+    <>
+      <div className='section' id="section-participants">
+      <div>
             <h2 className="shared-title">Participants</h2>
 
           </div>
@@ -366,17 +376,10 @@ const Networking = () => {
 
 
               </div>
-          </div>
+      </div>
 
-
-
-
-
-
-  {/* --------------------------------------------------------------------Geographic View */}
-
-        <div className='section' id="section-geo">
-        <div className="shared-title-container">
+      <div className='section' id="section-geo">
+      <div className="shared-title-container">
               <h2 className="shared-title">Geographic View</h2>
             </div>
             <div className='container'>
@@ -429,14 +432,10 @@ const Networking = () => {
               </div>
 
             </div>
+      </div>
 
-
-        </div>
-
-
-  {/* --------------------------------------------------------------------Sankey  */}
-        <div className='section' id="section-sankey">
-        <div className="shared-title-container">
+      <div className='section' id="section-sankey">
+      <div className="shared-title-container">
               <h2 className="shared-title">Network View</h2>
             </div>
           <div className='container' id='one'>
@@ -445,14 +444,10 @@ const Networking = () => {
             <Notebook />
           </div>
         </div>
-        </div>
+      </div>
 
-
-
-  {/* --------------------------------------------------------------------Hidden Table */}
-        <div className='section' id='hide-me'>
-
-          <div className="shared-title-container">
+      <div className='section' id='hide-me'>
+      <div className="shared-title-container">
             <h2 className="shared-title">Participant Table</h2>
           </div>
           <div className="table-container">
@@ -483,7 +478,9 @@ const Networking = () => {
             </tbody>
           </table>
           </div>
-        </div>
+      </div>
+    </>
+  )}
 
 
 

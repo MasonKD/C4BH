@@ -105,7 +105,7 @@ const extractNameFromHL7 = (content) => {
   return (
     <div className='main-container'>
       <main>
-        <h1>Mirth Connect Logs</h1>
+        <h1>Integration Engine (Mirth)</h1>
         <table {...getTableProps()}>
           <thead>
             {headerGroups.map(headerGroup => (
