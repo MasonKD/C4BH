@@ -5,7 +5,7 @@
  **************************************************************************/
 
 import * as React from "react";
-import { AutocompleteProps, CheckboxFieldProps, DividerProps, GridProps, HeadingProps, RadioGroupFieldProps, TextFieldProps, TextProps } from "@aws-amplify/ui-react";
+import { AutocompleteProps, CheckboxFieldProps, DividerProps, GridProps, HeadingProps, RadioGroupFieldProps, TextProps } from "@aws-amplify/ui-react";
 export declare type EscapeHatchProps = {
     [elementHierarchy: string]: Record<string, unknown>;
 } | null;
@@ -26,7 +26,9 @@ export declare type C4bhFormDataCreateFormInputValues = {
     EhrIntersystems?: boolean;
     EhrSmile?: boolean;
     EhrSalesforce?: boolean;
-    EhrOther?: string;
+    MirthNextGen?: boolean;
+    IntegrationOther?: boolean;
+    EhrList?: string;
     SendOutboundDirect?: boolean;
     SendOutboundSFTP?: boolean;
     SendOutboundMLLP?: boolean;
@@ -70,7 +72,9 @@ export declare type C4bhFormDataCreateFormValidationValues = {
     EhrIntersystems?: ValidationFunction<boolean>;
     EhrSmile?: ValidationFunction<boolean>;
     EhrSalesforce?: ValidationFunction<boolean>;
-    EhrOther?: ValidationFunction<string>;
+    MirthNextGen?: ValidationFunction<boolean>;
+    IntegrationOther?: ValidationFunction<boolean>;
+    EhrList?: ValidationFunction<string>;
     SendOutboundDirect?: ValidationFunction<boolean>;
     SendOutboundSFTP?: ValidationFunction<boolean>;
     SendOutboundMLLP?: ValidationFunction<boolean>;
@@ -118,14 +122,17 @@ export declare type C4bhFormDataCreateFormOverridesProps = {
     SectionalElement1?: PrimitiveOverrideProps<TextProps>;
     SectionalElement4?: PrimitiveOverrideProps<DividerProps>;
     SectionalElement3?: PrimitiveOverrideProps<TextProps>;
-    RowGrid6?: PrimitiveOverrideProps<GridProps>;
+    SectionalElement2?: PrimitiveOverrideProps<TextProps>;
+    RowGrid7?: PrimitiveOverrideProps<GridProps>;
     EhrIntersystems?: PrimitiveOverrideProps<CheckboxFieldProps>;
     EhrSmile?: PrimitiveOverrideProps<CheckboxFieldProps>;
     EhrSalesforce?: PrimitiveOverrideProps<CheckboxFieldProps>;
-    EhrOther?: PrimitiveOverrideProps<TextFieldProps>;
+    MirthNextGen?: PrimitiveOverrideProps<CheckboxFieldProps>;
+    IntegrationOther?: PrimitiveOverrideProps<CheckboxFieldProps>;
+    EhrList?: PrimitiveOverrideProps<AutocompleteProps>;
     SectionalElement7?: PrimitiveOverrideProps<HeadingProps>;
     SectionalElement8?: PrimitiveOverrideProps<TextProps>;
-    RowGrid10?: PrimitiveOverrideProps<GridProps>;
+    RowGrid11?: PrimitiveOverrideProps<GridProps>;
     SendOutboundDirect?: PrimitiveOverrideProps<CheckboxFieldProps>;
     SendOutboundSFTP?: PrimitiveOverrideProps<CheckboxFieldProps>;
     SendOutboundMLLP?: PrimitiveOverrideProps<CheckboxFieldProps>;
@@ -134,7 +141,7 @@ export declare type C4bhFormDataCreateFormOverridesProps = {
     SendOutboundNone?: PrimitiveOverrideProps<CheckboxFieldProps>;
     SectionalElement9?: PrimitiveOverrideProps<DividerProps>;
     SectionalElement10?: PrimitiveOverrideProps<TextProps>;
-    RowGrid13?: PrimitiveOverrideProps<GridProps>;
+    RowGrid14?: PrimitiveOverrideProps<GridProps>;
     SendInformationDirect?: PrimitiveOverrideProps<CheckboxFieldProps>;
     SendInformationSFTP?: PrimitiveOverrideProps<CheckboxFieldProps>;
     SendInformationMLLP?: PrimitiveOverrideProps<CheckboxFieldProps>;
@@ -144,7 +151,7 @@ export declare type C4bhFormDataCreateFormOverridesProps = {
     SendInformationNone?: PrimitiveOverrideProps<CheckboxFieldProps>;
     SectionalElement11?: PrimitiveOverrideProps<DividerProps>;
     SectionalElement12?: PrimitiveOverrideProps<TextProps>;
-    RowGrid16?: PrimitiveOverrideProps<GridProps>;
+    RowGrid17?: PrimitiveOverrideProps<GridProps>;
     SendRequestDirect?: PrimitiveOverrideProps<CheckboxFieldProps>;
     SendRequestSFTP?: PrimitiveOverrideProps<CheckboxFieldProps>;
     SendRequestFHIR?: PrimitiveOverrideProps<CheckboxFieldProps>;
@@ -152,7 +159,7 @@ export declare type C4bhFormDataCreateFormOverridesProps = {
     SendRequestNone?: PrimitiveOverrideProps<CheckboxFieldProps>;
     SectionalElement13?: PrimitiveOverrideProps<HeadingProps>;
     SectionalElement14?: PrimitiveOverrideProps<TextProps>;
-    RowGrid19?: PrimitiveOverrideProps<GridProps>;
+    RowGrid20?: PrimitiveOverrideProps<GridProps>;
     ReceiveInboundDirect?: PrimitiveOverrideProps<CheckboxFieldProps>;
     ReceiveInboundSFTP?: PrimitiveOverrideProps<CheckboxFieldProps>;
     ReceiveInboundMLLP?: PrimitiveOverrideProps<CheckboxFieldProps>;
@@ -161,7 +168,7 @@ export declare type C4bhFormDataCreateFormOverridesProps = {
     ReceiveInboundNone?: PrimitiveOverrideProps<CheckboxFieldProps>;
     SectionalElement15?: PrimitiveOverrideProps<DividerProps>;
     SectionalElement16?: PrimitiveOverrideProps<TextProps>;
-    RowGrid22?: PrimitiveOverrideProps<GridProps>;
+    RowGrid23?: PrimitiveOverrideProps<GridProps>;
     ReceiveInformationDirect?: PrimitiveOverrideProps<CheckboxFieldProps>;
     ReceiveInformationSFTP?: PrimitiveOverrideProps<CheckboxFieldProps>;
     ReceiveInformationMLLP?: PrimitiveOverrideProps<CheckboxFieldProps>;
@@ -171,7 +178,7 @@ export declare type C4bhFormDataCreateFormOverridesProps = {
     ReceiveInformationNone?: PrimitiveOverrideProps<CheckboxFieldProps>;
     SectionalElement18?: PrimitiveOverrideProps<DividerProps>;
     SectionalElement17?: PrimitiveOverrideProps<TextProps>;
-    RowGrid25?: PrimitiveOverrideProps<GridProps>;
+    RowGrid26?: PrimitiveOverrideProps<GridProps>;
     ReceiveRequestDirect?: PrimitiveOverrideProps<CheckboxFieldProps>;
     ReceiveRequestSFTP?: PrimitiveOverrideProps<CheckboxFieldProps>;
     ReceiveRequestFHIR?: PrimitiveOverrideProps<CheckboxFieldProps>;

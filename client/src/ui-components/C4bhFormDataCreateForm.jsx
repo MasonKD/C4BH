@@ -17,7 +17,6 @@ import {
   Radio,
   RadioGroupField,
   Text,
-  TextField,
 } from "@aws-amplify/ui-react";
 import { fetchByPath, getOverrideProps, validateField } from "./utils";
 import { generateClient } from "aws-amplify/api";
@@ -39,7 +38,9 @@ export default function C4bhFormDataCreateForm(props) {
     EhrIntersystems: false,
     EhrSmile: false,
     EhrSalesforce: false,
-    EhrOther: "",
+    MirthNextGen: false,
+    IntegrationOther: false,
+    EhrList: undefined,
     SendOutboundDirect: false,
     SendOutboundSFTP: false,
     SendOutboundMLLP: false,
@@ -88,7 +89,13 @@ export default function C4bhFormDataCreateForm(props) {
   const [EhrSalesforce, setEhrSalesforce] = React.useState(
     initialValues.EhrSalesforce
   );
-  const [EhrOther, setEhrOther] = React.useState(initialValues.EhrOther);
+  const [MirthNextGen, setMirthNextGen] = React.useState(
+    initialValues.MirthNextGen
+  );
+  const [IntegrationOther, setIntegrationOther] = React.useState(
+    initialValues.IntegrationOther
+  );
+  const [EhrList, setEhrList] = React.useState(initialValues.EhrList);
   const [SendOutboundDirect, setSendOutboundDirect] = React.useState(
     initialValues.SendOutboundDirect
   );
@@ -203,7 +210,9 @@ export default function C4bhFormDataCreateForm(props) {
     setEhrIntersystems(initialValues.EhrIntersystems);
     setEhrSmile(initialValues.EhrSmile);
     setEhrSalesforce(initialValues.EhrSalesforce);
-    setEhrOther(initialValues.EhrOther);
+    setMirthNextGen(initialValues.MirthNextGen);
+    setIntegrationOther(initialValues.IntegrationOther);
+    setEhrList(initialValues.EhrList);
     setSendOutboundDirect(initialValues.SendOutboundDirect);
     setSendOutboundSFTP(initialValues.SendOutboundSFTP);
     setSendOutboundMLLP(initialValues.SendOutboundMLLP);
@@ -248,7 +257,9 @@ export default function C4bhFormDataCreateForm(props) {
     EhrIntersystems: [],
     EhrSmile: [],
     EhrSalesforce: [],
-    EhrOther: [],
+    MirthNextGen: [],
+    IntegrationOther: [],
+    EhrList: [],
     SendOutboundDirect: [],
     SendOutboundSFTP: [],
     SendOutboundMLLP: [],
@@ -318,7 +329,9 @@ export default function C4bhFormDataCreateForm(props) {
           EhrIntersystems,
           EhrSmile,
           EhrSalesforce,
-          EhrOther,
+          MirthNextGen,
+          IntegrationOther,
+          EhrList,
           SendOutboundDirect,
           SendOutboundSFTP,
           SendOutboundMLLP,
@@ -15609,7 +15622,9 @@ export default function C4bhFormDataCreateForm(props) {
               EhrIntersystems,
               EhrSmile,
               EhrSalesforce,
-              EhrOther,
+              MirthNextGen,
+              IntegrationOther,
+              EhrList,
               SendOutboundDirect,
               SendOutboundSFTP,
               SendOutboundMLLP,
@@ -15671,14 +15686,18 @@ export default function C4bhFormDataCreateForm(props) {
         {...getOverrideProps(overrides, "SectionalElement4")}
       ></Divider>
       <Text
-        children="2. What EHR(s) & integration platform(s) do you interface with?"
+        children="2. What integration platform(s) & EHR do you interface with?"
         {...getOverrideProps(overrides, "SectionalElement3")}
+      ></Text>
+      <Text
+        children="Integration Platforms"
+        {...getOverrideProps(overrides, "SectionalElement2")}
       ></Text>
       <Grid
         columnGap="inherit"
         rowGap="inherit"
-        templateColumns="repeat(3, auto)"
-        {...getOverrideProps(overrides, "RowGrid6")}
+        templateColumns="repeat(5, auto)"
+        {...getOverrideProps(overrides, "RowGrid7")}
       >
         <CheckboxField
           label="Intersystems"
@@ -15694,7 +15713,9 @@ export default function C4bhFormDataCreateForm(props) {
                 EhrIntersystems: value,
                 EhrSmile,
                 EhrSalesforce,
-                EhrOther,
+                MirthNextGen,
+                IntegrationOther,
+                EhrList,
                 SendOutboundDirect,
                 SendOutboundSFTP,
                 SendOutboundMLLP,
@@ -15760,7 +15781,9 @@ export default function C4bhFormDataCreateForm(props) {
                 EhrIntersystems,
                 EhrSmile: value,
                 EhrSalesforce,
-                EhrOther,
+                MirthNextGen,
+                IntegrationOther,
+                EhrList,
                 SendOutboundDirect,
                 SendOutboundSFTP,
                 SendOutboundMLLP,
@@ -15826,7 +15849,9 @@ export default function C4bhFormDataCreateForm(props) {
                 EhrIntersystems,
                 EhrSmile,
                 EhrSalesforce: value,
-                EhrOther,
+                MirthNextGen,
+                IntegrationOther,
+                EhrList,
                 SendOutboundDirect,
                 SendOutboundSFTP,
                 SendOutboundMLLP,
@@ -15878,13 +15903,191 @@ export default function C4bhFormDataCreateForm(props) {
           hasError={errors.EhrSalesforce?.hasError}
           {...getOverrideProps(overrides, "EhrSalesforce")}
         ></CheckboxField>
+        <CheckboxField
+          label="Mirth/NextGen"
+          name="MirthNextGen"
+          value="MirthNextGen"
+          isDisabled={false}
+          checked={MirthNextGen}
+          onChange={(e) => {
+            let value = e.target.checked;
+            if (onChange) {
+              const modelFields = {
+                ParticipantID,
+                EhrIntersystems,
+                EhrSmile,
+                EhrSalesforce,
+                MirthNextGen: value,
+                IntegrationOther,
+                EhrList,
+                SendOutboundDirect,
+                SendOutboundSFTP,
+                SendOutboundMLLP,
+                SendOutboundHTTPS,
+                SendOutboundFHIR,
+                SendOutboundNone,
+                SendInformationDirect,
+                SendInformationSFTP,
+                SendInformationMLLP,
+                SendInformationHTTPS,
+                SendInformationFHIR,
+                SendInformationIHE,
+                SendInformationNone,
+                SendRequestDirect,
+                SendRequestSFTP,
+                SendRequestFHIR,
+                SendRequestIHE,
+                SendRequestNone,
+                ReceiveInboundDirect,
+                ReceiveInboundSFTP,
+                ReceiveInboundMLLP,
+                ReceiveInboundHTTPS,
+                ReceiveInboundFHIR,
+                ReceiveInboundNone,
+                ReceiveInformationDirect,
+                ReceiveInformationSFTP,
+                ReceiveInformationMLLP,
+                ReceiveInformationHTTPS,
+                ReceiveInformationFHIR,
+                ReceiveInformationIHE,
+                ReceiveInformationNone,
+                ReceiveRequestDirect,
+                ReceiveRequestSFTP,
+                ReceiveRequestFHIR,
+                ReceiveRequestIHE,
+                ReceiveRequestNone,
+                HIPPA,
+              };
+              const result = onChange(modelFields);
+              value = result?.MirthNextGen ?? value;
+            }
+            if (errors.MirthNextGen?.hasError) {
+              runValidationTasks("MirthNextGen", value);
+            }
+            setMirthNextGen(value);
+          }}
+          onBlur={() => runValidationTasks("MirthNextGen", MirthNextGen)}
+          errorMessage={errors.MirthNextGen?.errorMessage}
+          hasError={errors.MirthNextGen?.hasError}
+          {...getOverrideProps(overrides, "MirthNextGen")}
+        ></CheckboxField>
+        <CheckboxField
+          label="Other"
+          name="IntegrationOther"
+          value="IntegrationOther"
+          isDisabled={false}
+          checked={IntegrationOther}
+          onChange={(e) => {
+            let value = e.target.checked;
+            if (onChange) {
+              const modelFields = {
+                ParticipantID,
+                EhrIntersystems,
+                EhrSmile,
+                EhrSalesforce,
+                MirthNextGen,
+                IntegrationOther: value,
+                EhrList,
+                SendOutboundDirect,
+                SendOutboundSFTP,
+                SendOutboundMLLP,
+                SendOutboundHTTPS,
+                SendOutboundFHIR,
+                SendOutboundNone,
+                SendInformationDirect,
+                SendInformationSFTP,
+                SendInformationMLLP,
+                SendInformationHTTPS,
+                SendInformationFHIR,
+                SendInformationIHE,
+                SendInformationNone,
+                SendRequestDirect,
+                SendRequestSFTP,
+                SendRequestFHIR,
+                SendRequestIHE,
+                SendRequestNone,
+                ReceiveInboundDirect,
+                ReceiveInboundSFTP,
+                ReceiveInboundMLLP,
+                ReceiveInboundHTTPS,
+                ReceiveInboundFHIR,
+                ReceiveInboundNone,
+                ReceiveInformationDirect,
+                ReceiveInformationSFTP,
+                ReceiveInformationMLLP,
+                ReceiveInformationHTTPS,
+                ReceiveInformationFHIR,
+                ReceiveInformationIHE,
+                ReceiveInformationNone,
+                ReceiveRequestDirect,
+                ReceiveRequestSFTP,
+                ReceiveRequestFHIR,
+                ReceiveRequestIHE,
+                ReceiveRequestNone,
+                HIPPA,
+              };
+              const result = onChange(modelFields);
+              value = result?.IntegrationOther ?? value;
+            }
+            if (errors.IntegrationOther?.hasError) {
+              runValidationTasks("IntegrationOther", value);
+            }
+            setIntegrationOther(value);
+          }}
+          onBlur={() =>
+            runValidationTasks("IntegrationOther", IntegrationOther)
+          }
+          errorMessage={errors.IntegrationOther?.errorMessage}
+          hasError={errors.IntegrationOther?.hasError}
+          {...getOverrideProps(overrides, "IntegrationOther")}
+        ></CheckboxField>
       </Grid>
-      <TextField
-        label="If other, enter here (if multiple, separate by comma)"
+      <Autocomplete
+        label=" EHRs"
+        descriptiveText="If the EHR you use is not listed, please type it out."
         isRequired={false}
         isReadOnly={false}
-        placeholder="Ex: Epic, CareCloud, Athenahealth"
-        value={EhrOther}
+        options={[
+          {
+            id: "EPIC",
+            label: "EPIC",
+          },
+          {
+            id: "Cerner",
+            label: "Cerner",
+          },
+          {
+            id: "Meditech",
+            label: "Meditech",
+          },
+          {
+            id: "Athenahealth",
+            label: "Athenahealth",
+          },
+          {
+            id: "eClinical Works",
+            label: "eClinical Works",
+          },
+          {
+            id: "Allscripts/Veradigm",
+            label: "Allscripts/Veradigm",
+          },
+          {
+            id: "NextGen",
+            label: "NextGen",
+          },
+          {
+            id: "None",
+            label: "None",
+          },
+        ]}
+        onSelect={({ id, label }) => {
+          setEhrList(id);
+          runValidationTasks("EhrList", id);
+        }}
+        onClear={() => {
+          setEhrList("");
+        }}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -15893,7 +16096,9 @@ export default function C4bhFormDataCreateForm(props) {
               EhrIntersystems,
               EhrSmile,
               EhrSalesforce,
-              EhrOther: value,
+              MirthNextGen,
+              IntegrationOther,
+              EhrList: value,
               SendOutboundDirect,
               SendOutboundSFTP,
               SendOutboundMLLP,
@@ -15933,18 +16138,19 @@ export default function C4bhFormDataCreateForm(props) {
               HIPPA,
             };
             const result = onChange(modelFields);
-            value = result?.EhrOther ?? value;
+            value = result?.EhrList ?? value;
           }
-          if (errors.EhrOther?.hasError) {
-            runValidationTasks("EhrOther", value);
+          if (errors.EhrList?.hasError) {
+            runValidationTasks("EhrList", value);
           }
-          setEhrOther(value);
+          setEhrList(value);
         }}
-        onBlur={() => runValidationTasks("EhrOther", EhrOther)}
-        errorMessage={errors.EhrOther?.errorMessage}
-        hasError={errors.EhrOther?.hasError}
-        {...getOverrideProps(overrides, "EhrOther")}
-      ></TextField>
+        onBlur={() => runValidationTasks("EhrList", EhrList)}
+        errorMessage={errors.EhrList?.errorMessage}
+        hasError={errors.EhrList?.hasError}
+        labelHidden={false}
+        {...getOverrideProps(overrides, "EhrList")}
+      ></Autocomplete>
       <Heading
         level={3}
         children="Send Data"
@@ -15958,7 +16164,7 @@ export default function C4bhFormDataCreateForm(props) {
         columnGap="inherit"
         rowGap="inherit"
         templateColumns="repeat(6, auto)"
-        {...getOverrideProps(overrides, "RowGrid10")}
+        {...getOverrideProps(overrides, "RowGrid11")}
       >
         <CheckboxField
           label="Direct"
@@ -15974,7 +16180,9 @@ export default function C4bhFormDataCreateForm(props) {
                 EhrIntersystems,
                 EhrSmile,
                 EhrSalesforce,
-                EhrOther,
+                MirthNextGen,
+                IntegrationOther,
+                EhrList,
                 SendOutboundDirect: value,
                 SendOutboundSFTP,
                 SendOutboundMLLP,
@@ -16042,7 +16250,9 @@ export default function C4bhFormDataCreateForm(props) {
                 EhrIntersystems,
                 EhrSmile,
                 EhrSalesforce,
-                EhrOther,
+                MirthNextGen,
+                IntegrationOther,
+                EhrList,
                 SendOutboundDirect,
                 SendOutboundSFTP: value,
                 SendOutboundMLLP,
@@ -16110,7 +16320,9 @@ export default function C4bhFormDataCreateForm(props) {
                 EhrIntersystems,
                 EhrSmile,
                 EhrSalesforce,
-                EhrOther,
+                MirthNextGen,
+                IntegrationOther,
+                EhrList,
                 SendOutboundDirect,
                 SendOutboundSFTP,
                 SendOutboundMLLP: value,
@@ -16178,7 +16390,9 @@ export default function C4bhFormDataCreateForm(props) {
                 EhrIntersystems,
                 EhrSmile,
                 EhrSalesforce,
-                EhrOther,
+                MirthNextGen,
+                IntegrationOther,
+                EhrList,
                 SendOutboundDirect,
                 SendOutboundSFTP,
                 SendOutboundMLLP,
@@ -16246,7 +16460,9 @@ export default function C4bhFormDataCreateForm(props) {
                 EhrIntersystems,
                 EhrSmile,
                 EhrSalesforce,
-                EhrOther,
+                MirthNextGen,
+                IntegrationOther,
+                EhrList,
                 SendOutboundDirect,
                 SendOutboundSFTP,
                 SendOutboundMLLP,
@@ -16314,7 +16530,9 @@ export default function C4bhFormDataCreateForm(props) {
                 EhrIntersystems,
                 EhrSmile,
                 EhrSalesforce,
-                EhrOther,
+                MirthNextGen,
+                IntegrationOther,
+                EhrList,
                 SendOutboundDirect,
                 SendOutboundSFTP,
                 SendOutboundMLLP,
@@ -16381,7 +16599,7 @@ export default function C4bhFormDataCreateForm(props) {
         columnGap="inherit"
         rowGap="inherit"
         templateColumns="repeat(7, auto)"
-        {...getOverrideProps(overrides, "RowGrid13")}
+        {...getOverrideProps(overrides, "RowGrid14")}
       >
         <CheckboxField
           label="Direct"
@@ -16397,7 +16615,9 @@ export default function C4bhFormDataCreateForm(props) {
                 EhrIntersystems,
                 EhrSmile,
                 EhrSalesforce,
-                EhrOther,
+                MirthNextGen,
+                IntegrationOther,
+                EhrList,
                 SendOutboundDirect,
                 SendOutboundSFTP,
                 SendOutboundMLLP,
@@ -16465,7 +16685,9 @@ export default function C4bhFormDataCreateForm(props) {
                 EhrIntersystems,
                 EhrSmile,
                 EhrSalesforce,
-                EhrOther,
+                MirthNextGen,
+                IntegrationOther,
+                EhrList,
                 SendOutboundDirect,
                 SendOutboundSFTP,
                 SendOutboundMLLP,
@@ -16533,7 +16755,9 @@ export default function C4bhFormDataCreateForm(props) {
                 EhrIntersystems,
                 EhrSmile,
                 EhrSalesforce,
-                EhrOther,
+                MirthNextGen,
+                IntegrationOther,
+                EhrList,
                 SendOutboundDirect,
                 SendOutboundSFTP,
                 SendOutboundMLLP,
@@ -16601,7 +16825,9 @@ export default function C4bhFormDataCreateForm(props) {
                 EhrIntersystems,
                 EhrSmile,
                 EhrSalesforce,
-                EhrOther,
+                MirthNextGen,
+                IntegrationOther,
+                EhrList,
                 SendOutboundDirect,
                 SendOutboundSFTP,
                 SendOutboundMLLP,
@@ -16669,7 +16895,9 @@ export default function C4bhFormDataCreateForm(props) {
                 EhrIntersystems,
                 EhrSmile,
                 EhrSalesforce,
-                EhrOther,
+                MirthNextGen,
+                IntegrationOther,
+                EhrList,
                 SendOutboundDirect,
                 SendOutboundSFTP,
                 SendOutboundMLLP,
@@ -16737,7 +16965,9 @@ export default function C4bhFormDataCreateForm(props) {
                 EhrIntersystems,
                 EhrSmile,
                 EhrSalesforce,
-                EhrOther,
+                MirthNextGen,
+                IntegrationOther,
+                EhrList,
                 SendOutboundDirect,
                 SendOutboundSFTP,
                 SendOutboundMLLP,
@@ -16805,7 +17035,9 @@ export default function C4bhFormDataCreateForm(props) {
                 EhrIntersystems,
                 EhrSmile,
                 EhrSalesforce,
-                EhrOther,
+                MirthNextGen,
+                IntegrationOther,
+                EhrList,
                 SendOutboundDirect,
                 SendOutboundSFTP,
                 SendOutboundMLLP,
@@ -16872,7 +17104,7 @@ export default function C4bhFormDataCreateForm(props) {
         columnGap="inherit"
         rowGap="inherit"
         templateColumns="repeat(5, auto)"
-        {...getOverrideProps(overrides, "RowGrid16")}
+        {...getOverrideProps(overrides, "RowGrid17")}
       >
         <CheckboxField
           label="Direct"
@@ -16888,7 +17120,9 @@ export default function C4bhFormDataCreateForm(props) {
                 EhrIntersystems,
                 EhrSmile,
                 EhrSalesforce,
-                EhrOther,
+                MirthNextGen,
+                IntegrationOther,
+                EhrList,
                 SendOutboundDirect,
                 SendOutboundSFTP,
                 SendOutboundMLLP,
@@ -16956,7 +17190,9 @@ export default function C4bhFormDataCreateForm(props) {
                 EhrIntersystems,
                 EhrSmile,
                 EhrSalesforce,
-                EhrOther,
+                MirthNextGen,
+                IntegrationOther,
+                EhrList,
                 SendOutboundDirect,
                 SendOutboundSFTP,
                 SendOutboundMLLP,
@@ -17022,7 +17258,9 @@ export default function C4bhFormDataCreateForm(props) {
                 EhrIntersystems,
                 EhrSmile,
                 EhrSalesforce,
-                EhrOther,
+                MirthNextGen,
+                IntegrationOther,
+                EhrList,
                 SendOutboundDirect,
                 SendOutboundSFTP,
                 SendOutboundMLLP,
@@ -17088,7 +17326,9 @@ export default function C4bhFormDataCreateForm(props) {
                 EhrIntersystems,
                 EhrSmile,
                 EhrSalesforce,
-                EhrOther,
+                MirthNextGen,
+                IntegrationOther,
+                EhrList,
                 SendOutboundDirect,
                 SendOutboundSFTP,
                 SendOutboundMLLP,
@@ -17154,7 +17394,9 @@ export default function C4bhFormDataCreateForm(props) {
                 EhrIntersystems,
                 EhrSmile,
                 EhrSalesforce,
-                EhrOther,
+                MirthNextGen,
+                IntegrationOther,
+                EhrList,
                 SendOutboundDirect,
                 SendOutboundSFTP,
                 SendOutboundMLLP,
@@ -17220,7 +17462,7 @@ export default function C4bhFormDataCreateForm(props) {
         columnGap="inherit"
         rowGap="inherit"
         templateColumns="repeat(6, auto)"
-        {...getOverrideProps(overrides, "RowGrid19")}
+        {...getOverrideProps(overrides, "RowGrid20")}
       >
         <CheckboxField
           label="Direct"
@@ -17236,7 +17478,9 @@ export default function C4bhFormDataCreateForm(props) {
                 EhrIntersystems,
                 EhrSmile,
                 EhrSalesforce,
-                EhrOther,
+                MirthNextGen,
+                IntegrationOther,
+                EhrList,
                 SendOutboundDirect,
                 SendOutboundSFTP,
                 SendOutboundMLLP,
@@ -17304,7 +17548,9 @@ export default function C4bhFormDataCreateForm(props) {
                 EhrIntersystems,
                 EhrSmile,
                 EhrSalesforce,
-                EhrOther,
+                MirthNextGen,
+                IntegrationOther,
+                EhrList,
                 SendOutboundDirect,
                 SendOutboundSFTP,
                 SendOutboundMLLP,
@@ -17372,7 +17618,9 @@ export default function C4bhFormDataCreateForm(props) {
                 EhrIntersystems,
                 EhrSmile,
                 EhrSalesforce,
-                EhrOther,
+                MirthNextGen,
+                IntegrationOther,
+                EhrList,
                 SendOutboundDirect,
                 SendOutboundSFTP,
                 SendOutboundMLLP,
@@ -17440,7 +17688,9 @@ export default function C4bhFormDataCreateForm(props) {
                 EhrIntersystems,
                 EhrSmile,
                 EhrSalesforce,
-                EhrOther,
+                MirthNextGen,
+                IntegrationOther,
+                EhrList,
                 SendOutboundDirect,
                 SendOutboundSFTP,
                 SendOutboundMLLP,
@@ -17508,7 +17758,9 @@ export default function C4bhFormDataCreateForm(props) {
                 EhrIntersystems,
                 EhrSmile,
                 EhrSalesforce,
-                EhrOther,
+                MirthNextGen,
+                IntegrationOther,
+                EhrList,
                 SendOutboundDirect,
                 SendOutboundSFTP,
                 SendOutboundMLLP,
@@ -17576,7 +17828,9 @@ export default function C4bhFormDataCreateForm(props) {
                 EhrIntersystems,
                 EhrSmile,
                 EhrSalesforce,
-                EhrOther,
+                MirthNextGen,
+                IntegrationOther,
+                EhrList,
                 SendOutboundDirect,
                 SendOutboundSFTP,
                 SendOutboundMLLP,
@@ -17643,7 +17897,7 @@ export default function C4bhFormDataCreateForm(props) {
         columnGap="inherit"
         rowGap="inherit"
         templateColumns="repeat(7, auto)"
-        {...getOverrideProps(overrides, "RowGrid22")}
+        {...getOverrideProps(overrides, "RowGrid23")}
       >
         <CheckboxField
           label="Direct"
@@ -17659,7 +17913,9 @@ export default function C4bhFormDataCreateForm(props) {
                 EhrIntersystems,
                 EhrSmile,
                 EhrSalesforce,
-                EhrOther,
+                MirthNextGen,
+                IntegrationOther,
+                EhrList,
                 SendOutboundDirect,
                 SendOutboundSFTP,
                 SendOutboundMLLP,
@@ -17730,7 +17986,9 @@ export default function C4bhFormDataCreateForm(props) {
                 EhrIntersystems,
                 EhrSmile,
                 EhrSalesforce,
-                EhrOther,
+                MirthNextGen,
+                IntegrationOther,
+                EhrList,
                 SendOutboundDirect,
                 SendOutboundSFTP,
                 SendOutboundMLLP,
@@ -17798,7 +18056,9 @@ export default function C4bhFormDataCreateForm(props) {
                 EhrIntersystems,
                 EhrSmile,
                 EhrSalesforce,
-                EhrOther,
+                MirthNextGen,
+                IntegrationOther,
+                EhrList,
                 SendOutboundDirect,
                 SendOutboundSFTP,
                 SendOutboundMLLP,
@@ -17866,7 +18126,9 @@ export default function C4bhFormDataCreateForm(props) {
                 EhrIntersystems,
                 EhrSmile,
                 EhrSalesforce,
-                EhrOther,
+                MirthNextGen,
+                IntegrationOther,
+                EhrList,
                 SendOutboundDirect,
                 SendOutboundSFTP,
                 SendOutboundMLLP,
@@ -17937,7 +18199,9 @@ export default function C4bhFormDataCreateForm(props) {
                 EhrIntersystems,
                 EhrSmile,
                 EhrSalesforce,
-                EhrOther,
+                MirthNextGen,
+                IntegrationOther,
+                EhrList,
                 SendOutboundDirect,
                 SendOutboundSFTP,
                 SendOutboundMLLP,
@@ -18005,7 +18269,9 @@ export default function C4bhFormDataCreateForm(props) {
                 EhrIntersystems,
                 EhrSmile,
                 EhrSalesforce,
-                EhrOther,
+                MirthNextGen,
+                IntegrationOther,
+                EhrList,
                 SendOutboundDirect,
                 SendOutboundSFTP,
                 SendOutboundMLLP,
@@ -18073,7 +18339,9 @@ export default function C4bhFormDataCreateForm(props) {
                 EhrIntersystems,
                 EhrSmile,
                 EhrSalesforce,
-                EhrOther,
+                MirthNextGen,
+                IntegrationOther,
+                EhrList,
                 SendOutboundDirect,
                 SendOutboundSFTP,
                 SendOutboundMLLP,
@@ -18140,7 +18408,7 @@ export default function C4bhFormDataCreateForm(props) {
         columnGap="inherit"
         rowGap="inherit"
         templateColumns="repeat(5, auto)"
-        {...getOverrideProps(overrides, "RowGrid25")}
+        {...getOverrideProps(overrides, "RowGrid26")}
       >
         <CheckboxField
           label="Direct"
@@ -18156,7 +18424,9 @@ export default function C4bhFormDataCreateForm(props) {
                 EhrIntersystems,
                 EhrSmile,
                 EhrSalesforce,
-                EhrOther,
+                MirthNextGen,
+                IntegrationOther,
+                EhrList,
                 SendOutboundDirect,
                 SendOutboundSFTP,
                 SendOutboundMLLP,
@@ -18224,7 +18494,9 @@ export default function C4bhFormDataCreateForm(props) {
                 EhrIntersystems,
                 EhrSmile,
                 EhrSalesforce,
-                EhrOther,
+                MirthNextGen,
+                IntegrationOther,
+                EhrList,
                 SendOutboundDirect,
                 SendOutboundSFTP,
                 SendOutboundMLLP,
@@ -18292,7 +18564,9 @@ export default function C4bhFormDataCreateForm(props) {
                 EhrIntersystems,
                 EhrSmile,
                 EhrSalesforce,
-                EhrOther,
+                MirthNextGen,
+                IntegrationOther,
+                EhrList,
                 SendOutboundDirect,
                 SendOutboundSFTP,
                 SendOutboundMLLP,
@@ -18360,7 +18634,9 @@ export default function C4bhFormDataCreateForm(props) {
                 EhrIntersystems,
                 EhrSmile,
                 EhrSalesforce,
-                EhrOther,
+                MirthNextGen,
+                IntegrationOther,
+                EhrList,
                 SendOutboundDirect,
                 SendOutboundSFTP,
                 SendOutboundMLLP,
@@ -18428,7 +18704,9 @@ export default function C4bhFormDataCreateForm(props) {
                 EhrIntersystems,
                 EhrSmile,
                 EhrSalesforce,
-                EhrOther,
+                MirthNextGen,
+                IntegrationOther,
+                EhrList,
                 SendOutboundDirect,
                 SendOutboundSFTP,
                 SendOutboundMLLP,
@@ -18505,7 +18783,9 @@ export default function C4bhFormDataCreateForm(props) {
               EhrIntersystems,
               EhrSmile,
               EhrSalesforce,
-              EhrOther,
+              MirthNextGen,
+              IntegrationOther,
+              EhrList,
               SendOutboundDirect,
               SendOutboundSFTP,
               SendOutboundMLLP,

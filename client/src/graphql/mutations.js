@@ -13,7 +13,7 @@ export const createC4bhFormData = /* GraphQL */ `
       EhrIntersystems
       EhrSmile
       EhrSalesforce
-      EhrOther
+      EhrList
       SendOutboundDirect
       SendOutboundSFTP
       SendOutboundMLLP
@@ -51,6 +51,8 @@ export const createC4bhFormData = /* GraphQL */ `
       ReceiveRequestIHE
       ReceiveRequestNone
       HIPPA
+      MirthNextGen
+      IntegrationOther
       createdAt
       updatedAt
       __typename
@@ -69,7 +71,7 @@ export const updateC4bhFormData = /* GraphQL */ `
       EhrIntersystems
       EhrSmile
       EhrSalesforce
-      EhrOther
+      EhrList
       SendOutboundDirect
       SendOutboundSFTP
       SendOutboundMLLP
@@ -107,6 +109,8 @@ export const updateC4bhFormData = /* GraphQL */ `
       ReceiveRequestIHE
       ReceiveRequestNone
       HIPPA
+      MirthNextGen
+      IntegrationOther
       createdAt
       updatedAt
       __typename
@@ -125,7 +129,7 @@ export const deleteC4bhFormData = /* GraphQL */ `
       EhrIntersystems
       EhrSmile
       EhrSalesforce
-      EhrOther
+      EhrList
       SendOutboundDirect
       SendOutboundSFTP
       SendOutboundMLLP
@@ -163,6 +167,8 @@ export const deleteC4bhFormData = /* GraphQL */ `
       ReceiveRequestIHE
       ReceiveRequestNone
       HIPPA
+      MirthNextGen
+      IntegrationOther
       createdAt
       updatedAt
       __typename

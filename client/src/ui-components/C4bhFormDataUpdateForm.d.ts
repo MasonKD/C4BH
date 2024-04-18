@@ -27,7 +27,7 @@ export declare type C4bhFormDataUpdateFormInputValues = {
     EhrIntersystems?: boolean;
     EhrSmile?: boolean;
     EhrSalesforce?: boolean;
-    EhrOther?: string;
+    EhrList?: string;
     SendOutboundDirect?: boolean;
     SendOutboundSFTP?: boolean;
     SendOutboundMLLP?: boolean;
@@ -65,6 +65,8 @@ export declare type C4bhFormDataUpdateFormInputValues = {
     ReceiveRequestIHE?: boolean;
     ReceiveRequestNone?: boolean;
     HIPPA?: boolean;
+    MirthNextGen?: boolean;
+    IntegrationOther?: boolean;
 };
 export declare type C4bhFormDataUpdateFormValidationValues = {
     user?: ValidationFunction<string>;
@@ -72,7 +74,7 @@ export declare type C4bhFormDataUpdateFormValidationValues = {
     EhrIntersystems?: ValidationFunction<boolean>;
     EhrSmile?: ValidationFunction<boolean>;
     EhrSalesforce?: ValidationFunction<boolean>;
-    EhrOther?: ValidationFunction<string>;
+    EhrList?: ValidationFunction<string>;
     SendOutboundDirect?: ValidationFunction<boolean>;
     SendOutboundSFTP?: ValidationFunction<boolean>;
     SendOutboundMLLP?: ValidationFunction<boolean>;
@@ -110,6 +112,8 @@ export declare type C4bhFormDataUpdateFormValidationValues = {
     ReceiveRequestIHE?: ValidationFunction<boolean>;
     ReceiveRequestNone?: ValidationFunction<boolean>;
     HIPPA?: ValidationFunction<boolean>;
+    MirthNextGen?: ValidationFunction<boolean>;
+    IntegrationOther?: ValidationFunction<boolean>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type C4bhFormDataUpdateFormOverridesProps = {
@@ -119,7 +123,7 @@ export declare type C4bhFormDataUpdateFormOverridesProps = {
     EhrIntersystems?: PrimitiveOverrideProps<SwitchFieldProps>;
     EhrSmile?: PrimitiveOverrideProps<SwitchFieldProps>;
     EhrSalesforce?: PrimitiveOverrideProps<SwitchFieldProps>;
-    EhrOther?: PrimitiveOverrideProps<TextFieldProps>;
+    EhrList?: PrimitiveOverrideProps<TextFieldProps>;
     SendOutboundDirect?: PrimitiveOverrideProps<SwitchFieldProps>;
     SendOutboundSFTP?: PrimitiveOverrideProps<SwitchFieldProps>;
     SendOutboundMLLP?: PrimitiveOverrideProps<SwitchFieldProps>;
@@ -157,6 +161,8 @@ export declare type C4bhFormDataUpdateFormOverridesProps = {
     ReceiveRequestIHE?: PrimitiveOverrideProps<SwitchFieldProps>;
     ReceiveRequestNone?: PrimitiveOverrideProps<SwitchFieldProps>;
     HIPPA?: PrimitiveOverrideProps<SwitchFieldProps>;
+    MirthNextGen?: PrimitiveOverrideProps<SwitchFieldProps>;
+    IntegrationOther?: PrimitiveOverrideProps<SwitchFieldProps>;
 } & EscapeHatchProps;
 export declare type C4bhFormDataUpdateFormProps = React.PropsWithChildren<{
     overrides?: C4bhFormDataUpdateFormOverridesProps | undefined | null;

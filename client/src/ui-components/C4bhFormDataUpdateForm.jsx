@@ -36,7 +36,7 @@ export default function C4bhFormDataUpdateForm(props) {
     EhrIntersystems: false,
     EhrSmile: false,
     EhrSalesforce: false,
-    EhrOther: "",
+    EhrList: "",
     SendOutboundDirect: false,
     SendOutboundSFTP: false,
     SendOutboundMLLP: false,
@@ -74,6 +74,8 @@ export default function C4bhFormDataUpdateForm(props) {
     ReceiveRequestIHE: false,
     ReceiveRequestNone: false,
     HIPPA: false,
+    MirthNextGen: false,
+    IntegrationOther: false,
   };
   const [user, setUser] = React.useState(initialValues.user);
   const [ParticipantID, setParticipantID] = React.useState(
@@ -86,7 +88,7 @@ export default function C4bhFormDataUpdateForm(props) {
   const [EhrSalesforce, setEhrSalesforce] = React.useState(
     initialValues.EhrSalesforce
   );
-  const [EhrOther, setEhrOther] = React.useState(initialValues.EhrOther);
+  const [EhrList, setEhrList] = React.useState(initialValues.EhrList);
   const [SendOutboundDirect, setSendOutboundDirect] = React.useState(
     initialValues.SendOutboundDirect
   );
@@ -195,6 +197,12 @@ export default function C4bhFormDataUpdateForm(props) {
     initialValues.ReceiveRequestNone
   );
   const [HIPPA, setHIPPA] = React.useState(initialValues.HIPPA);
+  const [MirthNextGen, setMirthNextGen] = React.useState(
+    initialValues.MirthNextGen
+  );
+  const [IntegrationOther, setIntegrationOther] = React.useState(
+    initialValues.IntegrationOther
+  );
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     const cleanValues = c4bhFormDataRecord
@@ -205,7 +213,7 @@ export default function C4bhFormDataUpdateForm(props) {
     setEhrIntersystems(cleanValues.EhrIntersystems);
     setEhrSmile(cleanValues.EhrSmile);
     setEhrSalesforce(cleanValues.EhrSalesforce);
-    setEhrOther(cleanValues.EhrOther);
+    setEhrList(cleanValues.EhrList);
     setSendOutboundDirect(cleanValues.SendOutboundDirect);
     setSendOutboundSFTP(cleanValues.SendOutboundSFTP);
     setSendOutboundMLLP(cleanValues.SendOutboundMLLP);
@@ -243,6 +251,8 @@ export default function C4bhFormDataUpdateForm(props) {
     setReceiveRequestIHE(cleanValues.ReceiveRequestIHE);
     setReceiveRequestNone(cleanValues.ReceiveRequestNone);
     setHIPPA(cleanValues.HIPPA);
+    setMirthNextGen(cleanValues.MirthNextGen);
+    setIntegrationOther(cleanValues.IntegrationOther);
     setErrors({});
   };
   const [c4bhFormDataRecord, setC4bhFormDataRecord] = React.useState(
@@ -269,7 +279,7 @@ export default function C4bhFormDataUpdateForm(props) {
     EhrIntersystems: [],
     EhrSmile: [],
     EhrSalesforce: [],
-    EhrOther: [],
+    EhrList: [],
     SendOutboundDirect: [],
     SendOutboundSFTP: [],
     SendOutboundMLLP: [],
@@ -307,6 +317,8 @@ export default function C4bhFormDataUpdateForm(props) {
     ReceiveRequestIHE: [],
     ReceiveRequestNone: [],
     HIPPA: [],
+    MirthNextGen: [],
+    IntegrationOther: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -339,7 +351,7 @@ export default function C4bhFormDataUpdateForm(props) {
           EhrIntersystems: EhrIntersystems ?? null,
           EhrSmile: EhrSmile ?? null,
           EhrSalesforce: EhrSalesforce ?? null,
-          EhrOther: EhrOther ?? null,
+          EhrList: EhrList ?? null,
           SendOutboundDirect: SendOutboundDirect ?? null,
           SendOutboundSFTP: SendOutboundSFTP ?? null,
           SendOutboundMLLP: SendOutboundMLLP ?? null,
@@ -377,6 +389,8 @@ export default function C4bhFormDataUpdateForm(props) {
           ReceiveRequestIHE: ReceiveRequestIHE ?? null,
           ReceiveRequestNone: ReceiveRequestNone ?? null,
           HIPPA: HIPPA ?? null,
+          MirthNextGen: MirthNextGen ?? null,
+          IntegrationOther: IntegrationOther ?? null,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -442,7 +456,7 @@ export default function C4bhFormDataUpdateForm(props) {
               EhrIntersystems,
               EhrSmile,
               EhrSalesforce,
-              EhrOther,
+              EhrList,
               SendOutboundDirect,
               SendOutboundSFTP,
               SendOutboundMLLP,
@@ -480,6 +494,8 @@ export default function C4bhFormDataUpdateForm(props) {
               ReceiveRequestIHE,
               ReceiveRequestNone,
               HIPPA,
+              MirthNextGen,
+              IntegrationOther,
             };
             const result = onChange(modelFields);
             value = result?.user ?? value;
@@ -508,7 +524,7 @@ export default function C4bhFormDataUpdateForm(props) {
               EhrIntersystems,
               EhrSmile,
               EhrSalesforce,
-              EhrOther,
+              EhrList,
               SendOutboundDirect,
               SendOutboundSFTP,
               SendOutboundMLLP,
@@ -546,6 +562,8 @@ export default function C4bhFormDataUpdateForm(props) {
               ReceiveRequestIHE,
               ReceiveRequestNone,
               HIPPA,
+              MirthNextGen,
+              IntegrationOther,
             };
             const result = onChange(modelFields);
             value = result?.ParticipantID ?? value;
@@ -574,7 +592,7 @@ export default function C4bhFormDataUpdateForm(props) {
               EhrIntersystems: value,
               EhrSmile,
               EhrSalesforce,
-              EhrOther,
+              EhrList,
               SendOutboundDirect,
               SendOutboundSFTP,
               SendOutboundMLLP,
@@ -612,6 +630,8 @@ export default function C4bhFormDataUpdateForm(props) {
               ReceiveRequestIHE,
               ReceiveRequestNone,
               HIPPA,
+              MirthNextGen,
+              IntegrationOther,
             };
             const result = onChange(modelFields);
             value = result?.EhrIntersystems ?? value;
@@ -640,7 +660,7 @@ export default function C4bhFormDataUpdateForm(props) {
               EhrIntersystems,
               EhrSmile: value,
               EhrSalesforce,
-              EhrOther,
+              EhrList,
               SendOutboundDirect,
               SendOutboundSFTP,
               SendOutboundMLLP,
@@ -678,6 +698,8 @@ export default function C4bhFormDataUpdateForm(props) {
               ReceiveRequestIHE,
               ReceiveRequestNone,
               HIPPA,
+              MirthNextGen,
+              IntegrationOther,
             };
             const result = onChange(modelFields);
             value = result?.EhrSmile ?? value;
@@ -706,7 +728,7 @@ export default function C4bhFormDataUpdateForm(props) {
               EhrIntersystems,
               EhrSmile,
               EhrSalesforce: value,
-              EhrOther,
+              EhrList,
               SendOutboundDirect,
               SendOutboundSFTP,
               SendOutboundMLLP,
@@ -744,6 +766,8 @@ export default function C4bhFormDataUpdateForm(props) {
               ReceiveRequestIHE,
               ReceiveRequestNone,
               HIPPA,
+              MirthNextGen,
+              IntegrationOther,
             };
             const result = onChange(modelFields);
             value = result?.EhrSalesforce ?? value;
@@ -759,10 +783,10 @@ export default function C4bhFormDataUpdateForm(props) {
         {...getOverrideProps(overrides, "EhrSalesforce")}
       ></SwitchField>
       <TextField
-        label="Ehr other"
+        label="Ehr list"
         isRequired={false}
         isReadOnly={false}
-        value={EhrOther}
+        value={EhrList}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -772,7 +796,7 @@ export default function C4bhFormDataUpdateForm(props) {
               EhrIntersystems,
               EhrSmile,
               EhrSalesforce,
-              EhrOther: value,
+              EhrList: value,
               SendOutboundDirect,
               SendOutboundSFTP,
               SendOutboundMLLP,
@@ -810,19 +834,21 @@ export default function C4bhFormDataUpdateForm(props) {
               ReceiveRequestIHE,
               ReceiveRequestNone,
               HIPPA,
+              MirthNextGen,
+              IntegrationOther,
             };
             const result = onChange(modelFields);
-            value = result?.EhrOther ?? value;
+            value = result?.EhrList ?? value;
           }
-          if (errors.EhrOther?.hasError) {
-            runValidationTasks("EhrOther", value);
+          if (errors.EhrList?.hasError) {
+            runValidationTasks("EhrList", value);
           }
-          setEhrOther(value);
+          setEhrList(value);
         }}
-        onBlur={() => runValidationTasks("EhrOther", EhrOther)}
-        errorMessage={errors.EhrOther?.errorMessage}
-        hasError={errors.EhrOther?.hasError}
-        {...getOverrideProps(overrides, "EhrOther")}
+        onBlur={() => runValidationTasks("EhrList", EhrList)}
+        errorMessage={errors.EhrList?.errorMessage}
+        hasError={errors.EhrList?.hasError}
+        {...getOverrideProps(overrides, "EhrList")}
       ></TextField>
       <SwitchField
         label="Send outbound direct"
@@ -838,7 +864,7 @@ export default function C4bhFormDataUpdateForm(props) {
               EhrIntersystems,
               EhrSmile,
               EhrSalesforce,
-              EhrOther,
+              EhrList,
               SendOutboundDirect: value,
               SendOutboundSFTP,
               SendOutboundMLLP,
@@ -876,6 +902,8 @@ export default function C4bhFormDataUpdateForm(props) {
               ReceiveRequestIHE,
               ReceiveRequestNone,
               HIPPA,
+              MirthNextGen,
+              IntegrationOther,
             };
             const result = onChange(modelFields);
             value = result?.SendOutboundDirect ?? value;
@@ -906,7 +934,7 @@ export default function C4bhFormDataUpdateForm(props) {
               EhrIntersystems,
               EhrSmile,
               EhrSalesforce,
-              EhrOther,
+              EhrList,
               SendOutboundDirect,
               SendOutboundSFTP: value,
               SendOutboundMLLP,
@@ -944,6 +972,8 @@ export default function C4bhFormDataUpdateForm(props) {
               ReceiveRequestIHE,
               ReceiveRequestNone,
               HIPPA,
+              MirthNextGen,
+              IntegrationOther,
             };
             const result = onChange(modelFields);
             value = result?.SendOutboundSFTP ?? value;
@@ -972,7 +1002,7 @@ export default function C4bhFormDataUpdateForm(props) {
               EhrIntersystems,
               EhrSmile,
               EhrSalesforce,
-              EhrOther,
+              EhrList,
               SendOutboundDirect,
               SendOutboundSFTP,
               SendOutboundMLLP: value,
@@ -1010,6 +1040,8 @@ export default function C4bhFormDataUpdateForm(props) {
               ReceiveRequestIHE,
               ReceiveRequestNone,
               HIPPA,
+              MirthNextGen,
+              IntegrationOther,
             };
             const result = onChange(modelFields);
             value = result?.SendOutboundMLLP ?? value;
@@ -1038,7 +1070,7 @@ export default function C4bhFormDataUpdateForm(props) {
               EhrIntersystems,
               EhrSmile,
               EhrSalesforce,
-              EhrOther,
+              EhrList,
               SendOutboundDirect,
               SendOutboundSFTP,
               SendOutboundMLLP,
@@ -1076,6 +1108,8 @@ export default function C4bhFormDataUpdateForm(props) {
               ReceiveRequestIHE,
               ReceiveRequestNone,
               HIPPA,
+              MirthNextGen,
+              IntegrationOther,
             };
             const result = onChange(modelFields);
             value = result?.SendOutboundHTTPS ?? value;
@@ -1106,7 +1140,7 @@ export default function C4bhFormDataUpdateForm(props) {
               EhrIntersystems,
               EhrSmile,
               EhrSalesforce,
-              EhrOther,
+              EhrList,
               SendOutboundDirect,
               SendOutboundSFTP,
               SendOutboundMLLP,
@@ -1144,6 +1178,8 @@ export default function C4bhFormDataUpdateForm(props) {
               ReceiveRequestIHE,
               ReceiveRequestNone,
               HIPPA,
+              MirthNextGen,
+              IntegrationOther,
             };
             const result = onChange(modelFields);
             value = result?.SendOutboundFHIR ?? value;
@@ -1172,7 +1208,7 @@ export default function C4bhFormDataUpdateForm(props) {
               EhrIntersystems,
               EhrSmile,
               EhrSalesforce,
-              EhrOther,
+              EhrList,
               SendOutboundDirect,
               SendOutboundSFTP,
               SendOutboundMLLP,
@@ -1210,6 +1246,8 @@ export default function C4bhFormDataUpdateForm(props) {
               ReceiveRequestIHE,
               ReceiveRequestNone,
               HIPPA,
+              MirthNextGen,
+              IntegrationOther,
             };
             const result = onChange(modelFields);
             value = result?.SendOutboundNone ?? value;
@@ -1238,7 +1276,7 @@ export default function C4bhFormDataUpdateForm(props) {
               EhrIntersystems,
               EhrSmile,
               EhrSalesforce,
-              EhrOther,
+              EhrList,
               SendOutboundDirect,
               SendOutboundSFTP,
               SendOutboundMLLP,
@@ -1276,6 +1314,8 @@ export default function C4bhFormDataUpdateForm(props) {
               ReceiveRequestIHE,
               ReceiveRequestNone,
               HIPPA,
+              MirthNextGen,
+              IntegrationOther,
             };
             const result = onChange(modelFields);
             value = result?.SendInformationDirect ?? value;
@@ -1306,7 +1346,7 @@ export default function C4bhFormDataUpdateForm(props) {
               EhrIntersystems,
               EhrSmile,
               EhrSalesforce,
-              EhrOther,
+              EhrList,
               SendOutboundDirect,
               SendOutboundSFTP,
               SendOutboundMLLP,
@@ -1344,6 +1384,8 @@ export default function C4bhFormDataUpdateForm(props) {
               ReceiveRequestIHE,
               ReceiveRequestNone,
               HIPPA,
+              MirthNextGen,
+              IntegrationOther,
             };
             const result = onChange(modelFields);
             value = result?.SendInformationSFTP ?? value;
@@ -1374,7 +1416,7 @@ export default function C4bhFormDataUpdateForm(props) {
               EhrIntersystems,
               EhrSmile,
               EhrSalesforce,
-              EhrOther,
+              EhrList,
               SendOutboundDirect,
               SendOutboundSFTP,
               SendOutboundMLLP,
@@ -1412,6 +1454,8 @@ export default function C4bhFormDataUpdateForm(props) {
               ReceiveRequestIHE,
               ReceiveRequestNone,
               HIPPA,
+              MirthNextGen,
+              IntegrationOther,
             };
             const result = onChange(modelFields);
             value = result?.SendInformationMLLP ?? value;
@@ -1442,7 +1486,7 @@ export default function C4bhFormDataUpdateForm(props) {
               EhrIntersystems,
               EhrSmile,
               EhrSalesforce,
-              EhrOther,
+              EhrList,
               SendOutboundDirect,
               SendOutboundSFTP,
               SendOutboundMLLP,
@@ -1480,6 +1524,8 @@ export default function C4bhFormDataUpdateForm(props) {
               ReceiveRequestIHE,
               ReceiveRequestNone,
               HIPPA,
+              MirthNextGen,
+              IntegrationOther,
             };
             const result = onChange(modelFields);
             value = result?.SendInformationHTTPS ?? value;
@@ -1510,7 +1556,7 @@ export default function C4bhFormDataUpdateForm(props) {
               EhrIntersystems,
               EhrSmile,
               EhrSalesforce,
-              EhrOther,
+              EhrList,
               SendOutboundDirect,
               SendOutboundSFTP,
               SendOutboundMLLP,
@@ -1548,6 +1594,8 @@ export default function C4bhFormDataUpdateForm(props) {
               ReceiveRequestIHE,
               ReceiveRequestNone,
               HIPPA,
+              MirthNextGen,
+              IntegrationOther,
             };
             const result = onChange(modelFields);
             value = result?.SendInformationFHIR ?? value;
@@ -1578,7 +1626,7 @@ export default function C4bhFormDataUpdateForm(props) {
               EhrIntersystems,
               EhrSmile,
               EhrSalesforce,
-              EhrOther,
+              EhrList,
               SendOutboundDirect,
               SendOutboundSFTP,
               SendOutboundMLLP,
@@ -1616,6 +1664,8 @@ export default function C4bhFormDataUpdateForm(props) {
               ReceiveRequestIHE,
               ReceiveRequestNone,
               HIPPA,
+              MirthNextGen,
+              IntegrationOther,
             };
             const result = onChange(modelFields);
             value = result?.SendInformationIHE ?? value;
@@ -1646,7 +1696,7 @@ export default function C4bhFormDataUpdateForm(props) {
               EhrIntersystems,
               EhrSmile,
               EhrSalesforce,
-              EhrOther,
+              EhrList,
               SendOutboundDirect,
               SendOutboundSFTP,
               SendOutboundMLLP,
@@ -1684,6 +1734,8 @@ export default function C4bhFormDataUpdateForm(props) {
               ReceiveRequestIHE,
               ReceiveRequestNone,
               HIPPA,
+              MirthNextGen,
+              IntegrationOther,
             };
             const result = onChange(modelFields);
             value = result?.SendInformationNone ?? value;
@@ -1714,7 +1766,7 @@ export default function C4bhFormDataUpdateForm(props) {
               EhrIntersystems,
               EhrSmile,
               EhrSalesforce,
-              EhrOther,
+              EhrList,
               SendOutboundDirect,
               SendOutboundSFTP,
               SendOutboundMLLP,
@@ -1752,6 +1804,8 @@ export default function C4bhFormDataUpdateForm(props) {
               ReceiveRequestIHE,
               ReceiveRequestNone,
               HIPPA,
+              MirthNextGen,
+              IntegrationOther,
             };
             const result = onChange(modelFields);
             value = result?.SendRequestDirect ?? value;
@@ -1782,7 +1836,7 @@ export default function C4bhFormDataUpdateForm(props) {
               EhrIntersystems,
               EhrSmile,
               EhrSalesforce,
-              EhrOther,
+              EhrList,
               SendOutboundDirect,
               SendOutboundSFTP,
               SendOutboundMLLP,
@@ -1820,6 +1874,8 @@ export default function C4bhFormDataUpdateForm(props) {
               ReceiveRequestIHE,
               ReceiveRequestNone,
               HIPPA,
+              MirthNextGen,
+              IntegrationOther,
             };
             const result = onChange(modelFields);
             value = result?.SendRequestSFTP ?? value;
@@ -1848,7 +1904,7 @@ export default function C4bhFormDataUpdateForm(props) {
               EhrIntersystems,
               EhrSmile,
               EhrSalesforce,
-              EhrOther,
+              EhrList,
               SendOutboundDirect,
               SendOutboundSFTP,
               SendOutboundMLLP,
@@ -1886,6 +1942,8 @@ export default function C4bhFormDataUpdateForm(props) {
               ReceiveRequestIHE,
               ReceiveRequestNone,
               HIPPA,
+              MirthNextGen,
+              IntegrationOther,
             };
             const result = onChange(modelFields);
             value = result?.SendRequestFHIR ?? value;
@@ -1914,7 +1972,7 @@ export default function C4bhFormDataUpdateForm(props) {
               EhrIntersystems,
               EhrSmile,
               EhrSalesforce,
-              EhrOther,
+              EhrList,
               SendOutboundDirect,
               SendOutboundSFTP,
               SendOutboundMLLP,
@@ -1952,6 +2010,8 @@ export default function C4bhFormDataUpdateForm(props) {
               ReceiveRequestIHE,
               ReceiveRequestNone,
               HIPPA,
+              MirthNextGen,
+              IntegrationOther,
             };
             const result = onChange(modelFields);
             value = result?.SendRequestIHE ?? value;
@@ -1980,7 +2040,7 @@ export default function C4bhFormDataUpdateForm(props) {
               EhrIntersystems,
               EhrSmile,
               EhrSalesforce,
-              EhrOther,
+              EhrList,
               SendOutboundDirect,
               SendOutboundSFTP,
               SendOutboundMLLP,
@@ -2018,6 +2078,8 @@ export default function C4bhFormDataUpdateForm(props) {
               ReceiveRequestIHE,
               ReceiveRequestNone,
               HIPPA,
+              MirthNextGen,
+              IntegrationOther,
             };
             const result = onChange(modelFields);
             value = result?.SendRequestNone ?? value;
@@ -2046,7 +2108,7 @@ export default function C4bhFormDataUpdateForm(props) {
               EhrIntersystems,
               EhrSmile,
               EhrSalesforce,
-              EhrOther,
+              EhrList,
               SendOutboundDirect,
               SendOutboundSFTP,
               SendOutboundMLLP,
@@ -2084,6 +2146,8 @@ export default function C4bhFormDataUpdateForm(props) {
               ReceiveRequestIHE,
               ReceiveRequestNone,
               HIPPA,
+              MirthNextGen,
+              IntegrationOther,
             };
             const result = onChange(modelFields);
             value = result?.ReceiveInboundDirect ?? value;
@@ -2114,7 +2178,7 @@ export default function C4bhFormDataUpdateForm(props) {
               EhrIntersystems,
               EhrSmile,
               EhrSalesforce,
-              EhrOther,
+              EhrList,
               SendOutboundDirect,
               SendOutboundSFTP,
               SendOutboundMLLP,
@@ -2152,6 +2216,8 @@ export default function C4bhFormDataUpdateForm(props) {
               ReceiveRequestIHE,
               ReceiveRequestNone,
               HIPPA,
+              MirthNextGen,
+              IntegrationOther,
             };
             const result = onChange(modelFields);
             value = result?.ReceiveInboundSFTP ?? value;
@@ -2182,7 +2248,7 @@ export default function C4bhFormDataUpdateForm(props) {
               EhrIntersystems,
               EhrSmile,
               EhrSalesforce,
-              EhrOther,
+              EhrList,
               SendOutboundDirect,
               SendOutboundSFTP,
               SendOutboundMLLP,
@@ -2220,6 +2286,8 @@ export default function C4bhFormDataUpdateForm(props) {
               ReceiveRequestIHE,
               ReceiveRequestNone,
               HIPPA,
+              MirthNextGen,
+              IntegrationOther,
             };
             const result = onChange(modelFields);
             value = result?.ReceiveInboundMLLP ?? value;
@@ -2250,7 +2318,7 @@ export default function C4bhFormDataUpdateForm(props) {
               EhrIntersystems,
               EhrSmile,
               EhrSalesforce,
-              EhrOther,
+              EhrList,
               SendOutboundDirect,
               SendOutboundSFTP,
               SendOutboundMLLP,
@@ -2288,6 +2356,8 @@ export default function C4bhFormDataUpdateForm(props) {
               ReceiveRequestIHE,
               ReceiveRequestNone,
               HIPPA,
+              MirthNextGen,
+              IntegrationOther,
             };
             const result = onChange(modelFields);
             value = result?.ReceiveInboundHTTPS ?? value;
@@ -2318,7 +2388,7 @@ export default function C4bhFormDataUpdateForm(props) {
               EhrIntersystems,
               EhrSmile,
               EhrSalesforce,
-              EhrOther,
+              EhrList,
               SendOutboundDirect,
               SendOutboundSFTP,
               SendOutboundMLLP,
@@ -2356,6 +2426,8 @@ export default function C4bhFormDataUpdateForm(props) {
               ReceiveRequestIHE,
               ReceiveRequestNone,
               HIPPA,
+              MirthNextGen,
+              IntegrationOther,
             };
             const result = onChange(modelFields);
             value = result?.ReceiveInboundFHIR ?? value;
@@ -2386,7 +2458,7 @@ export default function C4bhFormDataUpdateForm(props) {
               EhrIntersystems,
               EhrSmile,
               EhrSalesforce,
-              EhrOther,
+              EhrList,
               SendOutboundDirect,
               SendOutboundSFTP,
               SendOutboundMLLP,
@@ -2424,6 +2496,8 @@ export default function C4bhFormDataUpdateForm(props) {
               ReceiveRequestIHE,
               ReceiveRequestNone,
               HIPPA,
+              MirthNextGen,
+              IntegrationOther,
             };
             const result = onChange(modelFields);
             value = result?.ReceiveInboundNone ?? value;
@@ -2454,7 +2528,7 @@ export default function C4bhFormDataUpdateForm(props) {
               EhrIntersystems,
               EhrSmile,
               EhrSalesforce,
-              EhrOther,
+              EhrList,
               SendOutboundDirect,
               SendOutboundSFTP,
               SendOutboundMLLP,
@@ -2492,6 +2566,8 @@ export default function C4bhFormDataUpdateForm(props) {
               ReceiveRequestIHE,
               ReceiveRequestNone,
               HIPPA,
+              MirthNextGen,
+              IntegrationOther,
             };
             const result = onChange(modelFields);
             value = result?.ReceiveInformationDirect ?? value;
@@ -2525,7 +2601,7 @@ export default function C4bhFormDataUpdateForm(props) {
               EhrIntersystems,
               EhrSmile,
               EhrSalesforce,
-              EhrOther,
+              EhrList,
               SendOutboundDirect,
               SendOutboundSFTP,
               SendOutboundMLLP,
@@ -2563,6 +2639,8 @@ export default function C4bhFormDataUpdateForm(props) {
               ReceiveRequestIHE,
               ReceiveRequestNone,
               HIPPA,
+              MirthNextGen,
+              IntegrationOther,
             };
             const result = onChange(modelFields);
             value = result?.ReceiveInformationSFTP ?? value;
@@ -2593,7 +2671,7 @@ export default function C4bhFormDataUpdateForm(props) {
               EhrIntersystems,
               EhrSmile,
               EhrSalesforce,
-              EhrOther,
+              EhrList,
               SendOutboundDirect,
               SendOutboundSFTP,
               SendOutboundMLLP,
@@ -2631,6 +2709,8 @@ export default function C4bhFormDataUpdateForm(props) {
               ReceiveRequestIHE,
               ReceiveRequestNone,
               HIPPA,
+              MirthNextGen,
+              IntegrationOther,
             };
             const result = onChange(modelFields);
             value = result?.ReceiveInformationMLLP ?? value;
@@ -2661,7 +2741,7 @@ export default function C4bhFormDataUpdateForm(props) {
               EhrIntersystems,
               EhrSmile,
               EhrSalesforce,
-              EhrOther,
+              EhrList,
               SendOutboundDirect,
               SendOutboundSFTP,
               SendOutboundMLLP,
@@ -2699,6 +2779,8 @@ export default function C4bhFormDataUpdateForm(props) {
               ReceiveRequestIHE,
               ReceiveRequestNone,
               HIPPA,
+              MirthNextGen,
+              IntegrationOther,
             };
             const result = onChange(modelFields);
             value = result?.ReceiveInformationHTTPS ?? value;
@@ -2729,7 +2811,7 @@ export default function C4bhFormDataUpdateForm(props) {
               EhrIntersystems,
               EhrSmile,
               EhrSalesforce,
-              EhrOther,
+              EhrList,
               SendOutboundDirect,
               SendOutboundSFTP,
               SendOutboundMLLP,
@@ -2767,6 +2849,8 @@ export default function C4bhFormDataUpdateForm(props) {
               ReceiveRequestIHE,
               ReceiveRequestNone,
               HIPPA,
+              MirthNextGen,
+              IntegrationOther,
             };
             const result = onChange(modelFields);
             value = result?.ReceiveInformationFHIR ?? value;
@@ -2797,7 +2881,7 @@ export default function C4bhFormDataUpdateForm(props) {
               EhrIntersystems,
               EhrSmile,
               EhrSalesforce,
-              EhrOther,
+              EhrList,
               SendOutboundDirect,
               SendOutboundSFTP,
               SendOutboundMLLP,
@@ -2835,6 +2919,8 @@ export default function C4bhFormDataUpdateForm(props) {
               ReceiveRequestIHE,
               ReceiveRequestNone,
               HIPPA,
+              MirthNextGen,
+              IntegrationOther,
             };
             const result = onChange(modelFields);
             value = result?.ReceiveInformationIHE ?? value;
@@ -2865,7 +2951,7 @@ export default function C4bhFormDataUpdateForm(props) {
               EhrIntersystems,
               EhrSmile,
               EhrSalesforce,
-              EhrOther,
+              EhrList,
               SendOutboundDirect,
               SendOutboundSFTP,
               SendOutboundMLLP,
@@ -2903,6 +2989,8 @@ export default function C4bhFormDataUpdateForm(props) {
               ReceiveRequestIHE,
               ReceiveRequestNone,
               HIPPA,
+              MirthNextGen,
+              IntegrationOther,
             };
             const result = onChange(modelFields);
             value = result?.ReceiveInformationNone ?? value;
@@ -2933,7 +3021,7 @@ export default function C4bhFormDataUpdateForm(props) {
               EhrIntersystems,
               EhrSmile,
               EhrSalesforce,
-              EhrOther,
+              EhrList,
               SendOutboundDirect,
               SendOutboundSFTP,
               SendOutboundMLLP,
@@ -2971,6 +3059,8 @@ export default function C4bhFormDataUpdateForm(props) {
               ReceiveRequestIHE,
               ReceiveRequestNone,
               HIPPA,
+              MirthNextGen,
+              IntegrationOther,
             };
             const result = onChange(modelFields);
             value = result?.ReceiveRequestDirect ?? value;
@@ -3001,7 +3091,7 @@ export default function C4bhFormDataUpdateForm(props) {
               EhrIntersystems,
               EhrSmile,
               EhrSalesforce,
-              EhrOther,
+              EhrList,
               SendOutboundDirect,
               SendOutboundSFTP,
               SendOutboundMLLP,
@@ -3039,6 +3129,8 @@ export default function C4bhFormDataUpdateForm(props) {
               ReceiveRequestIHE,
               ReceiveRequestNone,
               HIPPA,
+              MirthNextGen,
+              IntegrationOther,
             };
             const result = onChange(modelFields);
             value = result?.ReceiveRequestSFTP ?? value;
@@ -3069,7 +3161,7 @@ export default function C4bhFormDataUpdateForm(props) {
               EhrIntersystems,
               EhrSmile,
               EhrSalesforce,
-              EhrOther,
+              EhrList,
               SendOutboundDirect,
               SendOutboundSFTP,
               SendOutboundMLLP,
@@ -3107,6 +3199,8 @@ export default function C4bhFormDataUpdateForm(props) {
               ReceiveRequestIHE,
               ReceiveRequestNone,
               HIPPA,
+              MirthNextGen,
+              IntegrationOther,
             };
             const result = onChange(modelFields);
             value = result?.ReceiveRequestFHIR ?? value;
@@ -3137,7 +3231,7 @@ export default function C4bhFormDataUpdateForm(props) {
               EhrIntersystems,
               EhrSmile,
               EhrSalesforce,
-              EhrOther,
+              EhrList,
               SendOutboundDirect,
               SendOutboundSFTP,
               SendOutboundMLLP,
@@ -3175,6 +3269,8 @@ export default function C4bhFormDataUpdateForm(props) {
               ReceiveRequestIHE: value,
               ReceiveRequestNone,
               HIPPA,
+              MirthNextGen,
+              IntegrationOther,
             };
             const result = onChange(modelFields);
             value = result?.ReceiveRequestIHE ?? value;
@@ -3205,7 +3301,7 @@ export default function C4bhFormDataUpdateForm(props) {
               EhrIntersystems,
               EhrSmile,
               EhrSalesforce,
-              EhrOther,
+              EhrList,
               SendOutboundDirect,
               SendOutboundSFTP,
               SendOutboundMLLP,
@@ -3243,6 +3339,8 @@ export default function C4bhFormDataUpdateForm(props) {
               ReceiveRequestIHE,
               ReceiveRequestNone: value,
               HIPPA,
+              MirthNextGen,
+              IntegrationOther,
             };
             const result = onChange(modelFields);
             value = result?.ReceiveRequestNone ?? value;
@@ -3273,7 +3371,7 @@ export default function C4bhFormDataUpdateForm(props) {
               EhrIntersystems,
               EhrSmile,
               EhrSalesforce,
-              EhrOther,
+              EhrList,
               SendOutboundDirect,
               SendOutboundSFTP,
               SendOutboundMLLP,
@@ -3311,6 +3409,8 @@ export default function C4bhFormDataUpdateForm(props) {
               ReceiveRequestIHE,
               ReceiveRequestNone,
               HIPPA: value,
+              MirthNextGen,
+              IntegrationOther,
             };
             const result = onChange(modelFields);
             value = result?.HIPPA ?? value;
@@ -3324,6 +3424,142 @@ export default function C4bhFormDataUpdateForm(props) {
         errorMessage={errors.HIPPA?.errorMessage}
         hasError={errors.HIPPA?.hasError}
         {...getOverrideProps(overrides, "HIPPA")}
+      ></SwitchField>
+      <SwitchField
+        label="Mirth next gen"
+        defaultChecked={false}
+        isDisabled={false}
+        isChecked={MirthNextGen}
+        onChange={(e) => {
+          let value = e.target.checked;
+          if (onChange) {
+            const modelFields = {
+              user,
+              ParticipantID,
+              EhrIntersystems,
+              EhrSmile,
+              EhrSalesforce,
+              EhrList,
+              SendOutboundDirect,
+              SendOutboundSFTP,
+              SendOutboundMLLP,
+              SendOutboundHTTPS,
+              SendOutboundFHIR,
+              SendOutboundNone,
+              SendInformationDirect,
+              SendInformationSFTP,
+              SendInformationMLLP,
+              SendInformationHTTPS,
+              SendInformationFHIR,
+              SendInformationIHE,
+              SendInformationNone,
+              SendRequestDirect,
+              SendRequestSFTP,
+              SendRequestFHIR,
+              SendRequestIHE,
+              SendRequestNone,
+              ReceiveInboundDirect,
+              ReceiveInboundSFTP,
+              ReceiveInboundMLLP,
+              ReceiveInboundHTTPS,
+              ReceiveInboundFHIR,
+              ReceiveInboundNone,
+              ReceiveInformationDirect,
+              ReceiveInformationSFTP,
+              ReceiveInformationMLLP,
+              ReceiveInformationHTTPS,
+              ReceiveInformationFHIR,
+              ReceiveInformationIHE,
+              ReceiveInformationNone,
+              ReceiveRequestDirect,
+              ReceiveRequestSFTP,
+              ReceiveRequestFHIR,
+              ReceiveRequestIHE,
+              ReceiveRequestNone,
+              HIPPA,
+              MirthNextGen: value,
+              IntegrationOther,
+            };
+            const result = onChange(modelFields);
+            value = result?.MirthNextGen ?? value;
+          }
+          if (errors.MirthNextGen?.hasError) {
+            runValidationTasks("MirthNextGen", value);
+          }
+          setMirthNextGen(value);
+        }}
+        onBlur={() => runValidationTasks("MirthNextGen", MirthNextGen)}
+        errorMessage={errors.MirthNextGen?.errorMessage}
+        hasError={errors.MirthNextGen?.hasError}
+        {...getOverrideProps(overrides, "MirthNextGen")}
+      ></SwitchField>
+      <SwitchField
+        label="Integration other"
+        defaultChecked={false}
+        isDisabled={false}
+        isChecked={IntegrationOther}
+        onChange={(e) => {
+          let value = e.target.checked;
+          if (onChange) {
+            const modelFields = {
+              user,
+              ParticipantID,
+              EhrIntersystems,
+              EhrSmile,
+              EhrSalesforce,
+              EhrList,
+              SendOutboundDirect,
+              SendOutboundSFTP,
+              SendOutboundMLLP,
+              SendOutboundHTTPS,
+              SendOutboundFHIR,
+              SendOutboundNone,
+              SendInformationDirect,
+              SendInformationSFTP,
+              SendInformationMLLP,
+              SendInformationHTTPS,
+              SendInformationFHIR,
+              SendInformationIHE,
+              SendInformationNone,
+              SendRequestDirect,
+              SendRequestSFTP,
+              SendRequestFHIR,
+              SendRequestIHE,
+              SendRequestNone,
+              ReceiveInboundDirect,
+              ReceiveInboundSFTP,
+              ReceiveInboundMLLP,
+              ReceiveInboundHTTPS,
+              ReceiveInboundFHIR,
+              ReceiveInboundNone,
+              ReceiveInformationDirect,
+              ReceiveInformationSFTP,
+              ReceiveInformationMLLP,
+              ReceiveInformationHTTPS,
+              ReceiveInformationFHIR,
+              ReceiveInformationIHE,
+              ReceiveInformationNone,
+              ReceiveRequestDirect,
+              ReceiveRequestSFTP,
+              ReceiveRequestFHIR,
+              ReceiveRequestIHE,
+              ReceiveRequestNone,
+              HIPPA,
+              MirthNextGen,
+              IntegrationOther: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.IntegrationOther ?? value;
+          }
+          if (errors.IntegrationOther?.hasError) {
+            runValidationTasks("IntegrationOther", value);
+          }
+          setIntegrationOther(value);
+        }}
+        onBlur={() => runValidationTasks("IntegrationOther", IntegrationOther)}
+        errorMessage={errors.IntegrationOther?.errorMessage}
+        hasError={errors.IntegrationOther?.hasError}
+        {...getOverrideProps(overrides, "IntegrationOther")}
       ></SwitchField>
       <Flex
         justifyContent="space-between"

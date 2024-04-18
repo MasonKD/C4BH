@@ -5,7 +5,7 @@ type C4bhFormData @model @auth(rules: [{allow: public}]) {
   EhrIntersystems: Boolean
   EhrSmile: Boolean
   EhrSalesforce: Boolean
-  EhrOther: String
+  EhrList: String
   SendOutboundDirect: Boolean
   SendOutboundSFTP: Boolean
   SendOutboundMLLP: Boolean
@@ -43,5 +43,7 @@ type C4bhFormData @model @auth(rules: [{allow: public}]) {
   ReceiveRequestIHE: Boolean
   ReceiveRequestNone: Boolean
   HIPPA: Boolean
+  MirthNextGen: Boolean
+  IntegrationOther: Boolean
 }
  
