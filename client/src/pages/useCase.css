@@ -11,7 +11,8 @@
 .img-holder3 {
   margin: 20px 0 0 0;
   max-width: 1110px;
-  margin-top: 1in;
+  margin-top: .5in;
+  margin-right: ;
 }
 
 .reg-btn-holder{
@@ -34,4 +35,11 @@ margin: 300px 0 0 0;
 
   #useCase-section {
     height: 800px;
+  }
+
+  .pdf-link{
+    text-decoration: none;
+    font-weight: 600;
+    color: #1D4A7A;
+    font-size: 2rem;
   }

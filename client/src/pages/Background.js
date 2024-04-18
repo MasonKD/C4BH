@@ -12,10 +12,13 @@ const Background = () => {
   return (
     <div className='main-container'>
       <main>
+
+              <h2 className="shared-title">DxF Sandbox: Background</h2>
+
       <div className='img-holder3'>
-          <a href="https://emiadvisorsdc-my.sharepoint.com/:b:/g/personal/haag_kris_emiadvisorsdc_onmicrosoft_com/EZTxo577cMFHrLU7iyZ41oEBxwJdYgVtvS91NX706pzwVQ?e=UNtAO8"
+          <a className='lg-link' href="https://emiadvisorsdc-my.sharepoint.com/:b:/g/personal/haag_kris_emiadvisorsdc_onmicrosoft_com/EZTxo577cMFHrLU7iyZ41oEBxwJdYgVtvS91NX706pzwVQ?e=UNtAO8"
              target="_blank" rel="noopener noreferrer" className="pdf-link">
-            View the DxF Architecture PDF
+            DxF Sandbox: Charter
           </a>
         </div>
         <div className='section' id="useCase-section">
