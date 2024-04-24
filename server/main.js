@@ -2,7 +2,6 @@ import express from 'express';
 import cors from 'cors';
 import querySmile from './api-Smile.js';
 import getMirthLogs from './api-Mirth.js';
-import getNeo4jBasic from './api-Neo4j.js';
 import queryEncounterCDR from './api-EncounterCDR.js';
 
 
@@ -16,7 +15,6 @@ app.use(cors({
 
 app.get('/mirth-logs', getMirthLogs);
 app.get('/smile-query', querySmile);
-app.get('/neo4j-basic', getNeo4jBasic);
 app.get('/encounter-query', queryEncounterCDR);
 
 
