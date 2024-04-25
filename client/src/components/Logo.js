@@ -13,7 +13,7 @@ export default function Logo() {
 		onClick={handleLogoClick}
 		style={{ cursor: 'pointer' }} // Add cursor style on hover
 	  >
-		<img src={logoImage} alt="Connecting for Better Health" />
+		<img src={logoImage} style={{ maxHeight : 60 }} alt="Connecting for Better Health" />
 	  </div>
 	);
 };

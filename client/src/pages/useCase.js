@@ -1,6 +1,8 @@
 import React from 'react';
-import './useCase.css';
 import useCaseImg1 from '../images/DxFUseCases.png';
+import button from '../css/button.module.css'
+import font from '../css/fonts.module.css'
+import flex from '../css/flex.module.css'
 
 const useCase = () => {
 
@@ -11,17 +13,13 @@ const useCase = () => {
   return (
     <div className='main-container'>
       <main>
-        <div className='section' id="useCase-section">
-          <h2 className="shared-title">DxF Sandbox: Use Case(s)</h2>
-          <div className='img-holder'>
+          <h2 className={font.h2}>DxF Sandbox: Use Case(s)</h2>
+          <div className={flex.row}>
             <img src={useCaseImg1} alt="Connecting for Better Health" />
           </div>
-          <div className='reg-btn-holder'>
-            <button className="reg-button" onClick={handleUseCase1Doc}>Use Case Files</button>
+          <div className={flex.row}>
+            <button className={button.primary} onClick={handleUseCase1Doc}>Use Case Files</button>
           </div>
-
-
-        </div>
       </main>
     </div>
   );

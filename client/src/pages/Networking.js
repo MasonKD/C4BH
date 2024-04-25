@@ -1,6 +1,5 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { createEmbeddingContext } from 'amazon-quicksight-embedding-sdk';
-import './Networking.css';
 import Notebook from '../components/SankeyChart';
 import leafPin from 'leaflet/dist/images/marker-icon.png';
 import Dxfdata from '../data/Merged_DSA_SignatoryList_with_Lat_Long_Corrected.json';
@@ -8,7 +7,9 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import Select from 'react-select';
-
+import button from '../css/button.module.css'
+import font from '../css/fonts.module.css'
+import flex from '../css/flex.module.css'
 
 
 const Networking = () => {
@@ -56,8 +57,8 @@ const Networking = () => {
     const options = {
       url: dashboardUrl,
       container: dashboardRef.current,
-      height: "1000px",
-      width: "1500px",
+      height: "800px",
+      
     };
 
     const newEmbeddedDashboard = await embeddingContext.embedDashboard(options);
@@ -322,34 +323,33 @@ const Networking = () => {
 
 
         {/* --------------------------------------------------------------------quicksite */}
-        <button onClick={toggleVisibility} className="hide-toggle-button">
+        <div className={`${flex.row} ${flex.justifyRight}`}>
+        <button onClick={toggleVisibility} className={button.primary}>
           {showOnlyQuicksite ? 'Show All Visualizations' : 'Show Only Quicksite'}
         </button>
+        </div>
 
 
-        <div className='section' id='network-quicksight'>
-            <div className="shared-title-container">
-              <h2 className="shared-title">DxF Sandbox: Visualizations</h2>
-            </div>
-          <div className='container' id="quicksight-holder" ref={dashboardRef} />
+
+        <div className={flex.section}>
+              <h2 className={font.h2}>DxF Sandbox: Visualizations</h2>
+          <div ref={dashboardRef} />
 
           </div>
 
         {/* --------------------------------------------------------------------Participant Tables */}
         {!showOnlyQuicksite && (
     <>
-      <div className='section' id="section-participants">
-      <div>
-            <h2 className="shared-title">Participants</h2>
+      <div className={flex.section}>
+          <h2 className={font.h2}>Participants</h2>
 
-          </div>
 
-          <div className='container' id='one-one'>
-            <div className="table-holder">
+          <div className={`${flex.row2} ${flex.justifySpaceBetween}`}>
+            <div className={`${flex.rowChild48}`}>
 
-            <div className="table-title">
+            <h5 className={font.h5}>
                     DSA Signatories: {totalSum}
-            </div>
+            </h5>
                     <table id="table-signatories">
                       <tbody>
                       <th>Type</th>
@@ -367,10 +367,10 @@ const Networking = () => {
                 </div>
 
 
-                <div className='table-holder'>
-                  <div className="table-title">
+                <div className={`${flex.rowChild48}`}>
+                  <h5 className={font.h5}>
                       Connections
-                  </div>
+                  </h5>
                   <EventList events={combinedEventCounts} />
                 </div>
 
@@ -378,23 +378,23 @@ const Networking = () => {
               </div>
       </div>
 
-      <div className='section' id="section-geo">
-      <div className="shared-title-container">
-              <h2 className="shared-title">Geographic View</h2>
-            </div>
-            <div className='container'>
+      <div className={flex.section}>
 
-            <MapContainer center={[37.505915, -120.505943]} zoom={6} scrollWheelZoom={false} className="leaflet-container">
+              <h2 className={font.h2}>Geographic View</h2>
+
+            <div className={`${flex.row2} ${flex.justifySpaceBetween}`}>
+
+            <MapContainer style={{height : 540}} center={[37.505915, -120.505943]} zoom={6} scrollWheelZoom={false} className={flex.rowChild74}>
                 <TileLayer
                   attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                   url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
                 {renderMarkers()}
               </MapContainer>
-              <div className="city-selector">
-                <div className="table-title">
+              <div className={flex.rowChild20}>
+                <h5 className={font.h5}>
                       Filters
-                </div>
+                </h5>
                 <div className="selector-wrapper">
                   <div>Cities</div>
                 <Select
@@ -434,51 +434,14 @@ const Networking = () => {
             </div>
       </div>
 
-      <div className='section' id="section-sankey">
-      <div className="shared-title-container">
-              <h2 className="shared-title">Network View</h2>
-            </div>
-          <div className='container' id='one'>
+      <div className={flex.section}>
+          <h2 className={font.h2}>Network View</h2>
 
-            <div className="sankey-container">
             <Notebook />
-          </div>
-        </div>
+
       </div>
 
-      <div className='section' id='hide-me'>
-      <div className="shared-title-container">
-            <h2 className="shared-title">Participant Table</h2>
-          </div>
-          <div className="table-container">
-          <table>
-            <thead>
-              <tr>
-                <th>Participant</th>
-                <th>Type</th>
-                <th>ID</th>
-                <th>Request for Information</th>
-                <th>Information Delivery</th>
-                <th>Requests for Notification of ADT Events</th>
-                <th>City</th>
-              </tr>
-            </thead>
-            <tbody>
-              {uniqueParticipants.map((participant, index) => (
-                <tr key={index}>
-                  <td>{participant.Participant_Name}</td>
-                  <td>{participant.Type}</td>
-                  <td>{participant.ID}</td>
-                  <td>{participant.Request_for_Information}</td>
-                  <td>{participant.Information_Delivery}</td>
-                  <td>{participant.Requests_for_Notification_of_ADT_Events}</td>
-                  <td>{participant.City}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          </div>
-      </div>
+
     </>
   )}
 

@@ -1,5 +1,4 @@
 import React from 'react';
-import './LandingPage.css'; 
 import logoImage from './images/C4BHLogo.png';
 
 const Logo = () => (
