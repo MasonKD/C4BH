@@ -39,3 +39,11 @@
     background: var(--DS-grey-300);
     color: var(--DS-grey-700);
   }
+
+  .disabled:hover  {
+    background: var(--DS-grey-300);
+    color: var(--DS-grey-700);
+    cursor: default;
+    box-shadow: none; /* pronounced shadow on hover */
+
+  }

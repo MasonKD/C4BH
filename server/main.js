@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3001;
 
 //dev is "http://localhost:3000", Prod is "https://sbx.connectingforbetterhealth.com" for origin
 app.use(cors({
-    origin: 'https://sbx.connectingforbetterhealth.com'
+    origin: 'http://localhost:3000'
   }));
 
 app.get('/mirth-logs', getMirthLogs);
