@@ -3,7 +3,9 @@ import React from 'react';
 import { Hub } from 'aws-amplify/utils';
 import { useNavigate } from 'react-router-dom';
 import { useAuthenticator } from '@aws-amplify/ui-react';
-import Logo from './Logo';
+import style from './AppHeader.module.css'
+import button from '../../css/button.module.css'
+import Logo from '../Logo';
 
 const AppHeader = () => {
   const navigate = useNavigate();
@@ -36,14 +38,19 @@ const AppHeader = () => {
 	const { user, signOut } = useAuthenticator((context) => [context.user]);
 	console.log(user)
 return (
-	<header className="header">
-	<Logo />
-	<div>
-	<div className="user-participant">Welcome, {user?.signInDetails.loginId.split("@")[0]}</div>
-	<button className="signout-button" onClick={() => {navigate("/DxfRegistration")}}>Register DxF Participant</button>
-	<button className="signout-button" onClick={signOut}>Sign Out</button>
-	</div>
+	<div className={style.headerWrapper}>
+	<header className={style.header}>
+		<Logo />
+		<div className={style.headerContent}>
+			<div className={style.userText}>Welcome, {user?.signInDetails.loginId.split("@")[0]}</div>
+			<div>
+			<button className={button.primary} onClick={() => {navigate("/DxfRegistration")}}>Register DxF Participant</button>
+			<button className={button.primary} onClick={signOut}>Sign Out</button>
+			</div>
+		</div>
 	</header>
+	</div>
+
 )
 }
 

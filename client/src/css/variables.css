@@ -1,0 +1,33 @@
+:root {
+
+   /*-------------------------------------------- Colors -------------------------------------------- */
+
+
+    --DS-a-primary-blue: #0156B1;
+    --DS-a-secondary-blue: #14539C;
+    --DS-a-tertiary-blue: #1F7DEA;
+
+
+    --DS-background-grey: #F7F7FA;
+
+    --C4BH-Brand-Blue: #5091CD;
+
+    --DS-primary-black: #0E2339;
+    --DS-primary-white: #ffffff;
+
+    --DS-grey-blue-900: #283e54;
+    --DS-grey-blue-700: #3d5c7b;
+    --DS-grey-blue-500: #5b7897;
+    --DS-grey-blue-200: #91b3d5;
+    --DS-grey-blue-100: #d4e8fd;
+    
+    --DS-grey-700: #4B5662;
+    --DS-grey-500: #9BA6B2;
+    --DS-grey-200: #E2E8EF;
+
+    --DS-error-red: #E11212;
+
+
+
+
+}

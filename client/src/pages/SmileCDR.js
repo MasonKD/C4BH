@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { useTable } from 'react-table';
-import './useCase.css';
 
 const SmileCDR = () => {
 

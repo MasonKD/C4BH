@@ -1,7 +1,7 @@
 // App.js
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-import AppHeader from './components/AppHeader'
+import AppHeader from './components/Header/AppHeader'
 import MainPage from './pages/MainPage';
 import Callback from './data/Callback';
 import Mirth from './pages/Mirth';

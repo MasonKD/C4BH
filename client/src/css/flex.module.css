@@ -1,0 +1,52 @@
+.section{
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 0 48px 0;
+}
+
+
+
+.row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    margin: 0 0 36px 0;
+  }
+
+  .row2 {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    flex-wrap: nowrap;
+    margin: 0 0 36px 0;
+  }
+  .rowChild74 {
+    width: 74%;
+  }
+
+  .rowChild48 {
+    width: 48%;
+  }
+  
+  .rowChild20 {
+    width: 20%;
+  }
+
+
+  .justifyRight {
+    justify-content: right;
+  }
+
+  .justifyCenter{
+    justify-content: center;
+  }
+
+  .justifySpaceBetween{
+    justify-content: space-between;
+  }
+
+
+
+

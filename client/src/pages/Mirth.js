@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTable } from 'react-table';
-import './Mirth.css';
+import font from '../css/fonts.module.css'
+import flex from '../css/flex.module.css'
 
 
 const Mirth = () => {
@@ -105,7 +106,7 @@ const extractNameFromHL7 = (content) => {
   return (
     <div className='main-container'>
       <main>
-        <h1>Integration Engine (Mirth)</h1>
+        <h2 className={font.h2}>Integration Engine (Mirth)</h2>
         <table {...getTableProps()}>
           <thead>
             {headerGroups.map(headerGroup => (
