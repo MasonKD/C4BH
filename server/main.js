@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import querySmile from './api-Smile.js';
 import getMirthLogs from './api-Mirth.js';
+import queryEncounterCDR from './api-EncounterCDR.js';
 
 
 const app = express();
@@ -14,6 +15,8 @@ app.use(cors({
 
 app.get('/mirth-logs', getMirthLogs);
 app.get('/smile-query', querySmile);
+app.get('/encounter-query', queryEncounterCDR);
+
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

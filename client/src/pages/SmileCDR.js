@@ -7,7 +7,10 @@ const SmileCDR = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const [encounterData, setEncounterData] = useState([]);
 
+  
+//-------------------------------Patient column setup
   const columns = useMemo(() => [
     {
       Header: 'Patient ID',
@@ -44,6 +47,42 @@ const SmileCDR = () => {
 
   ], []);
 
+  //-------------------------------Encounter column setup
+
+  const encounterColumns = useMemo(() => [
+    {
+      Header: 'Patient ID',
+      accessor: 'patientId', 
+    },
+    {
+      Header: 'Location',
+      accessor: 'location',
+    },
+    {
+      Header: 'Status',
+      accessor: 'status',
+    },
+    {
+      Header: 'Reason Code',
+      accessor: 'reasonCode', 
+    },
+    {
+      Header: 'Class Display',
+    accessor: 'classDisplay', 
+    },
+    {
+      Header: 'Special Arrangement',
+      accessor: 'specialArrangement', 
+    },
+    {
+      Header: 'Period',
+      accessor: 'period',
+    },
+    
+  ], []);
+
+//------------------------------------------------------fetch request to get all patient specific data from CDR
+
   //http://127.0.0.1:3001/smile-query
   //https://sbx.connectingforbetterhealth.com/api/smile-query
   useEffect(() => {
@@ -58,6 +97,7 @@ const SmileCDR = () => {
         }
         const json = await response.json();
         const parsedData = JSON.parse(json.data);
+        console.log(parsedData);
 
         const formattedData = parsedData.entry.map(entry => {
           const patientData = {
@@ -82,6 +122,9 @@ const SmileCDR = () => {
         });
 
         setData(formattedData);
+
+        await fetchEncounterData();
+
       } catch (error) {
         console.error('Failed to fetch data:', error);
         setError(error.message);
@@ -90,10 +133,79 @@ const SmileCDR = () => {
       }
     };
 
-    fetchData();
+
+    //------------------------------------------------------fetch request to get all encounter data from CDR
+
+    //http://127.0.0.1:3001/encounter-query
+    //https://sbx.connectingforbetterhealth.com/api/encounter-query
+    const fetchEncounterData = async () => {
+      try {
+        const encounterResponse = await fetch('https://sbx.connectingforbetterhealth.com/api/encounter-query');
+        if (!encounterResponse.ok) {
+          throw new Error(`HTTP status ${encounterResponse.status}`);
+        }
+        const result = await encounterResponse.json();
+        const encounterData = JSON.parse(result.data);
+        
+        console.log('Encounter data:', encounterData);
+        
+        if (encounterData && encounterData.entry && Array.isArray(encounterData.entry)) {
+          const formattedEncounterData = encounterData.entry.map(entry => {
+             
+            const accountResource = entry.resource.contained?.find(r => r.resourceType === 'Account');
+            
+            const patientReference = accountResource?.subject?.[0]?.reference || 'None found';
+            
+            const locationResource = entry.resource.contained.find(contained => contained.resourceType === 'Location');
+            const locationDisplay = locationResource?.type?.map(type => {
+              return type.coding?.map(coding => coding.display).join(', ');
+            }).join(', ') || 'No Location Display';
+
+            const status = entry.resource.status || 'No Status';
+
+            const periodStart = entry.resource.period?.start || 'No Start Date';
+            const periodEnd = entry.resource.period?.end ? ` to ${entry.resource.period.end}` : '';
+            const period = `${periodStart}${periodEnd}`;
+
+            const reasonCodeText = entry.resource.reasonCode && entry.resource.reasonCode.length > 0
+            ? entry.resource.reasonCode[0].text
+            : 'No Reason code';
+
+            const classDisplayText = entry.resource.class && entry.resource.class.display
+            ? entry.resource.class.display
+            : 'No Class Display';
+
+            const specialArrangementText = entry.resource.hospitalization?.specialArrangement?.[0]?.text || 'No Special Arrangement';
+        
+            return {
+              patientId: patientReference,
+              location: locationDisplay,
+              status: status,
+              period: period,
+              reasonCode: reasonCodeText,
+              classDisplay: classDisplayText,
+              specialArrangement: specialArrangementText,
+            };
+          });
+          setEncounterData(formattedEncounterData);
+        } else {
+          console.error('No entries found in the encounter data:', encounterData);
+          setEncounterData([]);
+        }
+      } catch (error) {
+        console.error('Failed to fetch encounter data:', error);
+        setEncounterData([]);
+      }
+    };
+    
+
+fetchData();
   }, []);
 
+
+  //-----------------------Patient data table setup
   const tableInstance = useTable({ columns, data });
+
 
   const {
     getTableProps,
@@ -103,6 +215,23 @@ const SmileCDR = () => {
     prepareRow,
   } = tableInstance;
 
+  //-----------------------Encounter  data table setup
+  const encounterTableInstance = useTable({
+    columns: encounterColumns,
+    data: encounterData 
+  });
+  
+  
+  const {
+    getTableProps: getEncounterTableProps,
+    getTableBodyProps: getEncounterTableBodyProps,
+    headerGroups: encounterHeaderGroups,
+    rows: encounterRows,
+    prepareRow: prepareEncounterRow,
+  } = encounterTableInstance;
+
+
+//----------------------------------------------HTML
   return (
     <div className='main-container'>
       <main>
@@ -115,20 +244,44 @@ const SmileCDR = () => {
             <h1>Clinical Data Repository (Smile)</h1>
             <table {...getTableProps()} className="table">
               <thead>
-                {headerGroups.map((headerGroup) => (
+                {headerGroups.map(headerGroup => (
                   <tr {...headerGroup.getHeaderGroupProps()}>
-                    {headerGroup.headers.map((column) => (
+                    {headerGroup.headers.map(column => (
                       <th {...column.getHeaderProps()}>{column.render('Header')}</th>
                     ))}
                   </tr>
                 ))}
               </thead>
               <tbody {...getTableBodyProps()}>
-                {rows.map((row) => {
+                {rows.map(row => {
                   prepareRow(row);
                   return (
                     <tr {...row.getRowProps()}>
-                      {row.cells.map((cell) => (
+                      {row.cells.map(cell => (
+                        <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                      ))}
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+            <h1>Encounter Data</h1>
+            <table {...getEncounterTableProps()} className="table">
+              <thead>
+                {encounterHeaderGroups.map(headerGroup => (
+                  <tr {...headerGroup.getHeaderGroupProps()}>
+                    {headerGroup.headers.map(column => (
+                      <th {...column.getHeaderProps()}>{column.render('Header')}</th>
+                    ))}
+                  </tr>
+                ))}
+              </thead>
+              <tbody {...getEncounterTableBodyProps()}>
+                {encounterRows.map(row => {
+                  prepareEncounterRow(row);
+                  return (
+                    <tr {...row.getRowProps()}>
+                      {row.cells.map(cell => (
                         <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
                       ))}
                     </tr>
@@ -141,9 +294,8 @@ const SmileCDR = () => {
       </main>
     </div>
   );
-
 };
 
-
 export default SmileCDR;
+
 
