@@ -3,7 +3,7 @@
     background: var(--DS-a-primary-blue);
     border: none;
     border-radius: 30px; /* More rounded */
-    color: white;
+    color: var(--DS-primary-white);
     font-weight: bold;
     font-size: .94rem;
     cursor: pointer;
@@ -12,7 +12,30 @@
   }
   
   .primary:hover {
-    background: var(); /* slightly lighter blue for hover */
+    background: var(--DS-a-secondary-blue); /* slightly lighter blue for hover */
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* pronounced shadow on hover */
   }
 
+  .jumbo {
+    padding: .6rem 1.4rem;
+    background: var(--DS-a-primary-blue);
+    border: none;
+    border-radius: 7px; /* More rounded */
+    color: var(--DS-primary-white);
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 8px;
+    height: 72px;
+  }
+
+  .jumbo:hover {
+    background: var(--DS-a-secondary-blue); /* slightly lighter blue for hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* pronounced shadow on hover */
+  }
+
+  .disabled {
+    background: var(--DS-grey-300);
+    color: var(--DS-grey-700);
+  }

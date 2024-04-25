@@ -1,6 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
-
+import button from '../css/button.module.css'
+import font from '../css/fonts.module.css'
+import flex from '../css/flex.module.css'
 
 const MainPage = () => {
   const navigate = useNavigate(); // Initialize navigate function
@@ -35,30 +37,33 @@ const MainPage = () => {
   return (
     <div className="main-container">
       <main>
-      <div className="button-container">
-        <div className='button-col'>
-          <button className="query-button" onClick={HandleBackgroundQuery}>Background</button>
+      <div className={flex.section}>
+        <div className={`${flex.row} ${flex.justifyCenter}`}>
+        <div className={`${flex.col} ${flex.col5margin}`}>
+          <button className={button.jumbo} onClick={HandleBackgroundQuery}>Background</button>
         </div>
-        <div className='button-col'>
-          <button className="query-button" onClick={HandleUseCaseQuery}>Use Cases</button>
+        <div className={`${flex.col} ${flex.col5margin}`}>
+          <button className={button.jumbo} onClick={HandleUseCaseQuery}>Use Cases</button>
         </div>
-        <div className='button-col'>
-          <button className="query-button" id="disabled"> <div>FTP Log</div> <span>(Coming Soon)</span></button>
-          <button className="query-button" onClick={HandleMirthQuery}>
+        <div className={`${flex.col} ${flex.col5margin}`}>
+          <button className={`${button.jumbo} ${button.disabled}`}> <div>FTP Log</div> <span>(Coming Soon)</span></button>
+          <button className={button.jumbo} onClick={HandleMirthQuery}>
             <div>Integration Engine</div>
             <div>(Mirth)</div>
           </button>
-          <button className="query-button" onClick={HandleSmileCDRQuery}>
+          <button className={button.jumbo} onClick={HandleSmileCDRQuery}>
             <div>CDR</div>
             <div>(Smile)</div>
           </button>
         </div>
-        <div className='button-col'>
-        <button className="query-button" id="disabled"> <div>Rules Engine</div> <span>(Coming Soon)</span></button>
+        <div className={`${flex.col} ${flex.col5margin}`}>
+        <button className={`${button.jumbo} ${button.disabled}`}> <div>Rules Engine</div> <span>(Coming Soon)</span></button>
         </div>
-        <div className='button-col'>
-        <button className="query-button" onClick={HandleNetworkQuery}>Visualizations</button>
+        <div className={`${flex.col} ${flex.col5margin}`}>
+        <button className={button.jumbo} onClick={HandleNetworkQuery}>Visualizations</button>
         </div>
+        </div>
+
 
 
 

@@ -57,8 +57,8 @@ const Networking = () => {
     const options = {
       url: dashboardUrl,
       container: dashboardRef.current,
-      height: "1000px",
-      width: "1500px",
+      height: "800px",
+      
     };
 
     const newEmbeddedDashboard = await embeddingContext.embedDashboard(options);
@@ -333,7 +333,7 @@ const Networking = () => {
 
         <div className={flex.section}>
               <h2 className={font.h2}>DxF Sandbox: Visualizations</h2>
-          <div style={{width: 1200}} ref={dashboardRef} />
+          <div ref={dashboardRef} />
 
           </div>
 
