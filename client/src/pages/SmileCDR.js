@@ -7,6 +7,32 @@ const SmileCDR = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [encounterData, setEncounterData] = useState([]);
+  const [practitionerData, setPractitionerData] = useState([]);
+
+//-------------------------------Practitioner column setup
+  const practitionerColumns = useMemo(() => [
+    {
+      Header: 'Practitioner ID',
+      accessor: 'id'
+    },
+    {
+      Header: 'Name',
+      accessor: 'name'
+    },
+    {
+      Header: 'Provider Number',
+      accessor: 'providerNumber'
+    },
+    {
+      Header: 'Phone',
+      accessor: 'phone'
+    },
+    {
+      Header: 'Address',
+      accessor: 'address'
+    },
+  ], []);
+  
 
   
 //-------------------------------Patient column setup
@@ -196,9 +222,63 @@ const SmileCDR = () => {
         setEncounterData([]);
       }
     };
+
+
+
+
+
+//------------------------------------------------------fetch request to get all practitioner data from CDR
+
+    //http://127.0.0.1:3001/practitioner-query
+    //https://sbx.connectingforbetterhealth.com/api/practitioner-query
+    const fetchPractitionerData = async () => {
+      try {
+        const practitionerResponse = await fetch('https://sbx.connectingforbetterhealth.com/api/practitioner-query');
+        if (!practitionerResponse.ok) {
+          throw new Error(`HTTP status ${practitionerResponse.status}`);
+        }
+        const result = await practitionerResponse.json();
+        const practitionerData = JSON.parse(result.data);
+    
+        console.log('Practitioner data:', practitionerData);
+    
+        if (practitionerData && practitionerData.entry && Array.isArray(practitionerData.entry)) {
+          const formattedPractitionerData = practitionerData.entry.map(entry => {
+            const { resource } = entry;
+            const practitionerId = resource.id;
+            const nameArray = resource.name || [];
+            const name = nameArray.map(n => `${n.family}, ${n.given.join(' ')}`).join('; ') || 'No name provided';
+            const identifierArray = resource.identifier || [];
+            const providerNumber = identifierArray.find(id => id.system === "http://acme.org/clinicians")?.value || 'No provider number';
+            const telecomArray = resource.telecom || [];
+            const phone = telecomArray.find(tel => tel.system === 'phone' && tel.use === 'work')?.value || 'No work phone';
+            const addressArray = resource.address || [];
+            const address = addressArray.map(addr => `${addr.line.join(', ')}, ${addr.city}, ${addr.state}, ${addr.postalCode}`).join('; ') || 'No address provided';
+          
+            return {
+              id: practitionerId,
+              name: name,
+              providerNumber: providerNumber,
+              phone: phone,
+              address: address
+            };
+          });
+          setPractitionerData(formattedPractitionerData);
+        } else {
+          console.error('No entries found in the practitioner data:', practitionerData);
+          setPractitionerData([]); // Set to empty array if no data found
+        }
+      } catch (error) {
+        console.error('Failed to fetch practitioner data:', error);
+        setPractitionerData([]); // Set to empty on error
+      }
+    };
+    
+    
     
 
 fetchData();
+fetchPractitionerData();
   }, []);
 
 
@@ -229,70 +309,115 @@ fetchData();
     prepareRow: prepareEncounterRow,
   } = encounterTableInstance;
 
+  //----------------------Practitioner data table setup
+
+  const practitionerTableInstance = useTable({
+    columns: practitionerColumns,
+    data: practitionerData
+  });
+  
+  const {
+    getTableProps: getPractitionerTableProps,
+    getTableBodyProps: getPractitionerTableBodyProps,
+    headerGroups: practitionerHeaderGroups,
+    rows: practitionerRows,
+    prepareRow: preparePractitionerRow,
+  } = practitionerTableInstance;
+  
+
 
 //----------------------------------------------HTML
-  return (
-    <div className='main-container'>
-      <main>
-        {loading ? (
-          <p>Loading...</p>
-        ) : error ? (
-          <p>{error}</p>
-        ) : (
-          <div>
-            <h1>Clinical Data Repository (Smile)</h1>
-            <table {...getTableProps()} className="table">
-              <thead>
-                {headerGroups.map(headerGroup => (
-                  <tr {...headerGroup.getHeaderGroupProps()}>
-                    {headerGroup.headers.map(column => (
-                      <th {...column.getHeaderProps()}>{column.render('Header')}</th>
+return (
+  <div className='main-container'>
+    <main>
+      {loading ? (
+        <p>Loading...</p>
+      ) : error ? (
+        <p>{error}</p>
+      ) : (
+        <div>
+          <h1>Clinical Data Repository (Smile)</h1>
+          {/* Patient Data Table */}
+          <h2>Patient Data</h2>
+          <table {...getTableProps()} className="table">
+            <thead>
+              {headerGroups.map(headerGroup => (
+                <tr {...headerGroup.getHeaderGroupProps()}>
+                  {headerGroup.headers.map(column => (
+                    <th {...column.getHeaderProps()}>{column.render('Header')}</th>
+                  ))}
+                </tr>
+              ))}
+            </thead>
+            <tbody {...getTableBodyProps()}>
+              {rows.map(row => {
+                prepareRow(row);
+                return (
+                  <tr {...row.getRowProps()}>
+                    {row.cells.map(cell => (
+                      <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
                     ))}
                   </tr>
-                ))}
-              </thead>
-              <tbody {...getTableBodyProps()}>
-                {rows.map(row => {
-                  prepareRow(row);
-                  return (
-                    <tr {...row.getRowProps()}>
-                      {row.cells.map(cell => (
-                        <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
-                      ))}
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-            <h1>Encounter Data</h1>
-            <table {...getEncounterTableProps()} className="table">
-              <thead>
-                {encounterHeaderGroups.map(headerGroup => (
-                  <tr {...headerGroup.getHeaderGroupProps()}>
-                    {headerGroup.headers.map(column => (
-                      <th {...column.getHeaderProps()}>{column.render('Header')}</th>
+                );
+              })}
+            </tbody>
+          </table>
+          {/* Encounter Data Table */}
+          <h2>Encounter Data</h2>
+          <table {...getEncounterTableProps()} className="table">
+            <thead>
+              {encounterHeaderGroups.map(headerGroup => (
+                <tr {...headerGroup.getHeaderGroupProps()}>
+                  {headerGroup.headers.map(column => (
+                    <th {...column.getHeaderProps()}>{column.render('Header')}</th>
+                  ))}
+                </tr>
+              ))}
+            </thead>
+            <tbody {...getEncounterTableBodyProps()}>
+              {encounterRows.map(row => {
+                prepareEncounterRow(row);
+                return (
+                  <tr {...row.getRowProps()}>
+                    {row.cells.map(cell => (
+                      <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
                     ))}
                   </tr>
-                ))}
-              </thead>
-              <tbody {...getEncounterTableBodyProps()}>
-                {encounterRows.map(row => {
-                  prepareEncounterRow(row);
-                  return (
-                    <tr {...row.getRowProps()}>
-                      {row.cells.map(cell => (
-                        <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
-                      ))}
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
-        )}
-      </main>
-    </div>
-  );
+                );
+              })}
+            </tbody>
+          </table>
+          {/* Practitioner Data Table */}
+          <h2>Practitioner Data</h2>
+          <table {...getPractitionerTableProps()} className="table">
+            <thead>
+              {practitionerHeaderGroups.map(headerGroup => (
+                <tr {...headerGroup.getHeaderGroupProps()}>
+                  {headerGroup.headers.map(column => (
+                    <th {...column.getHeaderProps()}>{column.render('Header')}</th>
+                  ))}
+                </tr>
+              ))}
+            </thead>
+            <tbody {...getPractitionerTableBodyProps()}>
+              {practitionerRows.map(row => {
+                preparePractitionerRow(row);
+                return (
+                  <tr {...row.getRowProps()}>
+                    {row.cells.map(cell => (
+                      <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                    ))}
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      )}
+    </main>
+  </div>
+);
+
 };
 
 export default SmileCDR;
