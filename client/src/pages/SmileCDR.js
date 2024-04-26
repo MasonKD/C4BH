@@ -90,7 +90,7 @@ const SmileCDR = () => {
       setError('');
 
       try {
-        const response = await fetch('http://127.0.0.1:3001/smile-query');
+        const response = await fetch('https://sbx.connectingforbetterhealth.com/api/smile-query');
         if (!response.ok) {
           throw new Error(`HTTP status ${response.status}`);
         }
