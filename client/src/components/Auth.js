@@ -175,16 +175,16 @@ export const formFields = {
 		},
 	},
 	signUp: {
-		// Email: {
-		// 	label: 'Email:',
-		// 	placeholder: 'Enter your email',
-		// 	isRequired: true,
-		// 	order: 1,
-		// },
+		email: {
+			label: 'Email:',
+			placeholder: 'Enter your email',
+			isRequired: true,
+			order: 1,
+		},
 		password: {
 			label: 'Password:',
 			placeholder: 'Enter your Password:',
-			isRequired: false,
+			isRequired: true,
 			order: 2,
 		},
 		confirm_password: {
