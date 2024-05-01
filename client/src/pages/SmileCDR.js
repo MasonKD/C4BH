@@ -75,6 +75,19 @@ const SmileCDR = () => {
   //-------------------------------Encounter column setup
 
   const encounterColumns = useMemo(() => [
+
+    {
+      Header: 'Encounter ID',
+      accessor: 'encounterId',
+    },
+    {
+      Header: 'Description',
+      accessor: 'reasonCode', 
+    },
+    {
+      Header: 'Dates',
+      accessor: 'period',
+    },
     {
       Header: 'Patient ID',
       accessor: 'patientId', 
@@ -88,21 +101,14 @@ const SmileCDR = () => {
       accessor: 'status',
     },
     {
-      Header: 'Reason Code',
-      accessor: 'reasonCode', 
-    },
-    {
-      Header: 'Class Display',
+      Header: 'Type',
     accessor: 'classDisplay', 
     },
     {
       Header: 'Special Arrangement',
       accessor: 'specialArrangement', 
     },
-    {
-      Header: 'Period',
-      accessor: 'period',
-    },
+
     
   ], []);
 
@@ -179,7 +185,7 @@ const SmileCDR = () => {
              
             const accountResource = entry.resource.contained?.find(r => r.resourceType === 'Account');
             
-            const patientReference = accountResource?.subject?.[0]?.reference || 'None found';
+            const patientReference = accountResource?.subject?.[0]?.reference.split('/')[1] || 'None found';
             
             const locationResource = entry.resource.contained.find(contained => contained.resourceType === 'Location');
             const locationDisplay = locationResource?.type?.map(type => {
@@ -201,6 +207,8 @@ const SmileCDR = () => {
             : 'No Class Display';
 
             const specialArrangementText = entry.resource.hospitalization?.specialArrangement?.[0]?.text || 'No Special Arrangement';
+
+            const encounterId = entry.resource.id || 'No Encounter ID';
         
             return {
               patientId: patientReference,
@@ -210,6 +218,7 @@ const SmileCDR = () => {
               reasonCode: reasonCodeText,
               classDisplay: classDisplayText,
               specialArrangement: specialArrangementText,
+              encounterId: encounterId
             };
           });
           setEncounterData(formattedEncounterData);
