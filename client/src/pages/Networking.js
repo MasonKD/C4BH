@@ -8,6 +8,7 @@ import 'leaflet/dist/leaflet.css';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import Select from 'react-select';
 import button from '../css/button.module.css'
+import { SwitchField, Button } from '@aws-amplify/ui-react';
 import font from '../css/fonts.module.css'
 import flex from '../css/flex.module.css'
 
@@ -316,29 +317,39 @@ const Networking = () => {
   };
 
 
-
+  const [isChecked, setIsChecked] = React.useState(true);
   return (
     <div className="main-container">
       <main>
 
 
         {/* --------------------------------------------------------------------quicksite */}
-        <div className={`${flex.row} ${flex.justifyRight}`}>
-        <button onClick={toggleVisibility} className={button.primary}>
-          {showOnlyQuicksite ? 'Show All Visualizations' : 'Show Only Quicksite'}
-        </button>
+        <div className={`${flex.row} ${flex.justifySpaceBetween}`}>
+        <h2 className={`${font.h2} ${flex.rowChild48}`}>Visualizations</h2>
+        <div>
+        <SwitchField
+          isDisabled={false}
+          label="Show Only Quicksite"
+          labelPosition="start"
+          isChecked={isChecked}
+          onChange={(e) => {
+            setIsChecked(e.target.checked);
+          }}
+        />
+        </div>
+
         </div>
 
 
 
+
         <div className={flex.section}>
-              <h2 className={font.h2}>DxF Sandbox: Visualizations</h2>
           <div ref={dashboardRef} />
 
           </div>
 
         {/* --------------------------------------------------------------------Participant Tables */}
-        {!showOnlyQuicksite && (
+        {!isChecked && (
     <>
       <div className={flex.section}>
           <h2 className={font.h2}>Participants</h2>

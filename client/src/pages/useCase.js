@@ -1,6 +1,6 @@
 import React from 'react';
 import useCaseImg1 from '../images/DxFUseCases.png';
-import button from '../css/button.module.css'
+import { Button } from "@aws-amplify/ui-react";
 import font from '../css/fonts.module.css'
 import flex from '../css/flex.module.css'
 
@@ -18,7 +18,7 @@ const useCase = () => {
             <img src={useCaseImg1} alt="Connecting for Better Health" />
           </div>
           <div className={flex.row}>
-            <button className={button.primary} onClick={handleUseCase1Doc}>Use Case Files</button>
+            <Button variation="primary" onClick={handleUseCase1Doc}>Use Case Files</Button>
           </div>
       </main>
     </div>

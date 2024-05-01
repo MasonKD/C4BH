@@ -6,6 +6,14 @@
     color: var(--DS-primary-black);
   }
 
+  .h3 {
+    font-size: 2.4rem;
+    font-weight: 200;
+    margin: 0 0 24px 0;
+    width: 100%;
+    color: var(--DS-primary-black);
+  }
+
   .h5 {
     font-size: 1.4rem;
     font-weight: 600;

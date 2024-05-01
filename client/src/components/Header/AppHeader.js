@@ -4,7 +4,7 @@ import { Hub } from 'aws-amplify/utils';
 import { useNavigate } from 'react-router-dom';
 import { useAuthenticator } from '@aws-amplify/ui-react';
 import style from './AppHeader.module.css'
-import button from '../../css/button.module.css'
+import { Button } from "@aws-amplify/ui-react";
 import Logo from '../Logo';
 
 const AppHeader = () => {
@@ -40,12 +40,14 @@ const AppHeader = () => {
 return (
 	<div className={style.headerWrapper}>
 	<header className={style.header}>
-		<Logo />
+		<div style={{maxWidth: 340}}>
+			<Logo />
+		</div>
 		<div className={style.headerContent}>
 			<div className={style.userText}>Welcome, {user?.signInDetails.loginId.split("@")[0]}</div>
 			<div>
-			<button className={button.primary} onClick={() => {navigate("/DxfRegistration")}}>Register DxF Participant</button>
-			<button className={button.primary} onClick={signOut}>Sign Out</button>
+			<Button variation="primary" onClick={() => {navigate("/DxfRegistration")}}>Register DxF Participant</Button>
+			<Button variation="primary" onClick={signOut}>Sign Out</Button>
 			</div>
 		</div>
 	</header>
