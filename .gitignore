@@ -130,4 +130,4 @@ dist
 .pnp.*
 
 # Python venv
-client/src/data/neo4j-venv/
+**/*venv*/
