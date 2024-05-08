@@ -1,0 +1,16 @@
+{
+  "trigger": true,
+  "modules": [
+    "custom"
+  ],
+  "parentResource": "C4BHForm",
+  "functionName": "C4BHFormPostAuthentication",
+  "resourceName": "C4BHFormPostAuthentication",
+  "parentStack": "auth",
+  "triggerEnvs": "[]",
+  "triggerDir": "/opt/homebrew/lib/node_modules/@aws-amplify/cli-internal/node_modules/@aws-amplify/amplify-category-auth/provider-utils/awscloudformation/triggers/PostAuthentication",
+  "triggerTemplate": "PostAuthentication.json.ejs",
+  "triggerEventPath": "PostAuthentication.event.json",
+  "roleName": "C4BHFormPostAuthentication",
+  "skipEdit": true
+}

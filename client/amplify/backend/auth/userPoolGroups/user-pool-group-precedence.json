@@ -1,0 +1,14 @@
+[
+  {
+    "groupName": "c4bhAdmin",
+    "precedence": 1
+  },
+  {
+    "groupName": "dxfMember",
+    "precedence": 2
+  },
+  {
+    "groupName": "dxfAdmin",
+    "precedence": 3
+  }
+]

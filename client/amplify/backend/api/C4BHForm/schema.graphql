@@ -1,0 +1,228 @@
+type NotificationsADTDos @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  SendInfoDirectSecureEmail: Boolean
+  SendInfosFTP: Boolean
+  SendInfoHL7v2: Boolean
+  SendInfoMLLP_HTTPS: Boolean
+  SendADTHTTPS_FHIR: Boolean
+  SendADTPortal: Boolean
+  SendADTOther: Boolean
+  SendADTOtherDescribe: String
+  DxFID: String
+}
+
+type NotificationsADTUno @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  ReceiveADTDirectSecureEmail: Boolean
+  ReceiveADTDirectEmailAddress: String
+  ReceiveADTsFTP: Boolean
+  ReceiveADTPointToPoint: Boolean
+  ReceiveADTHTTPSnonFHIR: Boolean
+  ReceiveADTHTTPSFHIR: Boolean
+  ReceiveADTHTTPSEndpoint: String
+  ReceiveADTOther: Boolean
+  ReceiveADTOtherDescription: String
+  DxFID: String
+}
+
+type C4bhUpdatedModel @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  User: String
+  EHR_Vendors: String
+  Customer_Management_System: String
+  HIE_or_Inter: String
+  ReceiveADTDirectSecureEmail: Boolean
+  ReceiveADTDirectEmailAddress: String
+  ReceiveADTsFTP: Boolean
+  ReceiveADTPointToPoint: Boolean
+  ReceiveADTHTTPSnonFHIR: Boolean
+  ReceiveADTHTTPSFHIR: Boolean
+  ReceiveADTHTTPSEndpoint: String
+  ReceiveADTOther: Boolean
+  ReceiveADTOtherDescription: String
+  SendADTDirectSecureEmail: Boolean
+  SendADTsFTP: Boolean
+  SendADTPointToPoint: Boolean
+  SendADTHTTPSNon_FHIR: Boolean
+  SendADTHTTPS_FHIR: Boolean
+  SendADTPortal: Boolean
+  SendADTOther: Boolean
+  SendADTOtherDescribe: String
+  RecieveInfoDirectSecureEmail: Boolean
+  RecieveInfosFTP: Boolean
+  RecieveInfoHL7V2: Boolean
+  RecieveInfoMLLP_HTTPS: String
+  RecieveInfoThirdPartyReferral: Boolean
+  RecieveInfoThirdPartyPlatform: String
+  RecieveInfoOther: Boolean
+  RecieveInfoOther_Describe: String
+  RecieveInfoDirectEmailAddress: String
+  SendInfoDirectSecureEmail: Boolean
+  SendInfosFTP: Boolean
+  SendInfoHL7v2: Boolean
+  SendInfoMLLP_HTTPS: String
+  SendInfoThirdPartyReferral: Boolean
+  SendInfoThirdPartyPlatform: String
+  SendInfoOther: Boolean
+  SenInfoOther_Describe: String
+  RequestRecieveDirectSecureEmail: Boolean
+  RequestDirectEmailAddress: String
+  RequestIHE: Boolean
+  RequestFHIR: Boolean
+  RequestOther: Boolean
+  RequestOtherDescribe: String
+  RequestRespondDirectSecureEmail: Boolean
+  RequestRespondIHE: Boolean
+  RequestRespondFHIR: Boolean
+  RequestRespondFHIRendpoint: String
+  RequestRespondOther: Boolean
+  RequestRespondOtherDescribe: String
+  CoveredHIPAA: Boolean
+  HybridHIPAA: Boolean
+  AssociateHIPAA: Boolean
+  NotCoveredHIPAA: Boolean
+}
+
+type HIPAA @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  CoveredHIPAA: Boolean
+  HybridHIPAA: Boolean
+  AssociateHIPAA: Boolean
+  NotCoveredHIPAA: Boolean
+  DxFID: String
+}
+
+type RequestInfo @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  RequestRecieveDirectSecureEmail: Boolean
+  RequestDirectEmailAddress: String
+  RequestIHE: Boolean
+  RequestFHIR: Boolean
+  RequestOther: Boolean
+  RequestOtherDescribe: String
+  RequestRespondDirectSecureEmail: Boolean
+  RequestRespondIHE: Boolean
+  RequestRespondFHIR: Boolean
+  RequestRespondFHIRendpoint: String
+  RequestRespondOther: Boolean
+  RequestRespondOtherDescribe: String
+  DxFID: String
+}
+
+type InformationDelivery @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  RecieveInfoDirectSecureEmail: Boolean
+  RecieveInfosFTP: Boolean
+  RecieveInfoHL7V2: Boolean
+  RecieveInfoMLLP_HTTPS: String
+  RecieveInfoThirdPartyReferral: Boolean
+  RecieveInfoThirdPartyPlatform: String
+  RecieveInfoOther: Boolean
+  RecieveInfoOther_Describe: String
+  RecieveInfoDirectEmailAddress: String
+  SendInfoDirectSecureEmail: Boolean
+  SendInfosFTP: Boolean
+  SendInfoHL7v2: Boolean
+  SendInfoMLLP_HTTPS: String
+  SendInfoThirdPartyReferral: Boolean
+  SendInfoThirdPartyPlatform: String
+  SendInfoOther: Boolean
+  SenInfoOther_Describe: String
+  DxFID: String
+}
+
+type NotificationsADT @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  ReceiveADTDirectSecureEmail: Boolean
+  ReceiveADTDirectEmailAddress: String
+  ReceiveADTsFTP: Boolean
+  ReceiveADTPointToPoint: Boolean
+  ReceiveADTHTTPSnonFHIR: Boolean
+  ReceiveADTHTTPSFHIR: Boolean
+  ReceiveADTHTTPSEndpoint: String
+  ReceiveADTOther: Boolean
+  ReceiveADTOtherDescription: String
+  SendADTDirectSecureEmail: Boolean
+  SendADTsFTP: Boolean
+  SendADTPointToPoint: Boolean
+  SendADTHTTPSNon_FHIR: Boolean
+  SendADTHTTPS_FHIR: Boolean
+  SendADTPortal: Boolean
+  SendADTOther: Boolean
+  SendADTOtherDescribe: String
+  DxFID: String
+}
+
+type TechIntermediaries @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  HIE_or_Inter: String
+  DxFID: String
+}
+
+type TechCBO @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  Customer_Management_System: String
+  DxFID: String
+}
+
+type TechAcute @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  EHR_Vendors: String
+  DxFID: String
+}
+
+type UserInfoC4BH @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  User: String
+  DxFID: String
+}
+
+type C4bhFormData @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  user: String
+  ParticipantID: String
+  EhrIntersystems: Boolean
+  EhrSmile: Boolean
+  EhrSalesforce: Boolean
+  EhrList: String
+  SendOutboundDirect: Boolean
+  SendOutboundSFTP: Boolean
+  SendOutboundMLLP: Boolean
+  SendOutboundHTTPS: Boolean
+  SendOutboundFHIR: Boolean
+  SendOutboundNone: Boolean
+  SendInformationDirect: Boolean
+  SendInformationSFTP: Boolean
+  SendInformationMLLP: Boolean
+  SendInformationHTTPS: Boolean
+  SendInformationFHIR: Boolean
+  SendInformationIHE: Boolean
+  SendInformationNone: Boolean
+  SendRequestDirect: Boolean
+  SendRequestSFTP: Boolean
+  SendRequestFHIR: Boolean
+  SendRequestIHE: Boolean
+  SendRequestNone: Boolean
+  ReceiveInboundDirect: Boolean
+  ReceiveInboundSFTP: Boolean
+  ReceiveInboundMLLP: Boolean
+  ReceiveInboundHTTPS: Boolean
+  ReceiveInboundFHIR: Boolean
+  ReceiveInboundNone: Boolean
+  ReceiveInformationDirect: Boolean
+  ReceiveInformationSFTP: Boolean
+  ReceiveInformationMLLP: Boolean
+  ReceiveInformationHTTPS: Boolean
+  ReceiveInformationFHIR: Boolean
+  ReceiveInformationIHE: Boolean
+  ReceiveInformationNone: Boolean
+  ReceiveRequestDirect: Boolean
+  ReceiveRequestSFTP: Boolean
+  ReceiveRequestFHIR: Boolean
+  ReceiveRequestIHE: Boolean
+  ReceiveRequestNone: Boolean
+  HIPPA: Boolean
+  MirthNextGen: Boolean
+  IntegrationOther: Boolean
+}
+ 

@@ -9,11 +9,32 @@
       "UnauthRoleName": "amplify-c4bhform-staging-948b7-unauthRole",
       "StackName": "amplify-c4bhform-staging-948b7",
       "StackId": "arn:aws:cloudformation:us-east-1:581686522969:stack/amplify-c4bhform-staging-948b7/3d602e30-f811-11ee-a5dc-0ef1031dbdcf",
-      "AmplifyAppId": "d2k5vtg3ngwiam"
+      "AmplifyAppId": "d2k5vtg3ngwiam",
+      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-c4bhform-staging-948b7-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
     },
     "categories": {
       "auth": {
-        "C4BHForm": {}
+        "C4BHForm": {},
+        "userPoolGroups": {}
+      },
+      "function": {
+        "AdminQueries5d1f99e9": {
+          "deploymentBucketName": "amplify-c4bhform-staging-948b7-deployment",
+          "s3Key": "amplify-builds/AdminQueries5d1f99e9-45322f70306864363759-build.zip"
+        },
+        "C4BHFormPostConfirmation": {
+          "GROUP": "dxfMember",
+          "deploymentBucketName": "amplify-c4bhform-staging-948b7-deployment",
+          "s3Key": "amplify-builds/C4BHFormPostConfirmation-61742f5350483975786b-build.zip"
+        },
+        "C4BHFormPostAuthentication": {
+          "deploymentBucketName": "amplify-c4bhform-staging-948b7-deployment",
+          "s3Key": "amplify-builds/C4BHFormPostAuthentication-7834616a74743778575a-build.zip"
+        }
+      },
+      "api": {
+        "C4BHForm": {},
+        "AdminQueries": {}
       }
     }
   }
