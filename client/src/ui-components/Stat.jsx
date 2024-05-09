@@ -7,7 +7,8 @@
 /* eslint-disable */
 import * as React from "react";
 import { getOverrideProps } from "./utils";
-import { Badge, Flex, Text } from "@aws-amplify/ui-react";
+import { Flex, Text } from "@aws-amplify/ui-react";
+import { Badge as BadgeCustom } from "./Badge";
 export default function Stat(props) {
   const { overrides, ...rest } = props;
   return (
@@ -79,15 +80,22 @@ export default function Stat(props) {
           children="8,260"
           {...getOverrideProps(overrides, "8,260")}
         ></Text>
-        <Badge
+        <BadgeCustom
+          display="flex"
+          gap="10px"
+          direction="row"
           width="unset"
           height="unset"
+          justifyContent="center"
+          alignItems="center"
           shrink="0"
+          position="relative"
+          borderRadius="32px"
+          padding="8px 12px 8px 12px"
           size="default"
           variation="success"
-          children="+17%"
           {...getOverrideProps(overrides, "Badge")}
-        ></Badge>
+        ></BadgeCustom>
       </Flex>
     </Flex>
   );
