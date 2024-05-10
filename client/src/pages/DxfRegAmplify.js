@@ -1,9 +1,11 @@
-// import amplifyconfig from './amplifyconfiguration.json';
 import React, { useState } from 'react';
 import { Button, Flex, Icon, View } from '@aws-amplify/ui-react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
 import { useAuthenticator } from '@aws-amplify/ui-react';
 import { updateUserAttribute } from '@aws-amplify/auth';
+import { dynamoAPI, determineForm } from '../data/dsaFetch';
+
+
 
 import  C4bhFormDataCreateForm, {submitC4bhFormDataCreateForm} from '../ui-components/C4bhFormDataCreateForm'
 import  C4bhUpdatedModelCreateForm, {submitC4bhUpdatedModelCreateForm} from '../ui-components/C4bhUpdatedModelCreateForm'
@@ -33,26 +35,40 @@ async function handleUpdateUserAttribute(attributeKey, value) {
 	}
 }
 
-function getDsaData(participant_id) {
-	console.log("getting dsa data for ", participant_id)
-	//Noah fill in
-	return {participant_id: "", type:""}
-}
+async function getDsaData(participant_id) {
+	console.log("Getting DSA data for", participant_id);
+	try {
+	  const dsaData = await dynamoAPI(participant_id);
+	  console.log(dsaData);
+	  return dsaData || []; // Return fetched data or an empty array if null
+	} catch (error) {
+	  console.error('Error fetching data from DynamoDB:', error);
+	  return [];
+	}
+  }
 
 let form_parts = ["TechAcute", "TechCBO", "TechInt", "NotifADUno", "NotifADUno", "Info", "RequestUno", "RequestDos"]
 function filterFormParts(dsa_data) {
 	console.log("setting form parts for ", dsa_data)
 	//Noah fill in
-	return ["TechInt", "NotifADUno", "NotifADUno", "Info", "RequestUno", "RequestDos"]
+	const x = determineForm(dsa_data[0]);
+	console.log(x);
+	const divname = document.querySelector("#divname")
+	if(
+		dsa_data[0]
+	)
+	divname.innerHTML="type: " + dsa_data[0].Type
+
+	 return determineForm(dsa_data[0]);
 }
 
-function debounce(func, delay, callback) {
+ function debounce(func, delay, callback) {
 	let timer;
 
-	return function (...args) {
+	return async function (...args) {
 	  clearTimeout(timer);
-	  timer = setTimeout(() => {
-		const result = func(...args); // Execute mainFunction and capture the return value
+	  timer = setTimeout(async () => {
+		const result = await func(...args); // Execute mainFunction and capture the return value
 		if (callback) {
 		  callback(result); // Call the callback function with the return value
 		}
@@ -86,16 +102,14 @@ const DxfRegistration = () => {
 	return (
 	<div className="main-container">
 		<main>
+			<div id = 'divname'></div>
+			
 			<div style={{display:Flex, justifyContent:'left'}}>
 				{/* dxf participant selector */}
 				<UserInfoC4BHCreateForm
-				onBlur={(fields) => {
-					console.log("blur ", fields)
-					debouncedGetDsaData(fields.DxFID)
-				}}
 				onChange={( fields) => {
 					console.log("changed ", fields)
-					debouncedGetDsaData(fields.DxFID)
+					debouncedGetDsaData(fields.User.split('=')[1])
 				}}
 				onSuccess={async (fields) => {
 					console.log("successfully submitted dxf participant selection")
@@ -159,3 +173,7 @@ const DxfRegistration = () => {
   )
 }
 export default DxfRegistration;
+
+
+
+
