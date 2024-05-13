@@ -16,8 +16,10 @@
   "dependencies": {
     "@aws-amplify/ui-react": "^6.1.7",
     "aws-amplify": "^6.0.28",
+    "aws-sdk": "^2.1615.0",
     "btoa": "^1.2.1",
     "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
     "express": "^4.19.0",
     "node-fetch": "^3.3.2"
   }
