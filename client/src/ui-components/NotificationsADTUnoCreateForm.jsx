@@ -10,6 +10,7 @@ import {
   CheckboxField,
   Flex,
   Grid,
+  Heading,
   Text,
   TextField,
 } from "@aws-amplify/ui-react";
@@ -175,18 +176,22 @@ export default function NotificationsADTUnoCreateForm(props) {
       {...getOverrideProps(overrides, "NotificationsADTUnoCreateForm")}
       {...rest}
     >
-      <Text
-        children="1. Receiving ADT Notifications: By which methods are you able to receive ADT notifications? Please check all that apply."
+      <Heading
+        children="By which methods are you able to receive ADT notifications?"
         {...getOverrideProps(overrides, "SectionalElement0")}
+      ></Heading>
+      <Text
+        children=" Please check all that apply:"
+        {...getOverrideProps(overrides, "SectionalElement1")}
       ></Text>
       <Grid
         columnGap="inherit"
         rowGap="inherit"
         templateColumns="repeat(2, auto)"
-        {...getOverrideProps(overrides, "RowGrid1")}
+        {...getOverrideProps(overrides, "RowGrid2")}
       >
         <CheckboxField
-          label="Direct Secure Email: Provide direct secure email address"
+          label="Direct Secure Email (Provide address):"
           name="ReceiveADTDirectSecureEmail"
           value="ReceiveADTDirectSecureEmail"
           isDisabled={false}
@@ -368,10 +373,10 @@ export default function NotificationsADTUnoCreateForm(props) {
         columnGap="inherit"
         rowGap="inherit"
         templateColumns="repeat(2, auto)"
-        {...getOverrideProps(overrides, "RowGrid5")}
+        {...getOverrideProps(overrides, "RowGrid6")}
       >
         <CheckboxField
-          label="HTTPS - FHIR: Please enter endpoint"
+          label="HTTPS - FHIR (Provide endpoint):"
           name="ReceiveADTHTTPSFHIR"
           value="ReceiveADTHTTPSFHIR"
           isDisabled={false}
@@ -447,10 +452,10 @@ export default function NotificationsADTUnoCreateForm(props) {
         columnGap="inherit"
         rowGap="inherit"
         templateColumns="repeat(2, auto)"
-        {...getOverrideProps(overrides, "RowGrid6")}
+        {...getOverrideProps(overrides, "RowGrid7")}
       >
         <CheckboxField
-          label="Other, please describe:"
+          label="Other (please describe):"
           name="ReceiveADTOther"
           value="ReceiveADTOther"
           isDisabled={false}

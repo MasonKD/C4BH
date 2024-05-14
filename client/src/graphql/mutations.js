@@ -1,6 +1,69 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const createRequestInfoDos = /* GraphQL */ `
+  mutation CreateRequestInfoDos(
+    $input: CreateRequestInfoDosInput!
+    $condition: ModelRequestInfoDosConditionInput
+  ) {
+    createRequestInfoDos(input: $input, condition: $condition) {
+      id
+      DxFID
+      RequestRespondDirectSecureEmail
+      RequestRespondDirectEmailAddress
+      RequestRespondIHE
+      RequestRespondFHIR
+      RequestRespondFHIRendpoint
+      RequestRespondOther
+      RequestRespondOtherDescribe
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const updateRequestInfoDos = /* GraphQL */ `
+  mutation UpdateRequestInfoDos(
+    $input: UpdateRequestInfoDosInput!
+    $condition: ModelRequestInfoDosConditionInput
+  ) {
+    updateRequestInfoDos(input: $input, condition: $condition) {
+      id
+      DxFID
+      RequestRespondDirectSecureEmail
+      RequestRespondDirectEmailAddress
+      RequestRespondIHE
+      RequestRespondFHIR
+      RequestRespondFHIRendpoint
+      RequestRespondOther
+      RequestRespondOtherDescribe
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const deleteRequestInfoDos = /* GraphQL */ `
+  mutation DeleteRequestInfoDos(
+    $input: DeleteRequestInfoDosInput!
+    $condition: ModelRequestInfoDosConditionInput
+  ) {
+    deleteRequestInfoDos(input: $input, condition: $condition) {
+      id
+      DxFID
+      RequestRespondDirectSecureEmail
+      RequestRespondDirectEmailAddress
+      RequestRespondIHE
+      RequestRespondFHIR
+      RequestRespondFHIRendpoint
+      RequestRespondOther
+      RequestRespondOtherDescribe
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
 export const createNotificationsADTDos = /* GraphQL */ `
   mutation CreateNotificationsADTDos(
     $input: CreateNotificationsADTDosInput!
@@ -391,12 +454,12 @@ export const deleteHIPAA = /* GraphQL */ `
     }
   }
 `;
-export const createRequestInfo = /* GraphQL */ `
-  mutation CreateRequestInfo(
-    $input: CreateRequestInfoInput!
-    $condition: ModelRequestInfoConditionInput
+export const createRequestInfoUno = /* GraphQL */ `
+  mutation CreateRequestInfoUno(
+    $input: CreateRequestInfoUnoInput!
+    $condition: ModelRequestInfoUnoConditionInput
   ) {
-    createRequestInfo(input: $input, condition: $condition) {
+    createRequestInfoUno(input: $input, condition: $condition) {
       id
       RequestRecieveDirectSecureEmail
       RequestDirectEmailAddress
@@ -404,12 +467,6 @@ export const createRequestInfo = /* GraphQL */ `
       RequestFHIR
       RequestOther
       RequestOtherDescribe
-      RequestRespondDirectSecureEmail
-      RequestRespondIHE
-      RequestRespondFHIR
-      RequestRespondFHIRendpoint
-      RequestRespondOther
-      RequestRespondOtherDescribe
       DxFID
       createdAt
       updatedAt
@@ -417,12 +474,12 @@ export const createRequestInfo = /* GraphQL */ `
     }
   }
 `;
-export const updateRequestInfo = /* GraphQL */ `
-  mutation UpdateRequestInfo(
-    $input: UpdateRequestInfoInput!
-    $condition: ModelRequestInfoConditionInput
+export const updateRequestInfoUno = /* GraphQL */ `
+  mutation UpdateRequestInfoUno(
+    $input: UpdateRequestInfoUnoInput!
+    $condition: ModelRequestInfoUnoConditionInput
   ) {
-    updateRequestInfo(input: $input, condition: $condition) {
+    updateRequestInfoUno(input: $input, condition: $condition) {
       id
       RequestRecieveDirectSecureEmail
       RequestDirectEmailAddress
@@ -430,12 +487,6 @@ export const updateRequestInfo = /* GraphQL */ `
       RequestFHIR
       RequestOther
       RequestOtherDescribe
-      RequestRespondDirectSecureEmail
-      RequestRespondIHE
-      RequestRespondFHIR
-      RequestRespondFHIRendpoint
-      RequestRespondOther
-      RequestRespondOtherDescribe
       DxFID
       createdAt
       updatedAt
@@ -443,12 +494,12 @@ export const updateRequestInfo = /* GraphQL */ `
     }
   }
 `;
-export const deleteRequestInfo = /* GraphQL */ `
-  mutation DeleteRequestInfo(
-    $input: DeleteRequestInfoInput!
-    $condition: ModelRequestInfoConditionInput
+export const deleteRequestInfoUno = /* GraphQL */ `
+  mutation DeleteRequestInfoUno(
+    $input: DeleteRequestInfoUnoInput!
+    $condition: ModelRequestInfoUnoConditionInput
   ) {
-    deleteRequestInfo(input: $input, condition: $condition) {
+    deleteRequestInfoUno(input: $input, condition: $condition) {
       id
       RequestRecieveDirectSecureEmail
       RequestDirectEmailAddress
@@ -456,12 +507,6 @@ export const deleteRequestInfo = /* GraphQL */ `
       RequestFHIR
       RequestOther
       RequestOtherDescribe
-      RequestRespondDirectSecureEmail
-      RequestRespondIHE
-      RequestRespondFHIR
-      RequestRespondFHIRendpoint
-      RequestRespondOther
-      RequestRespondOtherDescribe
       DxFID
       createdAt
       updatedAt

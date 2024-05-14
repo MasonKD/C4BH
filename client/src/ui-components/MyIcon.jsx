@@ -621,7 +621,7 @@ export default function MyIcon(props) {
           ],
         },
       },
-      variantValues: { type: "use case" },
+      variantValues: { type: "rules" },
     },
     {
       overrides: {

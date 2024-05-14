@@ -1,3 +1,15 @@
+type RequestInfoDos @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  DxFID: String
+  RequestRespondDirectSecureEmail: Boolean
+  RequestRespondDirectEmailAddress: String
+  RequestRespondIHE: Boolean
+  RequestRespondFHIR: Boolean
+  RequestRespondFHIRendpoint: String
+  RequestRespondOther: Boolean
+  RequestRespondOtherDescribe: String
+}
+
 type NotificationsADTDos @model @auth(rules: [{allow: public}]) {
   id: ID!
   SendInfoDirectSecureEmail: Boolean
@@ -92,7 +104,7 @@ type HIPAA @model @auth(rules: [{allow: public}]) {
   DxFID: String
 }
 
-type RequestInfo @model @auth(rules: [{allow: public}]) {
+type RequestInfoUno @model @auth(rules: [{allow: public}]) {
   id: ID!
   RequestRecieveDirectSecureEmail: Boolean
   RequestDirectEmailAddress: String
@@ -100,12 +112,6 @@ type RequestInfo @model @auth(rules: [{allow: public}]) {
   RequestFHIR: Boolean
   RequestOther: Boolean
   RequestOtherDescribe: String
-  RequestRespondDirectSecureEmail: Boolean
-  RequestRespondIHE: Boolean
-  RequestRespondFHIR: Boolean
-  RequestRespondFHIRendpoint: String
-  RequestRespondOther: Boolean
-  RequestRespondOtherDescribe: String
   DxFID: String
 }
 
@@ -224,5 +230,4 @@ type C4bhFormData @model @auth(rules: [{allow: public}]) {
   HIPPA: Boolean
   MirthNextGen: Boolean
   IntegrationOther: Boolean
-}
- 
+} 

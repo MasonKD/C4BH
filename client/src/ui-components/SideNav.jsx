@@ -13,234 +13,182 @@ import {
 } from "./utils";
 import MyIcon from "./MyIcon";
 import { Flex, Text, View } from "@aws-amplify/ui-react";
-import HamburgerIcon from "./HamburgerIcon";
 export default function SideNav(props) {
   const { overrides: overridesProp, ...rest } = props;
   const variants = [
     {
       overrides: {
         MyIcon49013056: {},
-        "Frame 43848992370": {},
+        ArrowContainer: {},
         MyIcon48971276: {},
-        "Frame 43848971275": {},
+        IconContainer48971275: {},
+        ButtonContainer48971274: {},
         label48971279: {},
-        "Frame 32248971278": {},
-        "Frame 41448971277": {},
-        "Frame 44048971274": {},
-        "Frame 441": {},
-        MyIcon48971283: {},
-        "Frame 43848971282": {},
-        label48971286: {},
-        "Frame 32248971285": {},
-        "Frame 41448971284": {},
-        "Frame 44048971281": {},
-        "Frame 448": {},
-        MyIcon48971290: {},
-        "Frame 43848971289": {},
-        label48971293: {},
-        "Frame 32248971292": {},
-        "Frame 41448971291": {},
-        "Frame 44048971288": {},
-        "Frame 442": {},
-        MyIcon48971297: {},
-        "Frame 43848971296": {},
-        label48971300: {},
-        "Frame 32248971299": {},
-        "Frame 41448971298": {},
-        "Frame 44048971295": {},
-        "Frame 443": {},
-        MyIcon48971304: {},
-        "Frame 43848971303": {},
-        label48971307: {},
-        "Frame 32248971306": {},
-        "Frame 41448971305": {},
-        "Frame 44048971302": {},
-        "Frame 444": {},
-        MyIcon48971311: {},
-        "Frame 43848971310": {},
-        label48971314: {},
-        "Frame 32248971313": {},
-        "Frame 41448971312": {},
-        "Frame 44048971309": {},
-        "Frame 445": {},
-        MyIcon48971318: {},
-        "Frame 43848971317": {},
-        label48971321: {},
-        "Frame 32248971320": {},
-        "Frame 41448971319": {},
-        "Frame 44048971316": {},
-        "Frame 446": {},
-        MyIcon48971325: {},
-        "Frame 43848971324": {},
-        label48971328: {},
-        "Frame 32248971327": {},
-        "Frame 41448971326": {},
-        "Frame 44048971323": {},
-        "Frame 447": {},
-        "Frame 449": {},
+        Home: {},
+        MyIcon50003175: {},
+        IconContainer50003174: {},
+        ButtonContainer50003173: {},
+        label50003176: {},
+        Background: {},
+        MyIcon50003181: {},
+        IconContainer50003180: {},
+        ButtonContainer50003179: {},
+        label50003182: {},
+        UseCases: {},
+        MyIcon50003187: {},
+        IconContainer50003186: {},
+        ButtonContainer50003185: {},
+        label50003188: {},
+        FTP: {},
+        MyIcon50003193: {},
+        IconContainer50003192: {},
+        ButtonContainer50003191: {},
+        label50003194: {},
+        Mirth: {},
+        MyIcon50003199: {},
+        IconContainer50003198: {},
+        ButtonContainer50003197: {},
+        label50003200: {},
+        Smile: {},
+        MyIcon50003205: {},
+        IconContainer50003204: {},
+        ButtonContainer50003203: {},
+        label50003206: {},
+        RulesEngine: {},
+        MyIcon50003211: {},
+        IconContainer50003210: {},
+        ButtonContainer50003209: {},
+        label50003212: {},
+        Visualizations: {},
+        NavButtonContainer: {},
         "User Name": {},
         "Register DxF Participant": {},
         NavText: {},
-        HamburgerIcon: {},
         "Button Icon49013379": {},
         label49013380: {},
         "Button Icon49013381": {},
         Button: {},
-        NavRightComponent: {},
-        "Group 1": {},
+        SignOutFlex: {},
+        SignOutContainer: {},
         SideNav: {},
       },
       variantValues: { state: "open" },
     },
     {
       overrides: {
-        MyIcon49013056: {},
-        "Frame 43848992370": {},
-        MyIcon48971276: {},
-        "Frame 43848971275": {},
-        label48971279: {},
-        "Frame 32248971278": {},
-        "Frame 41448971277": {},
-        "Frame 44048971274": {},
-        "Frame 441": {},
-        MyIcon48971283: {},
-        "Frame 43848971282": {},
-        label48971286: {},
-        "Frame 32248971285": {},
-        "Frame 41448971284": {},
-        "Frame 44048971281": {},
-        "Frame 448": {},
-        MyIcon48971290: {},
-        "Frame 43848971289": {},
-        label48971293: {},
-        "Frame 32248971292": {},
-        "Frame 41448971291": {},
-        "Frame 44048971288": {},
-        "Frame 442": {},
-        MyIcon48971297: {},
-        "Frame 43848971296": {},
-        label48971300: {},
-        "Frame 32248971299": {},
-        "Frame 41448971298": {},
-        "Frame 44048971295": {},
-        "Frame 443": {},
-        MyIcon48971304: {},
-        "Frame 43848971303": {},
-        label48971307: {},
-        "Frame 32248971306": {},
-        "Frame 41448971305": {},
-        "Frame 44048971302": {},
-        "Frame 444": {},
-        MyIcon48971311: {},
-        "Frame 43848971310": {},
-        label48971314: {},
-        "Frame 32248971313": {},
-        "Frame 41448971312": {},
-        "Frame 44048971309": {},
-        "Frame 445": {},
-        MyIcon48971318: {},
-        "Frame 43848971317": {},
-        label48971321: {},
-        "Frame 32248971320": {},
-        "Frame 41448971319": {},
-        "Frame 44048971316": {},
-        "Frame 446": {},
-        MyIcon48971325: {},
-        "Frame 43848971324": {},
-        label48971328: {},
-        "Frame 32248971327": {},
-        "Frame 41448971326": {},
-        "Frame 44048971323": {},
-        "Frame 447": {},
-        "Frame 449": {},
-        "User Name": {},
-        "Register DxF Participant": {},
-        NavText: {},
-        HamburgerIcon: {},
-        "Button Icon49013379": {},
-        label49013380: {},
-        "Button Icon49013381": {},
-        Button: {},
-        NavRightComponent: {},
-        "Group 1": { display: "block" },
-        SideNav: {},
-      },
-      variantValues: { state: "mobile" },
-    },
-    {
-      overrides: {
         MyIcon49013056: { type: "arrow_right" },
-        "Frame 43848992370": { height: "46px" },
+        ArrowContainer: {},
         MyIcon48971276: {},
-        "Frame 43848971275": {},
-        label48971279: {},
-        "Frame 32248971278": {},
-        "Frame 41448971277": { display: "none" },
-        "Frame 44048971274": {},
-        "Frame 441": {},
-        MyIcon48971283: {},
-        "Frame 43848971282": {},
-        label48971286: {},
-        "Frame 32248971285": {},
-        "Frame 41448971284": { display: "none" },
-        "Frame 44048971281": { width: "unset" },
-        "Frame 448": {},
-        MyIcon48971290: {},
-        "Frame 43848971289": {},
-        label48971293: {},
-        "Frame 32248971292": {},
-        "Frame 41448971291": { display: "none" },
-        "Frame 44048971288": { width: "unset" },
-        "Frame 442": {},
-        MyIcon48971297: {},
-        "Frame 43848971296": {},
-        label48971300: {},
-        "Frame 32248971299": {},
-        "Frame 41448971298": { display: "none" },
-        "Frame 44048971295": { width: "unset" },
-        "Frame 443": {},
-        MyIcon48971304: {},
-        "Frame 43848971303": {},
-        label48971307: {},
-        "Frame 32248971306": {},
-        "Frame 41448971305": { display: "none" },
-        "Frame 44048971302": { width: "unset" },
-        "Frame 444": {},
-        MyIcon48971311: {},
-        "Frame 43848971310": {},
-        label48971314: {},
-        "Frame 32248971313": {},
-        "Frame 41448971312": { display: "none" },
-        "Frame 44048971309": { width: "unset" },
-        "Frame 445": {},
-        MyIcon48971318: {},
-        "Frame 43848971317": {},
-        label48971321: {},
-        "Frame 32248971320": {},
-        "Frame 41448971319": { display: "none" },
-        "Frame 44048971316": { width: "unset" },
-        "Frame 446": {},
-        MyIcon48971325: {},
-        "Frame 43848971324": {},
-        label48971328: {},
-        "Frame 32248971327": {},
-        "Frame 41448971326": { display: "none" },
-        "Frame 44048971323": { width: "unset" },
-        "Frame 447": {},
-        "Frame 449": {},
+        IconContainer48971275: {},
+        ButtonContainer48971274: {},
+        label48971279: { display: "none" },
+        Home: {},
+        MyIcon50003175: {},
+        IconContainer50003174: {},
+        ButtonContainer50003173: {},
+        label50003176: { display: "none" },
+        Background: {},
+        MyIcon50003181: {},
+        IconContainer50003180: {},
+        ButtonContainer50003179: {},
+        label50003182: { display: "none" },
+        UseCases: {},
+        MyIcon50003187: {},
+        IconContainer50003186: {},
+        ButtonContainer50003185: {},
+        label50003188: { display: "none" },
+        FTP: {},
+        MyIcon50003193: {},
+        IconContainer50003192: {},
+        ButtonContainer50003191: {},
+        label50003194: { display: "none" },
+        Mirth: {},
+        MyIcon50003199: {},
+        IconContainer50003198: {},
+        ButtonContainer50003197: {},
+        label50003200: { display: "none" },
+        Smile: {},
+        MyIcon50003205: {},
+        IconContainer50003204: {},
+        ButtonContainer50003203: {},
+        label50003206: { display: "none" },
+        RulesEngine: {},
+        MyIcon50003211: {},
+        IconContainer50003210: {},
+        ButtonContainer50003209: {},
+        label50003212: { display: "none" },
+        Visualizations: {},
+        NavButtonContainer: {},
         "User Name": {},
         "Register DxF Participant": {},
-        NavText: { width: "186px", display: "none" },
-        HamburgerIcon: { width: "12.18px", left: "-23.52px" },
+        NavText: { display: "none" },
         "Button Icon49013379": {},
         label49013380: {},
         "Button Icon49013381": {},
         Button: {},
-        NavRightComponent: { width: "42px" },
-        "Group 1": {},
+        SignOutFlex: {},
+        SignOutContainer: {},
         SideNav: {},
       },
       variantValues: { state: "closed" },
+    },
+    {
+      overrides: {
+        MyIcon49013056: { type: "close" },
+        ArrowContainer: {},
+        MyIcon48971276: {},
+        IconContainer48971275: {},
+        ButtonContainer48971274: {},
+        label48971279: {},
+        Home: {},
+        MyIcon50003175: {},
+        IconContainer50003174: {},
+        ButtonContainer50003173: {},
+        label50003176: {},
+        Background: {},
+        MyIcon50003181: {},
+        IconContainer50003180: {},
+        ButtonContainer50003179: {},
+        label50003182: {},
+        UseCases: {},
+        MyIcon50003187: {},
+        IconContainer50003186: {},
+        ButtonContainer50003185: {},
+        label50003188: {},
+        FTP: {},
+        MyIcon50003193: {},
+        IconContainer50003192: {},
+        ButtonContainer50003191: {},
+        label50003194: {},
+        Mirth: {},
+        MyIcon50003199: {},
+        IconContainer50003198: {},
+        ButtonContainer50003197: {},
+        label50003200: {},
+        Smile: {},
+        MyIcon50003205: {},
+        IconContainer50003204: {},
+        ButtonContainer50003203: {},
+        label50003206: {},
+        RulesEngine: {},
+        MyIcon50003211: {},
+        IconContainer50003210: {},
+        ButtonContainer50003209: {},
+        label50003212: {},
+        Visualizations: {},
+        NavButtonContainer: {},
+        "User Name": {},
+        "Register DxF Participant": {},
+        NavText: {},
+        "Button Icon49013379": {},
+        label49013380: {},
+        "Button Icon49013381": {},
+        Button: {},
+        SignOutFlex: {},
+        SignOutContainer: { display: "block" },
+        SideNav: {},
+      },
+      variantValues: { state: "mobile" },
     },
   ];
   const overrides = mergeVariantsAndOverrides(
@@ -249,7 +197,7 @@ export default function SideNav(props) {
   );
   return (
     <Flex
-      gap="14px"
+      gap="10px"
       direction="column"
       width="unset"
       height="654px"
@@ -257,7 +205,7 @@ export default function SideNav(props) {
       alignItems="flex-end"
       position="relative"
       border="1px SOLID rgba(220,222,224,1)"
-      padding="16px 15px 16px 15px"
+      padding="11px 15px 11px 15px"
       backgroundColor="rgba(255,255,255,1)"
       display="flex"
       {...getOverrideProps(overrides, "SideNav")}
@@ -276,7 +224,7 @@ export default function SideNav(props) {
         borderRadius="3px"
         padding="5px 5px 5px 5px"
         display="flex"
-        {...getOverrideProps(overrides, "Frame 43848992370")}
+        {...getOverrideProps(overrides, "ArrowContainer")}
       >
         <MyIcon
           width="24px"
@@ -294,34 +242,32 @@ export default function SideNav(props) {
         ></MyIcon>
       </Flex>
       <Flex
-        gap="8px"
+        gap="6px"
         direction="column"
         width="unset"
         height="unset"
         justifyContent="flex-start"
         alignItems="flex-start"
         shrink="0"
-        alignSelf="stretch"
         position="relative"
         padding="0px 0px 0px 0px"
         display="flex"
-        {...getOverrideProps(overrides, "Frame 449")}
+        {...getOverrideProps(overrides, "NavButtonContainer")}
       >
         <Flex
-          gap="30px"
-          direction="column"
+          gap="6px"
+          direction="row"
           width="unset"
           height="unset"
           justifyContent="flex-start"
-          alignItems="flex-start"
+          alignItems="center"
           shrink="0"
-          alignSelf="stretch"
           position="relative"
           borderRadius="4px"
           padding="4px 4px 4px 4px"
           backgroundColor="rgba(241,247,255,1)"
           display="flex"
-          {...getOverrideProps(overrides, "Frame 441")}
+          {...getOverrideProps(overrides, "Home")}
         >
           <Flex
             gap="10px"
@@ -334,7 +280,7 @@ export default function SideNav(props) {
             position="relative"
             padding="0px 0px 0px 0px"
             display="flex"
-            {...getOverrideProps(overrides, "Frame 44048971274")}
+            {...getOverrideProps(overrides, "ButtonContainer48971274")}
           >
             <Flex
               gap="10px"
@@ -350,7 +296,7 @@ export default function SideNav(props) {
               padding="5px 5px 5px 5px"
               backgroundColor="rgba(241,247,255,1)"
               display="flex"
-              {...getOverrideProps(overrides, "Frame 43848971275")}
+              {...getOverrideProps(overrides, "IconContainer48971275")}
             >
               <MyIcon
                 width="24px"
@@ -367,76 +313,48 @@ export default function SideNav(props) {
                 {...getOverrideProps(overrides, "MyIcon48971276")}
               ></MyIcon>
             </Flex>
-            <Flex
-              gap="16px"
-              direction="column"
-              width="unset"
-              height="unset"
-              justifyContent="flex-start"
-              alignItems="flex-start"
-              shrink="0"
-              position="relative"
-              padding="0px 0px 0px 0px"
-              display="flex"
-              {...getOverrideProps(overrides, "Frame 41448971277")}
-            >
-              <Flex
-                gap="8px"
-                direction="row"
-                width="unset"
-                height="unset"
-                justifyContent="flex-start"
-                alignItems="center"
-                shrink="0"
-                position="relative"
-                padding="0px 0px 0px 0px"
-                display="flex"
-                {...getOverrideProps(overrides, "Frame 32248971278")}
-              >
-                <Text
-                  fontFamily="Inter"
-                  fontSize="14px"
-                  fontWeight="400"
-                  color="rgba(45,112,205,1)"
-                  lineHeight="21px"
-                  textAlign="left"
-                  display="block"
-                  direction="column"
-                  justifyContent="unset"
-                  width="46px"
-                  height="unset"
-                  gap="unset"
-                  alignItems="unset"
-                  shrink="0"
-                  position="relative"
-                  padding="0px 0px 0px 0px"
-                  whiteSpace="pre-wrap"
-                  children="Home"
-                  {...getOverrideProps(overrides, "label48971279")}
-                ></Text>
-              </Flex>
-            </Flex>
           </Flex>
+          <Text
+            fontFamily="Inter"
+            fontSize="14px"
+            fontWeight="400"
+            color="rgba(45,112,205,1)"
+            lineHeight="21px"
+            textAlign="left"
+            display="block"
+            direction="column"
+            justifyContent="unset"
+            width="136px"
+            height="unset"
+            gap="unset"
+            alignItems="unset"
+            shrink="0"
+            position="relative"
+            padding="0px 0px 0px 0px"
+            whiteSpace="pre-wrap"
+            children="Home"
+            {...getOverrideProps(overrides, "label48971279")}
+          ></Text>
         </Flex>
         <Flex
-          gap="30px"
-          direction="column"
+          gap="6px"
+          direction="row"
           width="unset"
           height="unset"
           justifyContent="flex-start"
-          alignItems="flex-start"
+          alignItems="center"
           shrink="0"
-          alignSelf="stretch"
           position="relative"
           borderRadius="4px"
           padding="4px 4px 4px 4px"
+          backgroundColor="rgba(255,255,255,1)"
           display="flex"
-          {...getOverrideProps(overrides, "Frame 448")}
+          {...getOverrideProps(overrides, "Background")}
         >
           <Flex
             gap="10px"
             direction="row"
-            width="173px"
+            width="unset"
             height="unset"
             justifyContent="flex-start"
             alignItems="center"
@@ -444,7 +362,7 @@ export default function SideNav(props) {
             position="relative"
             padding="0px 0px 0px 0px"
             display="flex"
-            {...getOverrideProps(overrides, "Frame 44048971281")}
+            {...getOverrideProps(overrides, "ButtonContainer50003173")}
           >
             <Flex
               gap="10px"
@@ -459,7 +377,7 @@ export default function SideNav(props) {
               borderRadius="3px"
               padding="5px 5px 5px 5px"
               display="flex"
-              {...getOverrideProps(overrides, "Frame 43848971282")}
+              {...getOverrideProps(overrides, "IconContainer50003174")}
             >
               <MyIcon
                 width="24px"
@@ -473,81 +391,51 @@ export default function SideNav(props) {
                 position="relative"
                 padding="0px 0px 0px 0px"
                 type="about"
-                {...getOverrideProps(overrides, "MyIcon48971283")}
+                {...getOverrideProps(overrides, "MyIcon50003175")}
               ></MyIcon>
             </Flex>
-            <Flex
-              gap="16px"
-              direction="column"
-              width="unset"
-              height="unset"
-              justifyContent="flex-start"
-              alignItems="flex-start"
-              grow="1"
-              shrink="1"
-              basis="0"
-              position="relative"
-              padding="0px 0px 0px 0px"
-              display="flex"
-              {...getOverrideProps(overrides, "Frame 41448971284")}
-            >
-              <Flex
-                gap="8px"
-                direction="row"
-                width="unset"
-                height="unset"
-                justifyContent="flex-start"
-                alignItems="center"
-                shrink="0"
-                position="relative"
-                padding="0px 0px 0px 0px"
-                display="flex"
-                {...getOverrideProps(overrides, "Frame 32248971285")}
-              >
-                <Text
-                  fontFamily="Inter"
-                  fontSize="14px"
-                  fontWeight="400"
-                  color="rgba(45,112,205,1)"
-                  lineHeight="21px"
-                  textAlign="left"
-                  display="block"
-                  direction="column"
-                  justifyContent="unset"
-                  width="220px"
-                  height="unset"
-                  gap="unset"
-                  alignItems="unset"
-                  shrink="0"
-                  position="relative"
-                  padding="0px 0px 0px 0px"
-                  whiteSpace="pre-wrap"
-                  children="Background"
-                  {...getOverrideProps(overrides, "label48971286")}
-                ></Text>
-              </Flex>
-            </Flex>
           </Flex>
+          <Text
+            fontFamily="Inter"
+            fontSize="14px"
+            fontWeight="400"
+            color="rgba(45,112,205,1)"
+            lineHeight="21px"
+            textAlign="left"
+            display="block"
+            direction="column"
+            justifyContent="unset"
+            width="136px"
+            height="unset"
+            gap="unset"
+            alignItems="unset"
+            shrink="0"
+            position="relative"
+            padding="0px 0px 0px 0px"
+            whiteSpace="pre-wrap"
+            children="Background"
+            {...getOverrideProps(overrides, "label50003176")}
+          ></Text>
         </Flex>
         <Flex
-          gap="30px"
-          direction="column"
+          gap="6px"
+          direction="row"
           width="unset"
           height="unset"
           justifyContent="flex-start"
-          alignItems="flex-start"
+          alignItems="center"
           shrink="0"
-          alignSelf="stretch"
           position="relative"
           borderRadius="4px"
           padding="4px 4px 4px 4px"
+          backgroundColor="rgba(255,255,255,1)"
           display="flex"
-          {...getOverrideProps(overrides, "Frame 442")}
+          {...getOverrideProps(overrides, "UseCases")}
         >
           <Flex
             gap="10px"
             direction="row"
-            width="182px"
+            width="unset"
             height="unset"
             justifyContent="flex-start"
             alignItems="center"
@@ -555,7 +443,7 @@ export default function SideNav(props) {
             position="relative"
             padding="0px 0px 0px 0px"
             display="flex"
-            {...getOverrideProps(overrides, "Frame 44048971288")}
+            {...getOverrideProps(overrides, "ButtonContainer50003179")}
           >
             <Flex
               gap="10px"
@@ -570,7 +458,7 @@ export default function SideNav(props) {
               borderRadius="3px"
               padding="5px 5px 5px 5px"
               display="flex"
-              {...getOverrideProps(overrides, "Frame 43848971289")}
+              {...getOverrideProps(overrides, "IconContainer50003180")}
             >
               <MyIcon
                 width="24px"
@@ -584,81 +472,51 @@ export default function SideNav(props) {
                 position="relative"
                 padding="0px 0px 0px 0px"
                 type="group"
-                {...getOverrideProps(overrides, "MyIcon48971290")}
+                {...getOverrideProps(overrides, "MyIcon50003181")}
               ></MyIcon>
             </Flex>
-            <Flex
-              gap="16px"
-              direction="column"
-              width="unset"
-              height="unset"
-              justifyContent="flex-start"
-              alignItems="flex-start"
-              grow="1"
-              shrink="1"
-              basis="0"
-              position="relative"
-              padding="0px 0px 0px 0px"
-              display="flex"
-              {...getOverrideProps(overrides, "Frame 41448971291")}
-            >
-              <Flex
-                gap="8px"
-                direction="row"
-                width="unset"
-                height="unset"
-                justifyContent="flex-start"
-                alignItems="center"
-                shrink="0"
-                position="relative"
-                padding="0px 0px 0px 0px"
-                display="flex"
-                {...getOverrideProps(overrides, "Frame 32248971292")}
-              >
-                <Text
-                  fontFamily="Inter"
-                  fontSize="14px"
-                  fontWeight="400"
-                  color="rgba(45,112,205,1)"
-                  lineHeight="21px"
-                  textAlign="left"
-                  display="block"
-                  direction="column"
-                  justifyContent="unset"
-                  width="220px"
-                  height="unset"
-                  gap="unset"
-                  alignItems="unset"
-                  shrink="0"
-                  position="relative"
-                  padding="0px 0px 0px 0px"
-                  whiteSpace="pre-wrap"
-                  children="Use Cases"
-                  {...getOverrideProps(overrides, "label48971293")}
-                ></Text>
-              </Flex>
-            </Flex>
           </Flex>
+          <Text
+            fontFamily="Inter"
+            fontSize="14px"
+            fontWeight="400"
+            color="rgba(45,112,205,1)"
+            lineHeight="21px"
+            textAlign="left"
+            display="block"
+            direction="column"
+            justifyContent="unset"
+            width="136px"
+            height="unset"
+            gap="unset"
+            alignItems="unset"
+            shrink="0"
+            position="relative"
+            padding="0px 0px 0px 0px"
+            whiteSpace="pre-wrap"
+            children="Use Cases"
+            {...getOverrideProps(overrides, "label50003182")}
+          ></Text>
         </Flex>
         <Flex
-          gap="30px"
-          direction="column"
+          gap="6px"
+          direction="row"
           width="unset"
           height="unset"
           justifyContent="flex-start"
-          alignItems="flex-start"
+          alignItems="center"
           shrink="0"
-          alignSelf="stretch"
           position="relative"
           borderRadius="4px"
           padding="4px 4px 4px 4px"
+          backgroundColor="rgba(255,255,255,1)"
           display="flex"
-          {...getOverrideProps(overrides, "Frame 443")}
+          {...getOverrideProps(overrides, "FTP")}
         >
           <Flex
             gap="10px"
             direction="row"
-            width="182px"
+            width="unset"
             height="unset"
             justifyContent="flex-start"
             alignItems="center"
@@ -666,7 +524,7 @@ export default function SideNav(props) {
             position="relative"
             padding="0px 0px 0px 0px"
             display="flex"
-            {...getOverrideProps(overrides, "Frame 44048971295")}
+            {...getOverrideProps(overrides, "ButtonContainer50003185")}
           >
             <Flex
               gap="10px"
@@ -681,7 +539,7 @@ export default function SideNav(props) {
               borderRadius="3px"
               padding="5px 5px 5px 5px"
               display="flex"
-              {...getOverrideProps(overrides, "Frame 43848971296")}
+              {...getOverrideProps(overrides, "IconContainer50003186")}
             >
               <MyIcon
                 width="24px"
@@ -695,81 +553,51 @@ export default function SideNav(props) {
                 position="relative"
                 padding="0px 0px 0px 0px"
                 type="upload"
-                {...getOverrideProps(overrides, "MyIcon48971297")}
+                {...getOverrideProps(overrides, "MyIcon50003187")}
               ></MyIcon>
             </Flex>
-            <Flex
-              gap="16px"
-              direction="column"
-              width="unset"
-              height="unset"
-              justifyContent="flex-start"
-              alignItems="flex-start"
-              grow="1"
-              shrink="1"
-              basis="0"
-              position="relative"
-              padding="0px 0px 0px 0px"
-              display="flex"
-              {...getOverrideProps(overrides, "Frame 41448971298")}
-            >
-              <Flex
-                gap="8px"
-                direction="row"
-                width="unset"
-                height="unset"
-                justifyContent="flex-start"
-                alignItems="center"
-                shrink="0"
-                position="relative"
-                padding="0px 0px 0px 0px"
-                display="flex"
-                {...getOverrideProps(overrides, "Frame 32248971299")}
-              >
-                <Text
-                  fontFamily="Inter"
-                  fontSize="14px"
-                  fontWeight="400"
-                  color="rgba(45,112,205,1)"
-                  lineHeight="21px"
-                  textAlign="left"
-                  display="block"
-                  direction="column"
-                  justifyContent="unset"
-                  width="220px"
-                  height="unset"
-                  gap="unset"
-                  alignItems="unset"
-                  shrink="0"
-                  position="relative"
-                  padding="0px 0px 0px 0px"
-                  whiteSpace="pre-wrap"
-                  children="FTP Log"
-                  {...getOverrideProps(overrides, "label48971300")}
-                ></Text>
-              </Flex>
-            </Flex>
           </Flex>
+          <Text
+            fontFamily="Inter"
+            fontSize="14px"
+            fontWeight="400"
+            color="rgba(45,112,205,1)"
+            lineHeight="21px"
+            textAlign="left"
+            display="block"
+            direction="column"
+            justifyContent="unset"
+            width="136px"
+            height="unset"
+            gap="unset"
+            alignItems="unset"
+            shrink="0"
+            position="relative"
+            padding="0px 0px 0px 0px"
+            whiteSpace="pre-wrap"
+            children="FTP Log"
+            {...getOverrideProps(overrides, "label50003188")}
+          ></Text>
         </Flex>
         <Flex
-          gap="30px"
-          direction="column"
+          gap="6px"
+          direction="row"
           width="unset"
           height="unset"
           justifyContent="flex-start"
-          alignItems="flex-start"
+          alignItems="center"
           shrink="0"
-          alignSelf="stretch"
           position="relative"
           borderRadius="4px"
           padding="4px 4px 4px 4px"
+          backgroundColor="rgba(255,255,255,1)"
           display="flex"
-          {...getOverrideProps(overrides, "Frame 444")}
+          {...getOverrideProps(overrides, "Mirth")}
         >
           <Flex
             gap="10px"
             direction="row"
-            width="182px"
+            width="unset"
             height="unset"
             justifyContent="flex-start"
             alignItems="center"
@@ -777,7 +605,7 @@ export default function SideNav(props) {
             position="relative"
             padding="0px 0px 0px 0px"
             display="flex"
-            {...getOverrideProps(overrides, "Frame 44048971302")}
+            {...getOverrideProps(overrides, "ButtonContainer50003191")}
           >
             <Flex
               gap="10px"
@@ -792,7 +620,7 @@ export default function SideNav(props) {
               borderRadius="3px"
               padding="5px 5px 5px 5px"
               display="flex"
-              {...getOverrideProps(overrides, "Frame 43848971303")}
+              {...getOverrideProps(overrides, "IconContainer50003192")}
             >
               <MyIcon
                 width="24px"
@@ -806,81 +634,51 @@ export default function SideNav(props) {
                 position="relative"
                 padding="0px 0px 0px 0px"
                 type="transfer"
-                {...getOverrideProps(overrides, "MyIcon48971304")}
+                {...getOverrideProps(overrides, "MyIcon50003193")}
               ></MyIcon>
             </Flex>
-            <Flex
-              gap="16px"
-              direction="column"
-              width="unset"
-              height="unset"
-              justifyContent="flex-start"
-              alignItems="flex-start"
-              grow="1"
-              shrink="1"
-              basis="0"
-              position="relative"
-              padding="0px 0px 0px 0px"
-              display="flex"
-              {...getOverrideProps(overrides, "Frame 41448971305")}
-            >
-              <Flex
-                gap="8px"
-                direction="row"
-                width="unset"
-                height="unset"
-                justifyContent="flex-start"
-                alignItems="center"
-                shrink="0"
-                position="relative"
-                padding="0px 0px 0px 0px"
-                display="flex"
-                {...getOverrideProps(overrides, "Frame 32248971306")}
-              >
-                <Text
-                  fontFamily="Inter"
-                  fontSize="14px"
-                  fontWeight="400"
-                  color="rgba(45,112,205,1)"
-                  lineHeight="21px"
-                  textAlign="left"
-                  display="block"
-                  direction="column"
-                  justifyContent="unset"
-                  width="220px"
-                  height="unset"
-                  gap="unset"
-                  alignItems="unset"
-                  shrink="0"
-                  position="relative"
-                  padding="0px 0px 0px 0px"
-                  whiteSpace="pre-wrap"
-                  children="Integration Engine &#xA;(Mirth)"
-                  {...getOverrideProps(overrides, "label48971307")}
-                ></Text>
-              </Flex>
-            </Flex>
           </Flex>
+          <Text
+            fontFamily="Inter"
+            fontSize="14px"
+            fontWeight="400"
+            color="rgba(45,112,205,1)"
+            lineHeight="21px"
+            textAlign="left"
+            display="block"
+            direction="column"
+            justifyContent="unset"
+            width="136px"
+            height="unset"
+            gap="unset"
+            alignItems="unset"
+            shrink="0"
+            position="relative"
+            padding="0px 0px 0px 0px"
+            whiteSpace="pre-wrap"
+            children="Integration Engine (Mirth)"
+            {...getOverrideProps(overrides, "label50003194")}
+          ></Text>
         </Flex>
         <Flex
-          gap="30px"
-          direction="column"
+          gap="6px"
+          direction="row"
           width="unset"
           height="unset"
           justifyContent="flex-start"
-          alignItems="flex-start"
+          alignItems="center"
           shrink="0"
-          alignSelf="stretch"
           position="relative"
           borderRadius="4px"
           padding="4px 4px 4px 4px"
+          backgroundColor="rgba(255,255,255,1)"
           display="flex"
-          {...getOverrideProps(overrides, "Frame 445")}
+          {...getOverrideProps(overrides, "Smile")}
         >
           <Flex
             gap="10px"
             direction="row"
-            width="182px"
+            width="unset"
             height="unset"
             justifyContent="flex-start"
             alignItems="center"
@@ -888,7 +686,7 @@ export default function SideNav(props) {
             position="relative"
             padding="0px 0px 0px 0px"
             display="flex"
-            {...getOverrideProps(overrides, "Frame 44048971309")}
+            {...getOverrideProps(overrides, "ButtonContainer50003197")}
           >
             <Flex
               gap="10px"
@@ -903,7 +701,7 @@ export default function SideNav(props) {
               borderRadius="3px"
               padding="5px 5px 5px 5px"
               display="flex"
-              {...getOverrideProps(overrides, "Frame 43848971310")}
+              {...getOverrideProps(overrides, "IconContainer50003198")}
             >
               <MyIcon
                 width="24px"
@@ -917,81 +715,51 @@ export default function SideNav(props) {
                 position="relative"
                 padding="0px 0px 0px 0px"
                 type="data"
-                {...getOverrideProps(overrides, "MyIcon48971311")}
+                {...getOverrideProps(overrides, "MyIcon50003199")}
               ></MyIcon>
             </Flex>
-            <Flex
-              gap="16px"
-              direction="column"
-              width="unset"
-              height="unset"
-              justifyContent="flex-start"
-              alignItems="flex-start"
-              grow="1"
-              shrink="1"
-              basis="0"
-              position="relative"
-              padding="0px 0px 0px 0px"
-              display="flex"
-              {...getOverrideProps(overrides, "Frame 41448971312")}
-            >
-              <Flex
-                gap="8px"
-                direction="row"
-                width="unset"
-                height="unset"
-                justifyContent="flex-start"
-                alignItems="center"
-                shrink="0"
-                position="relative"
-                padding="0px 0px 0px 0px"
-                display="flex"
-                {...getOverrideProps(overrides, "Frame 32248971313")}
-              >
-                <Text
-                  fontFamily="Inter"
-                  fontSize="14px"
-                  fontWeight="400"
-                  color="rgba(45,112,205,1)"
-                  lineHeight="21px"
-                  textAlign="left"
-                  display="block"
-                  direction="column"
-                  justifyContent="unset"
-                  width="220px"
-                  height="unset"
-                  gap="unset"
-                  alignItems="unset"
-                  shrink="0"
-                  position="relative"
-                  padding="0px 0px 0px 0px"
-                  whiteSpace="pre-wrap"
-                  children="CDR (Smile)"
-                  {...getOverrideProps(overrides, "label48971314")}
-                ></Text>
-              </Flex>
-            </Flex>
           </Flex>
+          <Text
+            fontFamily="Inter"
+            fontSize="14px"
+            fontWeight="400"
+            color="rgba(45,112,205,1)"
+            lineHeight="21px"
+            textAlign="left"
+            display="block"
+            direction="column"
+            justifyContent="unset"
+            width="136px"
+            height="unset"
+            gap="unset"
+            alignItems="unset"
+            shrink="0"
+            position="relative"
+            padding="0px 0px 0px 0px"
+            whiteSpace="pre-wrap"
+            children="CDR (Smile)"
+            {...getOverrideProps(overrides, "label50003200")}
+          ></Text>
         </Flex>
         <Flex
-          gap="30px"
-          direction="column"
+          gap="6px"
+          direction="row"
           width="unset"
           height="unset"
           justifyContent="flex-start"
-          alignItems="flex-start"
+          alignItems="center"
           shrink="0"
-          alignSelf="stretch"
           position="relative"
           borderRadius="4px"
           padding="4px 4px 4px 4px"
+          backgroundColor="rgba(255,255,255,1)"
           display="flex"
-          {...getOverrideProps(overrides, "Frame 446")}
+          {...getOverrideProps(overrides, "RulesEngine")}
         >
           <Flex
             gap="10px"
             direction="row"
-            width="182px"
+            width="unset"
             height="unset"
             justifyContent="flex-start"
             alignItems="center"
@@ -999,7 +767,7 @@ export default function SideNav(props) {
             position="relative"
             padding="0px 0px 0px 0px"
             display="flex"
-            {...getOverrideProps(overrides, "Frame 44048971316")}
+            {...getOverrideProps(overrides, "ButtonContainer50003203")}
           >
             <Flex
               gap="10px"
@@ -1014,7 +782,7 @@ export default function SideNav(props) {
               borderRadius="3px"
               padding="5px 5px 5px 5px"
               display="flex"
-              {...getOverrideProps(overrides, "Frame 43848971317")}
+              {...getOverrideProps(overrides, "IconContainer50003204")}
             >
               <MyIcon
                 width="24px"
@@ -1027,82 +795,52 @@ export default function SideNav(props) {
                 shrink="0"
                 position="relative"
                 padding="0px 0px 0px 0px"
-                type="use case"
-                {...getOverrideProps(overrides, "MyIcon48971318")}
+                type="rules"
+                {...getOverrideProps(overrides, "MyIcon50003205")}
               ></MyIcon>
             </Flex>
-            <Flex
-              gap="16px"
-              direction="column"
-              width="unset"
-              height="unset"
-              justifyContent="flex-start"
-              alignItems="flex-start"
-              grow="1"
-              shrink="1"
-              basis="0"
-              position="relative"
-              padding="0px 0px 0px 0px"
-              display="flex"
-              {...getOverrideProps(overrides, "Frame 41448971319")}
-            >
-              <Flex
-                gap="8px"
-                direction="row"
-                width="unset"
-                height="unset"
-                justifyContent="flex-start"
-                alignItems="center"
-                shrink="0"
-                position="relative"
-                padding="0px 0px 0px 0px"
-                display="flex"
-                {...getOverrideProps(overrides, "Frame 32248971320")}
-              >
-                <Text
-                  fontFamily="Inter"
-                  fontSize="14px"
-                  fontWeight="400"
-                  color="rgba(45,112,205,1)"
-                  lineHeight="21px"
-                  textAlign="left"
-                  display="block"
-                  direction="column"
-                  justifyContent="unset"
-                  width="220px"
-                  height="unset"
-                  gap="unset"
-                  alignItems="unset"
-                  shrink="0"
-                  position="relative"
-                  padding="0px 0px 0px 0px"
-                  whiteSpace="pre-wrap"
-                  children="Rules Engine"
-                  {...getOverrideProps(overrides, "label48971321")}
-                ></Text>
-              </Flex>
-            </Flex>
           </Flex>
+          <Text
+            fontFamily="Inter"
+            fontSize="14px"
+            fontWeight="400"
+            color="rgba(45,112,205,1)"
+            lineHeight="21px"
+            textAlign="left"
+            display="block"
+            direction="column"
+            justifyContent="unset"
+            width="136px"
+            height="unset"
+            gap="unset"
+            alignItems="unset"
+            shrink="0"
+            position="relative"
+            padding="0px 0px 0px 0px"
+            whiteSpace="pre-wrap"
+            children="Rules Engine"
+            {...getOverrideProps(overrides, "label50003206")}
+          ></Text>
         </Flex>
         <Flex
-          gap="30px"
-          direction="column"
+          gap="6px"
+          direction="row"
           width="unset"
           height="unset"
           justifyContent="flex-start"
-          alignItems="flex-start"
+          alignItems="center"
           shrink="0"
-          alignSelf="stretch"
           position="relative"
           borderRadius="4px"
           padding="4px 4px 4px 4px"
+          backgroundColor="rgba(255,255,255,1)"
           display="flex"
-          {...getOverrideProps(overrides, "Frame 447")}
+          {...getOverrideProps(overrides, "Visualizations")}
         >
           <Flex
             gap="10px"
             direction="row"
-            width="182px"
+            width="unset"
             height="unset"
             justifyContent="flex-start"
             alignItems="center"
@@ -1110,7 +848,7 @@ export default function SideNav(props) {
             position="relative"
             padding="0px 0px 0px 0px"
             display="flex"
-            {...getOverrideProps(overrides, "Frame 44048971323")}
+            {...getOverrideProps(overrides, "ButtonContainer50003209")}
           >
             <Flex
               gap="10px"
@@ -1125,7 +863,7 @@ export default function SideNav(props) {
               borderRadius="3px"
               padding="5px 5px 5px 5px"
               display="flex"
-              {...getOverrideProps(overrides, "Frame 43848971324")}
+              {...getOverrideProps(overrides, "IconContainer50003210")}
             >
               <MyIcon
                 width="24px"
@@ -1139,61 +877,31 @@ export default function SideNav(props) {
                 position="relative"
                 padding="0px 0px 0px 0px"
                 type="graph"
-                {...getOverrideProps(overrides, "MyIcon48971325")}
+                {...getOverrideProps(overrides, "MyIcon50003211")}
               ></MyIcon>
             </Flex>
-            <Flex
-              gap="16px"
-              direction="column"
-              width="unset"
-              height="unset"
-              justifyContent="flex-start"
-              alignItems="flex-start"
-              grow="1"
-              shrink="1"
-              basis="0"
-              position="relative"
-              padding="0px 0px 0px 0px"
-              display="flex"
-              {...getOverrideProps(overrides, "Frame 41448971326")}
-            >
-              <Flex
-                gap="8px"
-                direction="row"
-                width="unset"
-                height="unset"
-                justifyContent="flex-start"
-                alignItems="center"
-                shrink="0"
-                position="relative"
-                padding="0px 0px 0px 0px"
-                display="flex"
-                {...getOverrideProps(overrides, "Frame 32248971327")}
-              >
-                <Text
-                  fontFamily="Inter"
-                  fontSize="14px"
-                  fontWeight="400"
-                  color="rgba(45,112,205,1)"
-                  lineHeight="21px"
-                  textAlign="left"
-                  display="block"
-                  direction="column"
-                  justifyContent="unset"
-                  width="220px"
-                  height="unset"
-                  gap="unset"
-                  alignItems="unset"
-                  shrink="0"
-                  position="relative"
-                  padding="0px 0px 0px 0px"
-                  whiteSpace="pre-wrap"
-                  children="Visualizations"
-                  {...getOverrideProps(overrides, "label48971328")}
-                ></Text>
-              </Flex>
-            </Flex>
           </Flex>
+          <Text
+            fontFamily="Inter"
+            fontSize="14px"
+            fontWeight="400"
+            color="rgba(45,112,205,1)"
+            lineHeight="21px"
+            textAlign="left"
+            display="block"
+            direction="column"
+            justifyContent="unset"
+            width="136px"
+            height="unset"
+            gap="unset"
+            alignItems="unset"
+            shrink="0"
+            position="relative"
+            padding="0px 0px 0px 0px"
+            whiteSpace="pre-wrap"
+            children="Visualizations"
+            {...getOverrideProps(overrides, "label50003212")}
+          ></Text>
         </Flex>
       </Flex>
       <Flex
@@ -1214,7 +922,7 @@ export default function SideNav(props) {
           fontFamily="Inter"
           fontSize="12px"
           fontWeight="400"
-          color="rgba(24,35,47,1)"
+          color="rgba(14,35,57,1)"
           lineHeight="18px"
           textAlign="left"
           display="block"
@@ -1265,22 +973,8 @@ export default function SideNav(props) {
         shrink="0"
         alignSelf="stretch"
         position="relative"
-        {...getOverrideProps(overrides, "Group 1")}
+        {...getOverrideProps(overrides, "SignOutContainer")}
       >
-        <HamburgerIcon
-          display="none"
-          gap="5px"
-          direction="column"
-          width="53.36px"
-          height="unset"
-          justifyContent="flex-start"
-          alignItems="flex-start"
-          position="absolute"
-          top="10.5px"
-          left="-103.04px"
-          padding="0px 0px 0px 0px"
-          {...getOverrideProps(overrides, "HamburgerIcon")}
-        ></HamburgerIcon>
         <Flex
           gap="20px"
           direction="row"
@@ -1293,7 +987,7 @@ export default function SideNav(props) {
           left="0px"
           padding="0px 0px 0px 0px"
           display="flex"
-          {...getOverrideProps(overrides, "NavRightComponent")}
+          {...getOverrideProps(overrides, "SignOutFlex")}
         >
           <Flex
             gap="0"

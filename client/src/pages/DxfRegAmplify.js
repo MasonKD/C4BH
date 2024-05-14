@@ -4,22 +4,19 @@ import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
 import { useAuthenticator } from '@aws-amplify/ui-react';
 import { updateUserAttribute } from '@aws-amplify/auth';
 import { dynamoAPI, determineForm } from '../data/dsaFetch';
+import font from '../css/fonts.module.css'
+import flex from '../css/flex.module.css'
 
-
-
-import  C4bhFormDataCreateForm, {submitC4bhFormDataCreateForm} from '../ui-components/C4bhFormDataCreateForm'
-import  C4bhUpdatedModelCreateForm, {submitC4bhUpdatedModelCreateForm} from '../ui-components/C4bhUpdatedModelCreateForm'
-import  HIPAACreateForm, {submitHIPAACreateForm} from '../ui-components/HIPAACreateForm_ExportSubmit'
-import  InformationDeliveryCreateForm, {submitInformationDeliveryCreateForm} from '../ui-components/InformationDeliveryCreateForm_ExportSubmit'
-import  NotificationsADTUnoCreateForm, {submitNotificationsADTUnoCreateForm} from '../ui-components/NotificationsADTUnoCreateForm_ExportSubmit'
-import  NotificationsADTDosCreateForm, {submitNotificationsADTDosCreateForm} from '../ui-components/NotificationsADTDosCreateForm_ExportSubmit'
-import  RequestInfoCreateForm, {submitRequestInfoCreateForm} from '../ui-components/RequestInfoCreateForm_ExportSubmit'
-import  TechAcuteCreateForm, {submitTechAcuteCreateForm} from '../ui-components/TechAcuteCreateForm_ExportSubmit'
-import  TechCBOCreateForm, {submitTechCBOCreateForm} from '../ui-components/TechCBOCreateForm_ExportSubmit'
-import  TechIntermediariesCreateForm, {submitTechIntermediariesCreateForm} from '../ui-components/TechIntermediariesCreateForm_ExportSubmit'
-import  UserInfoC4BHCreateForm, {submitUserInfoC4BHCreateForm} from '../ui-components/UserInfoC4BHCreateForm_ExportSubmit'
-
-let DEBOUNCE_DELAY = 200
+import  UserInfoC4BHCreateForm from '../ui-components/UserInfoC4BHCreateForm'
+import  TechAcuteCreateForm from '../ui-components/TechAcuteCreateForm'
+import  TechCBOCreateForm from '../ui-components/TechCBOCreateForm'
+import  TechIntermediariesCreateForm from '../ui-components/TechIntermediariesCreateForm'
+import  NotificationsADTUnoCreateForm from '../ui-components/NotificationsADTUnoCreateForm'
+import  NotificationsADTDosCreateForm from '../ui-components/NotificationsADTDosCreateForm'
+import  RequestInfoUnoCreateForm from '../ui-components/RequestInfoUnoCreateForm'
+import  RequestInfoDosCreateForm from '../ui-components/RequestInfoDosCreateForm'
+import  InformationDeliveryCreateForm from '../ui-components/InformationDeliveryCreateForm'
+import  HIPAACreateForm from '../ui-components/HIPAACreateForm'
 
 async function handleUpdateUserAttribute(attributeKey, value) {
 	try {
@@ -47,105 +44,216 @@ async function getDsaData(participant_id) {
 	}
   }
 
-let form_parts = ["TechAcute", "TechCBO", "TechInt", "NotifADUno", "NotifADUno", "Info", "RequestUno", "RequestDos"]
 function filterFormParts(dsa_data) {
 	console.log("setting form parts for ", dsa_data)
 	//Noah fill in
-	const x = determineForm(dsa_data[0]);
+	const x = determineForm(dsa_data);
 	console.log(x);
-	const divname = document.querySelector("#divname")
-	if(
-		dsa_data[0]
-	)
-	divname.innerHTML="type: " + dsa_data[0].Type
-
-	 return determineForm(dsa_data[0]);
-}
-
- function debounce(func, delay, callback) {
-	let timer;
-
-	return async function (...args) {
-	  clearTimeout(timer);
-	  timer = setTimeout(async () => {
-		const result = await func(...args); // Execute mainFunction and capture the return value
-		if (callback) {
-		  callback(result); // Call the callback function with the return value
-		}
-	  }, delay);
-	};
-  }
-
-
-// Create a new debounced version of the 'getDsaData' function with a delay of 500 milliseconds (.5 seconds)
-form_parts = []
-async function submit_DxF_form() {
-	for (let part in form_parts) {
-		switch (part) {
-			case "TechAcute": submitTechAcuteCreateForm(); break;
-			case "TechCBO": submitTechCBOCreateForm(); break;
-			case "TechInt": submitTechIntermediariesCreateForm(); break;
-			case "NotifADTUno": submitNotificationsADTUnoCreateForm(); break;
-			case "NotifADTDos": submitNotificationsADTDosCreateForm(); break;
-			case "Info": submitUserInfoC4BHCreateForm(); break;
-			case "Request": submitRequestInfoCreateForm(); break;
-			// case "RequestDos": submitRequestInfoDosCreateForm(); break;
-		}
-	}
+	return determineForm(dsa_data);
 }
 
 const DxfRegistration = () => {
 	const navigate = useNavigate(); // Initialize navigate function
 	const { user } = useAuthenticator((context) => [context.user]);
 	const [form_parts, setFormParts] = useState(["TechCBO"]);
-	const debouncedGetDsaData = debounce(getDsaData, DEBOUNCE_DELAY, (dsa_data) => {setFormParts(filterFormParts(dsa_data))});
+	const [p_id, setPID] = useState("");
+	const [dsa_data, setDsaData] = useState({});
+	const [submittedDxFID, setSubmittedDxFID] = useState(false);
+
+	const showDxfForm = async (fields) => {
+		if(fields && fields.DxFID) {
+			console.log("successfully submitted dxf participant selection, ", fields)
+			//TODO CHeck if the dxf participant id is valid
+			let participant_id = fields.DxFID.split("=")[1]
+			setPID(participant_id)
+			console.log("next ", participant_id)
+			try {
+				const fetchedDsaData = await getDsaData(participant_id);
+				console.log("got dsa data", fetchedDsaData);
+				setDsaData(fetchedDsaData[0]);
+				if( dsa_data) {
+					console.log(dsa_data)
+					setSubmittedDxFID(true);
+				} else
+					console.error("dsa data isn't valid", dsa_data)
+				setFormParts(filterFormParts(fetchedDsaData));
+				// setFormParts(['TechCBO', 'TechAcute', 'TechInt', 'NotifADTUno', 'NotifADTDos', 'Info', 'RequestUno', 'RequestDos'])
+			} catch (error) {
+				console.error("Error fetching DSA data:", error);
+				// Handle errors appropriately (e.g., display an error message)
+			}
+			//todo call api to request to add user to dxfAdmin group, verify by c4bhAdmin
+		}
+	}
+
+	// Create a new debounced version of the 'getDsaData' function with a delay of 500 milliseconds (.5 seconds)
+	const submit_DxF_form = async (event) => {
+		for (let i in form_parts) {
+			const part = form_parts[i]
+			console.log("submitting", part)
+			try {
+				document.getElementById(part).requestSubmit();
+			} catch (e) {
+				console.error("error submitting form ", e)
+			}
+		}
+		console.log("submitting hipaa")
+		document.getElementById("Hipaa").requestSubmit();
+	}
+
+	const addDxfToForm = (fields) => {
+		const updatedFields = {}
+		Object.assign(updatedFields, fields);
+		updatedFields.DxFID = p_id
+		console.log("submitting form", updatedFields)
+		return updatedFields
+	}
+
+	const addUserToForm = (fields) => {
+		const updatedFields = {}
+		Object.assign(updatedFields, fields);
+		updatedFields.User = user?.signInDetails.loginId
+		console.log("submitting form", updatedFields)
+		return updatedFields
+	}
+
+	const formSuccess = (event) => {
+		console.log("success form", event)
+	}
+
+	const redirectToHome = () => {
+		navigate('/'); // Redirects to the landing page
+	}
+
 	return (
 	<div className="main-container">
 		<main>
-			<div id = 'divname'></div>
-			
+
 			<div style={{display:Flex, justifyContent:'left'}}>
 				{/* dxf participant selector */}
-				<UserInfoC4BHCreateForm
-				onChange={( fields) => {
-					console.log("changed ", fields)
-					debouncedGetDsaData(fields.User.split('=')[1])
-				}}
-				onSuccess={async (fields) => {
-					console.log("successfully submitted dxf participant selection")
-					//add user to dxfMember group
-					handleUpdateUserAttribute("custom:member_of_dxf", fields.DxFID.split("=")[1])
-				}}
-				></UserInfoC4BHCreateForm>
-				<React.Fragment> {/* these forms depend on dsa data */}
-					{form_parts.includes("TechAcute") && (<TechAcuteCreateForm></TechAcuteCreateForm>)}
+				{!submittedDxFID &&
+					<div>
+						<UserInfoC4BHCreateForm id="dxfPicker" onSubmit={addUserToForm} onSuccess={showDxfForm}>
+						</UserInfoC4BHCreateForm>
+						<div style={{marginBottom: '.5rem'}}>
+						If your organization is not registered, please visit the  <a href="https://signdxf.powerappsportals.com/">Home Data Exchange Framework Signing Portal</a>
+						</div>
+						<br/>
+						<Button
+							variation="primary"
+							loadingText=""
 
-					{form_parts.includes("TechCBO") && (<TechCBOCreateForm></TechCBOCreateForm>)}
+							onClick={(event) => {
+								console.log(event)
+								try {
+									document.getElementById("dxfPicker").requestSubmit();
+								} catch (e) {
+									console.log("error submitting form ", e)
+								}
+								console.log("submitted dxf picker ")
+							}}
+						>
+							Next
+						</Button>
+					</div>
+				}
+				{submittedDxFID &&
+					<div> {/* these forms depend on dsa data */}
+						<div className={`${flex.col} light-gray-rounded-corner`} style={{justifyContent: 'flex-start'}}>
+							<h3 style={{alignSelf: 'center'}}>DxF Participant Info</h3>
+							<div className={`${flex.row}`}>
+								<h3 style={{alignSelf: 'end'}}>ID:</h3>
+								<div style={{marginLeft:'.5rem', alignSelf: 'end'}}>{p_id}</div>
+							</div>
+							<div className={`${flex.row}`}>
+								<h3 style={{alignSelf: 'auto'}}>Name:</h3>
+								<div style={{marginLeft:'.5rem', alignSelf: 'end', paddingBottom: 0}}>{dsa_data.Participant_Name_PrimaryOrganization}</div>
+							</div>
+							<div className={`${flex.row}`}>
+								<h3 style={{alignSelf: 'auto'}}>Sub Name:</h3>
+								<div style={{marginLeft:'.5rem', alignSelf: 'end', paddingBottom: 0}}>{dsa_data.Participant_Name_PrimaryOrganization}</div>
+							</div>
+							<div className={`${flex.row}`}>
+								<h3 style={{alignSelf: 'end'}}>Type:</h3>
+								<div style={{marginLeft:'.5rem', alignSelf: 'end'}}>{dsa_data.Type}</div>
+							</div>
+							<div className={`${flex.row}`}>
+								<h3 style={{alignSelf: 'end'}}>Sub-Type:</h3>
+								<div style={{marginLeft:'.5rem', alignSelf: 'end'}}>{dsa_data.Sub_Type}</div>
+							</div>
+							<div className={`${flex.row}`}>
+								<h3 style={{alignSelf: 'center'}}>Notifications of ADT Events</h3>
+								<div style={{marginLeft:'.5rem', alignSelf: 'end'}}>{dsa_data.Requests_for_Notifications_of_ADT_Events}</div>
+							</div>
+							<div className={`${flex.row}`}>
+								<h3 style={{alignSelf: 'center'}}>Information Delivery:</h3>
+								<div style={{marginLeft:'.5rem', alignSelf: 'end'}}>{dsa_data.Information_Delivery}</div>
+							</div>
+							<div className={`${flex.row}`}>
+								<h3 style={{alignSelf: 'center'}}>Request for Information:</h3>
+								<div style={{marginLeft:'.5rem', alignSelf: 'end'}}>{dsa_data.Request_for_Information}</div>
+							</div>
+						</div>
+						<hr></hr>
+						<h2><i>Technology:</i></h2>
+						{form_parts.includes("TechAcute") && (
+							<TechAcuteCreateForm id = "TechAcute" onSubmit = {addDxfToForm} onSuccess={formSuccess} />
+						)}
 
-					{form_parts.includes("TechInt") && (<TechIntermediariesCreateForm></TechIntermediariesCreateForm>)}
+						{form_parts.includes("TechCBO") && (<TechCBOCreateForm id = "TechCBO" onSubmit = {addDxfToForm} onSuccess={formSuccess}></TechCBOCreateForm>)}
 
-					{form_parts.includes("NotifADTUno") && (<NotificationsADTUnoCreateForm></NotificationsADTUnoCreateForm>)}
+						{form_parts.includes("TechInt") && (<TechIntermediariesCreateForm id = "TechInt" onSubmit = {addDxfToForm} onSuccess={formSuccess}></TechIntermediariesCreateForm>)}
 
-					{form_parts.includes("NotifADTDos") && (<NotificationsADTDosCreateForm></NotificationsADTDosCreateForm>)}
+						{(form_parts.includes("NotifADTUno") || form_parts.includes("NotifADTDos")) && (
+							<div>
+							<div className={`${flex.row}`}>
+								<h2><i>Notifications of ADT Events:</i></h2>
+							</div></div>
+						)}
 
-					{form_parts.includes("Info") && (<InformationDeliveryCreateForm></InformationDeliveryCreateForm>)}
+						{form_parts.includes("NotifADTUno") && (<NotificationsADTUnoCreateForm id = "NotifADTUno" onSubmit = {addDxfToForm} onSuccess={formSuccess}></NotificationsADTUnoCreateForm>)}
 
-					{form_parts.includes("RequestUno") && (<RequestInfoCreateForm></RequestInfoCreateForm>)}
+						{form_parts.includes("NotifADTDos") && (<NotificationsADTDosCreateForm id = "NotifADTDos" onSubmit = {addDxfToForm} onSuccess={formSuccess}></NotificationsADTDosCreateForm>)}
 
-					{/* {form_parts.includes("RequestDos") && (<RequestInfoDosCreateForm></RequestInfoDosCreateForm>)} */}
+						{form_parts.includes("Info") && (
+						<div><div style={{display: 'inline-flex', flexDirection: 'row'}}>
+							<h2><i>Information Delivery:</i></h2>
+						</div>
 
-				</React.Fragment>
+						<InformationDeliveryCreateForm id = "Info" onSubmit = {addDxfToForm} onSuccess={formSuccess}></InformationDeliveryCreateForm>
+						</div>)}
 
-				<HIPAACreateForm></HIPAACreateForm>
+						{(form_parts.includes("RequestUno") || form_parts.includes("RequestDos")) && (
+						<div>
+							<h2><i>Request for Information:</i></h2>
+						</div>)}
 
-				<Button
-					variation="primary"
-					loadingText=""
-					onClick={() => {submit_DxF_form(form_parts)}}
-				>
-					{/* <IconSave />  */}
-					Submit
-				</Button>
+						{form_parts.includes("RequestUno") && (<div>
+						<RequestInfoUnoCreateForm id = "RequestUno" onSubmit = {addDxfToForm} onSuccess={formSuccess}></RequestInfoUnoCreateForm>
+						</div>)}
+
+						{form_parts.includes("RequestDos") && (
+						<RequestInfoDosCreateForm id = "RequestDos" onSubmit = {addDxfToForm} onSuccess={formSuccess}></RequestInfoDosCreateForm>)}
+
+						<h2><i>HIPAA Compliance:</i></h2>
+						<HIPAACreateForm id = "Hipaa" onSuccess={redirectToHome}></HIPAACreateForm>
+
+						<Button
+							variation="primary"
+							type="submit"
+							loadingText=""
+							onClick={(event) => {
+								console.log("submitting form", event);
+								submit_DxF_form(event)
+							}}
+						>
+							{/* <IconSave />  */}
+							Submit
+						</Button>
+					</div>
+				}
+
+
 			</div>
 			{/* <C4bhFormDataCreateForm
 				onSubmit={(fields) => {

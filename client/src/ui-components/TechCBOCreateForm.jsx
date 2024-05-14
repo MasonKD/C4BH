@@ -6,7 +6,7 @@
 
 /* eslint-disable */
 import * as React from "react";
-import { Flex, Grid, TextField } from "@aws-amplify/ui-react";
+import { Flex, Grid, Heading, Text, TextField } from "@aws-amplify/ui-react";
 import { fetchByPath, getOverrideProps, validateField } from "./utils";
 import { generateClient } from "aws-amplify/api";
 import { createTechCBO } from "../graphql/mutations";
@@ -115,8 +115,16 @@ export default function TechCBOCreateForm(props) {
       {...getOverrideProps(overrides, "TechCBOCreateForm")}
       {...rest}
     >
+      <Heading
+        children="What Customer Management or Electronic Record platform do you use?"
+        {...getOverrideProps(overrides, "SectionalElement0")}
+      ></Heading>
+      <Text
+        children="(if not listed, please type it out)"
+        {...getOverrideProps(overrides, "SectionalElement1")}
+      ></Text>
       <TextField
-        label="What is the Customer management or other electronic record system you use."
+        label=" "
         isRequired={false}
         isReadOnly={false}
         value={Customer_Management_System}

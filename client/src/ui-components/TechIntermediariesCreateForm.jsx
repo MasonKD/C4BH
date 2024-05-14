@@ -6,7 +6,7 @@
 
 /* eslint-disable */
 import * as React from "react";
-import { Flex, Grid, TextField } from "@aws-amplify/ui-react";
+import { Autocomplete, Flex, Grid, Heading, Text } from "@aws-amplify/ui-react";
 import { fetchByPath, getOverrideProps, validateField } from "./utils";
 import { generateClient } from "aws-amplify/api";
 import { createTechIntermediaries } from "../graphql/mutations";
@@ -23,7 +23,7 @@ export default function TechIntermediariesCreateForm(props) {
     ...rest
   } = props;
   const initialValues = {
-    HIE_or_Inter: "",
+    HIE_or_Inter: undefined,
   };
   const [HIE_or_Inter, setHIE_or_Inter] = React.useState(
     initialValues.HIE_or_Inter
@@ -53,6 +53,7 @@ export default function TechIntermediariesCreateForm(props) {
     setErrors((errors) => ({ ...errors, [fieldName]: validationResponse }));
     return validationResponse;
   };
+  React.useEffect(() => {}, []);
   return (
     <Grid
       as="form"
@@ -116,11 +117,47 @@ export default function TechIntermediariesCreateForm(props) {
       {...getOverrideProps(overrides, "TechIntermediariesCreateForm")}
       {...rest}
     >
-      <TextField
-        label="What is the Health Information Exchange or Interoperability platform you use."
+      <Heading
+        children="What Health Information Exchange or Interoperability platform do you use?"
+        {...getOverrideProps(overrides, "SectionalElement0")}
+      ></Heading>
+      <Text
+        children="(if not listed, please type it out)"
+        {...getOverrideProps(overrides, "SectionalElement1")}
+      ></Text>
+      <Autocomplete
+        label=" "
         isRequired={false}
         isReadOnly={false}
-        value={HIE_or_Inter}
+        options={[
+          {
+            id: "Intersystems",
+            label: "Intersystems",
+          },
+          {
+            id: "Smile",
+            label: "Smile",
+          },
+          {
+            id: "Salesforce",
+            label: "Salesforce",
+          },
+          {
+            id: "Mirth/NextGen",
+            label: "Mirth/NextGen",
+          },
+          {
+            id: "Other (Please type out)",
+            label: "Other (Please type out)",
+          },
+        ]}
+        onSelect={({ id, label }) => {
+          setHIE_or_Inter(id);
+          runValidationTasks("HIE_or_Inter", id);
+        }}
+        onClear={() => {
+          setHIE_or_Inter("");
+        }}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -138,8 +175,9 @@ export default function TechIntermediariesCreateForm(props) {
         onBlur={() => runValidationTasks("HIE_or_Inter", HIE_or_Inter)}
         errorMessage={errors.HIE_or_Inter?.errorMessage}
         hasError={errors.HIE_or_Inter?.hasError}
+        labelHidden={false}
         {...getOverrideProps(overrides, "HIE_or_Inter")}
-      ></TextField>
+      ></Autocomplete>
       <Flex
         justifyContent="space-between"
         {...getOverrideProps(overrides, "CTAFlex")}

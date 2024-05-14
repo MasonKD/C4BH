@@ -22,11 +22,6 @@
           "deploymentBucketName": "amplify-c4bhform-staging-948b7-deployment",
           "s3Key": "amplify-builds/AdminQueries5d1f99e9-45322f70306864363759-build.zip"
         },
-        "C4BHFormPostConfirmation": {
-          "GROUP": "dxfMember",
-          "deploymentBucketName": "amplify-c4bhform-staging-948b7-deployment",
-          "s3Key": "amplify-builds/C4BHFormPostConfirmation-61742f5350483975786b-build.zip"
-        },
         "C4BHFormPostAuthentication": {
           "deploymentBucketName": "amplify-c4bhform-staging-948b7-deployment",
           "s3Key": "amplify-builds/C4BHFormPostAuthentication-7834616a74743778575a-build.zip"

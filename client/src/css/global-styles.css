@@ -33,7 +33,7 @@
    }
 
    /* Set shorter line heights on headings and interactive elements */
-   h1, h2, h3, h4,
+   h1, h2, h4,
    button, input, label {
      line-height: 1.1;
    }
@@ -194,4 +194,11 @@ border-bottom: 2px solid var(--DS-grey-blue-700);
   align-items: center;
   text-decoration: none;
 
+}
+
+.light-gray-rounded-corner {
+  background-color: white; /* Light gray with 20% transparency */
+  border: .5px solid lightgray;
+  border-radius: 5px;
+  padding: 0 0 0.5rem 0.5rem;
 }

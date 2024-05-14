@@ -6,7 +6,7 @@
 
 /* eslint-disable */
 import * as React from "react";
-import { Autocomplete, Flex, Grid } from "@aws-amplify/ui-react";
+import { Autocomplete, Flex, Grid, Heading, Text } from "@aws-amplify/ui-react";
 import { fetchByPath, getOverrideProps, validateField } from "./utils";
 import { generateClient } from "aws-amplify/api";
 import { createTechAcute } from "../graphql/mutations";
@@ -117,9 +117,17 @@ export default function TechAcuteCreateForm(props) {
       {...getOverrideProps(overrides, "TechAcuteCreateForm")}
       {...rest}
     >
+      <Heading
+        children="What Electronic Health Record platform do you use?"
+        {...getOverrideProps(overrides, "SectionalElement0")}
+      ></Heading>
+      <Text
+        children="(if not listed, please type it out)"
+        {...getOverrideProps(overrides, "SectionalElement1")}
+      ></Text>
       <Autocomplete
-        label="EHR Vendors"
-        descriptiveText="If your EHR vendor isn't appearing in the autocomplete, you can manually enter your specific vendor."
+        label=" "
+        descriptiveText=""
         isRequired={false}
         isReadOnly={false}
         options={[

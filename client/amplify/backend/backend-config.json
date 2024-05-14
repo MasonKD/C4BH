@@ -47,17 +47,7 @@
   "auth": {
     "C4BHForm": {
       "customAuth": false,
-      "dependsOn": [
-        {
-          "attributes": [
-            "Arn",
-            "Name"
-          ],
-          "category": "function",
-          "resourceName": "C4BHFormPostConfirmation",
-          "triggerProvider": "Cognito"
-        }
-      ],
+      "dependsOn": [],
       "frontendAuthConfig": {
         "mfaConfiguration": "OPTIONAL",
         "mfaTypes": [
@@ -121,11 +111,6 @@
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
-    },
-    "C4BHFormPostConfirmation": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
     }
   },
   "parameters": {
@@ -158,30 +143,6 @@
         {
           "category": "function",
           "resourceName": "C4BHFormPostAuthentication"
-        }
-      ]
-    },
-    "AMPLIFY_function_C4BHFormPostConfirmation_GROUP": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "C4BHFormPostConfirmation"
-        }
-      ]
-    },
-    "AMPLIFY_function_C4BHFormPostConfirmation_deploymentBucketName": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "C4BHFormPostConfirmation"
-        }
-      ]
-    },
-    "AMPLIFY_function_C4BHFormPostConfirmation_s3Key": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "C4BHFormPostConfirmation"
         }
       ]
     }

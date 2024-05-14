@@ -1,6 +1,50 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const getRequestInfoDos = /* GraphQL */ `
+  query GetRequestInfoDos($id: ID!) {
+    getRequestInfoDos(id: $id) {
+      id
+      DxFID
+      RequestRespondDirectSecureEmail
+      RequestRespondDirectEmailAddress
+      RequestRespondIHE
+      RequestRespondFHIR
+      RequestRespondFHIRendpoint
+      RequestRespondOther
+      RequestRespondOtherDescribe
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const listRequestInfoDos = /* GraphQL */ `
+  query ListRequestInfoDos(
+    $filter: ModelRequestInfoDosFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listRequestInfoDos(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        DxFID
+        RequestRespondDirectSecureEmail
+        RequestRespondDirectEmailAddress
+        RequestRespondIHE
+        RequestRespondFHIR
+        RequestRespondFHIRendpoint
+        RequestRespondOther
+        RequestRespondOtherDescribe
+        createdAt
+        updatedAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
+  }
+`;
 export const getNotificationsADTDos = /* GraphQL */ `
   query GetNotificationsADTDos($id: ID!) {
     getNotificationsADTDos(id: $id) {
@@ -281,9 +325,9 @@ export const listHIPAAS = /* GraphQL */ `
     }
   }
 `;
-export const getRequestInfo = /* GraphQL */ `
-  query GetRequestInfo($id: ID!) {
-    getRequestInfo(id: $id) {
+export const getRequestInfoUno = /* GraphQL */ `
+  query GetRequestInfoUno($id: ID!) {
+    getRequestInfoUno(id: $id) {
       id
       RequestRecieveDirectSecureEmail
       RequestDirectEmailAddress
@@ -291,12 +335,6 @@ export const getRequestInfo = /* GraphQL */ `
       RequestFHIR
       RequestOther
       RequestOtherDescribe
-      RequestRespondDirectSecureEmail
-      RequestRespondIHE
-      RequestRespondFHIR
-      RequestRespondFHIRendpoint
-      RequestRespondOther
-      RequestRespondOtherDescribe
       DxFID
       createdAt
       updatedAt
@@ -304,13 +342,13 @@ export const getRequestInfo = /* GraphQL */ `
     }
   }
 `;
-export const listRequestInfos = /* GraphQL */ `
-  query ListRequestInfos(
-    $filter: ModelRequestInfoFilterInput
+export const listRequestInfoUnos = /* GraphQL */ `
+  query ListRequestInfoUnos(
+    $filter: ModelRequestInfoUnoFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    listRequestInfos(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listRequestInfoUnos(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
         RequestRecieveDirectSecureEmail
@@ -319,12 +357,6 @@ export const listRequestInfos = /* GraphQL */ `
         RequestFHIR
         RequestOther
         RequestOtherDescribe
-        RequestRespondDirectSecureEmail
-        RequestRespondIHE
-        RequestRespondFHIR
-        RequestRespondFHIRendpoint
-        RequestRespondOther
-        RequestRespondOtherDescribe
         DxFID
         createdAt
         updatedAt

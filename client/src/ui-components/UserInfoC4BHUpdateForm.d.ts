@@ -22,15 +22,15 @@ export declare type ValidationResponse = {
 };
 export declare type ValidationFunction<T> = (value: T, validationResponse: ValidationResponse) => ValidationResponse | Promise<ValidationResponse>;
 export declare type UserInfoC4BHUpdateFormInputValues = {
-    User?: string;
+    DxFID?: string;
 };
 export declare type UserInfoC4BHUpdateFormValidationValues = {
-    User?: ValidationFunction<string>;
+    DxFID?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type UserInfoC4BHUpdateFormOverridesProps = {
     UserInfoC4BHUpdateFormGrid?: PrimitiveOverrideProps<GridProps>;
-    User?: PrimitiveOverrideProps<AutocompleteProps>;
+    DxFID?: PrimitiveOverrideProps<AutocompleteProps>;
 } & EscapeHatchProps;
 export declare type UserInfoC4BHUpdateFormProps = React.PropsWithChildren<{
     overrides?: UserInfoC4BHUpdateFormOverridesProps | undefined | null;

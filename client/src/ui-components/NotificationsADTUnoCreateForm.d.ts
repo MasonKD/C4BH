@@ -5,7 +5,7 @@
  **************************************************************************/
 
 import * as React from "react";
-import { CheckboxFieldProps, GridProps, TextFieldProps, TextProps } from "@aws-amplify/ui-react";
+import { CheckboxFieldProps, GridProps, HeadingProps, TextFieldProps, TextProps } from "@aws-amplify/ui-react";
 export declare type EscapeHatchProps = {
     [elementHierarchy: string]: Record<string, unknown>;
 } | null;
@@ -46,17 +46,18 @@ export declare type NotificationsADTUnoCreateFormValidationValues = {
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type NotificationsADTUnoCreateFormOverridesProps = {
     NotificationsADTUnoCreateFormGrid?: PrimitiveOverrideProps<GridProps>;
-    SectionalElement0?: PrimitiveOverrideProps<TextProps>;
-    RowGrid1?: PrimitiveOverrideProps<GridProps>;
+    SectionalElement0?: PrimitiveOverrideProps<HeadingProps>;
+    SectionalElement1?: PrimitiveOverrideProps<TextProps>;
+    RowGrid2?: PrimitiveOverrideProps<GridProps>;
     ReceiveADTDirectSecureEmail?: PrimitiveOverrideProps<CheckboxFieldProps>;
     ReceiveADTDirectEmailAddress?: PrimitiveOverrideProps<TextFieldProps>;
     ReceiveADTsFTP?: PrimitiveOverrideProps<CheckboxFieldProps>;
     ReceiveADTPointToPoint?: PrimitiveOverrideProps<CheckboxFieldProps>;
     ReceiveADTHTTPSnonFHIR?: PrimitiveOverrideProps<CheckboxFieldProps>;
-    RowGrid5?: PrimitiveOverrideProps<GridProps>;
+    RowGrid6?: PrimitiveOverrideProps<GridProps>;
     ReceiveADTHTTPSFHIR?: PrimitiveOverrideProps<CheckboxFieldProps>;
     ReceiveADTHTTPSEndpoint?: PrimitiveOverrideProps<TextFieldProps>;
-    RowGrid6?: PrimitiveOverrideProps<GridProps>;
+    RowGrid7?: PrimitiveOverrideProps<GridProps>;
     ReceiveADTOther?: PrimitiveOverrideProps<CheckboxFieldProps>;
     ReceiveADTOtherDescription?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;

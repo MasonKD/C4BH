@@ -5,7 +5,7 @@
  **************************************************************************/
 
 import * as React from "react";
-import { AutocompleteProps, GridProps } from "@aws-amplify/ui-react";
+import { AutocompleteProps, GridProps, HeadingProps, TextProps } from "@aws-amplify/ui-react";
 export declare type EscapeHatchProps = {
     [elementHierarchy: string]: Record<string, unknown>;
 } | null;
@@ -30,6 +30,8 @@ export declare type TechAcuteCreateFormValidationValues = {
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type TechAcuteCreateFormOverridesProps = {
     TechAcuteCreateFormGrid?: PrimitiveOverrideProps<GridProps>;
+    SectionalElement0?: PrimitiveOverrideProps<HeadingProps>;
+    SectionalElement1?: PrimitiveOverrideProps<TextProps>;
     EHR_Vendors?: PrimitiveOverrideProps<AutocompleteProps>;
 } & EscapeHatchProps;
 export declare type TechAcuteCreateFormProps = React.PropsWithChildren<{

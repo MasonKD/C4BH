@@ -8,7 +8,6 @@
 import * as React from "react";
 import {
   CheckboxField,
-  Divider,
   Flex,
   Grid,
   Heading,
@@ -17,9 +16,9 @@ import {
 } from "@aws-amplify/ui-react";
 import { fetchByPath, getOverrideProps, validateField } from "./utils";
 import { generateClient } from "aws-amplify/api";
-import { createRequestInfo } from "../graphql/mutations";
+import { createRequestInfoDos } from "../graphql/mutations";
 const client = generateClient();
-export default function RequestInfoCreateForm(props) {
+export default function RequestInfoDosCreateForm(props) {
   const {
     clearOnSuccess = true,
     onSuccess,
@@ -31,12 +30,6 @@ export default function RequestInfoCreateForm(props) {
     ...rest
   } = props;
   const initialValues = {
-    RequestRecieveDirectSecureEmail: false,
-    RequestDirectEmailAddress: "",
-    RequestIHE: false,
-    RequestFHIR: false,
-    RequestOther: false,
-    RequestOtherDescribe: "",
     RequestRespondDirectSecureEmail: false,
     RequestRespondIHE: false,
     RequestRespondFHIR: false,
@@ -44,20 +37,6 @@ export default function RequestInfoCreateForm(props) {
     RequestRespondOther: false,
     RequestRespondOtherDescribe: "",
   };
-  const [RequestRecieveDirectSecureEmail, setRequestRecieveDirectSecureEmail] =
-    React.useState(initialValues.RequestRecieveDirectSecureEmail);
-  const [RequestDirectEmailAddress, setRequestDirectEmailAddress] =
-    React.useState(initialValues.RequestDirectEmailAddress);
-  const [RequestIHE, setRequestIHE] = React.useState(initialValues.RequestIHE);
-  const [RequestFHIR, setRequestFHIR] = React.useState(
-    initialValues.RequestFHIR
-  );
-  const [RequestOther, setRequestOther] = React.useState(
-    initialValues.RequestOther
-  );
-  const [RequestOtherDescribe, setRequestOtherDescribe] = React.useState(
-    initialValues.RequestOtherDescribe
-  );
   const [RequestRespondDirectSecureEmail, setRequestRespondDirectSecureEmail] =
     React.useState(initialValues.RequestRespondDirectSecureEmail);
   const [RequestRespondIHE, setRequestRespondIHE] = React.useState(
@@ -75,14 +54,6 @@ export default function RequestInfoCreateForm(props) {
     React.useState(initialValues.RequestRespondOtherDescribe);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
-    setRequestRecieveDirectSecureEmail(
-      initialValues.RequestRecieveDirectSecureEmail
-    );
-    setRequestDirectEmailAddress(initialValues.RequestDirectEmailAddress);
-    setRequestIHE(initialValues.RequestIHE);
-    setRequestFHIR(initialValues.RequestFHIR);
-    setRequestOther(initialValues.RequestOther);
-    setRequestOtherDescribe(initialValues.RequestOtherDescribe);
     setRequestRespondDirectSecureEmail(
       initialValues.RequestRespondDirectSecureEmail
     );
@@ -94,12 +65,6 @@ export default function RequestInfoCreateForm(props) {
     setErrors({});
   };
   const validations = {
-    RequestRecieveDirectSecureEmail: [],
-    RequestDirectEmailAddress: [],
-    RequestIHE: [],
-    RequestFHIR: [],
-    RequestOther: [],
-    RequestOtherDescribe: [],
     RequestRespondDirectSecureEmail: [],
     RequestRespondIHE: [],
     RequestRespondFHIR: [],
@@ -133,12 +98,6 @@ export default function RequestInfoCreateForm(props) {
       onSubmit={async (event) => {
         event.preventDefault();
         let modelFields = {
-          RequestRecieveDirectSecureEmail,
-          RequestDirectEmailAddress,
-          RequestIHE,
-          RequestFHIR,
-          RequestOther,
-          RequestOtherDescribe,
           RequestRespondDirectSecureEmail,
           RequestRespondIHE,
           RequestRespondFHIR,
@@ -175,7 +134,7 @@ export default function RequestInfoCreateForm(props) {
             }
           });
           await client.graphql({
-            query: createRequestInfo.replaceAll("__typename", ""),
+            query: createRequestInfoDos.replaceAll("__typename", ""),
             variables: {
               input: {
                 ...modelFields,
@@ -195,267 +154,19 @@ export default function RequestInfoCreateForm(props) {
           }
         }
       }}
-      {...getOverrideProps(overrides, "RequestInfoCreateForm")}
+      {...getOverrideProps(overrides, "RequestInfoDosCreateForm")}
       {...rest}
     >
-      <Text
-        children=" "
-        {...getOverrideProps(overrides, "SectionalElement3")}
-      ></Text>
       <Heading
-        children="In what way(s) do you request information from other participants? Please check all that apply."
+        children="In what way(s) do you respond to requests for information from other participants? "
         {...getOverrideProps(overrides, "SectionalElement0")}
       ></Heading>
-      <Grid
-        columnGap="inherit"
-        rowGap="inherit"
-        templateColumns="repeat(2, auto)"
-        {...getOverrideProps(overrides, "RowGrid2")}
-      >
-        <CheckboxField
-          label="Direct Secure Email: Provide direct secure email address"
-          name="RequestRecieveDirectSecureEmail"
-          value="RequestRecieveDirectSecureEmail"
-          isDisabled={false}
-          checked={RequestRecieveDirectSecureEmail}
-          onChange={(e) => {
-            let value = e.target.checked;
-            if (onChange) {
-              const modelFields = {
-                RequestRecieveDirectSecureEmail: value,
-                RequestDirectEmailAddress,
-                RequestIHE,
-                RequestFHIR,
-                RequestOther,
-                RequestOtherDescribe,
-                RequestRespondDirectSecureEmail,
-                RequestRespondIHE,
-                RequestRespondFHIR,
-                RequestRespondFHIRendpoint,
-                RequestRespondOther,
-                RequestRespondOtherDescribe,
-              };
-              const result = onChange(modelFields);
-              value = result?.RequestRecieveDirectSecureEmail ?? value;
-            }
-            if (errors.RequestRecieveDirectSecureEmail?.hasError) {
-              runValidationTasks("RequestRecieveDirectSecureEmail", value);
-            }
-            setRequestRecieveDirectSecureEmail(value);
-          }}
-          onBlur={() =>
-            runValidationTasks(
-              "RequestRecieveDirectSecureEmail",
-              RequestRecieveDirectSecureEmail
-            )
-          }
-          errorMessage={errors.RequestRecieveDirectSecureEmail?.errorMessage}
-          hasError={errors.RequestRecieveDirectSecureEmail?.hasError}
-          {...getOverrideProps(overrides, "RequestRecieveDirectSecureEmail")}
-        ></CheckboxField>
-        <TextField
-          label=" "
-          isRequired={false}
-          isReadOnly={false}
-          value={RequestDirectEmailAddress}
-          onChange={(e) => {
-            let { value } = e.target;
-            if (onChange) {
-              const modelFields = {
-                RequestRecieveDirectSecureEmail,
-                RequestDirectEmailAddress: value,
-                RequestIHE,
-                RequestFHIR,
-                RequestOther,
-                RequestOtherDescribe,
-                RequestRespondDirectSecureEmail,
-                RequestRespondIHE,
-                RequestRespondFHIR,
-                RequestRespondFHIRendpoint,
-                RequestRespondOther,
-                RequestRespondOtherDescribe,
-              };
-              const result = onChange(modelFields);
-              value = result?.RequestDirectEmailAddress ?? value;
-            }
-            if (errors.RequestDirectEmailAddress?.hasError) {
-              runValidationTasks("RequestDirectEmailAddress", value);
-            }
-            setRequestDirectEmailAddress(value);
-          }}
-          onBlur={() =>
-            runValidationTasks(
-              "RequestDirectEmailAddress",
-              RequestDirectEmailAddress
-            )
-          }
-          errorMessage={errors.RequestDirectEmailAddress?.errorMessage}
-          hasError={errors.RequestDirectEmailAddress?.hasError}
-          {...getOverrideProps(overrides, "RequestDirectEmailAddress")}
-        ></TextField>
-      </Grid>
-      <CheckboxField
-        label="IHE"
-        name="RequestIHE"
-        value="RequestIHE"
-        isDisabled={false}
-        checked={RequestIHE}
-        onChange={(e) => {
-          let value = e.target.checked;
-          if (onChange) {
-            const modelFields = {
-              RequestRecieveDirectSecureEmail,
-              RequestDirectEmailAddress,
-              RequestIHE: value,
-              RequestFHIR,
-              RequestOther,
-              RequestOtherDescribe,
-              RequestRespondDirectSecureEmail,
-              RequestRespondIHE,
-              RequestRespondFHIR,
-              RequestRespondFHIRendpoint,
-              RequestRespondOther,
-              RequestRespondOtherDescribe,
-            };
-            const result = onChange(modelFields);
-            value = result?.RequestIHE ?? value;
-          }
-          if (errors.RequestIHE?.hasError) {
-            runValidationTasks("RequestIHE", value);
-          }
-          setRequestIHE(value);
-        }}
-        onBlur={() => runValidationTasks("RequestIHE", RequestIHE)}
-        errorMessage={errors.RequestIHE?.errorMessage}
-        hasError={errors.RequestIHE?.hasError}
-        {...getOverrideProps(overrides, "RequestIHE")}
-      ></CheckboxField>
-      <CheckboxField
-        label="FHIR"
-        name="RequestFHIR"
-        value="RequestFHIR"
-        isDisabled={false}
-        checked={RequestFHIR}
-        onChange={(e) => {
-          let value = e.target.checked;
-          if (onChange) {
-            const modelFields = {
-              RequestRecieveDirectSecureEmail,
-              RequestDirectEmailAddress,
-              RequestIHE,
-              RequestFHIR: value,
-              RequestOther,
-              RequestOtherDescribe,
-              RequestRespondDirectSecureEmail,
-              RequestRespondIHE,
-              RequestRespondFHIR,
-              RequestRespondFHIRendpoint,
-              RequestRespondOther,
-              RequestRespondOtherDescribe,
-            };
-            const result = onChange(modelFields);
-            value = result?.RequestFHIR ?? value;
-          }
-          if (errors.RequestFHIR?.hasError) {
-            runValidationTasks("RequestFHIR", value);
-          }
-          setRequestFHIR(value);
-        }}
-        onBlur={() => runValidationTasks("RequestFHIR", RequestFHIR)}
-        errorMessage={errors.RequestFHIR?.errorMessage}
-        hasError={errors.RequestFHIR?.hasError}
-        {...getOverrideProps(overrides, "RequestFHIR")}
-      ></CheckboxField>
-      <Grid
-        columnGap="inherit"
-        rowGap="inherit"
-        templateColumns="repeat(2, auto)"
-        {...getOverrideProps(overrides, "RowGrid5")}
-      >
-        <CheckboxField
-          label="Other, please describe"
-          name="RequestOther"
-          value="RequestOther"
-          isDisabled={false}
-          checked={RequestOther}
-          onChange={(e) => {
-            let value = e.target.checked;
-            if (onChange) {
-              const modelFields = {
-                RequestRecieveDirectSecureEmail,
-                RequestDirectEmailAddress,
-                RequestIHE,
-                RequestFHIR,
-                RequestOther: value,
-                RequestOtherDescribe,
-                RequestRespondDirectSecureEmail,
-                RequestRespondIHE,
-                RequestRespondFHIR,
-                RequestRespondFHIRendpoint,
-                RequestRespondOther,
-                RequestRespondOtherDescribe,
-              };
-              const result = onChange(modelFields);
-              value = result?.RequestOther ?? value;
-            }
-            if (errors.RequestOther?.hasError) {
-              runValidationTasks("RequestOther", value);
-            }
-            setRequestOther(value);
-          }}
-          onBlur={() => runValidationTasks("RequestOther", RequestOther)}
-          errorMessage={errors.RequestOther?.errorMessage}
-          hasError={errors.RequestOther?.hasError}
-          {...getOverrideProps(overrides, "RequestOther")}
-        ></CheckboxField>
-        <TextField
-          label=" "
-          isRequired={false}
-          isReadOnly={false}
-          value={RequestOtherDescribe}
-          onChange={(e) => {
-            let { value } = e.target;
-            if (onChange) {
-              const modelFields = {
-                RequestRecieveDirectSecureEmail,
-                RequestDirectEmailAddress,
-                RequestIHE,
-                RequestFHIR,
-                RequestOther,
-                RequestOtherDescribe: value,
-                RequestRespondDirectSecureEmail,
-                RequestRespondIHE,
-                RequestRespondFHIR,
-                RequestRespondFHIRendpoint,
-                RequestRespondOther,
-                RequestRespondOtherDescribe,
-              };
-              const result = onChange(modelFields);
-              value = result?.RequestOtherDescribe ?? value;
-            }
-            if (errors.RequestOtherDescribe?.hasError) {
-              runValidationTasks("RequestOtherDescribe", value);
-            }
-            setRequestOtherDescribe(value);
-          }}
-          onBlur={() =>
-            runValidationTasks("RequestOtherDescribe", RequestOtherDescribe)
-          }
-          errorMessage={errors.RequestOtherDescribe?.errorMessage}
-          hasError={errors.RequestOtherDescribe?.hasError}
-          {...getOverrideProps(overrides, "RequestOtherDescribe")}
-        ></TextField>
-      </Grid>
-      <Divider
-        orientation="horizontal"
-        {...getOverrideProps(overrides, "SectionalElement2")}
-      ></Divider>
-      <Heading
-        children="In what way(s) do you respond to requests for information from other participants? Please check all that apply."
+      <Text
+        children="Please check all that apply:"
         {...getOverrideProps(overrides, "SectionalElement1")}
-      ></Heading>
+      ></Text>
       <CheckboxField
-        label="Direct Secure Email"
+        label="Direct secure email"
         name="RequestRespondDirectSecureEmail"
         value="RequestRespondDirectSecureEmail"
         isDisabled={false}
@@ -464,12 +175,6 @@ export default function RequestInfoCreateForm(props) {
           let value = e.target.checked;
           if (onChange) {
             const modelFields = {
-              RequestRecieveDirectSecureEmail,
-              RequestDirectEmailAddress,
-              RequestIHE,
-              RequestFHIR,
-              RequestOther,
-              RequestOtherDescribe,
               RequestRespondDirectSecureEmail: value,
               RequestRespondIHE,
               RequestRespondFHIR,
@@ -505,12 +210,6 @@ export default function RequestInfoCreateForm(props) {
           let value = e.target.checked;
           if (onChange) {
             const modelFields = {
-              RequestRecieveDirectSecureEmail,
-              RequestDirectEmailAddress,
-              RequestIHE,
-              RequestFHIR,
-              RequestOther,
-              RequestOtherDescribe,
               RequestRespondDirectSecureEmail,
               RequestRespondIHE: value,
               RequestRespondFHIR,
@@ -537,10 +236,10 @@ export default function RequestInfoCreateForm(props) {
         columnGap="inherit"
         rowGap="inherit"
         templateColumns="repeat(2, auto)"
-        {...getOverrideProps(overrides, "RowGrid10")}
+        {...getOverrideProps(overrides, "RowGrid4")}
       >
         <CheckboxField
-          label="FHIR: Type out endpoint"
+          label="FHIR (Provide endpoint):"
           name="RequestRespondFHIR"
           value="RequestRespondFHIR"
           isDisabled={false}
@@ -549,12 +248,6 @@ export default function RequestInfoCreateForm(props) {
             let value = e.target.checked;
             if (onChange) {
               const modelFields = {
-                RequestRecieveDirectSecureEmail,
-                RequestDirectEmailAddress,
-                RequestIHE,
-                RequestFHIR,
-                RequestOther,
-                RequestOtherDescribe,
                 RequestRespondDirectSecureEmail,
                 RequestRespondIHE,
                 RequestRespondFHIR: value,
@@ -586,12 +279,6 @@ export default function RequestInfoCreateForm(props) {
             let { value } = e.target;
             if (onChange) {
               const modelFields = {
-                RequestRecieveDirectSecureEmail,
-                RequestDirectEmailAddress,
-                RequestIHE,
-                RequestFHIR,
-                RequestOther,
-                RequestOtherDescribe,
                 RequestRespondDirectSecureEmail,
                 RequestRespondIHE,
                 RequestRespondFHIR,
@@ -622,10 +309,10 @@ export default function RequestInfoCreateForm(props) {
         columnGap="inherit"
         rowGap="inherit"
         templateColumns="repeat(2, auto)"
-        {...getOverrideProps(overrides, "RowGrid11")}
+        {...getOverrideProps(overrides, "RowGrid5")}
       >
         <CheckboxField
-          label="Other, please describe"
+          label="Other (Please describe):"
           name="RequestRespondOther"
           value="RequestRespondOther"
           isDisabled={false}
@@ -634,12 +321,6 @@ export default function RequestInfoCreateForm(props) {
             let value = e.target.checked;
             if (onChange) {
               const modelFields = {
-                RequestRecieveDirectSecureEmail,
-                RequestDirectEmailAddress,
-                RequestIHE,
-                RequestFHIR,
-                RequestOther,
-                RequestOtherDescribe,
                 RequestRespondDirectSecureEmail,
                 RequestRespondIHE,
                 RequestRespondFHIR,
@@ -671,12 +352,6 @@ export default function RequestInfoCreateForm(props) {
             let { value } = e.target;
             if (onChange) {
               const modelFields = {
-                RequestRecieveDirectSecureEmail,
-                RequestDirectEmailAddress,
-                RequestIHE,
-                RequestFHIR,
-                RequestOther,
-                RequestOtherDescribe,
                 RequestRespondDirectSecureEmail,
                 RequestRespondIHE,
                 RequestRespondFHIR,

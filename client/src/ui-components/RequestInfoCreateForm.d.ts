@@ -5,7 +5,7 @@
  **************************************************************************/
 
 import * as React from "react";
-import { CheckboxFieldProps, DividerProps, GridProps, TextFieldProps, TextProps } from "@aws-amplify/ui-react";
+import { CheckboxFieldProps, DividerProps, GridProps, HeadingProps, TextFieldProps, TextProps } from "@aws-amplify/ui-react";
 export declare type EscapeHatchProps = {
     [elementHierarchy: string]: Record<string, unknown>;
 } | null;
@@ -53,7 +53,7 @@ export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes
 export declare type RequestInfoCreateFormOverridesProps = {
     RequestInfoCreateFormGrid?: PrimitiveOverrideProps<GridProps>;
     SectionalElement3?: PrimitiveOverrideProps<TextProps>;
-    SectionalElement0?: PrimitiveOverrideProps<TextProps>;
+    SectionalElement0?: PrimitiveOverrideProps<HeadingProps>;
     RowGrid2?: PrimitiveOverrideProps<GridProps>;
     RequestRecieveDirectSecureEmail?: PrimitiveOverrideProps<CheckboxFieldProps>;
     RequestDirectEmailAddress?: PrimitiveOverrideProps<TextFieldProps>;
@@ -63,7 +63,7 @@ export declare type RequestInfoCreateFormOverridesProps = {
     RequestOther?: PrimitiveOverrideProps<CheckboxFieldProps>;
     RequestOtherDescribe?: PrimitiveOverrideProps<TextFieldProps>;
     SectionalElement2?: PrimitiveOverrideProps<DividerProps>;
-    SectionalElement1?: PrimitiveOverrideProps<TextProps>;
+    SectionalElement1?: PrimitiveOverrideProps<HeadingProps>;
     RequestRespondDirectSecureEmail?: PrimitiveOverrideProps<CheckboxFieldProps>;
     RequestRespondIHE?: PrimitiveOverrideProps<CheckboxFieldProps>;
     RowGrid10?: PrimitiveOverrideProps<GridProps>;

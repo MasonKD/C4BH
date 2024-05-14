@@ -5,7 +5,7 @@
  **************************************************************************/
 
 import * as React from "react";
-import { AutocompleteProps, CheckboxFieldProps, DividerProps, GridProps, SelectFieldProps, TextFieldProps, TextProps } from "@aws-amplify/ui-react";
+import { AutocompleteProps, CheckboxFieldProps, DividerProps, GridProps, HeadingProps, SelectFieldProps, TextFieldProps, TextProps } from "@aws-amplify/ui-react";
 export declare type EscapeHatchProps = {
     [elementHierarchy: string]: Record<string, unknown>;
 } | null;
@@ -62,31 +62,33 @@ export declare type InformationDeliveryCreateFormValidationValues = {
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type InformationDeliveryCreateFormOverridesProps = {
     InformationDeliveryCreateFormGrid?: PrimitiveOverrideProps<GridProps>;
-    SectionalElement0?: PrimitiveOverrideProps<TextProps>;
-    RowGrid1?: PrimitiveOverrideProps<GridProps>;
+    SectionalElement0?: PrimitiveOverrideProps<HeadingProps>;
+    SectionalElement1?: PrimitiveOverrideProps<TextProps>;
+    RowGrid2?: PrimitiveOverrideProps<GridProps>;
     RecieveInfoDirectSecureEmail?: PrimitiveOverrideProps<CheckboxFieldProps>;
     RecieveInfoDirectEmailAddress?: PrimitiveOverrideProps<TextFieldProps>;
     RecieveInfosFTP?: PrimitiveOverrideProps<CheckboxFieldProps>;
-    RowGrid3?: PrimitiveOverrideProps<GridProps>;
+    RowGrid4?: PrimitiveOverrideProps<GridProps>;
     RecieveInfoHL7V2?: PrimitiveOverrideProps<CheckboxFieldProps>;
     RecieveInfoMLLP_HTTPS?: PrimitiveOverrideProps<SelectFieldProps>;
-    RowGrid4?: PrimitiveOverrideProps<GridProps>;
+    RowGrid5?: PrimitiveOverrideProps<GridProps>;
     RecieveInfoThirdPartyReferral?: PrimitiveOverrideProps<CheckboxFieldProps>;
     RecieveInfoThirdPartyPlatform?: PrimitiveOverrideProps<AutocompleteProps>;
-    RowGrid5?: PrimitiveOverrideProps<GridProps>;
+    RowGrid6?: PrimitiveOverrideProps<GridProps>;
     RecieveInfoOther?: PrimitiveOverrideProps<CheckboxFieldProps>;
     RecieveInfoOther_Describe?: PrimitiveOverrideProps<TextFieldProps>;
     SectionalElement2?: PrimitiveOverrideProps<DividerProps>;
-    SectionalElement3?: PrimitiveOverrideProps<TextProps>;
+    SectionalElement3?: PrimitiveOverrideProps<HeadingProps>;
+    SectionalElement4?: PrimitiveOverrideProps<TextProps>;
     SendInfoDirectSecureEmail?: PrimitiveOverrideProps<CheckboxFieldProps>;
     SendInfosFTP?: PrimitiveOverrideProps<CheckboxFieldProps>;
-    RowGrid10?: PrimitiveOverrideProps<GridProps>;
+    RowGrid12?: PrimitiveOverrideProps<GridProps>;
     SendInfoHL7v2?: PrimitiveOverrideProps<CheckboxFieldProps>;
     SendInfoMLLP_HTTPS?: PrimitiveOverrideProps<SelectFieldProps>;
-    RowGrid11?: PrimitiveOverrideProps<GridProps>;
+    RowGrid13?: PrimitiveOverrideProps<GridProps>;
     SendInfoThirdPartyReferral?: PrimitiveOverrideProps<CheckboxFieldProps>;
     SendInfoThirdPartyPlatform?: PrimitiveOverrideProps<AutocompleteProps>;
-    RowGrid12?: PrimitiveOverrideProps<GridProps>;
+    RowGrid14?: PrimitiveOverrideProps<GridProps>;
     SendInfoOther?: PrimitiveOverrideProps<CheckboxFieldProps>;
     SenInfoOther_Describe?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;

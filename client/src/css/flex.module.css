@@ -6,59 +6,56 @@
 }
 
 
-
 .row {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: left;
-    margin: 0 0 36px 0;
-  }
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  margin: 0 0 0px 0;
+}
 
-  .row2 {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: left;
-    flex-wrap: nowrap;
-    margin: 0 0 36px 0;
-  }
-  .rowChild74 {
-    width: 74%;
-  }
+.row2 {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  flex-wrap: nowrap;
+  margin: 0 0 36px 0;
+}
 
-  .rowChild48 {
-    width: 48%;
-  }
-  
-  .rowChild20 {
-    width: 20%;
-  }
+.rowChild74 {
+  width: 74%;
+}
 
+.rowChild48 {
+  width: 48%;
+}
 
-  .col {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-  }
+.rowChild20 {
+  width: 20%;
+}
 
 
+.col {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
 
-
-  .justifyRight {
-    justify-content: right;
-  }
-
-  .justifyCenter{
-    justify-content: center;
-  }
-
-  .justifySpaceBetween{
-    justify-content: space-between;
-  }
+.col5margin{
+  margin: 0 8px;
+}
 
 
 
-  .col5margin{
-    margin: 0 8px;
+.justifyRight {
+  justify-content: right;
+}
+
+.justifyCenter{
+  justify-content: center;
+}
+
+.justifySpaceBetween{
+  justify-content: space-between;
 }

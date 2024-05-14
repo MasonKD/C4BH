@@ -12,6 +12,7 @@ import {
   Divider,
   Flex,
   Grid,
+  Heading,
   SelectField,
   Text,
   TextField,
@@ -238,18 +239,22 @@ export default function InformationDeliveryCreateForm(props) {
       {...getOverrideProps(overrides, "InformationDeliveryCreateForm")}
       {...rest}
     >
-      <Text
-        children="1. Receiving and responding to Order/Referall requests: How do you receive and respond to inbound orders and/or referall requests? Please check all that apply"
+      <Heading
+        children="How do you receive and respond to inbound orders and/or referall requests?"
         {...getOverrideProps(overrides, "SectionalElement0")}
+      ></Heading>
+      <Text
+        children="Please check all that apply:"
+        {...getOverrideProps(overrides, "SectionalElement1")}
       ></Text>
       <Grid
         columnGap="inherit"
         rowGap="inherit"
         templateColumns="repeat(2, auto)"
-        {...getOverrideProps(overrides, "RowGrid1")}
+        {...getOverrideProps(overrides, "RowGrid2")}
       >
         <CheckboxField
-          label="Direct Secure Email: Provide direct secure email"
+          label="Direct Secure Email (Provide address):"
           name="RecieveInfoDirectSecureEmail"
           value="RecieveInfoDirectSecureEmail"
           isDisabled={false}
@@ -385,7 +390,7 @@ export default function InformationDeliveryCreateForm(props) {
         columnGap="inherit"
         rowGap="inherit"
         templateColumns="repeat(2, auto)"
-        {...getOverrideProps(overrides, "RowGrid3")}
+        {...getOverrideProps(overrides, "RowGrid4")}
       >
         <CheckboxField
           label="HL7 v2 OMG message type via:"
@@ -488,7 +493,7 @@ export default function InformationDeliveryCreateForm(props) {
         columnGap="inherit"
         rowGap="inherit"
         templateColumns="repeat(2, auto)"
-        {...getOverrideProps(overrides, "RowGrid4")}
+        {...getOverrideProps(overrides, "RowGrid5")}
       >
         <CheckboxField
           label="Third party referral management platform:"
@@ -611,10 +616,10 @@ export default function InformationDeliveryCreateForm(props) {
         columnGap="inherit"
         rowGap="inherit"
         templateColumns="repeat(2, auto)"
-        {...getOverrideProps(overrides, "RowGrid5")}
+        {...getOverrideProps(overrides, "RowGrid6")}
       >
         <CheckboxField
-          label="Other, please describe:"
+          label="Other (please describe):"
           name="RecieveInfoOther"
           value="RecieveInfoOther"
           isDisabled={false}
@@ -706,9 +711,13 @@ export default function InformationDeliveryCreateForm(props) {
         orientation="horizontal"
         {...getOverrideProps(overrides, "SectionalElement2")}
       ></Divider>
-      <Text
-        children="2. Sending Outbound Orders/Referrals: How do you send referrals and/or orders outbound? Please check all that apply."
+      <Heading
+        children="How do you send referrals and/or orders outbound?"
         {...getOverrideProps(overrides, "SectionalElement3")}
+      ></Heading>
+      <Text
+        children="Please check all that apply:"
+        {...getOverrideProps(overrides, "SectionalElement4")}
       ></Text>
       <CheckboxField
         label="Direct Secure Email"
@@ -801,7 +810,7 @@ export default function InformationDeliveryCreateForm(props) {
         columnGap="inherit"
         rowGap="inherit"
         templateColumns="repeat(2, auto)"
-        {...getOverrideProps(overrides, "RowGrid10")}
+        {...getOverrideProps(overrides, "RowGrid12")}
       >
         <CheckboxField
           label="HL7 v2 OMG message type via:"
@@ -902,10 +911,10 @@ export default function InformationDeliveryCreateForm(props) {
         columnGap="inherit"
         rowGap="inherit"
         templateColumns="repeat(2, auto)"
-        {...getOverrideProps(overrides, "RowGrid11")}
+        {...getOverrideProps(overrides, "RowGrid13")}
       >
         <CheckboxField
-          label="Third party referall management platform:"
+          label="Third party referral management platform:"
           name="SendInfoThirdPartyReferral"
           value="SendInfoThirdPartyReferral"
           isDisabled={false}
@@ -1025,10 +1034,10 @@ export default function InformationDeliveryCreateForm(props) {
         columnGap="inherit"
         rowGap="inherit"
         templateColumns="repeat(2, auto)"
-        {...getOverrideProps(overrides, "RowGrid12")}
+        {...getOverrideProps(overrides, "RowGrid14")}
       >
         <CheckboxField
-          label="Other, please describe:"
+          label="Other (please describe):"
           name="SendInfoOther"
           value="SendInfoOther"
           isDisabled={false}

@@ -138,7 +138,7 @@ export default function HIPAACreateForm(props) {
       {...rest}
     >
       <Text
-        children="Check all that apply:"
+        children="Please check all that apply:"
         {...getOverrideProps(overrides, "SectionalElement0")}
       ></Text>
       <CheckboxField

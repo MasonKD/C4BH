@@ -5,7 +5,7 @@
  **************************************************************************/
 
 import * as React from "react";
-import { CheckboxFieldProps, GridProps, TextFieldProps, TextProps } from "@aws-amplify/ui-react";
+import { CheckboxFieldProps, GridProps, HeadingProps, TextFieldProps, TextProps } from "@aws-amplify/ui-react";
 export declare type EscapeHatchProps = {
     [elementHierarchy: string]: Record<string, unknown>;
 } | null;
@@ -44,14 +44,15 @@ export declare type NotificationsADTDosCreateFormValidationValues = {
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type NotificationsADTDosCreateFormOverridesProps = {
     NotificationsADTDosCreateFormGrid?: PrimitiveOverrideProps<GridProps>;
-    SectionalElement0?: PrimitiveOverrideProps<TextProps>;
+    SectionalElement0?: PrimitiveOverrideProps<HeadingProps>;
+    SectionalElement1?: PrimitiveOverrideProps<TextProps>;
     SendInfoDirectSecureEmail?: PrimitiveOverrideProps<CheckboxFieldProps>;
     SendInfosFTP?: PrimitiveOverrideProps<CheckboxFieldProps>;
     SendInfoHL7v2?: PrimitiveOverrideProps<CheckboxFieldProps>;
     SendInfoMLLP_HTTPS?: PrimitiveOverrideProps<CheckboxFieldProps>;
     SendADTHTTPS_FHIR?: PrimitiveOverrideProps<CheckboxFieldProps>;
     SendADTPortal?: PrimitiveOverrideProps<CheckboxFieldProps>;
-    RowGrid7?: PrimitiveOverrideProps<GridProps>;
+    RowGrid8?: PrimitiveOverrideProps<GridProps>;
     SendADTOther?: PrimitiveOverrideProps<CheckboxFieldProps>;
     SendADTOtherDescribe?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;

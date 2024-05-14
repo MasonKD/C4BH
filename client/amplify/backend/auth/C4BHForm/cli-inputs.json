@@ -49,7 +49,7 @@
       "email"
     ],
     "useDefault": "manual",
-    "userPoolGroups": false,
+    "userPoolGroups": true,
     "userPoolGroupList": [
       "c4bhAdmin",
       "dxfMember",
@@ -71,31 +71,14 @@
       ]
     },
     "breakCircularDependency": true,
-    "dependsOn": [
-      {
-        "category": "function",
-        "resourceName": "C4BHFormPostConfirmation",
-        "triggerProvider": "Cognito",
-        "attributes": [
-          "Arn",
-          "Name"
-        ]
-      }
-    ],
+    "dependsOn": [],
     "adminQueryGroup": "c4bhAdmin",
-    "triggers": {
-      "PostConfirmation": [
-        "add-to-group"
-      ]
-    },
+    "triggers": {},
     "hostedUI": false,
     "parentStack": {
       "Ref": "AWS::StackId"
     },
-    "permissions": [
-      "{\n  \"policyName\": \"AddToGroupCognito\",\n  \"trigger\": \"PostConfirmation\",\n  \"effect\": \"Allow\",\n  \"actions\": [\n    \"cognito-idp:AdminAddUserToGroup\",\n    \"cognito-idp:GetGroup\",\n    \"cognito-idp:CreateGroup\"\n  ],\n  \"resource\": {\n    \"paramType\": \"!GetAtt\",\n    \"keys\": [\n      \"UserPool\",\n      \"Arn\"\n    ]\n  }\n}"
-    ],
-    "authProviders": [],
-    "authTriggerConnections": "[\n  {\n    \"triggerType\": \"PostConfirmation\",\n    \"lambdaFunctionName\": \"C4BHFormPostConfirmation\"\n  }\n]"
+    "permissions": [],
+    "authProviders": []
   }
 }

@@ -13,6 +13,7 @@
     "9ede8184aac4a7c4": "https://api.observablehq.com/d/9ede8184aac4a7c4@691.tgz?v=3",
     "amazon-quicksight-embedding-sdk": "^2.6.0",
     "aws-amplify": "^6.0.19",
+    "axios": "^1.6.8",
     "d3": "^7.9.0",
     "d3-sankey": "^0.12.3",
     "leaflet": "^1.9.4",
@@ -28,9 +29,9 @@
     "xlsx": "^0.18.5"
   },
   "scripts": {
-    "fix_amp": "python ./build-scripts/MakeAmplifyFormsExportSubmitFunction.py",
-    "start": "npm run fix_amp && react-scripts start",
-    "build": "npm run fix_amp && react-scripts build",
+    "amp": "./build-scripts/MakeAmplifyFormsExportSubmitFunction.py",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

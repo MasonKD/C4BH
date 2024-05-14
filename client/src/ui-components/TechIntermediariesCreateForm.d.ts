@@ -5,7 +5,7 @@
  **************************************************************************/
 
 import * as React from "react";
-import { GridProps, TextFieldProps } from "@aws-amplify/ui-react";
+import { AutocompleteProps, GridProps, HeadingProps, TextProps } from "@aws-amplify/ui-react";
 export declare type EscapeHatchProps = {
     [elementHierarchy: string]: Record<string, unknown>;
 } | null;
@@ -30,7 +30,9 @@ export declare type TechIntermediariesCreateFormValidationValues = {
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type TechIntermediariesCreateFormOverridesProps = {
     TechIntermediariesCreateFormGrid?: PrimitiveOverrideProps<GridProps>;
-    HIE_or_Inter?: PrimitiveOverrideProps<TextFieldProps>;
+    SectionalElement0?: PrimitiveOverrideProps<HeadingProps>;
+    SectionalElement1?: PrimitiveOverrideProps<TextProps>;
+    HIE_or_Inter?: PrimitiveOverrideProps<AutocompleteProps>;
 } & EscapeHatchProps;
 export declare type TechIntermediariesCreateFormProps = React.PropsWithChildren<{
     overrides?: TechIntermediariesCreateFormOverridesProps | undefined | null;

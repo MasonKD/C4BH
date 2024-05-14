@@ -25,7 +25,7 @@ const dynamoDB = new AWS.DynamoDB.DocumentClient();
 
 // Define the query function
 const queryDynamoDB = async (req, res) => {
-    const dxfNumber = req.query.dxfNumber;  
+    const dxfNumber = req.query.dxfNumber;
     if (!dxfNumber) {
         return res.status(400).send('DXF number is required');
     }
@@ -36,9 +36,12 @@ const queryDynamoDB = async (req, res) => {
         ExpressionAttributeValues: {
             ':participantId': dxfNumber
         },
-        ProjectionExpression: '#type, #Information_Delivery, #Request_for_Information, #Requests_for_Notifications_of_ADT_Events',
+        ProjectionExpression: '#org, #sub_org, #type, #sub_type, #Information_Delivery, #Request_for_Information, #Requests_for_Notifications_of_ADT_Events',
         ExpressionAttributeNames: {
+            '#org': 'Participant_Name_PrimaryOrganization',
+            '#sub_org': 'Participant_Name_SubordinateOrganization',
             '#type': 'Type',
+            '#sub_type': 'Sub_Type',
             '#Information_Delivery': 'Information_Delivery',
             '#Request_for_Information': 'Request_for_Information',
             '#Requests_for_Notifications_of_ADT_Events': 'Requests_for_Notifications_of_ADT_Events'

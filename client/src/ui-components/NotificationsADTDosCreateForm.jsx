@@ -10,6 +10,7 @@ import {
   CheckboxField,
   Flex,
   Grid,
+  Heading,
   Text,
   TextField,
 } from "@aws-amplify/ui-react";
@@ -170,9 +171,13 @@ export default function NotificationsADTDosCreateForm(props) {
       {...getOverrideProps(overrides, "NotificationsADTDosCreateForm")}
       {...rest}
     >
-      <Text
-        children="2. Sending outbound ADT Notifications (Health Systems and Intermediaries only): By which of the following methods do you make ADT notifications available to requesting participants? "
+      <Heading
+        children="By which methods do you make ADT notifications available to requesting participants? "
         {...getOverrideProps(overrides, "SectionalElement0")}
+      ></Heading>
+      <Text
+        children=" Please check all that apply:"
+        {...getOverrideProps(overrides, "SectionalElement1")}
       ></Text>
       <CheckboxField
         label="Direct Secure Email"
@@ -379,10 +384,10 @@ export default function NotificationsADTDosCreateForm(props) {
         columnGap="inherit"
         rowGap="inherit"
         templateColumns="repeat(2, auto)"
-        {...getOverrideProps(overrides, "RowGrid7")}
+        {...getOverrideProps(overrides, "RowGrid8")}
       >
         <CheckboxField
-          label="Other, please describe"
+          label="Other (please describe):"
           name="SendADTOther"
           value="SendADTOther"
           isDisabled={false}

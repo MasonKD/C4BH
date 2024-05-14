@@ -1,6 +1,66 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const onCreateRequestInfoDos = /* GraphQL */ `
+  subscription OnCreateRequestInfoDos(
+    $filter: ModelSubscriptionRequestInfoDosFilterInput
+  ) {
+    onCreateRequestInfoDos(filter: $filter) {
+      id
+      DxFID
+      RequestRespondDirectSecureEmail
+      RequestRespondDirectEmailAddress
+      RequestRespondIHE
+      RequestRespondFHIR
+      RequestRespondFHIRendpoint
+      RequestRespondOther
+      RequestRespondOtherDescribe
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onUpdateRequestInfoDos = /* GraphQL */ `
+  subscription OnUpdateRequestInfoDos(
+    $filter: ModelSubscriptionRequestInfoDosFilterInput
+  ) {
+    onUpdateRequestInfoDos(filter: $filter) {
+      id
+      DxFID
+      RequestRespondDirectSecureEmail
+      RequestRespondDirectEmailAddress
+      RequestRespondIHE
+      RequestRespondFHIR
+      RequestRespondFHIRendpoint
+      RequestRespondOther
+      RequestRespondOtherDescribe
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onDeleteRequestInfoDos = /* GraphQL */ `
+  subscription OnDeleteRequestInfoDos(
+    $filter: ModelSubscriptionRequestInfoDosFilterInput
+  ) {
+    onDeleteRequestInfoDos(filter: $filter) {
+      id
+      DxFID
+      RequestRespondDirectSecureEmail
+      RequestRespondDirectEmailAddress
+      RequestRespondIHE
+      RequestRespondFHIR
+      RequestRespondFHIRendpoint
+      RequestRespondOther
+      RequestRespondOtherDescribe
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
 export const onCreateNotificationsADTDos = /* GraphQL */ `
   subscription OnCreateNotificationsADTDos(
     $filter: ModelSubscriptionNotificationsADTDosFilterInput
@@ -373,11 +433,11 @@ export const onDeleteHIPAA = /* GraphQL */ `
     }
   }
 `;
-export const onCreateRequestInfo = /* GraphQL */ `
-  subscription OnCreateRequestInfo(
-    $filter: ModelSubscriptionRequestInfoFilterInput
+export const onCreateRequestInfoUno = /* GraphQL */ `
+  subscription OnCreateRequestInfoUno(
+    $filter: ModelSubscriptionRequestInfoUnoFilterInput
   ) {
-    onCreateRequestInfo(filter: $filter) {
+    onCreateRequestInfoUno(filter: $filter) {
       id
       RequestRecieveDirectSecureEmail
       RequestDirectEmailAddress
@@ -385,12 +445,6 @@ export const onCreateRequestInfo = /* GraphQL */ `
       RequestFHIR
       RequestOther
       RequestOtherDescribe
-      RequestRespondDirectSecureEmail
-      RequestRespondIHE
-      RequestRespondFHIR
-      RequestRespondFHIRendpoint
-      RequestRespondOther
-      RequestRespondOtherDescribe
       DxFID
       createdAt
       updatedAt
@@ -398,11 +452,11 @@ export const onCreateRequestInfo = /* GraphQL */ `
     }
   }
 `;
-export const onUpdateRequestInfo = /* GraphQL */ `
-  subscription OnUpdateRequestInfo(
-    $filter: ModelSubscriptionRequestInfoFilterInput
+export const onUpdateRequestInfoUno = /* GraphQL */ `
+  subscription OnUpdateRequestInfoUno(
+    $filter: ModelSubscriptionRequestInfoUnoFilterInput
   ) {
-    onUpdateRequestInfo(filter: $filter) {
+    onUpdateRequestInfoUno(filter: $filter) {
       id
       RequestRecieveDirectSecureEmail
       RequestDirectEmailAddress
@@ -410,12 +464,6 @@ export const onUpdateRequestInfo = /* GraphQL */ `
       RequestFHIR
       RequestOther
       RequestOtherDescribe
-      RequestRespondDirectSecureEmail
-      RequestRespondIHE
-      RequestRespondFHIR
-      RequestRespondFHIRendpoint
-      RequestRespondOther
-      RequestRespondOtherDescribe
       DxFID
       createdAt
       updatedAt
@@ -423,11 +471,11 @@ export const onUpdateRequestInfo = /* GraphQL */ `
     }
   }
 `;
-export const onDeleteRequestInfo = /* GraphQL */ `
-  subscription OnDeleteRequestInfo(
-    $filter: ModelSubscriptionRequestInfoFilterInput
+export const onDeleteRequestInfoUno = /* GraphQL */ `
+  subscription OnDeleteRequestInfoUno(
+    $filter: ModelSubscriptionRequestInfoUnoFilterInput
   ) {
-    onDeleteRequestInfo(filter: $filter) {
+    onDeleteRequestInfoUno(filter: $filter) {
       id
       RequestRecieveDirectSecureEmail
       RequestDirectEmailAddress
@@ -435,12 +483,6 @@ export const onDeleteRequestInfo = /* GraphQL */ `
       RequestFHIR
       RequestOther
       RequestOtherDescribe
-      RequestRespondDirectSecureEmail
-      RequestRespondIHE
-      RequestRespondFHIR
-      RequestRespondFHIRendpoint
-      RequestRespondOther
-      RequestRespondOtherDescribe
       DxFID
       createdAt
       updatedAt
