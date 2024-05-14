@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useCaseImg1 from '../images/DxFUseCases.png';
 import pdfIcon from '../images/icons/pdf.svg'
 import excelIcon from '../images/icons/excel.svg'
+import gDocIcon from '../images/icons/gDoc.svg'
+import folderIcon from '../images/icons/folder.svg'
 import { Button } from "@aws-amplify/ui-react";
 import font from '../css/fonts.module.css'
 import flex from '../css/flex.module.css'
@@ -12,6 +14,25 @@ const useCase = () => {
     window.location.href = "https://drive.google.com/drive/folders/1Um1DTMRnOn5cxoW-9J-_pc2yzriAq2j5?usp=drive_link"; // Redirects to the MPI site
   };
 
+  const folderData = {
+    "folderName": "Synthetic Data",
+    "files": [
+      { "name": "Estella Ruiz_C-CDA Referral (Consult Document Closing Referral). txt", "url": "https://drive.google.com/file/d/1PI_-cTrqNFrwAY18ortVcTxFRUlN6tDK/view?usp=drive_link" },
+      { "name": "Estella Ruiz_JSON.json", "url": "https://drive.google.com/file/d/1wppvBvSr8X_K3dEaAybVs3jAct5yPetn/view?usp=drive_link" },
+      { "name": "Estella-Ruiz_HL7-V2_ADT-A01.17", "url": "https://drive.google.com/file/d/1Qhv0ZFBd2aOnPKcYwRvjlby-q7YoIX9v/view?usp=drive_link" }
+    ],
+    // "subFolders": [
+    //   { "folderName": "Subfolder 1", "files": [], "subFolders": [] },
+    //   // ... more subfolders
+    // ]
+  };
+  const [isOpen, setIsOpen] = useState(false); // State to track folder expansion
+
+  const toggleFolder = () => {
+    setIsOpen(!isOpen); // Toggle folder expansion state
+  };
+
+  const [show_folder, setShowFolder] = useState(null);
   return (
     <div className='main-container'>
       <main>
@@ -59,6 +80,27 @@ const useCase = () => {
             </table>
           </div>
           <ul className="download-list" style={{"margin-right": "auto"}}>
+            <li className='folder'>
+              <a href="#" className="folder-toggle icon-link" onClick={toggleFolder}>
+                <img src={folderIcon} className="icon" style = {{height: '100%'}} alt="Folder icon"/>
+                {folderData.folderName}
+              </a>
+              {isOpen && (
+                <ul className="folder-content">
+                  {folderData.files.map((file) => (
+                    // <li key={file.name}>{file.name}</li>
+                    <li key={file.name}>
+                      <div className={flex.row}>
+                        <a href={file.url} className="icon-link" target="_blank">
+                          <img src={gDocIcon} className="icon" style = {{height: '80%'}} alt="Google Doc icon"/>
+                          {file.name}
+                        </a>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
             <li>
               <div className={flex.row}>
                 <a href="https://docs.google.com/spreadsheets/d/1ZoOfsfqA3IKzmO0qZRWvi_N_AO_zAr2S/edit?usp=sharing&ouid=118037618800781845205&rtpof=true&sd=true" className="icon-link" target="_blank">
