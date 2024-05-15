@@ -132,28 +132,28 @@ export default function TechAcuteCreateForm(props) {
         isReadOnly={false}
         options={[
           {
-            id: "EPIC",
-            label: "EPIC",
-          },
-          {
-            id: "Cerner",
-            label: "Cerner",
-          },
-          {
-            id: "Meditech",
-            label: "Meditech",
+            id: "Allscripts/Veradigm",
+            label: "Allscripts/Veradigm",
           },
           {
             id: "Athenahealth",
             label: "Athenahealth",
           },
           {
+            id: "Cerner",
+            label: "Cerner",
+          },
+          {
             id: "eClinical Works",
             label: "eClinical Works",
           },
           {
-            id: "Allscripts/Veradigm",
-            label: "Allscripts/Veradigm",
+            id: "EPIC",
+            label: "EPIC",
+          },
+          {
+            id: "Meditech",
+            label: "Meditech",
           },
           {
             id: "NextGen",

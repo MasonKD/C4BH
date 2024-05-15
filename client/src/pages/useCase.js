@@ -5,6 +5,7 @@ import excelIcon from '../images/icons/excel.svg'
 import gDocIcon from '../images/icons/gDoc.svg'
 import folderIcon from '../images/icons/folder.svg'
 import { Button } from "@aws-amplify/ui-react";
+import button from '../css/button.module.css'
 import font from '../css/fonts.module.css'
 import flex from '../css/flex.module.css'
 
@@ -34,12 +35,11 @@ const useCase = () => {
 
   const [show_folder, setShowFolder] = useState(null);
   return (
-    <div className='main-container'>
-      <main>
+    <div className='main-container main-container-fix' style={{minHeight:"700px"}}>
+      <main >
           <h2 className={font.h2}>DxF Sandbox: Use Case(s)</h2>
           <div className={flex.row}>
-            {/* <img src={useCaseImg1} alt="Connecting for Better Health" /> */}
-            <table>
+          <table>
               <tr>
                 <th style={{ width: '1%' }}>Category</th>
                 <th style={{ width: '1%' }}>Persona / Name of Story</th>

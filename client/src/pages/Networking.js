@@ -319,8 +319,8 @@ const Networking = () => {
 
   const [isChecked, setIsChecked] = React.useState(true);
   return (
-    <div className="main-container">
-      <main>
+    <div className="main-container main-container-fix">
+      <main style={{minWidth:"100%"}}>
 
 
         {/* --------------------------------------------------------------------quicksite */}

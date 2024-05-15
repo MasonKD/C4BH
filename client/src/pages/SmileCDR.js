@@ -337,7 +337,7 @@ fetchPractitionerData();
 
 //----------------------------------------------HTML
 return (
-  <div className='main-container'>
+  <div className='main-container main-container-fix'>
     <main>
       {loading ? (
         <p>Loading...</p>

@@ -158,7 +158,7 @@ export default function RequestInfoDosCreateForm(props) {
       {...rest}
     >
       <Heading
-        children="In what way(s) do you respond to requests for information from other participants? "
+        children="How are you able to respond to requests for information from other participants? "
         {...getOverrideProps(overrides, "SectionalElement0")}
       ></Heading>
       <Text

@@ -104,7 +104,7 @@ const extractNameFromHL7 = (content) => {
 
 
   return (
-    <div className='main-container'>
+    <div className='main-container main-container-fix'>
       <main>
         <h2 className={font.h2}>Integration Engine (Mirth)</h2>
         <table {...getTableProps()}>

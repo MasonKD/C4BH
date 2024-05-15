@@ -19,7 +19,6 @@ export { default as Divider } from "./Divider";
 export { default as EditProfile } from "./EditProfile";
 export { default as Features2x2 } from "./Features2x2";
 export { default as Filters } from "./Filters";
-export { default as Footer } from "./Footer";
 export { default as FormCheckout } from "./FormCheckout";
 export { default as HIPAACreateForm } from "./HIPAACreateForm";
 export { default as HIPAAUpdateForm } from "./HIPAAUpdateForm";

@@ -240,7 +240,7 @@ export default function InformationDeliveryCreateForm(props) {
       {...rest}
     >
       <Heading
-        children="How do you receive and respond to inbound orders and/or referall requests?"
+        children="How are you able to receive and respond to inbound orders and/or referral requests?"
         {...getOverrideProps(overrides, "SectionalElement0")}
       ></Heading>
       <Text
@@ -547,16 +547,16 @@ export default function InformationDeliveryCreateForm(props) {
           isReadOnly={false}
           options={[
             {
-              id: "UniteUs",
-              label: "UniteUs",
-            },
-            {
               id: "FindHelp",
               label: "FindHelp",
             },
             {
               id: "HIE",
               label: "HIE",
+            },
+            {
+              id: "UniteUs",
+              label: "UniteUs",
             },
             {
               id: "If other, please manually enter",
@@ -712,7 +712,7 @@ export default function InformationDeliveryCreateForm(props) {
         {...getOverrideProps(overrides, "SectionalElement2")}
       ></Divider>
       <Heading
-        children="How do you send referrals and/or orders outbound?"
+        children="How are you able to send referrals and/or orders outbound?"
         {...getOverrideProps(overrides, "SectionalElement3")}
       ></Heading>
       <Text

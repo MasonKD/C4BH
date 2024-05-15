@@ -1,20 +1,32 @@
-/***************************************************************************
- * The contents of this file were generated with Amplify Studio.           *
- * Please refrain from making any modifications to this file.              *
- * Any changes to this file will be overwritten when running amplify pull. *
- **************************************************************************/
+
 
 /* eslint-disable */
 import * as React from "react";
+import {useState} from "react";
 import {
   getOverrideProps,
   getOverridesFromVariants,
   mergeVariantsAndOverrides,
-  useNavigateAction,
-} from "./utils";
-import MyIcon from "./MyIcon";
+} from "../../ui-components/utils";
+import { Link } from 'react-router-dom';
+import MyIcon from "../../ui-components/MyIcon";
 import { Flex, Text, View } from "@aws-amplify/ui-react";
-export default function SideNav(props) {
+import { useAuthenticator } from '@aws-amplify/ui-react';
+export default function SideNavMod(props) {
+  const [isNavExpanded, setIsNavExpanded] = useState(true);
+  const [isHoveredBackground, setIsHoveredBackground] = useState(false);
+  const [isHoveredHome, setIsHoveredHome] = useState(false);
+  const [isHoveredUseCase, setIsHoveredUseCase] = useState(false);
+  const [isHoveredMirth, setIsHoveredMirth] = useState(false);
+  const [isHoveredSMILE, setIsHoveredSMILE] = useState(false);
+  const [isHoveredVisualizations, setIsHoveredVisualizations] = useState(false);
+  const [isHoveredRulesEngine, setIsHoveredRulesEngine] = useState(false);
+  const [isHoveredFTP, setIsHoveredFTP] = useState(false);
+  const [activeButton, setActiveButton] = useState('');
+  const {user, signOut} = useAuthenticator((context) => [context.user]);
+  const toggleNav = () => {
+    setIsNavExpanded(!isNavExpanded); 
+  };
   const { overrides: overridesProp, ...rest } = props;
   const variants = [
     {
@@ -196,39 +208,16 @@ export default function SideNav(props) {
     getOverridesFromVariants(variants, props),
     overridesProp || {}
   );
-  const homeOnClick = useNavigateAction({ type: "url", url: "/" });
-  const backgroundOnClick = useNavigateAction({
-    type: "url",
-    url: "/Background",
-  });
-  const useCasesOnClick = useNavigateAction({ type: "url", url: "/useCase" });
-  const mirthOnClick = useNavigateAction({ type: "url", url: "/Mirth" });
-  const smileOnClick = useNavigateAction({ type: "url", url: "/SmileCDR" });
-  const labelFiveZeroZeroZeroThreeTwoZeroZeroOnClick = useNavigateAction({
-    type: "url",
-    url: "/SmileCDR",
-  });
-  const visualizationsOnClick = useNavigateAction({
-    type: "url",
-    url: "/Networking",
-  });
-  const labelFiveZeroZeroZeroThreeTwoOneTwoOnClick = useNavigateAction({
-    type: "url",
-    url: "/Networking",
-  });
-  const registerDxFParticipantOnClick = useNavigateAction({
-    type: "url",
-    url: "/DxFRegistration",
-  });
   return (
     <Flex
       gap="10px"
       direction="column"
-      width="unset"
-      height="654px"
+      width={isNavExpanded ? "14rem" : "3rem"}
+      height="90%"
+      top="78px"
       justifyContent="flex-start"
       alignItems="flex-end"
-      position="relative"
+      position="fixed"
       border="1px SOLID rgba(220,222,224,1)"
       padding="11px 15px 11px 15px"
       backgroundColor="rgba(255,255,255,1)"
@@ -248,7 +237,8 @@ export default function SideNav(props) {
         position="relative"
         borderRadius="3px"
         padding="5px 5px 5px 5px"
-        display="flex"
+        display="none"
+        onClick={toggleNav}
         {...getOverrideProps(overrides, "ArrowContainer")}
       >
         <MyIcon
@@ -262,10 +252,11 @@ export default function SideNav(props) {
           shrink="0"
           position="relative"
           padding="0px 0px 0px 0px"
-          type="arrow_left"
+          type={isNavExpanded ? "arrow_left" : "arrow_right"}
           {...getOverrideProps(overrides, "MyIcon49013056")}
         ></MyIcon>
       </Flex>
+      
       <Flex
         gap="6px"
         direction="column"
@@ -279,22 +270,26 @@ export default function SideNav(props) {
         display="flex"
         {...getOverrideProps(overrides, "NavButtonContainer")}
       >
+        
+        <Link to='/'>
         <Flex
-          gap="6px"
-          direction="row"
-          width="unset"
-          height="unset"
-          justifyContent="flex-start"
-          alignItems="center"
-          shrink="0"
-          position="relative"
-          borderRadius="4px"
-          padding="4px 4px 4px 4px"
-          backgroundColor="rgba(241,247,255,1)"
-          display="flex"
-          onClick={() => {
-            homeOnClick();
-          }}
+          onClick={() => setActiveButton('home')}
+          onMouseEnter={() => setIsHoveredHome(true)}
+          onMouseLeave={() => setIsHoveredHome(false)}
+          style={{
+          gap:"6px",
+          direction:"row",
+          width:"unset",
+          height:"unset",
+          justifyContent:"flex-start",
+          alignItems:"center",
+          shrink:"0",
+          position:"relative",
+          borderRadius:"4px",
+          padding:"4px 4px 4px 4px",
+          backgroundColor: activeButton === 'home' ? '#F4F7F7' : 'rgba(255,255,255,1)',
+          display:"flex"
+        }}
           {...getOverrideProps(overrides, "Home")}
         >
           <Flex
@@ -343,7 +338,7 @@ export default function SideNav(props) {
             </Flex>
           </Flex>
           <Text
-            fontFamily="Inter"
+            
             fontSize="14px"
             fontWeight="400"
             color="rgba(45,112,205,1)"
@@ -364,22 +359,26 @@ export default function SideNav(props) {
             {...getOverrideProps(overrides, "label48971279")}
           ></Text>
         </Flex>
+        </Link>
+        <Link to="/Background">
         <Flex
-          gap="6px"
-          direction="row"
-          width="unset"
-          height="unset"
-          justifyContent="flex-start"
-          alignItems="center"
-          shrink="0"
-          position="relative"
-          borderRadius="4px"
-          padding="4px 4px 4px 4px"
-          backgroundColor="rgba(255,255,255,1)"
-          display="flex"
-          onClick={() => {
-            backgroundOnClick();
-          }}
+          onClick={() => setActiveButton('Background')}
+          onMouseEnter={() => setIsHoveredBackground(true)}
+          onMouseLeave={() => setIsHoveredBackground(false)}
+          style={{
+          gap:"6px",
+          direction:"row",
+          width:"unset",
+          height:"unset",
+          justifyContent:"flex-start",
+          alignItems:"center",
+          shrink:"0",
+          position:"relative",
+          borderRadius:"4px",
+          padding:"4px 4px 4px 4px",
+          backgroundColor: activeButton === 'Background' ? '#F4F7F7' : 'rgba(255,255,255,1)',
+          display:"flex"
+        }}
           {...getOverrideProps(overrides, "Background")}
         >
           <Flex
@@ -427,7 +426,7 @@ export default function SideNav(props) {
             </Flex>
           </Flex>
           <Text
-            fontFamily="Inter"
+            
             fontSize="14px"
             fontWeight="400"
             color="rgba(45,112,205,1)"
@@ -448,21 +447,26 @@ export default function SideNav(props) {
             {...getOverrideProps(overrides, "label50003176")}
           ></Text>
         </Flex>
+        </Link>
+
+        <Link to='/useCase'>
         <Flex
-          gap="6px"
-          direction="row"
-          width="unset"
-          height="unset"
-          justifyContent="flex-start"
-          alignItems="center"
-          shrink="0"
-          position="relative"
-          borderRadius="4px"
-          padding="4px 4px 4px 4px"
-          backgroundColor="rgba(255,255,255,1)"
-          display="flex"
-          onClick={() => {
-            useCasesOnClick();
+          onClick={() => setActiveButton('UseCases')}
+          onMouseEnter={() => setIsHoveredUseCase(true)}
+          onMouseLeave={() => setIsHoveredUseCase(false)}
+          style={{
+          gap:"6px",
+          direction:"row",
+          width:"unset",
+          height:"unset",
+          justifyContent:"flex-start",
+          alignItems:"center",
+          shrink:"0",
+          position:"relative",
+          borderRadius:"4px",
+          padding:"4px 4px 4px 4px",
+          backgroundColor: activeButton === 'UseCases' ? '#F4F7F7' : 'rgba(255,255,255,1)',
+          display:"flex"
           }}
           {...getOverrideProps(overrides, "UseCases")}
         >
@@ -511,7 +515,7 @@ export default function SideNav(props) {
             </Flex>
           </Flex>
           <Text
-            fontFamily="Inter"
+            
             fontSize="14px"
             fontWeight="400"
             color="rgba(45,112,205,1)"
@@ -532,19 +536,25 @@ export default function SideNav(props) {
             {...getOverrideProps(overrides, "label50003182")}
           ></Text>
         </Flex>
+        </Link>
         <Flex
-          gap="6px"
-          direction="row"
-          width="unset"
-          height="unset"
-          justifyContent="flex-start"
-          alignItems="center"
-          shrink="0"
-          position="relative"
-          borderRadius="4px"
-          padding="4px 4px 4px 4px"
-          backgroundColor="rgba(255,255,255,1)"
-          display="flex"
+          onClick={() => setActiveButton('FTP')}
+          onMouseEnter={() => setIsHoveredFTP(true)}
+          onMouseLeave={() => setIsHoveredFTP(false)}
+          style={{
+          gap:"6px",
+          direction:"row",
+          width:"unset",
+          height:"unset",
+          justifyContent:"flex-start",
+          alignItems:"center",
+          shrink:"0",
+          position:"relative",
+          borderRadius:"4px",
+          padding:"4px 4px 4px 4px",
+          backgroundColor: activeButton === 'FTP' ? '#F4F7F7' : 'rgba(255,255,255,1)',
+          display:"flex"
+          }}
           {...getOverrideProps(overrides, "FTP")}
         >
           <Flex
@@ -592,7 +602,7 @@ export default function SideNav(props) {
             </Flex>
           </Flex>
           <Text
-            fontFamily="Inter"
+            
             fontSize="14px"
             fontWeight="400"
             color="rgba(45,112,205,1)"
@@ -613,24 +623,30 @@ export default function SideNav(props) {
             {...getOverrideProps(overrides, "label50003188")}
           ></Text>
         </Flex>
+        {isNavExpanded &&(
+        <Link to='/Mirth'>
         <Flex
-          gap="6px"
-          direction="row"
-          width="unset"
-          height="unset"
-          justifyContent="flex-start"
-          alignItems="center"
-          shrink="0"
-          position="relative"
-          borderRadius="4px"
-          padding="4px 4px 4px 4px"
-          backgroundColor="rgba(255,255,255,1)"
-          display="flex"
-          onClick={() => {
-            mirthOnClick();
+          onClick={() => setActiveButton('Mirth')}
+          onMouseEnter={() => setIsHoveredMirth(true)}
+          onMouseLeave={() => setIsHoveredMirth(false)}
+          style={{
+          gap:"6px",
+          direction:"row",
+          width:"unset",
+          height:"unset",
+          justifyContent:"flex-start",
+          alignItems:"center",
+          shrink:"0",
+          position:"relative",
+          borderRadius:"4px",
+          padding:"4px 4px 4px 4px",
+          backgroundColor: activeButton === 'Mirth' ? '#F4F7F7' : 'rgba(255,255,255,1)',
+          display:"flex"
           }}
           {...getOverrideProps(overrides, "Mirth")}
+        
         >
+          
           <Flex
             gap="10px"
             direction="row"
@@ -675,8 +691,8 @@ export default function SideNav(props) {
               ></MyIcon>
             </Flex>
           </Flex>
+          
           <Text
-            fontFamily="Inter"
             fontSize="14px"
             fontWeight="400"
             color="rgba(45,112,205,1)"
@@ -697,21 +713,27 @@ export default function SideNav(props) {
             {...getOverrideProps(overrides, "label50003194")}
           ></Text>
         </Flex>
+        </Link>
+        )}
+      
+        <Link to='/SmileCDR'>
         <Flex
-          gap="6px"
-          direction="row"
-          width="unset"
-          height="unset"
-          justifyContent="flex-start"
-          alignItems="center"
-          shrink="0"
-          position="relative"
-          borderRadius="4px"
-          padding="4px 4px 4px 4px"
-          backgroundColor="rgba(255,255,255,1)"
-          display="flex"
-          onClick={() => {
-            smileOnClick();
+          onClick={() => setActiveButton('Smile')}
+          onMouseEnter={() => setIsHoveredSMILE(true)}
+          onMouseLeave={() => setIsHoveredSMILE(false)}
+          style={{
+          gap:"6px",
+          direction:"row",
+          width:"unset",
+          height:"unset",
+          justifyContent:"flex-start",
+          alignItems:"center",
+          shrink:"0",
+          position:"relative",
+          borderRadius:"4px",
+          padding:"4px 4px 4px 4px",
+          backgroundColor: activeButton === 'Smile' ? '#F4F7F7' : 'rgba(255,255,255,1)',
+          display:"flex"
           }}
           {...getOverrideProps(overrides, "Smile")}
         >
@@ -760,7 +782,7 @@ export default function SideNav(props) {
             </Flex>
           </Flex>
           <Text
-            fontFamily="Inter"
+            
             fontSize="14px"
             fontWeight="400"
             color="rgba(45,112,205,1)"
@@ -778,25 +800,28 @@ export default function SideNav(props) {
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
             children="CDR (Smile)"
-            onClick={() => {
-              labelFiveZeroZeroZeroThreeTwoZeroZeroOnClick();
-            }}
             {...getOverrideProps(overrides, "label50003200")}
           ></Text>
         </Flex>
+        </Link>
         <Flex
-          gap="6px"
-          direction="row"
-          width="unset"
-          height="unset"
-          justifyContent="flex-start"
-          alignItems="center"
-          shrink="0"
-          position="relative"
-          borderRadius="4px"
-          padding="4px 4px 4px 4px"
-          backgroundColor="rgba(255,255,255,1)"
-          display="flex"
+          onClick={() => setActiveButton('RulesEngine')}
+          onMouseEnter={() => setIsHoveredRulesEngine(true)}
+          onMouseLeave={() => setIsHoveredRulesEngine(false)}
+          style={{
+          gap:"6px",
+          direction:"row",
+          width:"unset",
+          height:"unset",
+          justifyContent:"flex-start",
+          alignItems:"center",
+          shrink:"0",
+          position:"relative",
+          borderRadius:"4px",
+          padding:"4px 4px 4px 4px",
+          backgroundColor: activeButton === 'RulesEngine' ? '#F4F7F7' : 'rgba(255,255,255,1)',
+          display:"flex"
+          }}
           {...getOverrideProps(overrides, "RulesEngine")}
         >
           <Flex
@@ -844,7 +869,7 @@ export default function SideNav(props) {
             </Flex>
           </Flex>
           <Text
-            fontFamily="Inter"
+            
             fontSize="14px"
             fontWeight="400"
             color="rgba(45,112,205,1)"
@@ -865,22 +890,25 @@ export default function SideNav(props) {
             {...getOverrideProps(overrides, "label50003206")}
           ></Text>
         </Flex>
+        <Link to='/Networking'>
         <Flex
-          gap="6px"
-          direction="row"
-          width="unset"
-          height="unset"
-          justifyContent="flex-start"
-          alignItems="center"
-          shrink="0"
-          position="relative"
-          borderRadius="4px"
-          padding="4px 4px 4px 4px"
-          backgroundColor="rgba(255,255,255,1)"
-          display="flex"
-          onClick={() => {
-            visualizationsOnClick();
-          }}
+          onClick={() => setActiveButton('Visualizations')}
+          onMouseEnter={() => setIsHoveredVisualizations(true)}
+          onMouseLeave={() => setIsHoveredVisualizations(false)}
+          style={{
+            gap:"6px",
+            direction:"row",
+            width:"unset",
+            height:"unset",
+            justifyContent:"flex-start",
+            alignItems:"center",
+            shrink:"0",
+            position:"relative",
+            borderRadius:"4px",
+            padding:"4px 4px 4px 4px",
+            backgroundColor: activeButton === 'Visualizations' ? '#F4F7F7' : 'rgba(255,255,255,1)',
+            display:"flex"
+            }}
           {...getOverrideProps(overrides, "Visualizations")}
         >
           <Flex
@@ -928,7 +956,7 @@ export default function SideNav(props) {
             </Flex>
           </Flex>
           <Text
-            fontFamily="Inter"
+            
             fontSize="14px"
             fontWeight="400"
             color="rgba(45,112,205,1)"
@@ -946,13 +974,12 @@ export default function SideNav(props) {
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
             children="Visualizations"
-            onClick={() => {
-              labelFiveZeroZeroZeroThreeTwoOneTwoOnClick();
-            }}
             {...getOverrideProps(overrides, "label50003212")}
           ></Text>
         </Flex>
+        </Link>
       </Flex>
+      
       <Flex
         gap="4px"
         direction="column"
@@ -967,8 +994,9 @@ export default function SideNav(props) {
         display="flex"
         {...getOverrideProps(overrides, "NavText")}
       >
+        {isNavExpanded && (
         <Text
-          fontFamily="Inter"
+          
           fontSize="12px"
           fontWeight="400"
           color="rgba(14,35,57,1)"
@@ -988,8 +1016,11 @@ export default function SideNav(props) {
           children="User Name"
           {...getOverrideProps(overrides, "User Name")}
         ></Text>
+        )}
+        {isNavExpanded && (
+        <Link to ='/DxfRegistration'>
         <Text
-          fontFamily="Inter"
+          
           fontSize="14px"
           fontWeight="600"
           color="rgba(45,112,205,1)"
@@ -1008,12 +1039,12 @@ export default function SideNav(props) {
           padding="0px 0px 0px 0px"
           whiteSpace="pre-wrap"
           children="Register DxF Participant"
-          onClick={() => {
-            registerDxFParticipantOnClick();
-          }}
           {...getOverrideProps(overrides, "Register DxF Participant")}
         ></Text>
+        </Link>
+        )}
       </Flex>
+      
       <Flex
         padding="0px 0px 0px 0px"
         width="unset"
@@ -1071,7 +1102,7 @@ export default function SideNav(props) {
               {...getOverrideProps(overrides, "Button Icon49013379")}
             ></View>
             <Text
-              fontFamily="Inter"
+              
               fontSize="16px"
               fontWeight="700"
               color="rgba(255,255,255,1)"
@@ -1107,6 +1138,7 @@ export default function SideNav(props) {
           </Flex>
         </Flex>
       </Flex>
+      
     </Flex>
   );
 }

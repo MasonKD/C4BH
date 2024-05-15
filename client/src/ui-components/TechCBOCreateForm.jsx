@@ -116,7 +116,7 @@ export default function TechCBOCreateForm(props) {
       {...rest}
     >
       <Heading
-        children="What Customer Management or Electronic Record platform do you use?"
+        children="What Customer Management or Electronic Health Record platform do you use?"
         {...getOverrideProps(overrides, "SectionalElement0")}
       ></Heading>
       <Text

@@ -177,7 +177,7 @@ export default function NotificationsADTUnoCreateForm(props) {
       {...rest}
     >
       <Heading
-        children="By which methods are you able to receive ADT notifications?"
+        children="By which methods are you able to receive notifications of ADT events?"
         {...getOverrideProps(overrides, "SectionalElement0")}
       ></Heading>
       <Text

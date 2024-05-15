@@ -172,7 +172,7 @@ export default function NotificationsADTDosCreateForm(props) {
       {...rest}
     >
       <Heading
-        children="By which methods do you make ADT notifications available to requesting participants? "
+        children="By which methods are you able to notify requesting participants about ADT events? "
         {...getOverrideProps(overrides, "SectionalElement0")}
       ></Heading>
       <Text

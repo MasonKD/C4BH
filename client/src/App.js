@@ -10,10 +10,14 @@ import DxfRegistration from './pages/DxfRegAmplify';
 import UseCase from './pages/useCase';
 import SmileCDR from './pages/SmileCDR';
 import Background from './pages/Background';
+import OldMainPage from './pages/OldMainPage';
 import { Amplify } from 'aws-amplify';
-
 import { formFields, components } from './components/Auth';
 import { Authenticator } from '@aws-amplify/ui-react';
+
+import { HeaderMod } from './components/HeaderMod'
+import { FooterMod } from './components/FooterMod';
+import { SideNavMod } from './components/SideNavMod'
 import '@aws-amplify/ui-react/styles.css';
 
 
@@ -23,17 +27,27 @@ Amplify.configure(config);
 export default function App({ signOut, user } ) {
   return (
     <Router>
-      <Authenticator formFields={formFields} components={components}><>
-        <AppHeader Signout={signOut} User={user} /><Routes>
-            <Route path="/" element={<MainPage />} />
-            <Route path="/callback" element={<Callback />} />
-            <Route path="/mirth" element={<Mirth />} />
-            <Route path="/Networking" element={<Networking />} />
-            <Route path="/DxfRegistration" element={<DxfRegistration />} />
-            <Route path="/UseCase" element={<UseCase />} />
-            <Route path="/SmileCDR" element={<SmileCDR />} />
-            <Route path="/Background" element={<Background />} />
-          </Routes></>
+      <Authenticator formFields={formFields} components={components}>
+        <HeaderMod style={{zIndex:"200"}} />
+        <SideNavMod style={{zIndex:"200"}} />
+        <div style={{position:"relative", top:"78px", display:"flex", flexDirection:"column" }}>
+        <div style={{display:"flex", flexDirection:"row"}}>
+          <div style={{width:"14rem", flexShrink:"0"}}></div>
+          <Routes style={{width:"80rem"}}>
+              <Route path="/" element={<MainPage />} />
+              <Route path="/callback" element={<Callback />} />
+              <Route path="/mirth" element={<Mirth />} />
+              <Route path="/Networking" element={<Networking />} />
+              <Route path="/DxfRegistration" element={<DxfRegistration />} />
+              <Route path="/UseCase" element={<UseCase />} />
+              <Route path="/SmileCDR" element={<SmileCDR />} />
+              <Route path="/Background" element={<Background />} />
+              <Route path="/OldMainPage" element={<OldMainPage />} />
+            </Routes>
+          </div>
+        <FooterMod style={{zIndex:"400"}}/>
+        </div>
+
       </Authenticator>
     </Router>
   );

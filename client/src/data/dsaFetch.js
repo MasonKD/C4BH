@@ -22,15 +22,14 @@ try {
 export const determineForm = (res) => {
   console.log("response", res)
   const items = res[0]
-  const non_participant_intermediaries = ['Carequality', 'CommonWell Health Alliance', 'eHealth Exchange', 'Long Health', 'Orange County Partners in Health HIE', 'Cozeva', 'DirectTrust', 'Serving Communities Health Information Organization']
   const techCboEligibleTypes = ["Community-Based Organizations", "Ancillary Care", "Pharmacy"];
   const techAcuteEligibleTypes = ["Subacute Care Facility", "Ambulatory Care Settings", "Acute Care Settings"];
   const techIntEligibleTypes = ["Plans", "Intermediaries", "Counties"];
-  const NotifADTUnoEligibleComs = ["SELF", "OTHER"].concat(non_participant_intermediaries);
+  const NotifADTUnoEligibleComs = ["SELF", "OTHER"];
   const NotifADTDosEligibleTypes = ["Intermediaries", "Acute Care Settings"];
-  const InfoEligibleComs = ["SELF", "OTHER"].concat(non_participant_intermediaries);
-  const RequestUnoEligibleComs = ["SELF", "OTHER"].concat(non_participant_intermediaries);
-  const RequestDosEligibleComs = ["SELF", "OTHER"].concat(non_participant_intermediaries);
+  const InfoEligibleComs = ["SELF", "OTHER"];
+  const RequestUnoEligibleComs = ["SELF", "OTHER"];
+  const RequestDosEligibleComs = ["SELF", "OTHER"];
 
   let formParts = [];
 

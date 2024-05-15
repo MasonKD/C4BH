@@ -135,16 +135,16 @@ export default function TechIntermediariesCreateForm(props) {
             label: "Intersystems",
           },
           {
+            id: "Mirth/NextGen",
+            label: "Mirth/NextGen",
+          },
+          {
             id: "Smile",
             label: "Smile",
           },
           {
             id: "Salesforce",
             label: "Salesforce",
-          },
-          {
-            id: "Mirth/NextGen",
-            label: "Mirth/NextGen",
           },
           {
             id: "Other (Please type out)",

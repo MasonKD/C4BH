@@ -20,7 +20,7 @@ const DxfRegistration = () => {
   };
 
   return (
-    <div className="main-container">
+    <div className="main-container main-container-fix">
       <header className="header">
         <Logo />
       </header>

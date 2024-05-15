@@ -9,7 +9,7 @@ import {ThemeProvider} from "@aws-amplify/ui-react";
 import { Amplify } from 'aws-amplify';
 import amplifyconfig from './amplifyconfiguration.json';
 import "@aws-amplify/ui-react/styles.css";
-import studioTheme from './ui-components/studioTheme';
+import { studioTheme } from './ui-components';
 
 Amplify.configure(amplifyconfig);
 
