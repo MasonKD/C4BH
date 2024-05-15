@@ -171,7 +171,7 @@ const DxfRegistration = () => {
 							</div>
 							<div className={`${flex.row}`}>
 								<h3 style={{alignSelf: 'auto'}}>Sub Name:</h3>
-								<div style={{marginLeft:'.5rem', alignSelf: 'end', paddingBottom: 0}}>{dsa_data.Participant_Name_PrimaryOrganization}</div>
+								<div style={{marginLeft:'.5rem', alignSelf: 'end', paddingBottom: 0}}>{dsa_data.Participant_Name_SubordinateOrganization}</div>
 							</div>
 							<div className={`${flex.row}`}>
 								<h3 style={{alignSelf: 'end'}}>Type:</h3>
