@@ -23,7 +23,7 @@ export const determineForm = (res) => {
   console.log("response", res)
   const items = res[0]
   const techCboEligibleTypes = ["Community-Based Organizations", "Ancillary Care", "Pharmacy"];
-  const techAcuteEligibleTypes = ["Subacute Care Facility", "Ambulatory Care Settings", "Acute Care Settings"];
+  const techAcuteEligibleTypes = ["Subacute Care Facility", "Ambulatory Care Settings", "Acute Care Settings", "Emergency Medical Service Providers"];
   const techIntEligibleTypes = ["Plans", "Intermediaries", "Counties"];
   const NotifADTUnoEligibleComs = ["SELF", "OTHER"];
   const NotifADTDosEligibleTypes = ["Intermediaries", "Acute Care Settings"];
@@ -57,7 +57,7 @@ export const determineForm = (res) => {
     if (InfoEligibleComs.includes(deliveryType)) {
       formParts.push('Info');
     }
-    if (RequestUnoEligibleComs.includes(deliveryType)) {
+    if (RequestUnoEligibleComs.includes(requestType)) {
       formParts.push('RequestUno');
     }
     if (RequestDosEligibleComs.includes(requestType)) {
