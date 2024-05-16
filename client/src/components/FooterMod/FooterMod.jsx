@@ -17,7 +17,7 @@ export default function FooterMod(props) {
       width="100%"
       position="relative"
       bottom="0"
-
+      marginTop='auto'
       height="30px"
       justifyContent="space-between"
       alignItems="center"

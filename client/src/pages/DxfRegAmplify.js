@@ -64,7 +64,7 @@ const DxfRegistration = () => {
 		if(fields && fields.DxFID) {
 			console.log("successfully submitted dxf participant selection, ", fields)
 			//TODO CHeck if the dxf participant id is valid
-			let participant_id = fields.DxFID.split("=")[1]
+			let participant_id = fields.DxFID
 			setPID(participant_id)
 			console.log("next ", participant_id)
 			try {

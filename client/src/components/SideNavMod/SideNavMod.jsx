@@ -3,12 +3,13 @@
 /* eslint-disable */
 import * as React from "react";
 import {useState} from "react";
+import {useEffect} from "react";
 import {
   getOverrideProps,
   getOverridesFromVariants,
   mergeVariantsAndOverrides,
 } from "../../ui-components/utils";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import MyIcon from "../../ui-components/MyIcon";
 import { Flex, Text, View } from "@aws-amplify/ui-react";
 import { useAuthenticator } from '@aws-amplify/ui-react';
@@ -27,6 +28,18 @@ export default function SideNavMod(props) {
   const toggleNav = () => {
     setIsNavExpanded(!isNavExpanded); 
   };
+  const navigate = useNavigate();
+  const handleNavigation = (path) => {
+    if (window.location.pathname === path) {
+      window.location.reload();
+    } else {
+      navigate(path);
+    }
+  };
+  useEffect(() => {
+    setActiveButton('home');
+  }, []);
+  
   const { overrides: overridesProp, ...rest } = props;
   const variants = [
     {
@@ -212,8 +225,8 @@ export default function SideNavMod(props) {
     <Flex
       gap="10px"
       direction="column"
-      width={isNavExpanded ? "14rem" : "3rem"}
-      height="90%"
+      width={isNavExpanded ? "14rem" : "4rem"}
+      height="calc(-78px + 100vh)"
       top="78px"
       justifyContent="flex-start"
       alignItems="flex-end"
@@ -237,7 +250,7 @@ export default function SideNavMod(props) {
         position="relative"
         borderRadius="3px"
         padding="5px 5px 5px 5px"
-        display="none"
+        display="flex"
         onClick={toggleNav}
         {...getOverrideProps(overrides, "ArrowContainer")}
       >
@@ -317,7 +330,7 @@ export default function SideNavMod(props) {
               position="relative"
               borderRadius="3px"
               padding="5px 5px 5px 5px"
-              backgroundColor="rgba(241,247,255,1)"
+              //backgroundColor="rgba(241,247,255,1)"
               display="flex"
               {...getOverrideProps(overrides, "IconContainer48971275")}
             >
@@ -337,6 +350,7 @@ export default function SideNavMod(props) {
               ></MyIcon>
             </Flex>
           </Flex>
+          {isNavExpanded &&(
           <Text
             
             fontSize="14px"
@@ -358,6 +372,7 @@ export default function SideNavMod(props) {
             children="Home"
             {...getOverrideProps(overrides, "label48971279")}
           ></Text>
+          )}
         </Flex>
         </Link>
         <Link to="/Background">
@@ -425,6 +440,7 @@ export default function SideNavMod(props) {
               ></MyIcon>
             </Flex>
           </Flex>
+          {isNavExpanded &&(
           <Text
             
             fontSize="14px"
@@ -446,6 +462,7 @@ export default function SideNavMod(props) {
             children="Background"
             {...getOverrideProps(overrides, "label50003176")}
           ></Text>
+          )}
         </Flex>
         </Link>
 
@@ -514,6 +531,7 @@ export default function SideNavMod(props) {
               ></MyIcon>
             </Flex>
           </Flex>
+          {isNavExpanded &&(
           <Text
             
             fontSize="14px"
@@ -535,6 +553,7 @@ export default function SideNavMod(props) {
             children="Use Cases"
             {...getOverrideProps(overrides, "label50003182")}
           ></Text>
+          )}
         </Flex>
         </Link>
         <Flex
@@ -601,6 +620,7 @@ export default function SideNavMod(props) {
               ></MyIcon>
             </Flex>
           </Flex>
+          {isNavExpanded &&(
           <Text
             
             fontSize="14px"
@@ -622,8 +642,9 @@ export default function SideNavMod(props) {
             children="FTP Log"
             {...getOverrideProps(overrides, "label50003188")}
           ></Text>
+          )}
         </Flex>
-        {isNavExpanded &&(
+        
         <Link to='/Mirth'>
         <Flex
           onClick={() => setActiveButton('Mirth')}
@@ -642,7 +663,7 @@ export default function SideNavMod(props) {
           padding:"4px 4px 4px 4px",
           backgroundColor: activeButton === 'Mirth' ? '#F4F7F7' : 'rgba(255,255,255,1)',
           display:"flex"
-          }}
+        }}
           {...getOverrideProps(overrides, "Mirth")}
         
         >
@@ -691,7 +712,7 @@ export default function SideNavMod(props) {
               ></MyIcon>
             </Flex>
           </Flex>
-          
+          {isNavExpanded &&(
           <Text
             fontSize="14px"
             fontWeight="400"
@@ -712,9 +733,12 @@ export default function SideNavMod(props) {
             children="Integration Engine (Mirth)"
             {...getOverrideProps(overrides, "label50003194")}
           ></Text>
+          )}
         </Flex>
         </Link>
-        )}
+          
+        
+        
       
         <Link to='/SmileCDR'>
         <Flex
@@ -781,6 +805,7 @@ export default function SideNavMod(props) {
               ></MyIcon>
             </Flex>
           </Flex>
+          {isNavExpanded &&(
           <Text
             
             fontSize="14px"
@@ -802,6 +827,7 @@ export default function SideNavMod(props) {
             children="CDR (Smile)"
             {...getOverrideProps(overrides, "label50003200")}
           ></Text>
+          )}
         </Flex>
         </Link>
         <Flex
@@ -868,6 +894,7 @@ export default function SideNavMod(props) {
               ></MyIcon>
             </Flex>
           </Flex>
+          {isNavExpanded &&(
           <Text
             
             fontSize="14px"
@@ -889,6 +916,7 @@ export default function SideNavMod(props) {
             children="Rules Engine"
             {...getOverrideProps(overrides, "label50003206")}
           ></Text>
+          )}
         </Flex>
         <Link to='/Networking'>
         <Flex
@@ -955,6 +983,7 @@ export default function SideNavMod(props) {
               ></MyIcon>
             </Flex>
           </Flex>
+          {isNavExpanded &&(
           <Text
             
             fontSize="14px"
@@ -976,6 +1005,7 @@ export default function SideNavMod(props) {
             children="Visualizations"
             {...getOverrideProps(overrides, "label50003212")}
           ></Text>
+          )}
         </Flex>
         </Link>
       </Flex>
@@ -1013,12 +1043,14 @@ export default function SideNavMod(props) {
           position="relative"
           padding="0px 0px 0px 0px"
           whiteSpace="pre-wrap"
-          children="User Name"
+          children={user?.signInDetails?.loginId.split("@")[0] || "User Name"}
           {...getOverrideProps(overrides, "User Name")}
         ></Text>
         )}
         {isNavExpanded && (
-        <Link to ='/DxfRegistration'>
+          
+          <Link to='/DxfRegistration' onClick={() => handleNavigation('/DxfRegistration', 'register')}>
+        
         <Text
           
           fontSize="14px"
