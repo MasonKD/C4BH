@@ -113,6 +113,7 @@ const DxfRegistration = () => {
 		const updatedFields = {}
 		Object.assign(updatedFields, fields);
 		updatedFields.User = user?.signInDetails.loginId
+		updatedFields.DxFID = updatedFields.DxFID.split("=")[1]
 		console.log("submitting form", updatedFields)
 		return updatedFields
 	}
