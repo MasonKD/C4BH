@@ -236,7 +236,7 @@ const DxfRegistration = () => {
 						<RequestInfoDosCreateForm id = "RequestDos" onSubmit = {addDxfToForm} onSuccess={formSuccess}></RequestInfoDosCreateForm>)}
 
 						<h2><i>HIPAA Compliance:</i></h2>
-						<HIPAACreateForm id = "Hipaa" onSuccess={redirectToHome}></HIPAACreateForm>
+						<HIPAACreateForm id = "Hipaa" onSubmit = {addDxfToForm} onSuccess={redirectToHome}></HIPAACreateForm>
 
 						<Button
 							variation="primary"
