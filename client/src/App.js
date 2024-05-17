@@ -1,5 +1,5 @@
 // App.js
-import React from 'react';
+import React, {useState} from 'react';
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import AppHeader from './components/Header/AppHeader'
 import MainPage from './pages/MainPage';
@@ -25,15 +25,16 @@ import config from './amplifyconfiguration.json';
 Amplify.configure(config);
 
 export default function App({ signOut, user } ) {
+  
   return (
     <Router>
       <Authenticator formFields={formFields} components={components}>
-        <HeaderMod style={{zIndex:"200"}} />
-        <SideNavMod style={{zIndex:"200"}} />
-        <div style={{position:"relative", top:"78px", display:"flex", flexDirection:"column" }}>
-        <div style={{display:"flex", flexDirection:"row"}}>
-          <div style={{width:"14rem", flexShrink:"0"}}></div>
-          <Routes style={{width:"80rem"}}>
+      <div style={{ position: 'relative', minHeight: '100vh', display: 'flex', flexDirection: 'column', paddingTop: '78px' }}>
+          <HeaderMod style={{ zIndex: 200 }} />
+          <SideNavMod style={{ zIndex: 200 }} />
+          <div style={{ flex: 1, display: 'flex', flexDirection: 'row' }}>
+            <div style={{ width: '14rem', flexShrink: 0 }}></div>
+            <Routes style={{ flex: 1 }}>
               <Route path="/" element={<MainPage />} />
               <Route path="/callback" element={<Callback />} />
               <Route path="/mirth" element={<Mirth />} />
@@ -45,9 +46,9 @@ export default function App({ signOut, user } ) {
               <Route path="/OldMainPage" element={<OldMainPage />} />
             </Routes>
           </div>
+        
         <FooterMod style={{zIndex:"400"}}/>
         </div>
-
       </Authenticator>
     </Router>
   );
