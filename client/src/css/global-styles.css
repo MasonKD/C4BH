@@ -207,3 +207,12 @@ border-bottom: 2px solid var(--DS-grey-blue-700);
   border-radius: 5px;
   padding: 0 0 0.5rem 0.5rem;
 }
+
+.highlighted {
+  background-color: #ffdddd; /* Light red for error indication */
+  border: 1px solid red !important; /* Red border for emphasis */
+  padding: 5px; /* Add some padding for readability */
+  margin: 5px 0; /* Add some margin for separation */
+  border-radius: 3px; /* Rounded corners for a softer look */
+  color: #000 !important; /* Ensure text color is black for readability */
+}

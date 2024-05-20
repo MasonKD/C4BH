@@ -1,5 +1,5 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
+import React, { useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Flex, Text, Image, Button, View, Icon } from '@aws-amplify/ui-react';
 import UseCaseDiagram from '../images/UseCaseDiagram.png';
 import VisualizationsPic from '../images/visualizations.png';
@@ -9,6 +9,11 @@ import AWSLogo from '../images/logoAWS.png';
 import SmileLogo from '../images/logosmile.png';
 
 const MainPage = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to top on every location change
+  }, [location]);
   const navigate = useNavigate(); // Initialize navigate function
 
   // Handler for the Sign Out button
@@ -64,7 +69,7 @@ const MainPage = () => {
                 padding="73px 60px 73px 60px"
             >
                 <Text
-                    
+
                     fontSize="48px"
                     fontWeight="700"
                     color="rgba(34,84,155,1)"
@@ -99,7 +104,7 @@ const MainPage = () => {
                         position="relative"
                     >
                         <Text
-                            
+
                             fontSize="32px"
                             fontWeight="500"
                             color="rgba(45,112,205,1)"
@@ -114,7 +119,7 @@ const MainPage = () => {
                             Securely and rapidly test, collaborate, and scale new workflows.
                         </Text>
                         <Text
-                            
+
                             fontSize="16px"
                             fontWeight="400"
                             color="rgba(13,26,38,1)"
@@ -128,12 +133,12 @@ const MainPage = () => {
                             whiteSpace="pre-wrap"
                         >
                             The Data Exchange Framework (DxF) Sandbox is a real-world testing environment for California DxF Participants to  identify, test, and validate data exchange implementation strategies as  they plan, design, and adjust their current workflows to meet state  requirements.
-    
-    
-    
+
+
+
                         </Text>
                         <Text
-                            
+
                             fontSize="16px"
                             fontWeight="400"
                             color="rgba(13,26,38,1)"
@@ -146,10 +151,10 @@ const MainPage = () => {
                             position="relative"
                             whiteSpace="pre-wrap"
                         >
-                            
-    
+
+
     The DxF Sandbox allows health providers, community-based organizations,  health plans, public health agencies, and social service organizations  to pursue cutting-edge data sharing approaches with meaningful  cross-sector collaboration.
-    
+
                         </Text>
                     </Flex>
                 </Flex>
@@ -256,7 +261,7 @@ alt=""
 </Flex>
 </Flex>
 </Flex>
-            
+
             <Flex
                 gap="24px"
                 direction="column"
@@ -290,7 +295,7 @@ alt=""
                         position="relative"
                     >
                         <Text
-                            
+
                             fontSize="32px"
                             fontWeight="500"
                             color="rgba(255,255,255,1)"
@@ -305,7 +310,7 @@ alt=""
                             Join the DxF Sandbox Community
                         </Text>
                         <Text
-                            
+
                             fontSize="16px"
                             fontWeight="400"
                             color="rgba(255,255,255,1)"
@@ -318,7 +323,7 @@ alt=""
                             position="relative"
                             whiteSpace="pre-wrap"
                         >
-                            
+
                         </Text>
                     </Flex>
                 </Flex>
@@ -339,7 +344,7 @@ alt=""
                 backgroundColor="rgba(255,255,255,1)"
             >
                 <Text
-                    
+
                     fontSize="40px"
                     fontWeight="400"
                     color="rgba(34,84,155,1)"
@@ -374,7 +379,7 @@ alt=""
                         position="relative"
                     >
                         <Text
-                            
+
                             fontSize="20px"
                             fontWeight="700"
                             color="rgba(45,112,205,1)"
@@ -389,7 +394,7 @@ alt=""
                             Data Exchange Solutions Driven by A Use Case Library
                         </Text>
                         <Text
-                            
+
                             fontSize="16px"
                             fontWeight="400"
                             color="rgba(13,26,38,1)"
@@ -403,8 +408,8 @@ alt=""
                             whiteSpace="pre-wrap"
                         >
                             The DxF Sandbox hosts a “Use Case Library” co-developed by organizations  with on-the-ground experience, backed by best-in-class practices, and  aligned with nationally-recognized data standards. These priority use  cases provide organizations with well-reasoned and defined rules for  priority data exchange interactions between people and systems to enable  efficient and effective implementation of these workflows.
-    
-    
+
+
                         </Text>
                     </Flex>
                     <Flex>
@@ -429,7 +434,7 @@ alt=""
                 backgroundColor="rgba(241,247,255,1)"
             >
                 <Text
-                    
+
                     fontSize="40px"
                     fontWeight="400"
                     color="rgba(34,84,155,1)"
@@ -501,7 +506,7 @@ alt=""
                             position="relative"
                         >
                             <Text
-                                
+
                                 fontSize="20px"
                                 fontWeight="700"
                                 color="rgba(45,112,205,1)"
@@ -516,7 +521,7 @@ alt=""
                                 FTP Log
                             </Text>
                             <Text
-                                
+
                                 fontSize="16px"
                                 fontWeight="400"
                                 color="rgba(13,26,38,1)"
@@ -583,7 +588,7 @@ alt=""
                             position="relative"
                         >
                             <Text
-                                
+
                                 fontSize="20px"
                                 fontWeight="700"
                                 color="rgba(45,112,205,1)"
@@ -598,7 +603,7 @@ alt=""
                                 Integration Engine (Mirth)
                             </Text>
                             <Text
-                                
+
                                 fontSize="16px"
                                 fontWeight="400"
                                 color="rgba(13,26,38,1)"
@@ -665,7 +670,7 @@ alt=""
                             position="relative"
                         >
                             <Text
-                                
+
                                 fontSize="20px"
                                 fontWeight="700"
                                 color="rgba(45,112,205,1)"
@@ -680,7 +685,7 @@ alt=""
                                 CDR (Smile)
                             </Text>
                             <Text
-                                
+
                                 fontSize="16px"
                                 fontWeight="400"
                                 color="rgba(13,26,38,1)"
@@ -711,7 +716,7 @@ alt=""
                 backgroundColor="rgba(34,84,155,1)"
             >
                 <Text
-                    
+
                     fontSize="40px"
                     fontWeight="400"
                     color="rgba(255,255,255,1)"
@@ -746,7 +751,7 @@ alt=""
                         position="relative"
                     >
                         <Text
-                            
+
                             fontSize="20px"
                             fontWeight="700"
                             color="rgba(255,255,255,1)"
@@ -761,7 +766,7 @@ alt=""
                             DxF Defined Rules and Participant Defined Rules
                         </Text>
                         <Text
-                            
+
                             fontSize="16px"
                             fontWeight="400"
                             color="rgba(255,255,255,1)"
@@ -774,7 +779,7 @@ alt=""
                             position="relative"
                             whiteSpace="pre-wrap"
                         >
-                            
+
                         </Text>
                     </Flex>
                 </Flex>
@@ -791,7 +796,7 @@ alt=""
                 backgroundColor="rgba(255,255,255,1)"
             >
                 <Text
-                    
+
                     fontSize="40px"
                     fontWeight="400"
                     color="rgba(34,84,155,1)"
@@ -835,7 +840,7 @@ alt=""
                         position="relative"
                     >
                         <Text
-                            
+
                             fontSize="20px"
                             fontWeight="700"
                             color="rgba(45,112,205,1)"

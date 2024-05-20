@@ -131,3 +131,6 @@ dist
 
 # Python venv
 **/*venv*/
+
+# Macos DS Store
+**/.DS_Store

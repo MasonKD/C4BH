@@ -1,7 +1,6 @@
 // App.js
 import React, {useState} from 'react';
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-import AppHeader from './components/Header/AppHeader'
 import MainPage from './pages/MainPage';
 import Callback from './data/Callback';
 import Mirth from './pages/Mirth';
@@ -25,7 +24,7 @@ import config from './amplifyconfiguration.json';
 Amplify.configure(config);
 
 export default function App({ signOut, user } ) {
-  
+
   return (
     <Router>
       <Authenticator formFields={formFields} components={components}>
@@ -46,7 +45,7 @@ export default function App({ signOut, user } ) {
               <Route path="/OldMainPage" element={<OldMainPage />} />
             </Routes>
           </div>
-        
+
         <FooterMod style={{zIndex:"400"}}/>
         </div>
       </Authenticator>

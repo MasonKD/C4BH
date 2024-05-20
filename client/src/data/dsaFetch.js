@@ -7,7 +7,7 @@ import axios from 'axios';
 
 export const dynamoAPI = async (dxfNumber) => {
   const url = 'https://sbx.connectingforbetterhealth.com/api/dxf-query?dxfNumber='+dxfNumber;
-  console.log("this is the url:",url);
+  // console.log("this is the url:",url);
 try {
   const response = await axios.get('https://sbx.connectingforbetterhealth.com/api/dxf-query?dxfNumber='+dxfNumber)
   return response.data.data;
@@ -20,7 +20,7 @@ try {
 
 // Function to determine which forms to show based on item types
 export const determineForm = (res) => {
-  console.log("response", res)
+  // console.log("response", res)
   const items = res[0]
   const techCboEligibleTypes = ["Community-Based Organizations", "Ancillary Care", "Pharmacy"];
   const techAcuteEligibleTypes = ["Subacute Care Facility", "Ambulatory Care Settings", "Acute Care Settings", "Emergency Medical Service Providers"];
@@ -34,7 +34,7 @@ export const determineForm = (res) => {
   let formParts = [];
 
   if (items) {
-    console.log("items",items)
+    // console.log("items",items)
     const itemType = items.Type;
     const ADTcomType = items.Requests_for_Notifications_of_ADT_Events;
     const deliveryType = items.Information_Delivery;
