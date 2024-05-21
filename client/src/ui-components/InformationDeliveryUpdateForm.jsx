@@ -52,6 +52,7 @@ export default function InformationDeliveryUpdateForm(props) {
     SendInfoThirdPartyPlatform: undefined,
     SendInfoOther: false,
     SenInfoOther_Describe: "",
+    UserIdToken: "",
   };
   const [RecieveInfoDirectSecureEmail, setRecieveInfoDirectSecureEmail] =
     React.useState(initialValues.RecieveInfoDirectSecureEmail);
@@ -96,6 +97,9 @@ export default function InformationDeliveryUpdateForm(props) {
   const [SenInfoOther_Describe, setSenInfoOther_Describe] = React.useState(
     initialValues.SenInfoOther_Describe
   );
+  const [UserIdToken, setUserIdToken] = React.useState(
+    initialValues.UserIdToken
+  );
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     const cleanValues = informationDeliveryRecord
@@ -118,6 +122,7 @@ export default function InformationDeliveryUpdateForm(props) {
     setSendInfoThirdPartyPlatform(cleanValues.SendInfoThirdPartyPlatform);
     setSendInfoOther(cleanValues.SendInfoOther);
     setSenInfoOther_Describe(cleanValues.SenInfoOther_Describe);
+    setUserIdToken(cleanValues.UserIdToken);
     setErrors({});
   };
   const [informationDeliveryRecord, setInformationDeliveryRecord] =
@@ -155,6 +160,7 @@ export default function InformationDeliveryUpdateForm(props) {
     SendInfoThirdPartyPlatform: [],
     SendInfoOther: [],
     SenInfoOther_Describe: [],
+    UserIdToken: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -200,6 +206,7 @@ export default function InformationDeliveryUpdateForm(props) {
           SendInfoThirdPartyPlatform: SendInfoThirdPartyPlatform ?? null,
           SendInfoOther: SendInfoOther ?? null,
           SenInfoOther_Describe: SenInfoOther_Describe ?? null,
+          UserIdToken: UserIdToken ?? null,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -289,6 +296,7 @@ export default function InformationDeliveryUpdateForm(props) {
                 SendInfoThirdPartyPlatform,
                 SendInfoOther,
                 SenInfoOther_Describe,
+                UserIdToken,
               };
               const result = onChange(modelFields);
               value = result?.RecieveInfoDirectSecureEmail ?? value;
@@ -334,6 +342,7 @@ export default function InformationDeliveryUpdateForm(props) {
                 SendInfoThirdPartyPlatform,
                 SendInfoOther,
                 SenInfoOther_Describe,
+                UserIdToken,
               };
               const result = onChange(modelFields);
               value = result?.RecieveInfoDirectEmailAddress ?? value;
@@ -382,6 +391,7 @@ export default function InformationDeliveryUpdateForm(props) {
               SendInfoThirdPartyPlatform,
               SendInfoOther,
               SenInfoOther_Describe,
+              UserIdToken,
             };
             const result = onChange(modelFields);
             value = result?.RecieveInfosFTP ?? value;
@@ -430,6 +440,7 @@ export default function InformationDeliveryUpdateForm(props) {
                 SendInfoThirdPartyPlatform,
                 SendInfoOther,
                 SenInfoOther_Describe,
+                UserIdToken,
               };
               const result = onChange(modelFields);
               value = result?.RecieveInfoHL7V2 ?? value;
@@ -472,6 +483,7 @@ export default function InformationDeliveryUpdateForm(props) {
                 SendInfoThirdPartyPlatform,
                 SendInfoOther,
                 SenInfoOther_Describe,
+                UserIdToken,
               };
               const result = onChange(modelFields);
               value = result?.RecieveInfoMLLP_HTTPS ?? value;
@@ -523,6 +535,7 @@ export default function InformationDeliveryUpdateForm(props) {
                 SendInfoThirdPartyPlatform,
                 SendInfoOther,
                 SenInfoOther_Describe,
+                UserIdToken,
               };
               const result = onChange(modelFields);
               value = result?.RecieveInfoThirdPartyReferral ?? value;
@@ -593,6 +606,7 @@ export default function InformationDeliveryUpdateForm(props) {
                 SendInfoThirdPartyPlatform,
                 SendInfoOther,
                 SenInfoOther_Describe,
+                UserIdToken,
               };
               const result = onChange(modelFields);
               value = result?.RecieveInfoThirdPartyPlatform ?? value;
@@ -648,6 +662,7 @@ export default function InformationDeliveryUpdateForm(props) {
                 SendInfoThirdPartyPlatform,
                 SendInfoOther,
                 SenInfoOther_Describe,
+                UserIdToken,
               };
               const result = onChange(modelFields);
               value = result?.RecieveInfoOther ?? value;
@@ -690,6 +705,7 @@ export default function InformationDeliveryUpdateForm(props) {
                 SendInfoThirdPartyPlatform,
                 SendInfoOther,
                 SenInfoOther_Describe,
+                UserIdToken,
               };
               const result = onChange(modelFields);
               value = result?.RecieveInfoOther_Describe ?? value;
@@ -746,6 +762,7 @@ export default function InformationDeliveryUpdateForm(props) {
               SendInfoThirdPartyPlatform,
               SendInfoOther,
               SenInfoOther_Describe,
+              UserIdToken,
             };
             const result = onChange(modelFields);
             value = result?.SendInfoDirectSecureEmail ?? value;
@@ -793,6 +810,7 @@ export default function InformationDeliveryUpdateForm(props) {
               SendInfoThirdPartyPlatform,
               SendInfoOther,
               SenInfoOther_Describe,
+              UserIdToken,
             };
             const result = onChange(modelFields);
             value = result?.SendInfosFTP ?? value;
@@ -841,6 +859,7 @@ export default function InformationDeliveryUpdateForm(props) {
                 SendInfoThirdPartyPlatform,
                 SendInfoOther,
                 SenInfoOther_Describe,
+                UserIdToken,
               };
               const result = onChange(modelFields);
               value = result?.SendInfoHL7v2 ?? value;
@@ -881,6 +900,7 @@ export default function InformationDeliveryUpdateForm(props) {
                 SendInfoThirdPartyPlatform,
                 SendInfoOther,
                 SenInfoOther_Describe,
+                UserIdToken,
               };
               const result = onChange(modelFields);
               value = result?.SendInfoMLLP_HTTPS ?? value;
@@ -943,6 +963,7 @@ export default function InformationDeliveryUpdateForm(props) {
                 SendInfoThirdPartyPlatform,
                 SendInfoOther,
                 SenInfoOther_Describe,
+                UserIdToken,
               };
               const result = onChange(modelFields);
               value = result?.SendInfoThirdPartyReferral ?? value;
@@ -1013,6 +1034,7 @@ export default function InformationDeliveryUpdateForm(props) {
                 SendInfoThirdPartyPlatform: value,
                 SendInfoOther,
                 SenInfoOther_Describe,
+                UserIdToken,
               };
               const result = onChange(modelFields);
               value = result?.SendInfoThirdPartyPlatform ?? value;
@@ -1066,6 +1088,7 @@ export default function InformationDeliveryUpdateForm(props) {
                 SendInfoThirdPartyPlatform,
                 SendInfoOther: value,
                 SenInfoOther_Describe,
+                UserIdToken,
               };
               const result = onChange(modelFields);
               value = result?.SendInfoOther ?? value;
@@ -1106,6 +1129,7 @@ export default function InformationDeliveryUpdateForm(props) {
                 SendInfoThirdPartyPlatform,
                 SendInfoOther,
                 SenInfoOther_Describe: value,
+                UserIdToken,
               };
               const result = onChange(modelFields);
               value = result?.SenInfoOther_Describe ?? value;
@@ -1123,6 +1147,47 @@ export default function InformationDeliveryUpdateForm(props) {
           {...getOverrideProps(overrides, "SenInfoOther_Describe")}
         ></TextField>
       </Grid>
+      <TextField
+        label="User id token"
+        isRequired={false}
+        isReadOnly={false}
+        value={UserIdToken}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              RecieveInfoDirectSecureEmail,
+              RecieveInfoDirectEmailAddress,
+              RecieveInfosFTP,
+              RecieveInfoHL7V2,
+              RecieveInfoMLLP_HTTPS,
+              RecieveInfoThirdPartyReferral,
+              RecieveInfoThirdPartyPlatform,
+              RecieveInfoOther,
+              RecieveInfoOther_Describe,
+              SendInfoDirectSecureEmail,
+              SendInfosFTP,
+              SendInfoHL7v2,
+              SendInfoMLLP_HTTPS,
+              SendInfoThirdPartyReferral,
+              SendInfoThirdPartyPlatform,
+              SendInfoOther,
+              SenInfoOther_Describe,
+              UserIdToken: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.UserIdToken ?? value;
+          }
+          if (errors.UserIdToken?.hasError) {
+            runValidationTasks("UserIdToken", value);
+          }
+          setUserIdToken(value);
+        }}
+        onBlur={() => runValidationTasks("UserIdToken", UserIdToken)}
+        errorMessage={errors.UserIdToken?.errorMessage}
+        hasError={errors.UserIdToken?.hasError}
+        {...getOverrideProps(overrides, "UserIdToken")}
+      ></TextField>
       <Flex
         justifyContent="space-between"
         {...getOverrideProps(overrides, "CTAFlex")}

@@ -39,6 +39,7 @@ export declare type InformationDeliveryUpdateFormInputValues = {
     SendInfoThirdPartyPlatform?: string;
     SendInfoOther?: boolean;
     SenInfoOther_Describe?: string;
+    UserIdToken?: string;
 };
 export declare type InformationDeliveryUpdateFormValidationValues = {
     RecieveInfoDirectSecureEmail?: ValidationFunction<boolean>;
@@ -58,6 +59,7 @@ export declare type InformationDeliveryUpdateFormValidationValues = {
     SendInfoThirdPartyPlatform?: ValidationFunction<string>;
     SendInfoOther?: ValidationFunction<boolean>;
     SenInfoOther_Describe?: ValidationFunction<string>;
+    UserIdToken?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type InformationDeliveryUpdateFormOverridesProps = {
@@ -89,6 +91,7 @@ export declare type InformationDeliveryUpdateFormOverridesProps = {
     RowGrid12?: PrimitiveOverrideProps<GridProps>;
     SendInfoOther?: PrimitiveOverrideProps<SwitchFieldProps>;
     SenInfoOther_Describe?: PrimitiveOverrideProps<TextFieldProps>;
+    UserIdToken?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type InformationDeliveryUpdateFormProps = React.PropsWithChildren<{
     overrides?: InformationDeliveryUpdateFormOverridesProps | undefined | null;

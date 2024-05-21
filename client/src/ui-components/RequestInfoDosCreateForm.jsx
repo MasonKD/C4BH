@@ -7,6 +7,7 @@
 /* eslint-disable */
 import * as React from "react";
 import {
+  Autocomplete,
   CheckboxField,
   Flex,
   Grid,
@@ -32,6 +33,7 @@ export default function RequestInfoDosCreateForm(props) {
   const initialValues = {
     RequestRespondDirectSecureEmail: false,
     RequestRespondIHE: false,
+    RequestRespondNationalNetworkDos: undefined,
     RequestRespondFHIR: false,
     RequestRespondFHIRendpoint: "",
     RequestRespondOther: false,
@@ -42,6 +44,10 @@ export default function RequestInfoDosCreateForm(props) {
   const [RequestRespondIHE, setRequestRespondIHE] = React.useState(
     initialValues.RequestRespondIHE
   );
+  const [
+    RequestRespondNationalNetworkDos,
+    setRequestRespondNationalNetworkDos,
+  ] = React.useState(initialValues.RequestRespondNationalNetworkDos);
   const [RequestRespondFHIR, setRequestRespondFHIR] = React.useState(
     initialValues.RequestRespondFHIR
   );
@@ -58,6 +64,9 @@ export default function RequestInfoDosCreateForm(props) {
       initialValues.RequestRespondDirectSecureEmail
     );
     setRequestRespondIHE(initialValues.RequestRespondIHE);
+    setRequestRespondNationalNetworkDos(
+      initialValues.RequestRespondNationalNetworkDos
+    );
     setRequestRespondFHIR(initialValues.RequestRespondFHIR);
     setRequestRespondFHIRendpoint(initialValues.RequestRespondFHIRendpoint);
     setRequestRespondOther(initialValues.RequestRespondOther);
@@ -67,6 +76,7 @@ export default function RequestInfoDosCreateForm(props) {
   const validations = {
     RequestRespondDirectSecureEmail: [],
     RequestRespondIHE: [],
+    RequestRespondNationalNetworkDos: [],
     RequestRespondFHIR: [],
     RequestRespondFHIRendpoint: [],
     RequestRespondOther: [],
@@ -89,6 +99,7 @@ export default function RequestInfoDosCreateForm(props) {
     setErrors((errors) => ({ ...errors, [fieldName]: validationResponse }));
     return validationResponse;
   };
+  React.useEffect(() => {}, []);
   return (
     <Grid
       as="form"
@@ -100,6 +111,7 @@ export default function RequestInfoDosCreateForm(props) {
         let modelFields = {
           RequestRespondDirectSecureEmail,
           RequestRespondIHE,
+          RequestRespondNationalNetworkDos,
           RequestRespondFHIR,
           RequestRespondFHIRendpoint,
           RequestRespondOther,
@@ -158,7 +170,7 @@ export default function RequestInfoDosCreateForm(props) {
       {...rest}
     >
       <Heading
-        children="How are you able to respond to requests for information from other participants? "
+        children="By which methods are you able to respond to requests for information from other participants?"
         {...getOverrideProps(overrides, "SectionalElement0")}
       ></Heading>
       <Text
@@ -177,6 +189,7 @@ export default function RequestInfoDosCreateForm(props) {
             const modelFields = {
               RequestRespondDirectSecureEmail: value,
               RequestRespondIHE,
+              RequestRespondNationalNetworkDos,
               RequestRespondFHIR,
               RequestRespondFHIRendpoint,
               RequestRespondOther,
@@ -200,38 +213,106 @@ export default function RequestInfoDosCreateForm(props) {
         hasError={errors.RequestRespondDirectSecureEmail?.hasError}
         {...getOverrideProps(overrides, "RequestRespondDirectSecureEmail")}
       ></CheckboxField>
-      <CheckboxField
-        label="IHE"
-        name="RequestRespondIHE"
-        value="RequestRespondIHE"
-        isDisabled={false}
-        checked={RequestRespondIHE}
-        onChange={(e) => {
-          let value = e.target.checked;
-          if (onChange) {
-            const modelFields = {
-              RequestRespondDirectSecureEmail,
-              RequestRespondIHE: value,
-              RequestRespondFHIR,
-              RequestRespondFHIRendpoint,
-              RequestRespondOther,
-              RequestRespondOtherDescribe,
-            };
-            const result = onChange(modelFields);
-            value = result?.RequestRespondIHE ?? value;
+      <Grid
+        columnGap="inherit"
+        rowGap="inherit"
+        templateColumns="repeat(2, auto)"
+        {...getOverrideProps(overrides, "RowGrid3")}
+      >
+        <CheckboxField
+          label="IHE (Provide National network):"
+          name="RequestRespondIHE"
+          value="RequestRespondIHE"
+          isDisabled={false}
+          checked={RequestRespondIHE}
+          onChange={(e) => {
+            let value = e.target.checked;
+            if (onChange) {
+              const modelFields = {
+                RequestRespondDirectSecureEmail,
+                RequestRespondIHE: value,
+                RequestRespondNationalNetworkDos,
+                RequestRespondFHIR,
+                RequestRespondFHIRendpoint,
+                RequestRespondOther,
+                RequestRespondOtherDescribe,
+              };
+              const result = onChange(modelFields);
+              value = result?.RequestRespondIHE ?? value;
+            }
+            if (errors.RequestRespondIHE?.hasError) {
+              runValidationTasks("RequestRespondIHE", value);
+            }
+            setRequestRespondIHE(value);
+          }}
+          onBlur={() =>
+            runValidationTasks("RequestRespondIHE", RequestRespondIHE)
           }
-          if (errors.RequestRespondIHE?.hasError) {
-            runValidationTasks("RequestRespondIHE", value);
+          errorMessage={errors.RequestRespondIHE?.errorMessage}
+          hasError={errors.RequestRespondIHE?.hasError}
+          {...getOverrideProps(overrides, "RequestRespondIHE")}
+        ></CheckboxField>
+        <Autocomplete
+          label=" "
+          isRequired={false}
+          isReadOnly={false}
+          options={[
+            {
+              id: "Direct Trust",
+              label: "Direct Trust",
+            },
+            {
+              id: "CommonWell Health Alliance",
+              label: "CommonWell Health Alliance",
+            },
+            {
+              id: "eHealth Exchange",
+              label: "eHealth Exchange",
+            },
+            {
+              id: "Carequality",
+              label: "Carequality",
+            },
+          ]}
+          onSelect={({ id, label }) => {
+            setRequestRespondNationalNetworkDos(id);
+            runValidationTasks("RequestRespondNationalNetworkDos", id);
+          }}
+          onClear={() => {
+            setRequestRespondNationalNetworkDos("");
+          }}
+          onChange={(e) => {
+            let { value } = e.target;
+            if (onChange) {
+              const modelFields = {
+                RequestRespondDirectSecureEmail,
+                RequestRespondIHE,
+                RequestRespondNationalNetworkDos: value,
+                RequestRespondFHIR,
+                RequestRespondFHIRendpoint,
+                RequestRespondOther,
+                RequestRespondOtherDescribe,
+              };
+              const result = onChange(modelFields);
+              value = result?.RequestRespondNationalNetworkDos ?? value;
+            }
+            if (errors.RequestRespondNationalNetworkDos?.hasError) {
+              runValidationTasks("RequestRespondNationalNetworkDos", value);
+            }
+            setRequestRespondNationalNetworkDos(value);
+          }}
+          onBlur={() =>
+            runValidationTasks(
+              "RequestRespondNationalNetworkDos",
+              RequestRespondNationalNetworkDos
+            )
           }
-          setRequestRespondIHE(value);
-        }}
-        onBlur={() =>
-          runValidationTasks("RequestRespondIHE", RequestRespondIHE)
-        }
-        errorMessage={errors.RequestRespondIHE?.errorMessage}
-        hasError={errors.RequestRespondIHE?.hasError}
-        {...getOverrideProps(overrides, "RequestRespondIHE")}
-      ></CheckboxField>
+          errorMessage={errors.RequestRespondNationalNetworkDos?.errorMessage}
+          hasError={errors.RequestRespondNationalNetworkDos?.hasError}
+          labelHidden={false}
+          {...getOverrideProps(overrides, "RequestRespondNationalNetworkDos")}
+        ></Autocomplete>
+      </Grid>
       <Grid
         columnGap="inherit"
         rowGap="inherit"
@@ -250,6 +331,7 @@ export default function RequestInfoDosCreateForm(props) {
               const modelFields = {
                 RequestRespondDirectSecureEmail,
                 RequestRespondIHE,
+                RequestRespondNationalNetworkDos,
                 RequestRespondFHIR: value,
                 RequestRespondFHIRendpoint,
                 RequestRespondOther,
@@ -281,6 +363,7 @@ export default function RequestInfoDosCreateForm(props) {
               const modelFields = {
                 RequestRespondDirectSecureEmail,
                 RequestRespondIHE,
+                RequestRespondNationalNetworkDos,
                 RequestRespondFHIR,
                 RequestRespondFHIRendpoint: value,
                 RequestRespondOther,
@@ -323,6 +406,7 @@ export default function RequestInfoDosCreateForm(props) {
               const modelFields = {
                 RequestRespondDirectSecureEmail,
                 RequestRespondIHE,
+                RequestRespondNationalNetworkDos,
                 RequestRespondFHIR,
                 RequestRespondFHIRendpoint,
                 RequestRespondOther: value,
@@ -354,6 +438,7 @@ export default function RequestInfoDosCreateForm(props) {
               const modelFields = {
                 RequestRespondDirectSecureEmail,
                 RequestRespondIHE,
+                RequestRespondNationalNetworkDos,
                 RequestRespondFHIR,
                 RequestRespondFHIRendpoint,
                 RequestRespondOther,

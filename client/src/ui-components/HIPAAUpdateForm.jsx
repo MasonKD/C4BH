@@ -6,7 +6,13 @@
 
 /* eslint-disable */
 import * as React from "react";
-import { CheckboxField, Flex, Grid, Text } from "@aws-amplify/ui-react";
+import {
+  CheckboxField,
+  Flex,
+  Grid,
+  Text,
+  TextField,
+} from "@aws-amplify/ui-react";
 import { fetchByPath, getOverrideProps, validateField } from "./utils";
 import { generateClient } from "aws-amplify/api";
 import { getHIPAA } from "../graphql/queries";
@@ -29,6 +35,7 @@ export default function HIPAAUpdateForm(props) {
     HybridHIPAA: false,
     AssociateHIPAA: false,
     NotCoveredHIPAA: false,
+    UserIdToken: "",
   };
   const [CoveredHIPAA, setCoveredHIPAA] = React.useState(
     initialValues.CoveredHIPAA
@@ -42,6 +49,9 @@ export default function HIPAAUpdateForm(props) {
   const [NotCoveredHIPAA, setNotCoveredHIPAA] = React.useState(
     initialValues.NotCoveredHIPAA
   );
+  const [UserIdToken, setUserIdToken] = React.useState(
+    initialValues.UserIdToken
+  );
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     const cleanValues = hIPAARecord
@@ -51,6 +61,7 @@ export default function HIPAAUpdateForm(props) {
     setHybridHIPAA(cleanValues.HybridHIPAA);
     setAssociateHIPAA(cleanValues.AssociateHIPAA);
     setNotCoveredHIPAA(cleanValues.NotCoveredHIPAA);
+    setUserIdToken(cleanValues.UserIdToken);
     setErrors({});
   };
   const [hIPAARecord, setHIPAARecord] = React.useState(hIPAAModelProp);
@@ -74,6 +85,7 @@ export default function HIPAAUpdateForm(props) {
     HybridHIPAA: [],
     AssociateHIPAA: [],
     NotCoveredHIPAA: [],
+    UserIdToken: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -105,6 +117,7 @@ export default function HIPAAUpdateForm(props) {
           HybridHIPAA: HybridHIPAA ?? null,
           AssociateHIPAA: AssociateHIPAA ?? null,
           NotCoveredHIPAA: NotCoveredHIPAA ?? null,
+          UserIdToken: UserIdToken ?? null,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -175,6 +188,7 @@ export default function HIPAAUpdateForm(props) {
               HybridHIPAA,
               AssociateHIPAA,
               NotCoveredHIPAA,
+              UserIdToken,
             };
             const result = onChange(modelFields);
             value = result?.CoveredHIPAA ?? value;
@@ -204,6 +218,7 @@ export default function HIPAAUpdateForm(props) {
               HybridHIPAA: value,
               AssociateHIPAA,
               NotCoveredHIPAA,
+              UserIdToken,
             };
             const result = onChange(modelFields);
             value = result?.HybridHIPAA ?? value;
@@ -233,6 +248,7 @@ export default function HIPAAUpdateForm(props) {
               HybridHIPAA,
               AssociateHIPAA: value,
               NotCoveredHIPAA,
+              UserIdToken,
             };
             const result = onChange(modelFields);
             value = result?.AssociateHIPAA ?? value;
@@ -262,6 +278,7 @@ export default function HIPAAUpdateForm(props) {
               HybridHIPAA,
               AssociateHIPAA,
               NotCoveredHIPAA: value,
+              UserIdToken,
             };
             const result = onChange(modelFields);
             value = result?.NotCoveredHIPAA ?? value;
@@ -276,6 +293,34 @@ export default function HIPAAUpdateForm(props) {
         hasError={errors.NotCoveredHIPAA?.hasError}
         {...getOverrideProps(overrides, "NotCoveredHIPAA")}
       ></CheckboxField>
+      <TextField
+        label="User id token"
+        isRequired={false}
+        isReadOnly={false}
+        value={UserIdToken}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              CoveredHIPAA,
+              HybridHIPAA,
+              AssociateHIPAA,
+              NotCoveredHIPAA,
+              UserIdToken: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.UserIdToken ?? value;
+          }
+          if (errors.UserIdToken?.hasError) {
+            runValidationTasks("UserIdToken", value);
+          }
+          setUserIdToken(value);
+        }}
+        onBlur={() => runValidationTasks("UserIdToken", UserIdToken)}
+        errorMessage={errors.UserIdToken?.errorMessage}
+        hasError={errors.UserIdToken?.hasError}
+        {...getOverrideProps(overrides, "UserIdToken")}
+      ></TextField>
       <Flex
         justifyContent="space-between"
         {...getOverrideProps(overrides, "CTAFlex")}

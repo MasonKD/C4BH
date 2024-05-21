@@ -35,13 +35,9 @@
     ],
     "userpoolClientReadAttributes": [
       "email",
-      "locale",
       "name",
       "picture",
-      "profile",
-      "updated_at",
-      "email_verified",
-      "phone_number_verified"
+      "updated_at"
     ],
     "userpoolClientLambdaRole": "C4BHFo59c27be7_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": true,

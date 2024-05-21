@@ -5,7 +5,7 @@
  **************************************************************************/
 
 import * as React from "react";
-import { AutocompleteProps, GridProps, HeadingProps, TextProps } from "@aws-amplify/ui-react";
+import { AutocompleteProps, GridProps, HeadingProps } from "@aws-amplify/ui-react";
 export declare type EscapeHatchProps = {
     [elementHierarchy: string]: Record<string, unknown>;
 } | null;
@@ -22,17 +22,19 @@ export declare type ValidationResponse = {
 };
 export declare type ValidationFunction<T> = (value: T, validationResponse: ValidationResponse) => ValidationResponse | Promise<ValidationResponse>;
 export declare type TechIntermediariesCreateFormInputValues = {
-    HIE_or_Inter?: string;
+    IntIntegrationEngineUsed?: string;
+    IntClinicalDataRepoUsed?: string;
 };
 export declare type TechIntermediariesCreateFormValidationValues = {
-    HIE_or_Inter?: ValidationFunction<string>;
+    IntIntegrationEngineUsed?: ValidationFunction<string>;
+    IntClinicalDataRepoUsed?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type TechIntermediariesCreateFormOverridesProps = {
     TechIntermediariesCreateFormGrid?: PrimitiveOverrideProps<GridProps>;
     SectionalElement0?: PrimitiveOverrideProps<HeadingProps>;
-    SectionalElement1?: PrimitiveOverrideProps<TextProps>;
-    HIE_or_Inter?: PrimitiveOverrideProps<AutocompleteProps>;
+    IntIntegrationEngineUsed?: PrimitiveOverrideProps<AutocompleteProps>;
+    IntClinicalDataRepoUsed?: PrimitiveOverrideProps<AutocompleteProps>;
 } & EscapeHatchProps;
 export declare type TechIntermediariesCreateFormProps = React.PropsWithChildren<{
     overrides?: TechIntermediariesCreateFormOverridesProps | undefined | null;

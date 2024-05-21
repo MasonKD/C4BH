@@ -240,7 +240,7 @@ export default function InformationDeliveryCreateForm(props) {
       {...rest}
     >
       <Heading
-        children="How are you able to receive and respond to inbound orders and/or referral requests?"
+        children="By which methods are you able to receive and respond to inbound orders and/or referral requests?"
         {...getOverrideProps(overrides, "SectionalElement0")}
       ></Heading>
       <Text
@@ -478,14 +478,19 @@ export default function InformationDeliveryCreateForm(props) {
           {...getOverrideProps(overrides, "RecieveInfoMLLP_HTTPS")}
         >
           <option
-            children="MLLP/VPN"
-            value="MLLP/VPN"
+            children="MLLP"
+            value="MLLP"
             {...getOverrideProps(overrides, "RecieveInfoMLLP_HTTPSoption0")}
           ></option>
           <option
             children="HTTPS"
             value="HTTPS"
             {...getOverrideProps(overrides, "RecieveInfoMLLP_HTTPSoption1")}
+          ></option>
+          <option
+            children="HTTPS and MLLP"
+            value="HTTPS and MLLP"
+            {...getOverrideProps(overrides, "RecieveInfoMLLP_HTTPSoption2")}
           ></option>
         </SelectField>
       </Grid>
@@ -712,7 +717,7 @@ export default function InformationDeliveryCreateForm(props) {
         {...getOverrideProps(overrides, "SectionalElement2")}
       ></Divider>
       <Heading
-        children="How are you able to send referrals and/or orders outbound?"
+        children="By which methods are you able to send referrals and/or orders outbound?"
         {...getOverrideProps(overrides, "SectionalElement3")}
       ></Heading>
       <Text
@@ -904,6 +909,11 @@ export default function InformationDeliveryCreateForm(props) {
             children="HTTPS"
             value="HTTPS"
             {...getOverrideProps(overrides, "SendInfoMLLP_HTTPSoption1")}
+          ></option>
+          <option
+            children="MLLP and HTTPS"
+            value="MLLP and HTTPS"
+            {...getOverrideProps(overrides, "SendInfoMLLP_HTTPSoption2")}
           ></option>
         </SelectField>
       </Grid>

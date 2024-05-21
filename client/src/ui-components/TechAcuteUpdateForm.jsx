@@ -6,7 +6,7 @@
 
 /* eslint-disable */
 import * as React from "react";
-import { Autocomplete, Flex, Grid } from "@aws-amplify/ui-react";
+import { Autocomplete, Flex, Grid, TextField } from "@aws-amplify/ui-react";
 import { fetchByPath, getOverrideProps, validateField } from "./utils";
 import { generateClient } from "aws-amplify/api";
 import { getTechAcute } from "../graphql/queries";
@@ -26,9 +26,13 @@ export default function TechAcuteUpdateForm(props) {
   } = props;
   const initialValues = {
     EHR_Vendors: undefined,
+    UserIdToken: "",
   };
   const [EHR_Vendors, setEHR_Vendors] = React.useState(
     initialValues.EHR_Vendors
+  );
+  const [UserIdToken, setUserIdToken] = React.useState(
+    initialValues.UserIdToken
   );
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
@@ -36,6 +40,7 @@ export default function TechAcuteUpdateForm(props) {
       ? { ...initialValues, ...techAcuteRecord }
       : initialValues;
     setEHR_Vendors(cleanValues.EHR_Vendors);
+    setUserIdToken(cleanValues.UserIdToken);
     setErrors({});
   };
   const [techAcuteRecord, setTechAcuteRecord] =
@@ -57,6 +62,7 @@ export default function TechAcuteUpdateForm(props) {
   React.useEffect(resetStateValues, [techAcuteRecord]);
   const validations = {
     EHR_Vendors: [],
+    UserIdToken: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -86,6 +92,7 @@ export default function TechAcuteUpdateForm(props) {
         event.preventDefault();
         let modelFields = {
           EHR_Vendors: EHR_Vendors ?? null,
+          UserIdToken: UserIdToken ?? null,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -189,6 +196,7 @@ export default function TechAcuteUpdateForm(props) {
           if (onChange) {
             const modelFields = {
               EHR_Vendors: value,
+              UserIdToken,
             };
             const result = onChange(modelFields);
             value = result?.EHR_Vendors ?? value;
@@ -204,6 +212,31 @@ export default function TechAcuteUpdateForm(props) {
         labelHidden={false}
         {...getOverrideProps(overrides, "EHR_Vendors")}
       ></Autocomplete>
+      <TextField
+        label="User id token"
+        isRequired={false}
+        isReadOnly={false}
+        value={UserIdToken}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              EHR_Vendors,
+              UserIdToken: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.UserIdToken ?? value;
+          }
+          if (errors.UserIdToken?.hasError) {
+            runValidationTasks("UserIdToken", value);
+          }
+          setUserIdToken(value);
+        }}
+        onBlur={() => runValidationTasks("UserIdToken", UserIdToken)}
+        errorMessage={errors.UserIdToken?.errorMessage}
+        hasError={errors.UserIdToken?.hasError}
+        {...getOverrideProps(overrides, "UserIdToken")}
+      ></TextField>
       <Flex
         justifyContent="space-between"
         {...getOverrideProps(overrides, "CTAFlex")}

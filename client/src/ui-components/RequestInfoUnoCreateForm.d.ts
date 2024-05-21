@@ -5,7 +5,7 @@
  **************************************************************************/
 
 import * as React from "react";
-import { CheckboxFieldProps, GridProps, HeadingProps, TextFieldProps, TextProps } from "@aws-amplify/ui-react";
+import { AutocompleteProps, CheckboxFieldProps, GridProps, HeadingProps, TextFieldProps, TextProps } from "@aws-amplify/ui-react";
 export declare type EscapeHatchProps = {
     [elementHierarchy: string]: Record<string, unknown>;
 } | null;
@@ -25,6 +25,7 @@ export declare type RequestInfoUnoCreateFormInputValues = {
     RequestRecieveDirectSecureEmail?: boolean;
     RequestDirectEmailAddress?: string;
     RequestIHE?: boolean;
+    RequestRespondNationalNetworUno?: string;
     RequestFHIR?: boolean;
     RequestOther?: boolean;
     RequestOtherDescribe?: string;
@@ -33,6 +34,7 @@ export declare type RequestInfoUnoCreateFormValidationValues = {
     RequestRecieveDirectSecureEmail?: ValidationFunction<boolean>;
     RequestDirectEmailAddress?: ValidationFunction<string>;
     RequestIHE?: ValidationFunction<boolean>;
+    RequestRespondNationalNetworUno?: ValidationFunction<string>;
     RequestFHIR?: ValidationFunction<boolean>;
     RequestOther?: ValidationFunction<boolean>;
     RequestOtherDescribe?: ValidationFunction<string>;
@@ -45,7 +47,9 @@ export declare type RequestInfoUnoCreateFormOverridesProps = {
     RowGrid2?: PrimitiveOverrideProps<GridProps>;
     RequestRecieveDirectSecureEmail?: PrimitiveOverrideProps<CheckboxFieldProps>;
     RequestDirectEmailAddress?: PrimitiveOverrideProps<TextFieldProps>;
+    RowGrid3?: PrimitiveOverrideProps<GridProps>;
     RequestIHE?: PrimitiveOverrideProps<CheckboxFieldProps>;
+    RequestRespondNationalNetworUno?: PrimitiveOverrideProps<AutocompleteProps>;
     RequestFHIR?: PrimitiveOverrideProps<CheckboxFieldProps>;
     RowGrid5?: PrimitiveOverrideProps<GridProps>;
     RequestOther?: PrimitiveOverrideProps<CheckboxFieldProps>;

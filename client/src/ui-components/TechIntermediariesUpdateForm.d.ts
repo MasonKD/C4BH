@@ -23,14 +23,23 @@ export declare type ValidationResponse = {
 export declare type ValidationFunction<T> = (value: T, validationResponse: ValidationResponse) => ValidationResponse | Promise<ValidationResponse>;
 export declare type TechIntermediariesUpdateFormInputValues = {
     HIE_or_Inter?: string;
+    IntIntegrationEngineUsed?: string;
+    IntClinicalDataRepoUsed?: string;
+    UserIdToken?: string;
 };
 export declare type TechIntermediariesUpdateFormValidationValues = {
     HIE_or_Inter?: ValidationFunction<string>;
+    IntIntegrationEngineUsed?: ValidationFunction<string>;
+    IntClinicalDataRepoUsed?: ValidationFunction<string>;
+    UserIdToken?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type TechIntermediariesUpdateFormOverridesProps = {
     TechIntermediariesUpdateFormGrid?: PrimitiveOverrideProps<GridProps>;
     HIE_or_Inter?: PrimitiveOverrideProps<TextFieldProps>;
+    IntIntegrationEngineUsed?: PrimitiveOverrideProps<TextFieldProps>;
+    IntClinicalDataRepoUsed?: PrimitiveOverrideProps<TextFieldProps>;
+    UserIdToken?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type TechIntermediariesUpdateFormProps = React.PropsWithChildren<{
     overrides?: TechIntermediariesUpdateFormOverridesProps | undefined | null;

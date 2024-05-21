@@ -6,7 +6,7 @@
 
 /* eslint-disable */
 import * as React from "react";
-import { Autocomplete, Flex, Grid, Heading, Text } from "@aws-amplify/ui-react";
+import { Autocomplete, Flex, Grid, Heading } from "@aws-amplify/ui-react";
 import { fetchByPath, getOverrideProps, validateField } from "./utils";
 import { generateClient } from "aws-amplify/api";
 import { createTechIntermediaries } from "../graphql/mutations";
@@ -23,18 +23,23 @@ export default function TechIntermediariesCreateForm(props) {
     ...rest
   } = props;
   const initialValues = {
-    HIE_or_Inter: undefined,
+    IntIntegrationEngineUsed: undefined,
+    IntClinicalDataRepoUsed: undefined,
   };
-  const [HIE_or_Inter, setHIE_or_Inter] = React.useState(
-    initialValues.HIE_or_Inter
+  const [IntIntegrationEngineUsed, setIntIntegrationEngineUsed] =
+    React.useState(initialValues.IntIntegrationEngineUsed);
+  const [IntClinicalDataRepoUsed, setIntClinicalDataRepoUsed] = React.useState(
+    initialValues.IntClinicalDataRepoUsed
   );
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
-    setHIE_or_Inter(initialValues.HIE_or_Inter);
+    setIntIntegrationEngineUsed(initialValues.IntIntegrationEngineUsed);
+    setIntClinicalDataRepoUsed(initialValues.IntClinicalDataRepoUsed);
     setErrors({});
   };
   const validations = {
-    HIE_or_Inter: [],
+    IntIntegrationEngineUsed: [{ type: "Required" }],
+    IntClinicalDataRepoUsed: [{ type: "Required" }],
   };
   const runValidationTasks = async (
     fieldName,
@@ -63,7 +68,8 @@ export default function TechIntermediariesCreateForm(props) {
       onSubmit={async (event) => {
         event.preventDefault();
         let modelFields = {
-          HIE_or_Inter,
+          IntIntegrationEngineUsed,
+          IntClinicalDataRepoUsed,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -118,16 +124,12 @@ export default function TechIntermediariesCreateForm(props) {
       {...rest}
     >
       <Heading
-        children="What Health Information Exchange or Interoperability platform do you use?"
+        children="What Integration Engine and Clinical Data Repositoy do you use?"
         {...getOverrideProps(overrides, "SectionalElement0")}
       ></Heading>
-      <Text
-        children="(if not listed, please type it out)"
-        {...getOverrideProps(overrides, "SectionalElement1")}
-      ></Text>
       <Autocomplete
-        label=" "
-        isRequired={false}
+        label="Integration Engine used (if not listed, please type it out)"
+        isRequired={true}
         isReadOnly={false}
         options={[
           {
@@ -139,44 +141,82 @@ export default function TechIntermediariesCreateForm(props) {
             label: "Mirth/NextGen",
           },
           {
-            id: "Smile",
-            label: "Smile",
-          },
-          {
             id: "Salesforce",
             label: "Salesforce",
           },
-          {
-            id: "Other (Please type out)",
-            label: "Other (Please type out)",
-          },
         ]}
         onSelect={({ id, label }) => {
-          setHIE_or_Inter(id);
-          runValidationTasks("HIE_or_Inter", id);
+          setIntIntegrationEngineUsed(id);
+          runValidationTasks("IntIntegrationEngineUsed", id);
         }}
         onClear={() => {
-          setHIE_or_Inter("");
+          setIntIntegrationEngineUsed("");
         }}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              HIE_or_Inter: value,
+              IntIntegrationEngineUsed: value,
+              IntClinicalDataRepoUsed,
             };
             const result = onChange(modelFields);
-            value = result?.HIE_or_Inter ?? value;
+            value = result?.IntIntegrationEngineUsed ?? value;
           }
-          if (errors.HIE_or_Inter?.hasError) {
-            runValidationTasks("HIE_or_Inter", value);
+          if (errors.IntIntegrationEngineUsed?.hasError) {
+            runValidationTasks("IntIntegrationEngineUsed", value);
           }
-          setHIE_or_Inter(value);
+          setIntIntegrationEngineUsed(value);
         }}
-        onBlur={() => runValidationTasks("HIE_or_Inter", HIE_or_Inter)}
-        errorMessage={errors.HIE_or_Inter?.errorMessage}
-        hasError={errors.HIE_or_Inter?.hasError}
+        onBlur={() =>
+          runValidationTasks(
+            "IntIntegrationEngineUsed",
+            IntIntegrationEngineUsed
+          )
+        }
+        errorMessage={errors.IntIntegrationEngineUsed?.errorMessage}
+        hasError={errors.IntIntegrationEngineUsed?.hasError}
         labelHidden={false}
-        {...getOverrideProps(overrides, "HIE_or_Inter")}
+        {...getOverrideProps(overrides, "IntIntegrationEngineUsed")}
+      ></Autocomplete>
+      <Autocomplete
+        label="Clinical Data Repository used (if not listed, please type it out)"
+        isRequired={true}
+        isReadOnly={false}
+        options={[
+          {
+            id: "Smile",
+            label: "Smile",
+          },
+        ]}
+        onSelect={({ id, label }) => {
+          setIntClinicalDataRepoUsed(id);
+          runValidationTasks("IntClinicalDataRepoUsed", id);
+        }}
+        onClear={() => {
+          setIntClinicalDataRepoUsed("");
+        }}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              IntIntegrationEngineUsed,
+              IntClinicalDataRepoUsed: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.IntClinicalDataRepoUsed ?? value;
+          }
+          if (errors.IntClinicalDataRepoUsed?.hasError) {
+            runValidationTasks("IntClinicalDataRepoUsed", value);
+          }
+          setIntClinicalDataRepoUsed(value);
+        }}
+        onBlur={() =>
+          runValidationTasks("IntClinicalDataRepoUsed", IntClinicalDataRepoUsed)
+        }
+        errorMessage={errors.IntClinicalDataRepoUsed?.errorMessage}
+        hasError={errors.IntClinicalDataRepoUsed?.hasError}
+        labelHidden={false}
+        {...getOverrideProps(overrides, "IntClinicalDataRepoUsed")}
       ></Autocomplete>
       <Flex
         justifyContent="space-between"

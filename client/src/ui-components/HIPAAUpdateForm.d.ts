@@ -5,7 +5,7 @@
  **************************************************************************/
 
 import * as React from "react";
-import { CheckboxFieldProps, GridProps, TextProps } from "@aws-amplify/ui-react";
+import { CheckboxFieldProps, GridProps, TextFieldProps, TextProps } from "@aws-amplify/ui-react";
 export declare type EscapeHatchProps = {
     [elementHierarchy: string]: Record<string, unknown>;
 } | null;
@@ -26,12 +26,14 @@ export declare type HIPAAUpdateFormInputValues = {
     HybridHIPAA?: boolean;
     AssociateHIPAA?: boolean;
     NotCoveredHIPAA?: boolean;
+    UserIdToken?: string;
 };
 export declare type HIPAAUpdateFormValidationValues = {
     CoveredHIPAA?: ValidationFunction<boolean>;
     HybridHIPAA?: ValidationFunction<boolean>;
     AssociateHIPAA?: ValidationFunction<boolean>;
     NotCoveredHIPAA?: ValidationFunction<boolean>;
+    UserIdToken?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type HIPAAUpdateFormOverridesProps = {
@@ -41,6 +43,7 @@ export declare type HIPAAUpdateFormOverridesProps = {
     HybridHIPAA?: PrimitiveOverrideProps<CheckboxFieldProps>;
     AssociateHIPAA?: PrimitiveOverrideProps<CheckboxFieldProps>;
     NotCoveredHIPAA?: PrimitiveOverrideProps<CheckboxFieldProps>;
+    UserIdToken?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type HIPAAUpdateFormProps = React.PropsWithChildren<{
     overrides?: HIPAAUpdateFormOverridesProps | undefined | null;
