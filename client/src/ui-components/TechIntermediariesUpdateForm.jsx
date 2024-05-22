@@ -26,9 +26,20 @@ export default function TechIntermediariesUpdateForm(props) {
   } = props;
   const initialValues = {
     HIE_or_Inter: "",
+    IntIntegrationEngineUsed: "",
+    IntClinicalDataRepoUsed: "",
+    UserIdToken: "",
   };
   const [HIE_or_Inter, setHIE_or_Inter] = React.useState(
     initialValues.HIE_or_Inter
+  );
+  const [IntIntegrationEngineUsed, setIntIntegrationEngineUsed] =
+    React.useState(initialValues.IntIntegrationEngineUsed);
+  const [IntClinicalDataRepoUsed, setIntClinicalDataRepoUsed] = React.useState(
+    initialValues.IntClinicalDataRepoUsed
+  );
+  const [UserIdToken, setUserIdToken] = React.useState(
+    initialValues.UserIdToken
   );
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
@@ -36,6 +47,9 @@ export default function TechIntermediariesUpdateForm(props) {
       ? { ...initialValues, ...techIntermediariesRecord }
       : initialValues;
     setHIE_or_Inter(cleanValues.HIE_or_Inter);
+    setIntIntegrationEngineUsed(cleanValues.IntIntegrationEngineUsed);
+    setIntClinicalDataRepoUsed(cleanValues.IntClinicalDataRepoUsed);
+    setUserIdToken(cleanValues.UserIdToken);
     setErrors({});
   };
   const [techIntermediariesRecord, setTechIntermediariesRecord] =
@@ -57,6 +71,9 @@ export default function TechIntermediariesUpdateForm(props) {
   React.useEffect(resetStateValues, [techIntermediariesRecord]);
   const validations = {
     HIE_or_Inter: [],
+    IntIntegrationEngineUsed: [],
+    IntClinicalDataRepoUsed: [],
+    UserIdToken: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -85,6 +102,9 @@ export default function TechIntermediariesUpdateForm(props) {
         event.preventDefault();
         let modelFields = {
           HIE_or_Inter: HIE_or_Inter ?? null,
+          IntIntegrationEngineUsed: IntIntegrationEngineUsed ?? null,
+          IntClinicalDataRepoUsed: IntClinicalDataRepoUsed ?? null,
+          UserIdToken: UserIdToken ?? null,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -114,12 +134,19 @@ export default function TechIntermediariesUpdateForm(props) {
               modelFields[key] = null;
             }
           });
+          const modelFieldsToSave = {
+            IntIntegrationEngineUsed:
+              modelFields.IntIntegrationEngineUsed ?? null,
+            IntClinicalDataRepoUsed:
+              modelFields.IntClinicalDataRepoUsed ?? null,
+            UserIdToken: modelFields.UserIdToken ?? null,
+          };
           await client.graphql({
             query: updateTechIntermediaries.replaceAll("__typename", ""),
             variables: {
               input: {
                 id: techIntermediariesRecord.id,
-                ...modelFields,
+                ...modelFieldsToSave,
               },
             },
           });
@@ -138,14 +165,15 @@ export default function TechIntermediariesUpdateForm(props) {
     >
       <TextField
         label="What is the Health Information Exchange or Interoperability platform you use."
-        isRequired={false}
-        isReadOnly={false}
         value={HIE_or_Inter}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
               HIE_or_Inter: value,
+              IntIntegrationEngineUsed,
+              IntClinicalDataRepoUsed,
+              UserIdToken,
             };
             const result = onChange(modelFields);
             value = result?.HIE_or_Inter ?? value;
@@ -159,6 +187,94 @@ export default function TechIntermediariesUpdateForm(props) {
         errorMessage={errors.HIE_or_Inter?.errorMessage}
         hasError={errors.HIE_or_Inter?.hasError}
         {...getOverrideProps(overrides, "HIE_or_Inter")}
+      ></TextField>
+      <TextField
+        label="Int integration engine used"
+        isRequired={false}
+        isReadOnly={false}
+        value={IntIntegrationEngineUsed}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              HIE_or_Inter,
+              IntIntegrationEngineUsed: value,
+              IntClinicalDataRepoUsed,
+              UserIdToken,
+            };
+            const result = onChange(modelFields);
+            value = result?.IntIntegrationEngineUsed ?? value;
+          }
+          if (errors.IntIntegrationEngineUsed?.hasError) {
+            runValidationTasks("IntIntegrationEngineUsed", value);
+          }
+          setIntIntegrationEngineUsed(value);
+        }}
+        onBlur={() =>
+          runValidationTasks(
+            "IntIntegrationEngineUsed",
+            IntIntegrationEngineUsed
+          )
+        }
+        errorMessage={errors.IntIntegrationEngineUsed?.errorMessage}
+        hasError={errors.IntIntegrationEngineUsed?.hasError}
+        {...getOverrideProps(overrides, "IntIntegrationEngineUsed")}
+      ></TextField>
+      <TextField
+        label="Int clinical data repo used"
+        isRequired={false}
+        isReadOnly={false}
+        value={IntClinicalDataRepoUsed}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              HIE_or_Inter,
+              IntIntegrationEngineUsed,
+              IntClinicalDataRepoUsed: value,
+              UserIdToken,
+            };
+            const result = onChange(modelFields);
+            value = result?.IntClinicalDataRepoUsed ?? value;
+          }
+          if (errors.IntClinicalDataRepoUsed?.hasError) {
+            runValidationTasks("IntClinicalDataRepoUsed", value);
+          }
+          setIntClinicalDataRepoUsed(value);
+        }}
+        onBlur={() =>
+          runValidationTasks("IntClinicalDataRepoUsed", IntClinicalDataRepoUsed)
+        }
+        errorMessage={errors.IntClinicalDataRepoUsed?.errorMessage}
+        hasError={errors.IntClinicalDataRepoUsed?.hasError}
+        {...getOverrideProps(overrides, "IntClinicalDataRepoUsed")}
+      ></TextField>
+      <TextField
+        label="User id token"
+        isRequired={false}
+        isReadOnly={false}
+        value={UserIdToken}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              HIE_or_Inter,
+              IntIntegrationEngineUsed,
+              IntClinicalDataRepoUsed,
+              UserIdToken: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.UserIdToken ?? value;
+          }
+          if (errors.UserIdToken?.hasError) {
+            runValidationTasks("UserIdToken", value);
+          }
+          setUserIdToken(value);
+        }}
+        onBlur={() => runValidationTasks("UserIdToken", UserIdToken)}
+        errorMessage={errors.UserIdToken?.errorMessage}
+        hasError={errors.UserIdToken?.hasError}
+        {...getOverrideProps(overrides, "UserIdToken")}
       ></TextField>
       <Flex
         justifyContent="space-between"

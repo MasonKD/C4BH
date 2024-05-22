@@ -23,9 +23,11 @@ export declare type ValidationResponse = {
 export declare type ValidationFunction<T> = (value: T, validationResponse: ValidationResponse) => ValidationResponse | Promise<ValidationResponse>;
 export declare type TechCBOCreateFormInputValues = {
     Customer_Management_System?: string;
+    CBOCounties?: string[];
 };
 export declare type TechCBOCreateFormValidationValues = {
     Customer_Management_System?: ValidationFunction<string>;
+    CBOCounties?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type TechCBOCreateFormOverridesProps = {
@@ -33,6 +35,7 @@ export declare type TechCBOCreateFormOverridesProps = {
     SectionalElement0?: PrimitiveOverrideProps<HeadingProps>;
     SectionalElement1?: PrimitiveOverrideProps<TextProps>;
     Customer_Management_System?: PrimitiveOverrideProps<TextFieldProps>;
+    CBOCounties?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type TechCBOCreateFormProps = React.PropsWithChildren<{
     overrides?: TechCBOCreateFormOverridesProps | undefined | null;

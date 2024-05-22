@@ -39,6 +39,7 @@ export declare type NotificationsADTUpdateFormInputValues = {
     SendADTPortal?: boolean;
     SendADTOther?: boolean;
     SendADTOtherDescribe?: string;
+    UserIdToken?: string;
 };
 export declare type NotificationsADTUpdateFormValidationValues = {
     ReceiveADTDirectSecureEmail?: ValidationFunction<boolean>;
@@ -58,6 +59,7 @@ export declare type NotificationsADTUpdateFormValidationValues = {
     SendADTPortal?: ValidationFunction<boolean>;
     SendADTOther?: ValidationFunction<boolean>;
     SendADTOtherDescribe?: ValidationFunction<string>;
+    UserIdToken?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type NotificationsADTUpdateFormOverridesProps = {
@@ -86,6 +88,7 @@ export declare type NotificationsADTUpdateFormOverridesProps = {
     RowGrid15?: PrimitiveOverrideProps<GridProps>;
     SendADTOther?: PrimitiveOverrideProps<CheckboxFieldProps>;
     SendADTOtherDescribe?: PrimitiveOverrideProps<TextFieldProps>;
+    UserIdToken?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type NotificationsADTUpdateFormProps = React.PropsWithChildren<{
     overrides?: NotificationsADTUpdateFormOverridesProps | undefined | null;

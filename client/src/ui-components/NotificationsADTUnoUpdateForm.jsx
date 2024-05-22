@@ -41,6 +41,7 @@ export default function NotificationsADTUnoUpdateForm(props) {
     ReceiveADTHTTPSEndpoint: "",
     ReceiveADTOther: false,
     ReceiveADTOtherDescription: "",
+    UserIdToken: "",
   };
   const [ReceiveADTDirectSecureEmail, setReceiveADTDirectSecureEmail] =
     React.useState(initialValues.ReceiveADTDirectSecureEmail);
@@ -66,6 +67,9 @@ export default function NotificationsADTUnoUpdateForm(props) {
   );
   const [ReceiveADTOtherDescription, setReceiveADTOtherDescription] =
     React.useState(initialValues.ReceiveADTOtherDescription);
+  const [UserIdToken, setUserIdToken] = React.useState(
+    initialValues.UserIdToken
+  );
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     const cleanValues = notificationsADTUnoRecord
@@ -80,6 +84,7 @@ export default function NotificationsADTUnoUpdateForm(props) {
     setReceiveADTHTTPSEndpoint(cleanValues.ReceiveADTHTTPSEndpoint);
     setReceiveADTOther(cleanValues.ReceiveADTOther);
     setReceiveADTOtherDescription(cleanValues.ReceiveADTOtherDescription);
+    setUserIdToken(cleanValues.UserIdToken);
     setErrors({});
   };
   const [notificationsADTUnoRecord, setNotificationsADTUnoRecord] =
@@ -109,6 +114,7 @@ export default function NotificationsADTUnoUpdateForm(props) {
     ReceiveADTHTTPSEndpoint: [],
     ReceiveADTOther: [],
     ReceiveADTOtherDescription: [],
+    UserIdToken: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -145,6 +151,7 @@ export default function NotificationsADTUnoUpdateForm(props) {
           ReceiveADTHTTPSEndpoint: ReceiveADTHTTPSEndpoint ?? null,
           ReceiveADTOther: ReceiveADTOther ?? null,
           ReceiveADTOtherDescription: ReceiveADTOtherDescription ?? null,
+          UserIdToken: UserIdToken ?? null,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -226,6 +233,7 @@ export default function NotificationsADTUnoUpdateForm(props) {
                 ReceiveADTHTTPSEndpoint,
                 ReceiveADTOther,
                 ReceiveADTOtherDescription,
+                UserIdToken,
               };
               const result = onChange(modelFields);
               value = result?.ReceiveADTDirectSecureEmail ?? value;
@@ -263,6 +271,7 @@ export default function NotificationsADTUnoUpdateForm(props) {
                 ReceiveADTHTTPSEndpoint,
                 ReceiveADTOther,
                 ReceiveADTOtherDescription,
+                UserIdToken,
               };
               const result = onChange(modelFields);
               value = result?.ReceiveADTDirectEmailAddress ?? value;
@@ -303,6 +312,7 @@ export default function NotificationsADTUnoUpdateForm(props) {
               ReceiveADTHTTPSEndpoint,
               ReceiveADTOther,
               ReceiveADTOtherDescription,
+              UserIdToken,
             };
             const result = onChange(modelFields);
             value = result?.ReceiveADTsFTP ?? value;
@@ -337,6 +347,7 @@ export default function NotificationsADTUnoUpdateForm(props) {
               ReceiveADTHTTPSEndpoint,
               ReceiveADTOther,
               ReceiveADTOtherDescription,
+              UserIdToken,
             };
             const result = onChange(modelFields);
             value = result?.ReceiveADTPointToPoint ?? value;
@@ -373,6 +384,7 @@ export default function NotificationsADTUnoUpdateForm(props) {
               ReceiveADTHTTPSEndpoint,
               ReceiveADTOther,
               ReceiveADTOtherDescription,
+              UserIdToken,
             };
             const result = onChange(modelFields);
             value = result?.ReceiveADTHTTPSnonFHIR ?? value;
@@ -415,6 +427,7 @@ export default function NotificationsADTUnoUpdateForm(props) {
                 ReceiveADTHTTPSEndpoint,
                 ReceiveADTOther,
                 ReceiveADTOtherDescription,
+                UserIdToken,
               };
               const result = onChange(modelFields);
               value = result?.ReceiveADTHTTPSFHIR ?? value;
@@ -449,6 +462,7 @@ export default function NotificationsADTUnoUpdateForm(props) {
                 ReceiveADTHTTPSEndpoint: value,
                 ReceiveADTOther,
                 ReceiveADTOtherDescription,
+                UserIdToken,
               };
               const result = onChange(modelFields);
               value = result?.ReceiveADTHTTPSEndpoint ?? value;
@@ -495,6 +509,7 @@ export default function NotificationsADTUnoUpdateForm(props) {
                 ReceiveADTHTTPSEndpoint,
                 ReceiveADTOther: value,
                 ReceiveADTOtherDescription,
+                UserIdToken,
               };
               const result = onChange(modelFields);
               value = result?.ReceiveADTOther ?? value;
@@ -527,6 +542,7 @@ export default function NotificationsADTUnoUpdateForm(props) {
                 ReceiveADTHTTPSEndpoint,
                 ReceiveADTOther,
                 ReceiveADTOtherDescription: value,
+                UserIdToken,
               };
               const result = onChange(modelFields);
               value = result?.ReceiveADTOtherDescription ?? value;
@@ -547,6 +563,39 @@ export default function NotificationsADTUnoUpdateForm(props) {
           {...getOverrideProps(overrides, "ReceiveADTOtherDescription")}
         ></TextField>
       </Grid>
+      <TextField
+        label="User id token"
+        isRequired={false}
+        isReadOnly={false}
+        value={UserIdToken}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              ReceiveADTDirectSecureEmail,
+              ReceiveADTDirectEmailAddress,
+              ReceiveADTsFTP,
+              ReceiveADTPointToPoint,
+              ReceiveADTHTTPSnonFHIR,
+              ReceiveADTHTTPSFHIR,
+              ReceiveADTHTTPSEndpoint,
+              ReceiveADTOther,
+              ReceiveADTOtherDescription,
+              UserIdToken: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.UserIdToken ?? value;
+          }
+          if (errors.UserIdToken?.hasError) {
+            runValidationTasks("UserIdToken", value);
+          }
+          setUserIdToken(value);
+        }}
+        onBlur={() => runValidationTasks("UserIdToken", UserIdToken)}
+        errorMessage={errors.UserIdToken?.errorMessage}
+        hasError={errors.UserIdToken?.hasError}
+        {...getOverrideProps(overrides, "UserIdToken")}
+      ></TextField>
       <Flex
         justifyContent="space-between"
         {...getOverrideProps(overrides, "CTAFlex")}

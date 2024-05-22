@@ -23,14 +23,20 @@ export declare type ValidationResponse = {
 export declare type ValidationFunction<T> = (value: T, validationResponse: ValidationResponse) => ValidationResponse | Promise<ValidationResponse>;
 export declare type TechCBOUpdateFormInputValues = {
     Customer_Management_System?: string;
+    CBOCounties?: string[];
+    Field0?: string[];
 };
 export declare type TechCBOUpdateFormValidationValues = {
     Customer_Management_System?: ValidationFunction<string>;
+    CBOCounties?: ValidationFunction<string>;
+    Field0?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type TechCBOUpdateFormOverridesProps = {
     TechCBOUpdateFormGrid?: PrimitiveOverrideProps<GridProps>;
     Customer_Management_System?: PrimitiveOverrideProps<TextFieldProps>;
+    CBOCounties?: PrimitiveOverrideProps<TextFieldProps>;
+    Field0?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type TechCBOUpdateFormProps = React.PropsWithChildren<{
     overrides?: TechCBOUpdateFormOverridesProps | undefined | null;

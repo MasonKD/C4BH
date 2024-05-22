@@ -39,6 +39,7 @@ export default function NotificationsADTDosUpdateForm(props) {
     SendADTPortal: false,
     SendADTOther: false,
     SendADTOtherDescribe: "",
+    UserIdToken: "",
   };
   const [SendInfoDirectSecureEmail, setSendInfoDirectSecureEmail] =
     React.useState(initialValues.SendInfoDirectSecureEmail);
@@ -63,6 +64,9 @@ export default function NotificationsADTDosUpdateForm(props) {
   const [SendADTOtherDescribe, setSendADTOtherDescribe] = React.useState(
     initialValues.SendADTOtherDescribe
   );
+  const [UserIdToken, setUserIdToken] = React.useState(
+    initialValues.UserIdToken
+  );
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     const cleanValues = notificationsADTDosRecord
@@ -76,6 +80,7 @@ export default function NotificationsADTDosUpdateForm(props) {
     setSendADTPortal(cleanValues.SendADTPortal);
     setSendADTOther(cleanValues.SendADTOther);
     setSendADTOtherDescribe(cleanValues.SendADTOtherDescribe);
+    setUserIdToken(cleanValues.UserIdToken);
     setErrors({});
   };
   const [notificationsADTDosRecord, setNotificationsADTDosRecord] =
@@ -104,6 +109,7 @@ export default function NotificationsADTDosUpdateForm(props) {
     SendADTPortal: [],
     SendADTOther: [],
     SendADTOtherDescribe: [],
+    UserIdToken: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -139,6 +145,7 @@ export default function NotificationsADTDosUpdateForm(props) {
           SendADTPortal: SendADTPortal ?? null,
           SendADTOther: SendADTOther ?? null,
           SendADTOtherDescribe: SendADTOtherDescribe ?? null,
+          UserIdToken: UserIdToken ?? null,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -213,6 +220,7 @@ export default function NotificationsADTDosUpdateForm(props) {
               SendADTPortal,
               SendADTOther,
               SendADTOtherDescribe,
+              UserIdToken,
             };
             const result = onChange(modelFields);
             value = result?.SendInfoDirectSecureEmail ?? value;
@@ -251,6 +259,7 @@ export default function NotificationsADTDosUpdateForm(props) {
               SendADTPortal,
               SendADTOther,
               SendADTOtherDescribe,
+              UserIdToken,
             };
             const result = onChange(modelFields);
             value = result?.SendInfosFTP ?? value;
@@ -284,6 +293,7 @@ export default function NotificationsADTDosUpdateForm(props) {
               SendADTPortal,
               SendADTOther,
               SendADTOtherDescribe,
+              UserIdToken,
             };
             const result = onChange(modelFields);
             value = result?.SendInfoHL7v2 ?? value;
@@ -317,6 +327,7 @@ export default function NotificationsADTDosUpdateForm(props) {
               SendADTPortal,
               SendADTOther,
               SendADTOtherDescribe,
+              UserIdToken,
             };
             const result = onChange(modelFields);
             value = result?.SendInfoMLLP_HTTPS ?? value;
@@ -352,6 +363,7 @@ export default function NotificationsADTDosUpdateForm(props) {
               SendADTPortal,
               SendADTOther,
               SendADTOtherDescribe,
+              UserIdToken,
             };
             const result = onChange(modelFields);
             value = result?.SendADTHTTPS_FHIR ?? value;
@@ -387,6 +399,7 @@ export default function NotificationsADTDosUpdateForm(props) {
               SendADTPortal: value,
               SendADTOther,
               SendADTOtherDescribe,
+              UserIdToken,
             };
             const result = onChange(modelFields);
             value = result?.SendADTPortal ?? value;
@@ -426,6 +439,7 @@ export default function NotificationsADTDosUpdateForm(props) {
                 SendADTPortal,
                 SendADTOther: value,
                 SendADTOtherDescribe,
+                UserIdToken,
               };
               const result = onChange(modelFields);
               value = result?.SendADTOther ?? value;
@@ -457,6 +471,7 @@ export default function NotificationsADTDosUpdateForm(props) {
                 SendADTPortal,
                 SendADTOther,
                 SendADTOtherDescribe: value,
+                UserIdToken,
               };
               const result = onChange(modelFields);
               value = result?.SendADTOtherDescribe ?? value;
@@ -474,6 +489,38 @@ export default function NotificationsADTDosUpdateForm(props) {
           {...getOverrideProps(overrides, "SendADTOtherDescribe")}
         ></TextField>
       </Grid>
+      <TextField
+        label="User id token"
+        isRequired={false}
+        isReadOnly={false}
+        value={UserIdToken}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              SendInfoDirectSecureEmail,
+              SendInfosFTP,
+              SendInfoHL7v2,
+              SendInfoMLLP_HTTPS,
+              SendADTHTTPS_FHIR,
+              SendADTPortal,
+              SendADTOther,
+              SendADTOtherDescribe,
+              UserIdToken: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.UserIdToken ?? value;
+          }
+          if (errors.UserIdToken?.hasError) {
+            runValidationTasks("UserIdToken", value);
+          }
+          setUserIdToken(value);
+        }}
+        onBlur={() => runValidationTasks("UserIdToken", UserIdToken)}
+        errorMessage={errors.UserIdToken?.errorMessage}
+        hasError={errors.UserIdToken?.hasError}
+        {...getOverrideProps(overrides, "UserIdToken")}
+      ></TextField>
       <Flex
         justifyContent="space-between"
         {...getOverrideProps(overrides, "CTAFlex")}

@@ -6,7 +6,7 @@
 
 /* eslint-disable */
 import * as React from "react";
-import { Autocomplete, Flex, Grid } from "@aws-amplify/ui-react";
+import { Autocomplete, Flex, Grid, TextField } from "@aws-amplify/ui-react";
 import { fetchByPath, getOverrideProps, validateField } from "./utils";
 import { generateClient } from "aws-amplify/api";
 import { getUserInfoC4BH } from "../graphql/queries";
@@ -26,14 +26,19 @@ export default function UserInfoC4BHUpdateForm(props) {
   } = props;
   const initialValues = {
     DxFID: undefined,
+    UserIdToken: "",
   };
   const [DxFID, setDxFID] = React.useState(initialValues.DxFID);
+  const [UserIdToken, setUserIdToken] = React.useState(
+    initialValues.UserIdToken
+  );
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     const cleanValues = userInfoC4BHRecord
       ? { ...initialValues, ...userInfoC4BHRecord }
       : initialValues;
     setDxFID(cleanValues.DxFID);
+    setUserIdToken(cleanValues.UserIdToken);
     setErrors({});
   };
   const [userInfoC4BHRecord, setUserInfoC4BHRecord] = React.useState(
@@ -56,6 +61,7 @@ export default function UserInfoC4BHUpdateForm(props) {
   React.useEffect(resetStateValues, [userInfoC4BHRecord]);
   const validations = {
     DxFID: [],
+    UserIdToken: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -85,6 +91,7 @@ export default function UserInfoC4BHUpdateForm(props) {
         event.preventDefault();
         let modelFields = {
           DxFID: DxFID ?? null,
+          UserIdToken: UserIdToken ?? null,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -155,6 +162,7 @@ export default function UserInfoC4BHUpdateForm(props) {
           if (onChange) {
             const modelFields = {
               DxFID: value,
+              UserIdToken,
             };
             const result = onChange(modelFields);
             value = result?.DxFID ?? value;
@@ -170,6 +178,31 @@ export default function UserInfoC4BHUpdateForm(props) {
         labelHidden={false}
         {...getOverrideProps(overrides, "DxFID")}
       ></Autocomplete>
+      <TextField
+        label="User id token"
+        isRequired={false}
+        isReadOnly={false}
+        value={UserIdToken}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              DxFID,
+              UserIdToken: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.UserIdToken ?? value;
+          }
+          if (errors.UserIdToken?.hasError) {
+            runValidationTasks("UserIdToken", value);
+          }
+          setUserIdToken(value);
+        }}
+        onBlur={() => runValidationTasks("UserIdToken", UserIdToken)}
+        errorMessage={errors.UserIdToken?.errorMessage}
+        hasError={errors.UserIdToken?.hasError}
+        {...getOverrideProps(overrides, "UserIdToken")}
+      ></TextField>
       <Flex
         justifyContent="space-between"
         {...getOverrideProps(overrides, "CTAFlex")}

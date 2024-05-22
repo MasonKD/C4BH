@@ -34,7 +34,7 @@ export default function TechAcuteCreateForm(props) {
     setErrors({});
   };
   const validations = {
-    EHR_Vendors: [],
+    EHR_Vendors: [{ type: "Required" }],
   };
   const runValidationTasks = async (
     fieldName,
@@ -128,7 +128,7 @@ export default function TechAcuteCreateForm(props) {
       <Autocomplete
         label=" "
         descriptiveText=""
-        isRequired={false}
+        isRequired={true}
         isReadOnly={false}
         options={[
           {

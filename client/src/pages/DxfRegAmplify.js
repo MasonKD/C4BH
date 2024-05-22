@@ -364,17 +364,17 @@ const DxfRegistration = () => {
 								<h3 style={{alignSelf: 'end'}}>Sub-Type:</h3>
 								<div style={{marginLeft:'.5rem', alignSelf: 'end'}}>{dsa_data.Sub_Type}</div>
 							</div>
-							<div className={`${flex.row}`}>
-								<h3 style={{alignSelf: 'center'}}>Notifications of ADT Events</h3>
-								<div style={{marginLeft:'.5rem', alignSelf: 'end'}}>{dsa_data.Requests_for_Notifications_of_ADT_Events}</div>
+							<div className={`${flex.row} RequestUno`}>
+								<h3 style={{alignSelf: 'center'}}>Request for Information:</h3>
+								<div style={{marginLeft:'.5rem', alignSelf: 'end'}}>{dsa_data.Request_for_Information}</div>
 							</div>
 							<div className={`${flex.row}`}>
 								<h3 style={{alignSelf: 'center'}}>Information Delivery:</h3>
 								<div style={{marginLeft:'.5rem', alignSelf: 'end'}}>{dsa_data.Information_Delivery}</div>
 							</div>
-							<div className={`${flex.row} RequestUno`}>
-								<h3 style={{alignSelf: 'center'}}>Request for Information:</h3>
-								<div style={{marginLeft:'.5rem', alignSelf: 'end'}}>{dsa_data.Request_for_Information}</div>
+							<div className={`${flex.row}`}>
+								<h3 style={{alignSelf: 'center'}}>ADT Event Notification</h3>
+								<div style={{marginLeft:'.5rem', alignSelf: 'end'}}>{dsa_data.Requests_for_Notifications_of_ADT_Events}</div>
 							</div>
 						</div>
 						<hr></hr>
@@ -393,17 +393,18 @@ const DxfRegistration = () => {
 						{form_parts.includes("TechInt") && (<TechIntermediariesCreateForm id = "TechInt" className = { form_statuses["TechInt"] == 1 || form_statuses["TechInt"] == 0 ? '' : 'highlighted'} onSubmit = {addDxfToForm} onSuccess={formSuccessTechInt} onError={formErrorTechInt}></TechIntermediariesCreateForm>)}
 						</div>
 
-						<div id="ADT">
-						{(form_parts.includes("NotifADTUno") || form_parts.includes("NotifADTDos")) && (
-							<div>
-							<div className={`${flex.row}`}>
-								<h2><i>Notifications of ADT Events:</i></h2>
-							</div></div>
-						)}
+						<div id="REQ">
+						{(form_parts.includes("RequestUno") || form_parts.includes("RequestDos")) && (
+						<div>
+							<h2><i>Request for Information:</i></h2>
+						</div>)}
 
-						{form_parts.includes("NotifADTUno") && (<NotificationsADTUnoCreateForm id = "NotifADTUno" className = { form_statuses["NotifADTUno"] == 1 || form_statuses["NotifADTUno"] == 0 ? '' : 'highlighted'} onSubmit = {addDxfToForm} onSuccess={formSuccessADTUno} onError={formErrorADTUno}></NotificationsADTUnoCreateForm>)}
+						{form_parts.includes("RequestUno") && (<div>
+						<RequestInfoUnoCreateForm id = "RequestUno" className = { form_statuses["RequestUno"] == 1 || form_statuses["RequestUno"] == 0 ? '' : 'highlighted'} onSubmit = {addDxfToForm} onSuccess={formSuccessReqUno} onError={formErrorReqUno}></RequestInfoUnoCreateForm>
+						</div>)}
 
-						{form_parts.includes("NotifADTDos") && (<NotificationsADTDosCreateForm id = "NotifADTDos" className = { form_statuses["NotifADTDos"] == 1 || form_statuses["NotifADTDos"] == 0 ? '' : 'highlighted'} onSubmit = {addDxfToForm} onSuccess={formSuccessADTDos} onError={formErrorADTDos}></NotificationsADTDosCreateForm>)}
+						{form_parts.includes("RequestDos") && (
+						<RequestInfoDosCreateForm id = "RequestDos" className = { form_statuses["RequestDos"] == 1 || form_statuses["RequestDos"] == 0 ? '' : 'highlighted'} onSubmit = {addDxfToForm} onSuccess={formSuccessReqDos} onError={formErrorReqDos}></RequestInfoDosCreateForm>)}
 						</div>
 
 						<div id="DLV">
@@ -417,18 +418,17 @@ const DxfRegistration = () => {
 						</div>)}
 						</div>
 
-						<div id="REQ">
-						{(form_parts.includes("RequestUno") || form_parts.includes("RequestDos")) && (
-						<div>
-							<h2><i>Request for Information:</i></h2>
-						</div>)}
+						<div id="ADT">
+						{(form_parts.includes("NotifADTUno") || form_parts.includes("NotifADTDos")) && (
+							<div>
+							<div className={`${flex.row}`}>
+								<h2><i>ADT Event Notification:</i></h2>
+							</div></div>
+						)}
 
-						{form_parts.includes("RequestUno") && (<div>
-						<RequestInfoUnoCreateForm id = "RequestUno" className = { form_statuses["RequestUno"] == 1 || form_statuses["RequestUno"] == 0 ? '' : 'highlighted'} onSubmit = {addDxfToForm} onSuccess={formSuccessReqUno} onError={formErrorReqUno}></RequestInfoUnoCreateForm>
-						</div>)}
+						{form_parts.includes("NotifADTUno") && (<NotificationsADTUnoCreateForm id = "NotifADTUno" className = { form_statuses["NotifADTUno"] == 1 || form_statuses["NotifADTUno"] == 0 ? '' : 'highlighted'} onSubmit = {addDxfToForm} onSuccess={formSuccessADTUno} onError={formErrorADTUno}></NotificationsADTUnoCreateForm>)}
 
-						{form_parts.includes("RequestDos") && (
-						<RequestInfoDosCreateForm id = "RequestDos" className = { form_statuses["RequestDos"] == 1 || form_statuses["RequestDos"] == 0 ? '' : 'highlighted'} onSubmit = {addDxfToForm} onSuccess={formSuccessReqDos} onError={formErrorReqDos}></RequestInfoDosCreateForm>)}
+						{form_parts.includes("NotifADTDos") && (<NotificationsADTDosCreateForm id = "NotifADTDos" className = { form_statuses["NotifADTDos"] == 1 || form_statuses["NotifADTDos"] == 0 ? '' : 'highlighted'} onSubmit = {addDxfToForm} onSuccess={formSuccessADTDos} onError={formErrorADTDos}></NotificationsADTDosCreateForm>)}
 						</div>
 
 						<div id="HIPAA"></div>

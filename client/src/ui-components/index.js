@@ -5,9 +5,6 @@
  **************************************************************************/
 
 export { default as Badge } from "./Badge";
-export { default as C4bhFormDataCreateForm } from "./C4bhFormDataCreateForm";
-export { default as C4bhFormDataUpdateForm } from "./C4bhFormDataUpdateForm";
-export { default as C4bhUpdatedModelCreateForm } from "./C4bhUpdatedModelCreateForm";
 export { default as CTASection } from "./CTASection";
 export { default as Card } from "./Card";
 export { default as CardContents } from "./CardContents";
@@ -19,6 +16,7 @@ export { default as Divider } from "./Divider";
 export { default as EditProfile } from "./EditProfile";
 export { default as Features2x2 } from "./Features2x2";
 export { default as Filters } from "./Filters";
+export { default as Footer } from "./Footer";
 export { default as FormCheckout } from "./FormCheckout";
 export { default as HIPAACreateForm } from "./HIPAACreateForm";
 export { default as HIPAAUpdateForm } from "./HIPAAUpdateForm";
@@ -35,7 +33,6 @@ export { default as LogoIcon } from "./LogoIcon";
 export { default as MarketingPricing } from "./MarketingPricing";
 export { default as MyIcon } from "./MyIcon";
 export { default as NavButton } from "./NavButton";
-export { default as NotificationsADTCreateForm } from "./NotificationsADTCreateForm";
 export { default as NotificationsADTDosCreateForm } from "./NotificationsADTDosCreateForm";
 export { default as NotificationsADTDosUpdateForm } from "./NotificationsADTDosUpdateForm";
 export { default as NotificationsADTUnoCreateForm } from "./NotificationsADTUnoCreateForm";

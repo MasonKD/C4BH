@@ -5,7 +5,7 @@
  **************************************************************************/
 
 import * as React from "react";
-import { CheckboxFieldProps, GridProps, HeadingProps, TextFieldProps, TextProps } from "@aws-amplify/ui-react";
+import { AutocompleteProps, CheckboxFieldProps, GridProps, HeadingProps, TextFieldProps, TextProps } from "@aws-amplify/ui-react";
 export declare type EscapeHatchProps = {
     [elementHierarchy: string]: Record<string, unknown>;
 } | null;
@@ -24,6 +24,7 @@ export declare type ValidationFunction<T> = (value: T, validationResponse: Valid
 export declare type RequestInfoDosCreateFormInputValues = {
     RequestRespondDirectSecureEmail?: boolean;
     RequestRespondIHE?: boolean;
+    RequestRespondNationalNetworkDos?: string;
     RequestRespondFHIR?: boolean;
     RequestRespondFHIRendpoint?: string;
     RequestRespondOther?: boolean;
@@ -32,6 +33,7 @@ export declare type RequestInfoDosCreateFormInputValues = {
 export declare type RequestInfoDosCreateFormValidationValues = {
     RequestRespondDirectSecureEmail?: ValidationFunction<boolean>;
     RequestRespondIHE?: ValidationFunction<boolean>;
+    RequestRespondNationalNetworkDos?: ValidationFunction<string>;
     RequestRespondFHIR?: ValidationFunction<boolean>;
     RequestRespondFHIRendpoint?: ValidationFunction<string>;
     RequestRespondOther?: ValidationFunction<boolean>;
@@ -43,7 +45,9 @@ export declare type RequestInfoDosCreateFormOverridesProps = {
     SectionalElement0?: PrimitiveOverrideProps<HeadingProps>;
     SectionalElement1?: PrimitiveOverrideProps<TextProps>;
     RequestRespondDirectSecureEmail?: PrimitiveOverrideProps<CheckboxFieldProps>;
+    RowGrid3?: PrimitiveOverrideProps<GridProps>;
     RequestRespondIHE?: PrimitiveOverrideProps<CheckboxFieldProps>;
+    RequestRespondNationalNetworkDos?: PrimitiveOverrideProps<AutocompleteProps>;
     RowGrid4?: PrimitiveOverrideProps<GridProps>;
     RequestRespondFHIR?: PrimitiveOverrideProps<CheckboxFieldProps>;
     RequestRespondFHIRendpoint?: PrimitiveOverrideProps<TextFieldProps>;

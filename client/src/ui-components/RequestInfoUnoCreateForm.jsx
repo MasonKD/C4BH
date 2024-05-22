@@ -7,6 +7,7 @@
 /* eslint-disable */
 import * as React from "react";
 import {
+  Autocomplete,
   CheckboxField,
   Flex,
   Grid,
@@ -33,6 +34,7 @@ export default function RequestInfoUnoCreateForm(props) {
     RequestRecieveDirectSecureEmail: false,
     RequestDirectEmailAddress: "",
     RequestIHE: false,
+    RequestRespondNationalNetworUno: undefined,
     RequestFHIR: false,
     RequestOther: false,
     RequestOtherDescribe: "",
@@ -42,6 +44,8 @@ export default function RequestInfoUnoCreateForm(props) {
   const [RequestDirectEmailAddress, setRequestDirectEmailAddress] =
     React.useState(initialValues.RequestDirectEmailAddress);
   const [RequestIHE, setRequestIHE] = React.useState(initialValues.RequestIHE);
+  const [RequestRespondNationalNetworUno, setRequestRespondNationalNetworUno] =
+    React.useState(initialValues.RequestRespondNationalNetworUno);
   const [RequestFHIR, setRequestFHIR] = React.useState(
     initialValues.RequestFHIR
   );
@@ -58,6 +62,9 @@ export default function RequestInfoUnoCreateForm(props) {
     );
     setRequestDirectEmailAddress(initialValues.RequestDirectEmailAddress);
     setRequestIHE(initialValues.RequestIHE);
+    setRequestRespondNationalNetworUno(
+      initialValues.RequestRespondNationalNetworUno
+    );
     setRequestFHIR(initialValues.RequestFHIR);
     setRequestOther(initialValues.RequestOther);
     setRequestOtherDescribe(initialValues.RequestOtherDescribe);
@@ -67,6 +74,7 @@ export default function RequestInfoUnoCreateForm(props) {
     RequestRecieveDirectSecureEmail: [],
     RequestDirectEmailAddress: [],
     RequestIHE: [],
+    RequestRespondNationalNetworUno: [],
     RequestFHIR: [],
     RequestOther: [],
     RequestOtherDescribe: [],
@@ -88,6 +96,7 @@ export default function RequestInfoUnoCreateForm(props) {
     setErrors((errors) => ({ ...errors, [fieldName]: validationResponse }));
     return validationResponse;
   };
+  React.useEffect(() => {}, []);
   return (
     <Grid
       as="form"
@@ -100,6 +109,7 @@ export default function RequestInfoUnoCreateForm(props) {
           RequestRecieveDirectSecureEmail,
           RequestDirectEmailAddress,
           RequestIHE,
+          RequestRespondNationalNetworUno,
           RequestFHIR,
           RequestOther,
           RequestOtherDescribe,
@@ -157,7 +167,7 @@ export default function RequestInfoUnoCreateForm(props) {
       {...rest}
     >
       <Heading
-        children="How are you able to request information from other participants?"
+        children="By which methods are you able to request information from other participants?"
         {...getOverrideProps(overrides, "SectionalElement0")}
       ></Heading>
       <Text
@@ -183,6 +193,7 @@ export default function RequestInfoUnoCreateForm(props) {
                 RequestRecieveDirectSecureEmail: value,
                 RequestDirectEmailAddress,
                 RequestIHE,
+                RequestRespondNationalNetworUno,
                 RequestFHIR,
                 RequestOther,
                 RequestOtherDescribe,
@@ -217,6 +228,7 @@ export default function RequestInfoUnoCreateForm(props) {
                 RequestRecieveDirectSecureEmail,
                 RequestDirectEmailAddress: value,
                 RequestIHE,
+                RequestRespondNationalNetworUno,
                 RequestFHIR,
                 RequestOther,
                 RequestOtherDescribe,
@@ -240,36 +252,104 @@ export default function RequestInfoUnoCreateForm(props) {
           {...getOverrideProps(overrides, "RequestDirectEmailAddress")}
         ></TextField>
       </Grid>
-      <CheckboxField
-        label="IHE"
-        name="RequestIHE"
-        value="RequestIHE"
-        isDisabled={false}
-        checked={RequestIHE}
-        onChange={(e) => {
-          let value = e.target.checked;
-          if (onChange) {
-            const modelFields = {
-              RequestRecieveDirectSecureEmail,
-              RequestDirectEmailAddress,
-              RequestIHE: value,
-              RequestFHIR,
-              RequestOther,
-              RequestOtherDescribe,
-            };
-            const result = onChange(modelFields);
-            value = result?.RequestIHE ?? value;
+      <Grid
+        columnGap="inherit"
+        rowGap="inherit"
+        templateColumns="repeat(2, auto)"
+        {...getOverrideProps(overrides, "RowGrid3")}
+      >
+        <CheckboxField
+          label="IHE (Provide National Network):"
+          name="RequestIHE"
+          value="RequestIHE"
+          isDisabled={false}
+          checked={RequestIHE}
+          onChange={(e) => {
+            let value = e.target.checked;
+            if (onChange) {
+              const modelFields = {
+                RequestRecieveDirectSecureEmail,
+                RequestDirectEmailAddress,
+                RequestIHE: value,
+                RequestRespondNationalNetworUno,
+                RequestFHIR,
+                RequestOther,
+                RequestOtherDescribe,
+              };
+              const result = onChange(modelFields);
+              value = result?.RequestIHE ?? value;
+            }
+            if (errors.RequestIHE?.hasError) {
+              runValidationTasks("RequestIHE", value);
+            }
+            setRequestIHE(value);
+          }}
+          onBlur={() => runValidationTasks("RequestIHE", RequestIHE)}
+          errorMessage={errors.RequestIHE?.errorMessage}
+          hasError={errors.RequestIHE?.hasError}
+          {...getOverrideProps(overrides, "RequestIHE")}
+        ></CheckboxField>
+        <Autocomplete
+          label=" "
+          isRequired={false}
+          isReadOnly={false}
+          options={[
+            {
+              id: "Direct Trust",
+              label: "Direct Trust",
+            },
+            {
+              id: "CommonWell Health Alliance",
+              label: "CommonWell Health Alliance",
+            },
+            {
+              id: "eHealth Exchange",
+              label: "eHealth Exchange",
+            },
+            {
+              id: "Carequality",
+              label: "Carequality",
+            },
+          ]}
+          onSelect={({ id, label }) => {
+            setRequestRespondNationalNetworUno(id);
+            runValidationTasks("RequestRespondNationalNetworUno", id);
+          }}
+          onClear={() => {
+            setRequestRespondNationalNetworUno("");
+          }}
+          onChange={(e) => {
+            let { value } = e.target;
+            if (onChange) {
+              const modelFields = {
+                RequestRecieveDirectSecureEmail,
+                RequestDirectEmailAddress,
+                RequestIHE,
+                RequestRespondNationalNetworUno: value,
+                RequestFHIR,
+                RequestOther,
+                RequestOtherDescribe,
+              };
+              const result = onChange(modelFields);
+              value = result?.RequestRespondNationalNetworUno ?? value;
+            }
+            if (errors.RequestRespondNationalNetworUno?.hasError) {
+              runValidationTasks("RequestRespondNationalNetworUno", value);
+            }
+            setRequestRespondNationalNetworUno(value);
+          }}
+          onBlur={() =>
+            runValidationTasks(
+              "RequestRespondNationalNetworUno",
+              RequestRespondNationalNetworUno
+            )
           }
-          if (errors.RequestIHE?.hasError) {
-            runValidationTasks("RequestIHE", value);
-          }
-          setRequestIHE(value);
-        }}
-        onBlur={() => runValidationTasks("RequestIHE", RequestIHE)}
-        errorMessage={errors.RequestIHE?.errorMessage}
-        hasError={errors.RequestIHE?.hasError}
-        {...getOverrideProps(overrides, "RequestIHE")}
-      ></CheckboxField>
+          errorMessage={errors.RequestRespondNationalNetworUno?.errorMessage}
+          hasError={errors.RequestRespondNationalNetworUno?.hasError}
+          labelHidden={false}
+          {...getOverrideProps(overrides, "RequestRespondNationalNetworUno")}
+        ></Autocomplete>
+      </Grid>
       <CheckboxField
         label="FHIR"
         name="RequestFHIR"
@@ -283,6 +363,7 @@ export default function RequestInfoUnoCreateForm(props) {
               RequestRecieveDirectSecureEmail,
               RequestDirectEmailAddress,
               RequestIHE,
+              RequestRespondNationalNetworUno,
               RequestFHIR: value,
               RequestOther,
               RequestOtherDescribe,
@@ -319,6 +400,7 @@ export default function RequestInfoUnoCreateForm(props) {
                 RequestRecieveDirectSecureEmail,
                 RequestDirectEmailAddress,
                 RequestIHE,
+                RequestRespondNationalNetworUno,
                 RequestFHIR,
                 RequestOther: value,
                 RequestOtherDescribe,
@@ -348,6 +430,7 @@ export default function RequestInfoUnoCreateForm(props) {
                 RequestRecieveDirectSecureEmail,
                 RequestDirectEmailAddress,
                 RequestIHE,
+                RequestRespondNationalNetworUno,
                 RequestFHIR,
                 RequestOther,
                 RequestOtherDescribe: value,
