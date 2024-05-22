@@ -16,6 +16,8 @@ export const createRequestInfoDos = /* GraphQL */ `
       RequestRespondFHIRendpoint
       RequestRespondOther
       RequestRespondOtherDescribe
+      UserIdToken
+      RequestRespondNationalNetworkDos
       createdAt
       updatedAt
       __typename
@@ -37,6 +39,8 @@ export const updateRequestInfoDos = /* GraphQL */ `
       RequestRespondFHIRendpoint
       RequestRespondOther
       RequestRespondOtherDescribe
+      UserIdToken
+      RequestRespondNationalNetworkDos
       createdAt
       updatedAt
       __typename
@@ -58,6 +62,8 @@ export const deleteRequestInfoDos = /* GraphQL */ `
       RequestRespondFHIRendpoint
       RequestRespondOther
       RequestRespondOtherDescribe
+      UserIdToken
+      RequestRespondNationalNetworkDos
       createdAt
       updatedAt
       __typename
@@ -80,6 +86,7 @@ export const createNotificationsADTDos = /* GraphQL */ `
       SendADTOther
       SendADTOtherDescribe
       DxFID
+      UserIdToken
       createdAt
       updatedAt
       __typename
@@ -102,6 +109,7 @@ export const updateNotificationsADTDos = /* GraphQL */ `
       SendADTOther
       SendADTOtherDescribe
       DxFID
+      UserIdToken
       createdAt
       updatedAt
       __typename
@@ -124,6 +132,7 @@ export const deleteNotificationsADTDos = /* GraphQL */ `
       SendADTOther
       SendADTOtherDescribe
       DxFID
+      UserIdToken
       createdAt
       updatedAt
       __typename
@@ -147,6 +156,7 @@ export const createNotificationsADTUno = /* GraphQL */ `
       ReceiveADTOther
       ReceiveADTOtherDescription
       DxFID
+      UserIdToken
       createdAt
       updatedAt
       __typename
@@ -170,6 +180,7 @@ export const updateNotificationsADTUno = /* GraphQL */ `
       ReceiveADTOther
       ReceiveADTOtherDescription
       DxFID
+      UserIdToken
       createdAt
       updatedAt
       __typename
@@ -193,207 +204,7 @@ export const deleteNotificationsADTUno = /* GraphQL */ `
       ReceiveADTOther
       ReceiveADTOtherDescription
       DxFID
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
-export const createC4bhUpdatedModel = /* GraphQL */ `
-  mutation CreateC4bhUpdatedModel(
-    $input: CreateC4bhUpdatedModelInput!
-    $condition: ModelC4bhUpdatedModelConditionInput
-  ) {
-    createC4bhUpdatedModel(input: $input, condition: $condition) {
-      id
-      User
-      EHR_Vendors
-      Customer_Management_System
-      HIE_or_Inter
-      ReceiveADTDirectSecureEmail
-      ReceiveADTDirectEmailAddress
-      ReceiveADTsFTP
-      ReceiveADTPointToPoint
-      ReceiveADTHTTPSnonFHIR
-      ReceiveADTHTTPSFHIR
-      ReceiveADTHTTPSEndpoint
-      ReceiveADTOther
-      ReceiveADTOtherDescription
-      SendADTDirectSecureEmail
-      SendADTsFTP
-      SendADTPointToPoint
-      SendADTHTTPSNon_FHIR
-      SendADTHTTPS_FHIR
-      SendADTPortal
-      SendADTOther
-      SendADTOtherDescribe
-      RecieveInfoDirectSecureEmail
-      RecieveInfosFTP
-      RecieveInfoHL7V2
-      RecieveInfoMLLP_HTTPS
-      RecieveInfoThirdPartyReferral
-      RecieveInfoThirdPartyPlatform
-      RecieveInfoOther
-      RecieveInfoOther_Describe
-      RecieveInfoDirectEmailAddress
-      SendInfoDirectSecureEmail
-      SendInfosFTP
-      SendInfoHL7v2
-      SendInfoMLLP_HTTPS
-      SendInfoThirdPartyReferral
-      SendInfoThirdPartyPlatform
-      SendInfoOther
-      SenInfoOther_Describe
-      RequestRecieveDirectSecureEmail
-      RequestDirectEmailAddress
-      RequestIHE
-      RequestFHIR
-      RequestOther
-      RequestOtherDescribe
-      RequestRespondDirectSecureEmail
-      RequestRespondIHE
-      RequestRespondFHIR
-      RequestRespondFHIRendpoint
-      RequestRespondOther
-      RequestRespondOtherDescribe
-      CoveredHIPAA
-      HybridHIPAA
-      AssociateHIPAA
-      NotCoveredHIPAA
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
-export const updateC4bhUpdatedModel = /* GraphQL */ `
-  mutation UpdateC4bhUpdatedModel(
-    $input: UpdateC4bhUpdatedModelInput!
-    $condition: ModelC4bhUpdatedModelConditionInput
-  ) {
-    updateC4bhUpdatedModel(input: $input, condition: $condition) {
-      id
-      User
-      EHR_Vendors
-      Customer_Management_System
-      HIE_or_Inter
-      ReceiveADTDirectSecureEmail
-      ReceiveADTDirectEmailAddress
-      ReceiveADTsFTP
-      ReceiveADTPointToPoint
-      ReceiveADTHTTPSnonFHIR
-      ReceiveADTHTTPSFHIR
-      ReceiveADTHTTPSEndpoint
-      ReceiveADTOther
-      ReceiveADTOtherDescription
-      SendADTDirectSecureEmail
-      SendADTsFTP
-      SendADTPointToPoint
-      SendADTHTTPSNon_FHIR
-      SendADTHTTPS_FHIR
-      SendADTPortal
-      SendADTOther
-      SendADTOtherDescribe
-      RecieveInfoDirectSecureEmail
-      RecieveInfosFTP
-      RecieveInfoHL7V2
-      RecieveInfoMLLP_HTTPS
-      RecieveInfoThirdPartyReferral
-      RecieveInfoThirdPartyPlatform
-      RecieveInfoOther
-      RecieveInfoOther_Describe
-      RecieveInfoDirectEmailAddress
-      SendInfoDirectSecureEmail
-      SendInfosFTP
-      SendInfoHL7v2
-      SendInfoMLLP_HTTPS
-      SendInfoThirdPartyReferral
-      SendInfoThirdPartyPlatform
-      SendInfoOther
-      SenInfoOther_Describe
-      RequestRecieveDirectSecureEmail
-      RequestDirectEmailAddress
-      RequestIHE
-      RequestFHIR
-      RequestOther
-      RequestOtherDescribe
-      RequestRespondDirectSecureEmail
-      RequestRespondIHE
-      RequestRespondFHIR
-      RequestRespondFHIRendpoint
-      RequestRespondOther
-      RequestRespondOtherDescribe
-      CoveredHIPAA
-      HybridHIPAA
-      AssociateHIPAA
-      NotCoveredHIPAA
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
-export const deleteC4bhUpdatedModel = /* GraphQL */ `
-  mutation DeleteC4bhUpdatedModel(
-    $input: DeleteC4bhUpdatedModelInput!
-    $condition: ModelC4bhUpdatedModelConditionInput
-  ) {
-    deleteC4bhUpdatedModel(input: $input, condition: $condition) {
-      id
-      User
-      EHR_Vendors
-      Customer_Management_System
-      HIE_or_Inter
-      ReceiveADTDirectSecureEmail
-      ReceiveADTDirectEmailAddress
-      ReceiveADTsFTP
-      ReceiveADTPointToPoint
-      ReceiveADTHTTPSnonFHIR
-      ReceiveADTHTTPSFHIR
-      ReceiveADTHTTPSEndpoint
-      ReceiveADTOther
-      ReceiveADTOtherDescription
-      SendADTDirectSecureEmail
-      SendADTsFTP
-      SendADTPointToPoint
-      SendADTHTTPSNon_FHIR
-      SendADTHTTPS_FHIR
-      SendADTPortal
-      SendADTOther
-      SendADTOtherDescribe
-      RecieveInfoDirectSecureEmail
-      RecieveInfosFTP
-      RecieveInfoHL7V2
-      RecieveInfoMLLP_HTTPS
-      RecieveInfoThirdPartyReferral
-      RecieveInfoThirdPartyPlatform
-      RecieveInfoOther
-      RecieveInfoOther_Describe
-      RecieveInfoDirectEmailAddress
-      SendInfoDirectSecureEmail
-      SendInfosFTP
-      SendInfoHL7v2
-      SendInfoMLLP_HTTPS
-      SendInfoThirdPartyReferral
-      SendInfoThirdPartyPlatform
-      SendInfoOther
-      SenInfoOther_Describe
-      RequestRecieveDirectSecureEmail
-      RequestDirectEmailAddress
-      RequestIHE
-      RequestFHIR
-      RequestOther
-      RequestOtherDescribe
-      RequestRespondDirectSecureEmail
-      RequestRespondIHE
-      RequestRespondFHIR
-      RequestRespondFHIRendpoint
-      RequestRespondOther
-      RequestRespondOtherDescribe
-      CoveredHIPAA
-      HybridHIPAA
-      AssociateHIPAA
-      NotCoveredHIPAA
+      UserIdToken
       createdAt
       updatedAt
       __typename
@@ -412,6 +223,7 @@ export const createHIPAA = /* GraphQL */ `
       AssociateHIPAA
       NotCoveredHIPAA
       DxFID
+      UserIdToken
       createdAt
       updatedAt
       __typename
@@ -430,6 +242,7 @@ export const updateHIPAA = /* GraphQL */ `
       AssociateHIPAA
       NotCoveredHIPAA
       DxFID
+      UserIdToken
       createdAt
       updatedAt
       __typename
@@ -448,6 +261,7 @@ export const deleteHIPAA = /* GraphQL */ `
       AssociateHIPAA
       NotCoveredHIPAA
       DxFID
+      UserIdToken
       createdAt
       updatedAt
       __typename
@@ -464,10 +278,12 @@ export const createRequestInfoUno = /* GraphQL */ `
       RequestRecieveDirectSecureEmail
       RequestDirectEmailAddress
       RequestIHE
-      RequestFHIR
+      RequestRespondNationalNetworUno
       RequestOther
       RequestOtherDescribe
       DxFID
+      UserIdToken
+      RequestFHIR
       createdAt
       updatedAt
       __typename
@@ -484,10 +300,12 @@ export const updateRequestInfoUno = /* GraphQL */ `
       RequestRecieveDirectSecureEmail
       RequestDirectEmailAddress
       RequestIHE
-      RequestFHIR
+      RequestRespondNationalNetworUno
       RequestOther
       RequestOtherDescribe
       DxFID
+      UserIdToken
+      RequestFHIR
       createdAt
       updatedAt
       __typename
@@ -504,10 +322,12 @@ export const deleteRequestInfoUno = /* GraphQL */ `
       RequestRecieveDirectSecureEmail
       RequestDirectEmailAddress
       RequestIHE
-      RequestFHIR
+      RequestRespondNationalNetworUno
       RequestOther
       RequestOtherDescribe
       DxFID
+      UserIdToken
+      RequestFHIR
       createdAt
       updatedAt
       __typename
@@ -539,6 +359,7 @@ export const createInformationDelivery = /* GraphQL */ `
       SendInfoOther
       SenInfoOther_Describe
       DxFID
+      UserIdToken
       createdAt
       updatedAt
       __typename
@@ -570,6 +391,7 @@ export const updateInformationDelivery = /* GraphQL */ `
       SendInfoOther
       SenInfoOther_Describe
       DxFID
+      UserIdToken
       createdAt
       updatedAt
       __typename
@@ -601,6 +423,7 @@ export const deleteInformationDelivery = /* GraphQL */ `
       SendInfoOther
       SenInfoOther_Describe
       DxFID
+      UserIdToken
       createdAt
       updatedAt
       __typename
@@ -632,6 +455,7 @@ export const createNotificationsADT = /* GraphQL */ `
       SendADTOther
       SendADTOtherDescribe
       DxFID
+      UserIdToken
       createdAt
       updatedAt
       __typename
@@ -663,6 +487,7 @@ export const updateNotificationsADT = /* GraphQL */ `
       SendADTOther
       SendADTOtherDescribe
       DxFID
+      UserIdToken
       createdAt
       updatedAt
       __typename
@@ -694,6 +519,7 @@ export const deleteNotificationsADT = /* GraphQL */ `
       SendADTOther
       SendADTOtherDescribe
       DxFID
+      UserIdToken
       createdAt
       updatedAt
       __typename
@@ -707,8 +533,10 @@ export const createTechIntermediaries = /* GraphQL */ `
   ) {
     createTechIntermediaries(input: $input, condition: $condition) {
       id
-      HIE_or_Inter
+      IntIntegrationEngineUsed
+      IntClinicalDataRepoUsed
       DxFID
+      UserIdToken
       createdAt
       updatedAt
       __typename
@@ -722,8 +550,10 @@ export const updateTechIntermediaries = /* GraphQL */ `
   ) {
     updateTechIntermediaries(input: $input, condition: $condition) {
       id
-      HIE_or_Inter
+      IntIntegrationEngineUsed
+      IntClinicalDataRepoUsed
       DxFID
+      UserIdToken
       createdAt
       updatedAt
       __typename
@@ -737,8 +567,10 @@ export const deleteTechIntermediaries = /* GraphQL */ `
   ) {
     deleteTechIntermediaries(input: $input, condition: $condition) {
       id
-      HIE_or_Inter
+      IntIntegrationEngineUsed
+      IntClinicalDataRepoUsed
       DxFID
+      UserIdToken
       createdAt
       updatedAt
       __typename
@@ -754,6 +586,8 @@ export const createTechCBO = /* GraphQL */ `
       id
       Customer_Management_System
       DxFID
+      UserIdToken
+      CBOCounties
       createdAt
       updatedAt
       __typename
@@ -769,6 +603,8 @@ export const updateTechCBO = /* GraphQL */ `
       id
       Customer_Management_System
       DxFID
+      UserIdToken
+      CBOCounties
       createdAt
       updatedAt
       __typename
@@ -784,6 +620,8 @@ export const deleteTechCBO = /* GraphQL */ `
       id
       Customer_Management_System
       DxFID
+      UserIdToken
+      CBOCounties
       createdAt
       updatedAt
       __typename
@@ -799,6 +637,7 @@ export const createTechAcute = /* GraphQL */ `
       id
       EHR_Vendors
       DxFID
+      UserIdToken
       createdAt
       updatedAt
       __typename
@@ -814,6 +653,7 @@ export const updateTechAcute = /* GraphQL */ `
       id
       EHR_Vendors
       DxFID
+      UserIdToken
       createdAt
       updatedAt
       __typename
@@ -829,6 +669,7 @@ export const deleteTechAcute = /* GraphQL */ `
       id
       EHR_Vendors
       DxFID
+      UserIdToken
       createdAt
       updatedAt
       __typename
@@ -844,6 +685,7 @@ export const createUserInfoC4BH = /* GraphQL */ `
       id
       User
       DxFID
+      UserIdToken
       createdAt
       updatedAt
       __typename
@@ -859,6 +701,7 @@ export const updateUserInfoC4BH = /* GraphQL */ `
       id
       User
       DxFID
+      UserIdToken
       createdAt
       updatedAt
       __typename
@@ -874,180 +717,7 @@ export const deleteUserInfoC4BH = /* GraphQL */ `
       id
       User
       DxFID
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
-export const createC4bhFormData = /* GraphQL */ `
-  mutation CreateC4bhFormData(
-    $input: CreateC4bhFormDataInput!
-    $condition: ModelC4bhFormDataConditionInput
-  ) {
-    createC4bhFormData(input: $input, condition: $condition) {
-      id
-      user
-      ParticipantID
-      EhrIntersystems
-      EhrSmile
-      EhrSalesforce
-      EhrList
-      SendOutboundDirect
-      SendOutboundSFTP
-      SendOutboundMLLP
-      SendOutboundHTTPS
-      SendOutboundFHIR
-      SendOutboundNone
-      SendInformationDirect
-      SendInformationSFTP
-      SendInformationMLLP
-      SendInformationHTTPS
-      SendInformationFHIR
-      SendInformationIHE
-      SendInformationNone
-      SendRequestDirect
-      SendRequestSFTP
-      SendRequestFHIR
-      SendRequestIHE
-      SendRequestNone
-      ReceiveInboundDirect
-      ReceiveInboundSFTP
-      ReceiveInboundMLLP
-      ReceiveInboundHTTPS
-      ReceiveInboundFHIR
-      ReceiveInboundNone
-      ReceiveInformationDirect
-      ReceiveInformationSFTP
-      ReceiveInformationMLLP
-      ReceiveInformationHTTPS
-      ReceiveInformationFHIR
-      ReceiveInformationIHE
-      ReceiveInformationNone
-      ReceiveRequestDirect
-      ReceiveRequestSFTP
-      ReceiveRequestFHIR
-      ReceiveRequestIHE
-      ReceiveRequestNone
-      HIPPA
-      MirthNextGen
-      IntegrationOther
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
-export const updateC4bhFormData = /* GraphQL */ `
-  mutation UpdateC4bhFormData(
-    $input: UpdateC4bhFormDataInput!
-    $condition: ModelC4bhFormDataConditionInput
-  ) {
-    updateC4bhFormData(input: $input, condition: $condition) {
-      id
-      user
-      ParticipantID
-      EhrIntersystems
-      EhrSmile
-      EhrSalesforce
-      EhrList
-      SendOutboundDirect
-      SendOutboundSFTP
-      SendOutboundMLLP
-      SendOutboundHTTPS
-      SendOutboundFHIR
-      SendOutboundNone
-      SendInformationDirect
-      SendInformationSFTP
-      SendInformationMLLP
-      SendInformationHTTPS
-      SendInformationFHIR
-      SendInformationIHE
-      SendInformationNone
-      SendRequestDirect
-      SendRequestSFTP
-      SendRequestFHIR
-      SendRequestIHE
-      SendRequestNone
-      ReceiveInboundDirect
-      ReceiveInboundSFTP
-      ReceiveInboundMLLP
-      ReceiveInboundHTTPS
-      ReceiveInboundFHIR
-      ReceiveInboundNone
-      ReceiveInformationDirect
-      ReceiveInformationSFTP
-      ReceiveInformationMLLP
-      ReceiveInformationHTTPS
-      ReceiveInformationFHIR
-      ReceiveInformationIHE
-      ReceiveInformationNone
-      ReceiveRequestDirect
-      ReceiveRequestSFTP
-      ReceiveRequestFHIR
-      ReceiveRequestIHE
-      ReceiveRequestNone
-      HIPPA
-      MirthNextGen
-      IntegrationOther
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
-export const deleteC4bhFormData = /* GraphQL */ `
-  mutation DeleteC4bhFormData(
-    $input: DeleteC4bhFormDataInput!
-    $condition: ModelC4bhFormDataConditionInput
-  ) {
-    deleteC4bhFormData(input: $input, condition: $condition) {
-      id
-      user
-      ParticipantID
-      EhrIntersystems
-      EhrSmile
-      EhrSalesforce
-      EhrList
-      SendOutboundDirect
-      SendOutboundSFTP
-      SendOutboundMLLP
-      SendOutboundHTTPS
-      SendOutboundFHIR
-      SendOutboundNone
-      SendInformationDirect
-      SendInformationSFTP
-      SendInformationMLLP
-      SendInformationHTTPS
-      SendInformationFHIR
-      SendInformationIHE
-      SendInformationNone
-      SendRequestDirect
-      SendRequestSFTP
-      SendRequestFHIR
-      SendRequestIHE
-      SendRequestNone
-      ReceiveInboundDirect
-      ReceiveInboundSFTP
-      ReceiveInboundMLLP
-      ReceiveInboundHTTPS
-      ReceiveInboundFHIR
-      ReceiveInboundNone
-      ReceiveInformationDirect
-      ReceiveInformationSFTP
-      ReceiveInformationMLLP
-      ReceiveInformationHTTPS
-      ReceiveInformationFHIR
-      ReceiveInformationIHE
-      ReceiveInformationNone
-      ReceiveRequestDirect
-      ReceiveRequestSFTP
-      ReceiveRequestFHIR
-      ReceiveRequestIHE
-      ReceiveRequestNone
-      HIPPA
-      MirthNextGen
-      IntegrationOther
+      UserIdToken
       createdAt
       updatedAt
       __typename

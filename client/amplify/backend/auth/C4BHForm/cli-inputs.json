@@ -37,7 +37,8 @@
       "email",
       "name",
       "picture",
-      "updated_at"
+      "updated_at",
+      "email_verified"
     ],
     "userpoolClientLambdaRole": "C4BHFo59c27be7_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": true,
