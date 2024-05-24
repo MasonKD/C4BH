@@ -2,7 +2,9 @@ import fetch from 'node-fetch';
 import btoa from 'btoa';
 import https from 'https';
 
-const apiEndpoint = 'http://ec2-18-188-102-170.us-east-2.compute.amazonaws.com:8000/Patient';
+// const apiEndpoint = 'http://ec2-18-188-102-170.us-east-2.compute.amazonaws.com:8000/Patient';
+const apiEndpoint = getEnvURL('SMILE_API');
+
 const querySmile = async (req, res) => {
   const username = 'admin';
   const password = 'password';

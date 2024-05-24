@@ -46,7 +46,8 @@ const Mirth = () => {
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = tableInstance;
 //dev URL: http://127.0.0.1:3001/mirth-logs, prod: https://sbx.connectingforbetterhealth.com/api/mirth-logs
 useEffect(() => {
-  const apiEndpoint = 'https://sbx.connectingforbetterhealth.com/api/mirth-logs';
+  // const apiEndpoint = 'https://sbx.connectingforbetterhealth.com/api/mirth-logs';
+  const apiEndpoint = getEnvURL('FETCH_MIRTH_DATA');
   fetch(apiEndpoint)
     .then(response => {
       if (!response.ok) {

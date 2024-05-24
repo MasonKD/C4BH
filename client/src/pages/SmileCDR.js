@@ -122,7 +122,9 @@ const SmileCDR = () => {
       setError('');
 
       try {
-        const response = await fetch('https://sbx.connectingforbetterhealth.com/api/smile-query');
+        // const response = await fetch('https://sbx.connectingforbetterhealth.com/api/smile-query');
+        const url = getEnvURL('FETCH_SMILE_DATA');
+        const response = await fetch(url);
         if (!response.ok) {
           throw new Error(`HTTP status ${response.status}`);
         }
@@ -171,7 +173,9 @@ const SmileCDR = () => {
     //https://sbx.connectingforbetterhealth.com/api/encounter-query
     const fetchEncounterData = async () => {
       try {
-        const encounterResponse = await fetch('https://sbx.connectingforbetterhealth.com/api/encounter-query');
+        // const encounterResponse = await fetch('https://sbx.connectingforbetterhealth.com/api/encounter-query');
+        const url = getEnvURL('FETCH_ENCOUNTER_DATA');
+        const encounterResponse = await fetch(url);
         if (!encounterResponse.ok) {
           throw new Error(`HTTP status ${encounterResponse.status}`);
         }
@@ -242,7 +246,11 @@ const SmileCDR = () => {
     //https://sbx.connectingforbetterhealth.com/api/practitioner-query
     const fetchPractitionerData = async () => {
       try {
-        const practitionerResponse = await fetch('https://sbx.connectingforbetterhealth.com/api/practitioner-query');
+        // const practitionerResponse = await fetch('https://sbx.connectingforbetterhealth.com/api/practitioner-query');
+        const url = getEnvURL('FETCH_PRACTITIONER_DATA');
+        const practitionerResponse = await fetch(url);
+
+
         if (!practitionerResponse.ok) {
           throw new Error(`HTTP status ${practitionerResponse.status}`);
         }

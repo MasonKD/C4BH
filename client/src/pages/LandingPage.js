@@ -23,8 +23,10 @@ const LandingPage = () => {
   const navigate = useNavigate();
   const handleSignIn = () => {
     const clientId = '6ajbqdj9bvutetf9vrremr1clc';
-    const redirectUri = encodeURIComponent('https://sbx.connectingforbetterhealth.com/callback');
-    const signInUri = `https://sandbox-login.auth.us-east-2.amazoncognito.com/login?client_id=${clientId}&response_type=code&scope=email+openid+phone&redirect_uri=${redirectUri}`;
+    // const redirectUri = encodeURIComponent('https://sbx.connectingforbetterhealth.com/callback');
+    const redirectUri = getEnvURL('LANDING_PAGE_REDIRECT');
+    // const signInUri = `https://sandbox-login.auth.us-east-2.amazoncognito.com/login?client_id=${clientId}&response_type=code&scope=email+openid+phone&redirect_uri=${redirectUri}`;
+    const signInUri = `${getEnvURL('LANDING_PAGE_SIGN_IN')}?client_id=${clientId}&response_type=code&scope=email+openid+phone&redirect_uri=${redirectUri}`;
     window.location.assign(signInUri);
   };
 
