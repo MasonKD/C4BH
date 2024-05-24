@@ -25,8 +25,15 @@ export default function SideNavMod(props) {
   const [isHoveredFTP, setIsHoveredFTP] = useState(false);
   const [activeButton, setActiveButton] = useState('');
   const {user, signOut} = useAuthenticator((context) => [context.user]);
+  let element = document.createElement('select');
   const toggleNav = () => {
     setIsNavExpanded(!isNavExpanded); 
+    if (!isNavExpanded) {
+      document.documentElement.style.setProperty('--side-nav', '14rem');
+    } else {
+      document.documentElement.style.setProperty('--side-nav', '4.5rem');
+    }
+
   };
   const navigate = useNavigate();
   const handleNavigation = (path) => {
@@ -225,7 +232,7 @@ export default function SideNavMod(props) {
     <Flex
       gap="10px"
       direction="column"
-      width={isNavExpanded ? "14rem" : "4rem"}
+      width={isNavExpanded ? "14rem" : "4.5rem"}
       height="calc(-78px + 100vh)"
       top="78px"
       justifyContent="flex-start"
@@ -428,6 +435,7 @@ export default function SideNavMod(props) {
                 width="24px"
                 height="24px"
                 display="block"
+                fill="rgba(45,112,205,1)"
                 gap="unset"
                 alignItems="unset"
                 justifyContent="unset"

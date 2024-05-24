@@ -76,7 +76,7 @@ const MainPage = () => {
                     lineHeight="60px"
                     textAlign="left"
                     display="block"
-                    width="844px"
+                    width="100%"
                     shrink="0"
                     position="relative"
                     whiteSpace="pre-wrap"

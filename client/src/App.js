@@ -1,6 +1,7 @@
 // App.js
 import React, {useState} from 'react';
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import AppHeader from './components/Header/AppHeader'
 import MainPage from './pages/MainPage';
 import Callback from './data/Callback';
 import Mirth from './pages/Mirth';
@@ -12,7 +13,7 @@ import Background from './pages/Background';
 import OldMainPage from './pages/OldMainPage';
 import { Amplify } from 'aws-amplify';
 import { formFields, components } from './components/Auth';
-import { Authenticator } from '@aws-amplify/ui-react';
+import { Authenticator, Flex } from '@aws-amplify/ui-react';
 
 import { HeaderMod } from './components/HeaderMod'
 import { FooterMod } from './components/FooterMod';
@@ -24,16 +25,16 @@ import config from './amplifyconfiguration.json';
 Amplify.configure(config);
 
 export default function App({ signOut, user } ) {
-
+  
   return (
     <Router>
       <Authenticator formFields={formFields} components={components}>
-      <div style={{ position: 'relative', minHeight: '100vh', display: 'flex', flexDirection: 'column', paddingTop: '78px' }}>
-          <HeaderMod style={{ zIndex: 200 }} />
-          <SideNavMod style={{ zIndex: 200 }} />
-          <div style={{ flex: 1, display: 'flex', flexDirection: 'row' }}>
-            <div style={{ width: '14rem', flexShrink: 0 }}></div>
-            <Routes style={{ flex: 1 }}>
+        <HeaderMod style={{zIndex:"200"}} />
+        <SideNavMod  style={{ zIndex: "200", width: "14rem" }}/>
+        <div style={{position:"relative", top:"78px", display:"flex", flexDirection:"column" }}>
+        <div style={{display:"flex", flexDirection:"row", minHeight:"calc(-108px + 100vh)"}}>
+          <div id='testNav' style={{ zIndex: "10", flexShrink: "0",  width: 'var(--side-nav)' }}></div>
+          <Routes style={{ flexGrow:"1"}}>
               <Route path="/" element={<MainPage />} />
               <Route path="/callback" element={<Callback />} />
               <Route path="/mirth" element={<Mirth />} />
@@ -45,9 +46,9 @@ export default function App({ signOut, user } ) {
               <Route path="/OldMainPage" element={<OldMainPage />} />
             </Routes>
           </div>
-
         <FooterMod style={{zIndex:"400"}}/>
         </div>
+
       </Authenticator>
     </Router>
   );
