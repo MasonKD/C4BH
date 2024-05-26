@@ -3,7 +3,6 @@ import btoa from 'btoa';
 import https from 'https';
 import { getEnvURL } from './envUtils';
 
-// const apiEndpoint = 'http://ec2-18-188-102-170.us-east-2.compute.amazonaws.com:8000/Patient';
 const apiEndpoint = getEnvURL('SMILE_API');
 
 const querySmile = async (req, res) => {

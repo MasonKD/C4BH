@@ -15,8 +15,6 @@ const Callback = () => {
     console.log('Authorization code:', code); // Debug: Log authorization code
 
     if (code) {
-      // Replace this URL with your backend endpoint
-      // fetch('https://cognito-idp.us-east-2.amazonaws.com/us-east-2_8sbfATJlO/.well-known/jwks.json', {
       const url = getEnvURL('COGNITO_ENDPOINT');
       fetch(url, {
         method: 'POST',
