@@ -1,6 +1,7 @@
 import fetch from 'node-fetch';
 import btoa from 'btoa';
 import https from 'https';
+import { getEnvURL } from './envUtils';
 
 const getMirthLogs = async (req, res) => {
 

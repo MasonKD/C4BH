@@ -16,24 +16,11 @@ const envVars = {};
 let config = {
     throwError: true,
     defaultValues: {
-        DYNAMO_API: "http://localhost:3001/dxf-query?dxfNumber=",
-        DXF_REGISTRATION_REDIRECT: "http://localhost:3000/callback",
-        LANDING_PAGE_REDIRECT: "http://localhost:3000/callback",
-        FETCH_MIRTH_DATA: "http://127.0.0.1:3001/mirth-logs",
-        FETCH_SMILE_DATA: "http://127.0.0.1:3001/smile-query",
         ORIGIN: "http://localhost:3000"
     }
 };
 
 const requiredEnvVars = [
-    'COGNITO_ENDPOINT',
-    'DYNAMO_API',
-    'DXF_REGISTRATION_REDIRECT',
-    'DXF_REGISTRATION_SIGN_UP',
-    'LANDING_PAGE_REDIRECT',
-    'LANDING_PAGE_SIGN_IN',
-    'FETCH_MIRTH_DATA',
-    'FETCH_SMILE_DATA',
     'ENCOUNTER_CDR_API',
     'MIRTH_API',
     'PRACTITIONER_CDR_API',
@@ -44,7 +31,7 @@ const requiredEnvVars = [
 // Automatically initialize environment variables when the module is loaded
 (function initializeEnvVars() {
     requiredEnvVars.forEach(varName => {
-        const envVarName = `ENV_${varName}`;
+        const envVarName = `REACT_APP_${varName}`;
         if (process.env[envVarName]) {
             envVars[varName] = process.env[envVarName];
         } else if (config.defaultValues[varName] !== undefined) {

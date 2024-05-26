@@ -1,5 +1,6 @@
 import React from 'react';
 import logoImage from './images/C4BHLogo.png';
+import { getEnvURL } from '../envUtils';
 
 const Logo = () => (
   <div className="logo">

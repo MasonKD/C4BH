@@ -32,8 +32,8 @@
   },
   "scripts": {
     "amp": "./build-scripts/MakeAmplifyFormsExportSubmitFunction.py",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "dotenv -e .env.dev react-scripts start",
+    "build": "dotenv -e .env.prod react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

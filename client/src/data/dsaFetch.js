@@ -1,5 +1,6 @@
 // dsaFetch.js
 import axios from 'axios';
+import { getEnvURL } from '../envUtils';
 
 // Function to fetch data from DynamoDB API
 // dev is http://localhost:3001/dxf-query?dxfNumber=

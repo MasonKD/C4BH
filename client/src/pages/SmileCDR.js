@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { useTable } from 'react-table';
+import { getEnvURL } from '../envUtils';
 
 const SmileCDR = () => {
 

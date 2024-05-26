@@ -5,6 +5,7 @@ import getMirthLogs from './api-Mirth.js';
 import queryEncounterCDR from './api-EncounterCDR.js';
 import queryPractitionerCDR from './api-PractitionerCDR.js';
 import queryDynamoDB from './api-DynamoDB.js';
+import { getEnvURL } from './envUtils';
 
 
 const app = express();
