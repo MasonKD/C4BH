@@ -1,5 +1,6 @@
 import React from 'react';
 import logoImage from './images/C4BHLogo.png';
+import { getEnvURL } from '../envUtils';
 
 const Logo = () => (
   <div className="logo">
@@ -11,11 +12,10 @@ const DxfRegistration = () => {
  
 
   // Handler for the Sign Up button click, identical setup as sign in but could lead to a different path if needed
-  // Handler for the Sign In button click https://sbx.connectingforbetterhealth.com/callback, local = http://localhost:3000/callback
   const handleSignUp = () => {
     const clientId = '6ajbqdj9bvutetf9vrremr1clc';
-    const redirectUri = encodeURIComponent('https://sbx.connectingforbetterhealth.com/callback');
-    const signUpUri = `https://sandbox-login.auth.us-east-2.amazoncognito.com/signup?client_id=${clientId}&response_type=code&scope=email+openid+phone&redirect_uri=${redirectUri}`;
+    const redirectUri = getEnvURL('DXF_REGISTRATION_REDIRECT');
+    const signInUri = `${getEnvURL('DXF_REGISTRATION_SIGN_UP')}?client_id=${clientId}&response_type=code&scope=email+openid+phone&redirect_uri=${redirectUri}`;
     window.location.assign(signUpUri);
   };
 

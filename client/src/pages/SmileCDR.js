@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { useTable } from 'react-table';
+import { getEnvURL } from '../envUtils';
 
 const SmileCDR = () => {
 
@@ -114,15 +115,15 @@ const SmileCDR = () => {
 
 //------------------------------------------------------fetch request to get all patient specific data from CDR
 
-  //http://127.0.0.1:3001/smile-query
-  //https://sbx.connectingforbetterhealth.com/api/smile-query
+
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
       setError('');
 
       try {
-        const response = await fetch('https://sbx.connectingforbetterhealth.com/api/smile-query');
+        const url = getEnvURL('FETCH_SMILE_DATA');
+        const response = await fetch(url);
         if (!response.ok) {
           throw new Error(`HTTP status ${response.status}`);
         }
@@ -167,11 +168,10 @@ const SmileCDR = () => {
 
     //------------------------------------------------------fetch request to get all encounter data from CDR
 
-    //http://127.0.0.1:3001/encounter-query
-    //https://sbx.connectingforbetterhealth.com/api/encounter-query
     const fetchEncounterData = async () => {
       try {
-        const encounterResponse = await fetch('https://sbx.connectingforbetterhealth.com/api/encounter-query');
+        const url = getEnvURL('FETCH_ENCOUNTER_DATA');
+        const encounterResponse = await fetch(url);
         if (!encounterResponse.ok) {
           throw new Error(`HTTP status ${encounterResponse.status}`);
         }
@@ -238,11 +238,12 @@ const SmileCDR = () => {
 
 //------------------------------------------------------fetch request to get all practitioner data from CDR
 
-    //http://127.0.0.1:3001/practitioner-query
-    //https://sbx.connectingforbetterhealth.com/api/practitioner-query
     const fetchPractitionerData = async () => {
       try {
-        const practitionerResponse = await fetch('https://sbx.connectingforbetterhealth.com/api/practitioner-query');
+        const url = getEnvURL('FETCH_PRACTITIONER_DATA');
+        const practitionerResponse = await fetch(url);
+
+
         if (!practitionerResponse.ok) {
           throw new Error(`HTTP status ${practitionerResponse.status}`);
         }

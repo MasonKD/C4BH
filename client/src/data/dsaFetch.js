@@ -1,15 +1,14 @@
 // dsaFetch.js
 import axios from 'axios';
+import { getEnvURL } from '../envUtils';
 
 // Function to fetch data from DynamoDB API
-// dev is http://localhost:3001/dxf-query?dxfNumber=
-// prod is https://sbx.connectingforbetterhealth.com/api/dxf-query?dxfNumber=
 
 export const dynamoAPI = async (dxfNumber) => {
-  const url = 'https://sbx.connectingforbetterhealth.com/api/dxf-query?dxfNumber='+dxfNumber;
+  const url = getEnvURL('DYNAMO_API')+dxfNumber;
   // console.log("this is the url:",url);
 try {
-  const response = await axios.get('https://sbx.connectingforbetterhealth.com/api/dxf-query?dxfNumber='+dxfNumber)
+  const response = await axios.get(url+dxfNumber)
   return response.data.data;
 } catch (error) {
   console.error('Error fetching data from DynamoDB:', error);

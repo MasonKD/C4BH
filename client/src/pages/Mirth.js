@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useTable } from 'react-table';
 import font from '../css/fonts.module.css'
 import flex from '../css/flex.module.css'
+import { getEnvURL } from '../envUtils';
 
 
 const Mirth = () => {
@@ -44,9 +45,8 @@ const Mirth = () => {
   const data = useMemo(() => logs, [logs]);
   const tableInstance = useTable({ columns, data });
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = tableInstance;
-//dev URL: http://127.0.0.1:3001/mirth-logs, prod: https://sbx.connectingforbetterhealth.com/api/mirth-logs
 useEffect(() => {
-  const apiEndpoint = 'https://sbx.connectingforbetterhealth.com/api/mirth-logs';
+  const apiEndpoint = getEnvURL('FETCH_MIRTH_DATA');
   fetch(apiEndpoint)
     .then(response => {
       if (!response.ok) {

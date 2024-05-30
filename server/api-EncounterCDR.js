@@ -1,8 +1,10 @@
 import fetch from 'node-fetch';
 import btoa from 'btoa';
 import https from 'https';
+import { getEnvURL } from './envUtils';
 
-const apiEndpoint = 'http://ec2-18-188-102-170.us-east-2.compute.amazonaws.com:8000/Encounter';
+const apiEndpoint = getEnvURL('ENCOUNTER_CDR_API');
+
 const queryEncounterCDR = async (req, res) => {
   const username = 'admin';
   const password = 'password';
